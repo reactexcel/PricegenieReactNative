@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {map} from 'lodash';
-import json_data from '../data/data';
+import json_data from '../data/category';
 import {
     View,
     Text,
@@ -23,6 +23,16 @@ export class Home extends Component {
         this.state = {
             dataSource: ds.cloneWithRows(json_data)
         };
+        this._onPressSingleRequest = this._onPressSingleRequest.bind(this);
+    }
+    _onPressSingleRequest(data) {
+        let cat = data.name;
+        this.props.navigator.push({
+            name: "subcategory",
+            payload: {
+                name: cat
+            }
+        })
     }
     render() {
         var {width, height} = Dimensions.get('window');
@@ -88,7 +98,7 @@ export class Home extends Component {
                             flexDirection: 'column'
                         }}>
 
-                            <ListView style={styles.container} dataSource={this.state.dataSource} renderRow={(data) => <View style={{
+                            <ListView style={styles.container} dataSource={this.state.dataSource} renderRow={(data, key) => <View style={{
                                 flex: 1,
                                 flexDirection: 'row',
                                 backgroundColor: 'white',
@@ -96,7 +106,7 @@ export class Home extends Component {
                                 borderBottomWidth: 2,
                                 borderBottomColor: '#e3e0e0'
                             }}>
-                                <TouchableOpacity style={{
+                                <TouchableOpacity key={key} onPress={() => this._onPressSingleRequest(data)} style={{
                                     flex: 1,
                                     flexDirection: 'row',
                                     justifyContent: 'space-around',
