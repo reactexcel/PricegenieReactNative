@@ -14,6 +14,7 @@ import {
     Navigator
 } from 'react-native';
 import {Home} from './component/home';
+import {Subcategory} from './component/subcategory';
 
 export class PriceGenie_React_Native extends Component {
     constructor(props) {
@@ -25,22 +26,23 @@ export class PriceGenie_React_Native extends Component {
             <View style={styles.container}>
                 <StatusBar backgroundColor="#01579b" barStyle="light-content"/>
                 <Navigator initialRoute={{
-                    name: 'home'
+                    name: 'home',
+                    payload: {}
                 }} renderScene={this.renderScene}/>
             </View>
         );
     }
     renderScene(route, navigator) {
         if (route.name === 'home') {
-            return (<Home navigator={navigator}/>);
+            return (<Home navigator={navigator} {...route.payload}/>);
+        } else if (route.name === 'subcategory') {
+            return (<Subcategory navigator={navigator} {...route.payload}/>);
         }
     }
 }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
         backgroundColor: '#F5FCFF'
     }
 });
