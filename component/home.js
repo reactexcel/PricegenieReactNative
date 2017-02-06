@@ -11,9 +11,12 @@ import {
     ListView,
     ScrollView,
     TextInput,
+    AsyncStorage,
     TouchableOpacity,
     Image
 } from 'react-native';
+import axios from "axios";
+var g = 1;
 export class Home extends Component {
     constructor(props) {
         super(props);
@@ -26,13 +29,34 @@ export class Home extends Component {
         this._onPressSingleRequest = this._onPressSingleRequest.bind(this);
     }
     _onPressSingleRequest(data) {
-        let cat = data.name;
+        let cat = data.case;
         this.props.navigator.push({
             name: "subcategory",
             payload: {
                 name: cat
             }
         })
+    }
+    componentWillMount() {
+        if (g === 1) {
+            this._genrateSubcat()
+        }
+    }
+    login() {
+        return new Promise(function(resolve, reject) {
+            return axios.get('http://pricegenie.co/mobile_api/api.php?action=category_tree').then((data) => {
+                resolve(data)
+            }, (error) => {
+                reject(error)
+            })
+        })
+    }
+    _genrateSubcat() {
+        this.login().then((val) => {
+            var cat = val.data;
+            AsyncStorage.setItem("myKey", JSON.stringify(cat));
+            g++
+        });
     }
     render() {
         var {width, height} = Dimensions.get('window');

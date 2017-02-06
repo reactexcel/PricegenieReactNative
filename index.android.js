@@ -11,21 +11,32 @@ import {
     Text,
     View,
     StatusBar,
-    Navigator
+    Navigator,
+    BackAndroid
 } from 'react-native';
 import {Home} from './component/home';
 import {Subcategory} from './component/subcategory';
+
+let onMainScreen = true
+BackAndroid.addEventListener('hardwareBackPress', function() {
+    if (route.name !== "home") {
+        navigator.pop();
+        return true;
+    }
+    return false;
+});
 
 export class PriceGenie_React_Native extends Component {
     constructor(props) {
         super(props);
         this.renderScene = this.renderScene.bind(this);
+        this.configureScene = this.configureScene.bind(this);
     }
     render() {
         return (
             <View style={styles.container}>
                 <StatusBar backgroundColor="#01579b" barStyle="light-content"/>
-                <Navigator initialRoute={{
+                <Navigator configureScene={this.configureScene} initialRoute={{
                     name: 'home',
                     payload: {}
                 }} renderScene={this.renderScene}/>
@@ -33,10 +44,19 @@ export class PriceGenie_React_Native extends Component {
         );
     }
     renderScene(route, navigator) {
+        global.route = route;
+        global.navigator = navigator;
         if (route.name === 'home') {
             return (<Home navigator={navigator} {...route.payload}/>);
         } else if (route.name === 'subcategory') {
             return (<Subcategory navigator={navigator} {...route.payload}/>);
+        }
+    }
+    configureScene(route, routeStack) {
+        if (route.name === 'home') {
+            return Navigator.SceneConfigs.PushFromRight
+        } else if (route.name === 'subcategory') {
+            return Navigator.SceneConfigs.PushFromRight
         }
     }
 }
