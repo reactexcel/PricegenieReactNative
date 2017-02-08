@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
+import '../style/basicStyle'
+var style = require('../style/basicStyle');
 import {map} from 'lodash';
 import json_data from '../data/category';
 import {
@@ -11,9 +13,11 @@ import {
     ListView,
     ScrollView,
     TextInput,
+    AsyncStorage,
     TouchableOpacity,
     Image
 } from 'react-native';
+import axios from "axios";
 export class Home extends Component {
     constructor(props) {
         super(props);
@@ -23,10 +27,10 @@ export class Home extends Component {
         this.state = {
             dataSource: ds.cloneWithRows(json_data)
         };
-        this._onPressSingleRequest = this._onPressSingleRequest.bind(this);
+        this._sendDataforward = this._sendDataforward.bind(this);
     }
-    _onPressSingleRequest(data) {
-        let cat = data.name;
+    _sendDataforward(data) {
+        let cat = data.case;
         this.props.navigator.push({
             name: "subcategory",
             payload: {
@@ -42,7 +46,7 @@ export class Home extends Component {
                 flexDirection: 'column',
                 backgroundColor: '#e3e0e0'
             }}>
-                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} title='' style={styles.toolbar} titleColor='white' overflowIconName="md-more" actions={[
+                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
                     {
                         title: 'fav',
                         iconName: 'md-notifications',
@@ -106,7 +110,7 @@ export class Home extends Component {
                                 borderBottomWidth: 2,
                                 borderBottomColor: '#e3e0e0'
                             }}>
-                                <TouchableOpacity key={key} onPress={() => this._onPressSingleRequest(data)} style={{
+                                <TouchableOpacity key={key} onPress={() => this._sendDataforward(data)} style={{
                                     flex: 1,
                                     flexDirection: 'row',
                                     justifyContent: 'space-around',
@@ -135,9 +139,4 @@ export class Home extends Component {
         );
     }
 }
-const styles = StyleSheet.create({
-    toolbar: {
-        height: 50,
-        backgroundColor: '#085394'
-    }
-});
+const styles = StyleSheet.create({});
