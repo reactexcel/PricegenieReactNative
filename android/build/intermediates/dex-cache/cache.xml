@@ -5,7 +5,7 @@
         jar="/var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/PriceGenie_React_Native/react-native-vector-icons/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="d403d0f2540df99adfa49d3c73308cb06f7af851">
+        sha1="e37f20704b9e5cb13df23a395d91f902cdb791cb">
         <dex dex="/var/www/html/PriceGenie_React_Native/android/app/build/intermediates/pre-dexed/debug/classes-2c1fb67c64844294c9ad788bcb0eb615a1494a6f.jar" />
     </item>
 
