@@ -50,7 +50,7 @@ export class Subcategory extends Component {
         actions.category().then((val) => {
             var category = val.data;
             this.setState({arrcat: category, animating: false})
-            AsyncStorage.setItem("subcategory", JSON.stringify(category));
+            setLocalstoragedata("subcategory", category);
         });
     }
     _onPressSingleRequest(data) {}
