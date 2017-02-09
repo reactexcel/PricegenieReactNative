@@ -34,23 +34,17 @@ export class Subcategory extends Component {
     componentWillMount() {
         let sub_name = this.props.name;
         this.setState({subcat: sub_name});
-        getLocalstoragedata("subcategory").then((value) => {
-            if (value === null || undefined) {
-                this._genrateSubcat()
-            } else if (value != null || undefined) {
-                this.setState({animating: false})
-                getLocalstoragedata("subcategory").then((value) => {
-                    let sub_cat = JSON.parse(value);
-                    this.setState({arrcat: sub_cat})
-                });
-            }
-        });
+        getLocalStorageData("subcategory", this._genrateSubcat.bind(this)).then((value) => {
+            this.setState({animating: false})
+            let sub_cat = JSON.parse(value);
+            this.setState({arrcat: sub_cat})
+        }).catch(() => {});
     }
     _genrateSubcat() {
         actions.category().then((val) => {
             var category = val.data;
             this.setState({arrcat: category, animating: false})
-            setLocalstoragedata("subcategory", category);
+            setLocalStorageData("subcategory", category);
         });
     }
     _onPressSingleRequest(data) {}
