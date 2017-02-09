@@ -15,6 +15,8 @@ import {
     BackAndroid
 } from 'react-native';
 import {Home} from './component/home';
+import {getLocalstoragedata} from './services/localstorage'
+import {setLocalstoragedata} from './services/localstorage'
 import {Subcategory} from './component/subcategory';
 let onMainScreen = true
 BackAndroid.addEventListener('hardwareBackPress', function() {

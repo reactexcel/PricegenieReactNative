@@ -17,8 +17,7 @@ import {
     ActivityIndicator
 } from 'react-native';
 var style = require('../style/basicStyle');
-import * as actions from '../config/actionsubcategory';
-import axios from "axios";
+import * as actions from '../services/category';
 export class Subcategory extends Component {
     constructor(props) {
         super(props);
@@ -35,17 +34,17 @@ export class Subcategory extends Component {
     componentWillMount() {
         let sub_name = this.props.name;
         this.setState({subcat: sub_name});
-        AsyncStorage.getItem("subcategory").then((value) => {
+        getLocalstoragedata("subcategory").then((value) => {
             if (value === null || undefined) {
                 this._genrateSubcat()
             } else if (value != null || undefined) {
                 this.setState({animating: false})
-                AsyncStorage.getItem("subcategory").then((value) => {
+                getLocalstoragedata("subcategory").then((value) => {
                     let sub_cat = JSON.parse(value);
                     this.setState({arrcat: sub_cat})
-                }).done();
+                });
             }
-        }).done();
+        });
     }
     _genrateSubcat() {
         actions.category().then((val) => {
@@ -98,7 +97,7 @@ export class Subcategory extends Component {
                             alignSelf: 'center',
                             borderWidth: 0,
                             paddingLeft: width / 9,
-                            paddingTop: 13
+                            paddingTop: 15
                         }}>
                             <Text style={{
                                 fontSize: 15,
@@ -121,13 +120,8 @@ export class Subcategory extends Component {
                     </ScrollView>
                 </View>
                 {animating
-                    ? <View style={{
-                            height: height,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            backgroundColor: '#ddd'
-                        }}>
-                            <ActivityIndicator animating={this.state.animating} size="large"/>
+                    ? <View style={style.loder}>
+                            <ActivityIndicator animating={this.state.animating} color="#01579b" size="large"/>
                         </View>
                     : null}
             </View>

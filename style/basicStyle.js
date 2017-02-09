@@ -1,8 +1,8 @@
-import {StyleSheet} from 'react-native';
-
+import {StyleSheet, Dimensions} from 'react-native';
+var {height, width} = Dimensions.get('window');
 module.exports = StyleSheet.create({
     toolbar: {
-        height: 60,
+        height: 50,
         backgroundColor: '#085394'
     },
     touch: {
@@ -11,5 +11,12 @@ module.exports = StyleSheet.create({
         justifyContent: 'space-around',
         borderBottomWidth: 2,
         borderBottomColor: '#e3e0e0'
+    },
+    loder: {
+        height: height,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#e4e4e4',
+        opacity: 1
     }
 });

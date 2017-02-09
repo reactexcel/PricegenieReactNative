@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import '../style/basicStyle'
 var style = require('../style/basicStyle');
-import {map} from 'lodash';
 import json_data from '../data/category';
 import {
     View,
@@ -17,7 +16,6 @@ import {
     TouchableOpacity,
     Image
 } from 'react-native';
-import axios from "axios";
 export class Home extends Component {
     constructor(props) {
         super(props);
