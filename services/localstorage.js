@@ -1,16 +1,7 @@
 import {AsyncStorage} from 'react-native';
-getLocalStorageData = function(key, callback) {
-    return new Promise(function(resolve, reject) {
-        let store = AsyncStorage.getItem(key);
-        store.then((value) => {
-            if (value === null || undefined) {
-                callback();
-                reject();
-            } else if (value !== null || undefined) {
-                resolve(value);
-            }
-        });
-    });
+
+getLocalStorageData = function(key) {
+    return AsyncStorage.getItem(key)
 }
 
 setLocalStorageData = function(key, value) {
