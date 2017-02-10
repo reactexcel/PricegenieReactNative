@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
+import CONFIG from './config/config'
 import React, {Component} from 'react';
 import {
     AppRegistry,
@@ -11,15 +11,27 @@ import {
     Text,
     View,
     StatusBar,
-    Navigator
+    Navigator,
+    BackAndroid
 } from 'react-native';
 import {Home} from './component/home';
+import {getLocalStorageData} from './services/localstorage'
+import {setLocalStorageData} from './services/localstorage'
 import {Subcategory} from './component/subcategory';
+let onMainScreen = true
+BackAndroid.addEventListener('hardwareBackPress', function() {
+    if (route.name !== "home") {
+        navigator.pop();
+        return true;
+    }
+    return false;
+});
 
 export class PriceGenie_React_Native extends Component {
     constructor(props) {
         super(props);
         this.renderScene = this.renderScene.bind(this);
+        this.configureScene = this.configureScene.bind(this);
     }
     render() {
         return (
@@ -33,10 +45,19 @@ export class PriceGenie_React_Native extends Component {
         );
     }
     renderScene(route, navigator) {
+        global.route = route;
+        global.navigator = navigator;
         if (route.name === 'home') {
             return (<Home navigator={navigator} {...route.payload}/>);
         } else if (route.name === 'subcategory') {
             return (<Subcategory navigator={navigator} {...route.payload}/>);
+        }
+    }
+    configureScene(route, routeStack) {
+        if (route.name === 'home') {
+            return Navigator.SceneConfigs.PushFromRight
+        } else if (route.name === 'subcategory') {
+            return Navigator.SceneConfigs.PushFromRight
         }
     }
 }
