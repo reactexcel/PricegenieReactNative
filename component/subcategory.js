@@ -40,7 +40,19 @@ export class Subcategory extends Component {
             }
         })
     }
-    _onPressSingleRequest(data) {}
+    _onPressSingleRequest(data) {
+        let cat_name = data.cat_name;
+        let cat_id = data.cat_id
+        let sub_cat_id = data.sub_cat_id
+        this.props.navigator.push({
+            name: "productPage",
+            payload: {
+                name: cat_name,
+                id: cat_id,
+                sub_id: sub_cat_id
+            }
+        })
+    }
     render() {
         var {height, width} = Dimensions.get('window');
         let catg = null;
@@ -49,19 +61,25 @@ export class Subcategory extends Component {
         let now_cat = _.map(sub_cat, (user, index) => {
             if (user.key === this.state.subcat) {
                 catg = _.map(user.data, (user_data, i) => (
-                    <TouchableOpacity key={i} onPress={() => this._onPressSingleRequest(user_data)} style={style.touch}>
-                        <Text style={{
+                    <View key={i} style={style.touch}>
+                        <TouchableOpacity onPress={() => this._onPressSingleRequest(user_data)} style={{
                             flex: 1,
-                            flexDirection: 'column',
-                            margin: 10,
-                            alignSelf: 'center'
+                            flexDirection: 'row',
+                            justifyContent: 'space-around'
                         }}>
-                            {user_data.cat_name}
-                        </Text>
-                        <Icon name="ios-arrow-forward-outline" size={25} color="#e3e0e0" style={{
-                            margin: 10
-                        }}/>
-                    </TouchableOpacity>
+                            <Text style={{
+                                flex: 1,
+                                flexDirection: 'column',
+                                margin: 10,
+                                alignSelf: 'center'
+                            }}>
+                                {user_data.cat_name}
+                            </Text>
+                            <Icon name="ios-arrow-forward-outline" size={25} color="#e3e0e0" style={{
+                                margin: 10
+                            }}/>
+                        </TouchableOpacity>
+                    </View>
                 ))
             }
         });

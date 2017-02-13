@@ -66,7 +66,7 @@ export class Home extends Component {
                             flex: 1,
                             marginTop: 5,
                             backgroundColor: 'white'
-                        }}>
+                        }} elevation={3}>
                             <View style={{
                                 flex: 1,
                                 marginLeft: 20,
@@ -122,15 +122,17 @@ export class Home extends Component {
                                         flex: 1,
                                         flexDirection: 'column',
                                         alignSelf: 'center',
-                                        marginTop: 2,
+                                        marginTop: 1,
                                         marginLeft: 10
                                     }}>{data.name}</Text>
                                     <Icon name="ios-arrow-forward-outline" size={25} color="#e3e0e0" style={{
+                                        marginTop: 3,
                                         marginRight: 10
                                     }}/>
                                 </TouchableOpacity>
                             </View>}/>
                         </View>
+
                     </View>
                 </ScrollView>
             </View>
