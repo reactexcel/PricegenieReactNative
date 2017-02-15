@@ -43,23 +43,34 @@ export class ProductPage extends Component {
         this.props.navigator.pop()
     }
     componentDidMount(props) {
-        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page).then((display_data) => {
-            if (display_data && !display_data.length) {
+        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page,).then((val) => {
+            if (val.display_data && !val.display_data.length) {
                 this.setState({msg: true, load: false});
             }
-            this.setState({data: display_data, dataSource: this.state.ds.cloneWithRows(display_data), animating: false})
+            this.setState({
+                data: val.display_data,
+                dataSource: this.state.ds.cloneWithRows(val.display_data),
+                animating: false
+            })
         });
     }
     _loadMore() {
         var data = this.state.data
-        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page).then((display_data) => {
-            if (display_data && !display_data.length) {
+        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page,).then((val) => {
+            if (val.display_data && !val.display_data.length) {
                 this.setState({load: false});
             } else {
-                var dataSource = this.state.ds.cloneWithRows(display_data);
-                this.setState({dataSource: dataSource, page: this.state.page});
+                this._footer()
+                var dataSource = this.state.ds.cloneWithRows(data.concat(val.display_data));
+                this.setState({
+                    dataSource: dataSource,
+                    page: this.state.page,
+                    data: data.concat(val.display_data)
+
+                });
             }
         })
+
     }
     _footer() {
         return (
@@ -67,11 +78,11 @@ export class ProductPage extends Component {
                 styles.centering, {
                     transform: [
                         {
-                            scale: .6
+                            scale: .7
                         }
                     ]
                 }
-            ]} animating={this.state.load} color="#01579b" size={30}/></View>
+            ]} animating={this.state.load} color="#01579b" size={32}/></View>
         );
     }
     render() {
