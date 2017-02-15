@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 var style = require('../style/basicStyle');
+import '../style/basicStyle'
+var style = require('../style/basicStyle');
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as actions from '../services/product';
 var _ = require('lodash');
@@ -21,90 +23,61 @@ import {
 export class ProductPage extends Component {
     constructor(props) {
         super(props);
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2
+        });
         this.state = {
-            product: [],
+            ds: ds,
+            dataSource: ds.cloneWithRows([]),
             animating: true,
             msg: false,
-            color: '#36393b'
+            page: 1,
+            data: [],
+            load: true
         }
         this._previouspage = this._previouspage.bind(this);
+        this._loadMore = this._loadMore.bind(this);
+        this._footer = this._footer.bind(this);
     }
     _previouspage() {
         this.props.navigator.pop()
     }
     componentDidMount(props) {
-        actions.getProduct(this.props.name, this.props.id, this.props.sub_id).then((val) => {
-            if (val.display_data && !val.display_data.length) {
-                this.setState({msg: true});
+        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page).then((display_data) => {
+            if (display_data && !display_data.length) {
+                this.setState({msg: true, load: false});
             }
-            this.setState({product: val.display_data, animating: false})
+            this.setState({data: display_data, dataSource: this.state.ds.cloneWithRows(display_data), animating: false})
         });
+    }
+    _loadMore() {
+        var data = this.state.data
+        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page).then((display_data) => {
+            if (display_data && !display_data.length) {
+                this.setState({load: false});
+            } else {
+                var dataSource = this.state.ds.cloneWithRows(display_data);
+                this.setState({dataSource: dataSource, page: this.state.page});
+            }
+        })
+    }
+    _footer() {
+        return (
+            <View><ActivityIndicator style={[
+                styles.centering, {
+                    transform: [
+                        {
+                            scale: .6
+                        }
+                    ]
+                }
+            ]} animating={this.state.load} color="#01579b" size={30}/></View>
+        );
     }
     render() {
         var {height, width} = Dimensions.get('window');
-        let prod = this.state.product;
         let {animating} = this.state;
         let {msg} = this.state;
-        let product = _.map(prod, (productView, i) => {
-            return (
-                <View style={{
-                    flex: 1,
-                    backgroundColor: 'white',
-                    marginBottom: 5,
-                    paddingTop: 5,
-                    paddingRight: 10,
-                    paddingBottom: 10
-                }} elevation={3} key={i}>
-                    <View style={{
-                        flex: 1,
-                        alignItems: 'center',
-                        flexDirection: 'row',
-                        justifyContent: 'space-around'
-                    }}>
-                        <TouchableOpacity style={{
-                            flex: 1,
-                            alignItems: 'center',
-                            flexDirection: 'row',
-                            justifyContent: 'space-around'
-                        }}>
-                            <Image style={{
-                                flex: .3,
-                                height: 45,
-                                width: 45
-                            }} resizeMode="contain" source={{
-                                uri: productView.image
-                            }}></Image>
-                            <View style={{
-                                flex: 1
-                            }}>
-                                <Text style={{
-                                    color: '#36393b',
-                                    fontSize: 13
-                                }}>
-                                    {productView.name}
-                                </Text>
-                                <Text style={{
-                                    color: '#e3ae22'
-                                }}>
-                                    From Rs:{productView.num_price}
-                                </Text>
-                                <Text>
-                                    {productView.sellers}
-                                    Sellers
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={{
-                            flexDirection: 'row',
-                            alignItems: 'flex-end',
-                            marginTop: 50
-                        }}>
-                            <Icon size={20} name="md-heart" backgroundColor="red"/>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            );
-        })
         return (
             <View style={{
                 flex: 1
@@ -114,7 +87,7 @@ export class ProductPage extends Component {
                     flexDirection: 'column',
                     backgroundColor: '#e3e0e0'
                 }}>
-                    <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} elevation={3} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
+                    <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
                         {
                             title: 'Login',
                             iconSize: 25
@@ -137,7 +110,7 @@ export class ProductPage extends Component {
                                 height: height,
                                 justifyContent: 'space-around'
                             }}>
-                                <View style>
+                                <View>
                                     <Text style={{
                                         padding: 10,
                                         borderRadius: 10,
@@ -149,17 +122,73 @@ export class ProductPage extends Component {
                                 </View>
                             </View>
                         : null}
-                    <ScrollView onScroll={() => {
-                        console.log('test');
-                    }} scrollEventThrottle={200}>
+                    <ScrollView >
                         <View style={{
                             flex: 1,
                             marginLeft: 6,
                             marginRight: 6,
-                            marginBottom: 6,
-                            marginTop: 15
-                        }}>
-                            {product}
+                            marginTop: 10
+                        }} elevation={15}>
+                            <ListView style={{
+                                height: height - 86
+                            }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={5} onEndReachedThreshold={30} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View style={{
+                                flex: 1,
+                                backgroundColor: 'white',
+                                marginBottom: 5,
+                                paddingTop: 5,
+                                paddingRight: 10,
+                                paddingBottom: 10
+                            }} elevation={2}>
+                                <View style={{
+                                    flex: 1,
+                                    alignItems: 'center',
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-around'
+                                }} key={key}>
+                                    <TouchableOpacity style={{
+                                        flex: 1,
+                                        alignItems: 'center',
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-around'
+                                    }}>
+                                        <Image style={{
+                                            flex: .3,
+                                            height: 45,
+                                            width: 45
+                                        }} resizeMode="contain" source={{
+                                            uri: data.image
+                                        }}></Image>
+                                        <View style={{
+                                            flex: 1
+                                        }}>
+                                            <Text style={{
+                                                color: '#36393b',
+                                                fontSize: 13
+                                            }}>
+                                                {data.name}
+                                            </Text>
+                                            <Text style={{
+                                                color: '#e3ae22',
+                                                fontSize: 12.5
+                                            }}>
+                                                From Rs: {data.num_price}
+                                            </Text>
+                                            <Text style={{
+                                                fontSize: 12
+                                            }}>
+                                                {`${data.sellers} Sellers`}
+                                            </Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{
+                                        flexDirection: 'row',
+                                        alignItems: 'flex-end',
+                                        marginTop: 50
+                                    }}>
+                                        <Icon size={20} name="ios-heart-outline" backgroundColor="#3b5998"/>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>}/>
                         </View>
                     </ScrollView>
                 </View>
@@ -172,3 +201,10 @@ export class ProductPage extends Component {
         );
     }
 }
+const styles = StyleSheet.create({
+    centering: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8
+    }
+});

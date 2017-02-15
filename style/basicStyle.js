@@ -18,5 +18,13 @@ module.exports = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#e4e4e4',
         opacity: 1
+    },
+    shortinglist: {
+        flex: 1,
+        borderWidth: 1,
+        alignItems: 'center',
+        borderRadius: 5,
+        padding: 5
+
     }
 });

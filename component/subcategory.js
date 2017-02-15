@@ -113,7 +113,6 @@ export class Subcategory extends Component {
                         </View>
                     </Icon.ToolbarAndroid>
                     <ScrollView>
-
                         <View style={{
                             flex: 1,
                             flexDirection: 'column',
