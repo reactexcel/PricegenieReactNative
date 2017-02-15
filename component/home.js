@@ -100,7 +100,7 @@ export class Home extends Component {
                             flexDirection: 'column'
                         }}>
 
-                            <ListView style={styles.container} dataSource={this.state.dataSource} renderRow={(data, key) => <View style={{
+                            <ListView style={styles.container} dataSource={this.state.dataSource} renderRow={(data, key) => <TouchableOpacity key={key} onPress={() => this._sendDataforward(data)} style={{
                                 flex: 1,
                                 flexDirection: 'row',
                                 backgroundColor: 'white',
@@ -108,7 +108,7 @@ export class Home extends Component {
                                 borderBottomWidth: 2,
                                 borderBottomColor: '#e3e0e0'
                             }}>
-                                <TouchableOpacity key={key} onPress={() => this._sendDataforward(data)} style={{
+                                <View style={{
                                     flex: 1,
                                     flexDirection: 'row',
                                     justifyContent: 'space-around',
@@ -129,10 +129,9 @@ export class Home extends Component {
                                         marginTop: 3,
                                         marginRight: 10
                                     }}/>
-                                </TouchableOpacity>
-                            </View>}/>
+                                </View>
+                            </TouchableOpacity>}/>
                         </View>
-
                     </View>
                 </ScrollView>
             </View>
