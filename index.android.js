@@ -18,6 +18,7 @@ import {Home} from './component/home';
 import {getLocalStorageData} from './services/localstorage'
 import {setLocalStorageData} from './services/localstorage'
 import {Subcategory} from './component/subcategory';
+import {ProductPage} from './component/ProductPage';
 let onMainScreen = true
 BackAndroid.addEventListener('hardwareBackPress', function() {
     if (route.name !== "home") {
@@ -40,7 +41,7 @@ export class PriceGenie_React_Native extends Component {
                 <Navigator initialRoute={{
                     name: 'home',
                     payload: {}
-                }} renderScene={this.renderScene}/>
+                }} renderScene={this.renderScene} configureScene={this.configureScene}/>
             </View>
         );
     }
@@ -51,6 +52,8 @@ export class PriceGenie_React_Native extends Component {
             return (<Home navigator={navigator} {...route.payload}/>);
         } else if (route.name === 'subcategory') {
             return (<Subcategory navigator={navigator} {...route.payload}/>);
+        } else if (route.name === 'productPage') {
+            return (<ProductPage navigator={navigator} {...route.payload}/>);
         }
     }
     configureScene(route, routeStack) {
@@ -58,6 +61,8 @@ export class PriceGenie_React_Native extends Component {
             return Navigator.SceneConfigs.PushFromRight
         } else if (route.name === 'subcategory') {
             return Navigator.SceneConfigs.PushFromRight
+        } else if (route.name === 'productPage') {
+            return Navigator.SceneConfigs.FadeAndroid
         }
     }
 }
