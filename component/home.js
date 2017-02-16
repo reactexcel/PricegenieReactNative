@@ -99,7 +99,6 @@ export class Home extends Component {
                             marginBottom: 8,
                             flexDirection: 'column'
                         }}>
-
                             <ListView style={styles.container} dataSource={this.state.dataSource} renderRow={(data, key) => <TouchableOpacity key={key} onPress={() => this._sendDataforward(data)} style={{
                                 flex: 1,
                                 flexDirection: 'row',
