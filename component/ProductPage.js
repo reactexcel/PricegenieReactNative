@@ -31,9 +31,9 @@ export class ProductPage extends Component {
             dataSource: ds.cloneWithRows([]),
             animating: true,
             msg: false,
-            page: 1,
+            page: 0,
             data: [],
-            load: true
+            shorting: 'popularity'
         }
         this._previouspage = this._previouspage.bind(this);
         this._loadMore = this._loadMore.bind(this);
@@ -43,20 +43,21 @@ export class ProductPage extends Component {
         this.props.navigator.pop()
     }
     componentDidMount(props) {
-        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page,).then((val) => {
+        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page, this.state.shorting).then((val) => {
             if (val.display_data && !val.display_data.length) {
                 this.setState({msg: true, load: false});
             }
             this.setState({
                 data: val.display_data,
                 dataSource: this.state.ds.cloneWithRows(val.display_data),
-                animating: false
+                animating: false,
+                filter: false
             })
         });
     }
     _loadMore() {
         var data = this.state.data
-        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page,).then((val) => {
+        actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page, this.state.shorting).then((val) => {
             if (val.display_data && !val.display_data.length) {
                 this.setState({load: false});
             } else {
@@ -70,7 +71,6 @@ export class ProductPage extends Component {
                 });
             }
         })
-
     }
     _footer() {
         return (
@@ -85,9 +85,11 @@ export class ProductPage extends Component {
             ]} animating={this.state.load} color="#01579b" size={32}/></View>
         );
     }
+
     render() {
         var {height, width} = Dimensions.get('window');
         let {animating} = this.state;
+        let {filter} = this.state;
         let {msg} = this.state;
         return (
             <View style={{
@@ -134,18 +136,23 @@ export class ProductPage extends Component {
                             </View>
                         : null}
                     <ScrollView >
+                        {filter
+                            ? <View style={style.loder}>
+                                    <ActivityIndicator animating={this.state.filter} color="#01579b" size="large"/>
+                                </View>
+                            : null}
                         <View style={{
                             flex: 1,
                             marginLeft: 6,
-                            marginRight: 6,
-                            marginTop: 10
+                            marginRight: 6
                         }} elevation={15}>
                             <ListView style={{
-                                height: height - 86
-                            }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={5} onEndReachedThreshold={30} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View style={{
+                                height: height - 76
+                            }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={80} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
                                 flex: 1,
                                 backgroundColor: 'white',
-                                marginBottom: 5,
+                                marginTop: 5,
+                                marginBottom: 1,
                                 paddingTop: 5,
                                 paddingRight: 10,
                                 paddingBottom: 10
@@ -155,7 +162,7 @@ export class ProductPage extends Component {
                                     alignItems: 'center',
                                     flexDirection: 'row',
                                     justifyContent: 'space-around'
-                                }} key={key}>
+                                }}>
                                     <TouchableOpacity style={{
                                         flex: 1,
                                         alignItems: 'center',
@@ -218,4 +225,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 8
     }
-});
+});;
