@@ -4,7 +4,6 @@ import '../style/basicStyle'
 var style = require('../style/basicStyle');
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as actions from '../services/product';
-import {ShortingButton} from '../pages/ShortingButton';
 var _ = require('lodash');
 import {
     View,
@@ -31,17 +30,14 @@ export class ProductPage extends Component {
             ds: ds,
             dataSource: ds.cloneWithRows([]),
             animating: true,
-            filter: true,
             msg: false,
             page: 0,
             data: [],
-            load: true,
-            shorting: "popularity"
+            shorting: 'popularity'
         }
         this._previouspage = this._previouspage.bind(this);
         this._loadMore = this._loadMore.bind(this);
         this._footer = this._footer.bind(this);
-        this.onPressSingleRequest = this.onPressSingleRequest.bind(this);
     }
     _previouspage() {
         this.props.navigator.pop()
@@ -89,28 +85,7 @@ export class ProductPage extends Component {
             ]} animating={this.state.load} color="#01579b" size={32}/></View>
         );
     }
-    onPressSingleRequest(button) {
 
-        if (button.case == "Filter") {
-            console.log("filter");
-        } else {
-            let short = button.case, {name, sub_id, id} = this.props,
-                component = this;
-            this.setState({
-                filter: true,
-                shorting: short,
-                page: 0
-            }, () => {
-                actions.getProduct(name, id, sub_id, component.state.page, component.state.shorting,).then((val) => {
-                    component.setState({
-                        data: val.display_data,
-                        dataSource: component.state.ds.cloneWithRows(val.display_data),
-                        filter: false
-                    })
-                });
-            });
-        }
-    }
     render() {
         var {height, width} = Dimensions.get('window');
         let {animating} = this.state;
@@ -160,9 +135,6 @@ export class ProductPage extends Component {
                                 </View>
                             </View>
                         : null}
-                    {msg
-                        ? null
-                        : <ShortingButton onPressSingleRequest={this.onPressSingleRequest}/>}
                     <ScrollView >
                         {filter
                             ? <View style={style.loder}>
@@ -175,7 +147,7 @@ export class ProductPage extends Component {
                             marginRight: 6
                         }} elevation={15}>
                             <ListView style={{
-                                height: height - 120
+                                height: height - 76
                             }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={80} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
                                 flex: 1,
                                 backgroundColor: 'white',
