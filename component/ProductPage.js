@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 var style = require('../style/basicStyle');
 import '../style/basicStyle'
+import Buttons_data from '../data/buttons';
+import {SegmentedControls} from 'react-native-radio-buttons'
 var style = require('../style/basicStyle');
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as actions from '../services/product';
@@ -33,11 +35,14 @@ export class ProductPage extends Component {
             msg: false,
             page: 0,
             data: [],
-            shorting: 'popularity'
+            loader: true,
+            shorting: "popularity",
+            options: Buttons_data
         }
         this._previouspage = this._previouspage.bind(this);
         this._loadMore = this._loadMore.bind(this);
         this._footer = this._footer.bind(this);
+        this.selectOption = this.selectOption.bind(this)
     }
     _previouspage() {
         this.props.navigator.pop()
@@ -45,7 +50,7 @@ export class ProductPage extends Component {
     componentDidMount(props) {
         actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page, this.state.shorting).then((val) => {
             if (val.display_data && !val.display_data.length) {
-                this.setState({msg: true, load: false});
+                this.setState({msg: true});
             }
             this.setState({
                 data: val.display_data,
@@ -59,7 +64,7 @@ export class ProductPage extends Component {
         var data = this.state.data
         actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page, this.state.shorting).then((val) => {
             if (val.display_data && !val.display_data.length) {
-                this.setState({load: false});
+                this.setState({loader: false});
             } else {
                 this._footer()
                 var dataSource = this.state.ds.cloneWithRows(data.concat(val.display_data));
@@ -73,22 +78,49 @@ export class ProductPage extends Component {
         })
     }
     _footer() {
+        let {loader} = this.state;
         return (
-            <View><ActivityIndicator style={[
-                styles.centering, {
-                    transform: [
-                        {
-                            scale: .7
-                        }
-                    ]
-                }
-            ]} animating={this.state.load} color="#01579b" size={32}/></View>
+            <View>{loader
+                    ? <ActivityIndicator style={[
+                            styles.centering, {
+                                transform: [
+                                    {
+                                        scale: .7
+                                    }
+                                ]
+                            }
+                        ]} animating={this.state.load} color="#01579b" size={32}/>
+                    : null}</View>
         );
     }
-
+    selectOption(options) {
+        console.log(options.name);
+        if (options.name == "Filter") {
+            this.props.navigator.push({name: 'filter'})
+        } else {
+            let short = options.case, {name, sub_id, id} = this.props,
+                opt = options.name
+            component = this;
+            this.setState({
+                filter: true,
+                shorting: short,
+                loader: true,
+                page: 0
+            }, () => {
+                actions.getProduct(name, id, sub_id, component.state.page, component.state.shorting,).then((val) => {
+                    component.setState({
+                        data: val.display_data,
+                        dataSource: component.state.ds.cloneWithRows(val.display_data),
+                        filter: false
+                    })
+                });
+            });
+        }
+    }
     render() {
         var {height, width} = Dimensions.get('window');
         let {animating} = this.state;
+
         let {filter} = this.state;
         let {msg} = this.state;
         return (
@@ -134,81 +166,105 @@ export class ProductPage extends Component {
                                     </Text>
                                 </View>
                             </View>
-                        : null}
-                    <ScrollView >
-                        {filter
-                            ? <View style={style.loder}>
-                                    <ActivityIndicator animating={this.state.filter} color="#01579b" size="large"/>
+                        : <View>
+                            <View style={{
+                                backgroundColor: 'white'
+                            }}>
+                                <View style={{
+                                    padding: 5
+                                }}>
+                                    <SegmentedControls renderOption={(option, selected, onSelect, index) => {
+                                        return <View style={{
+                                            flexDirection: "row",
+                                            justifyContent: "center"
+                                        }}>
+                                            <View >
+                                                <Text>{option.name}</Text>
+                                            </View>
+                                            <View style={{
+                                                marginLeft: 2
+                                            }}>
+                                                <Icon {...option.icon}/>
+                                            </View>
+                                        </View>
+                                    }} options={this.state.options} onSelection={this.selectOption} selectedOption={this.state.shorting} extractText={(option) => option.name}/>
                                 </View>
-                            : null}
-                        <View style={{
-                            flex: 1,
-                            marginLeft: 6,
-                            marginRight: 6
-                        }} elevation={15}>
-                            <ListView style={{
-                                height: height - 76
-                            }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={80} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
-                                flex: 1,
-                                backgroundColor: 'white',
-                                marginTop: 5,
-                                marginBottom: 1,
-                                paddingTop: 5,
-                                paddingRight: 10,
-                                paddingBottom: 10
-                            }} elevation={2}>
+                            </View>
+                            <ScrollView >
+                                {filter
+                                    ? <View style={style.loder_inside}>
+                                            <ActivityIndicator animating={this.state.filter} color="#01579b" size="large"/>
+                                        </View>
+                                    : null}
                                 <View style={{
                                     flex: 1,
-                                    alignItems: 'center',
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-around'
-                                }}>
-                                    <TouchableOpacity style={{
+                                    marginLeft: 6,
+                                    marginRight: 6
+                                }} elevation={15}>
+                                    <ListView style={{
+                                        height: height - 116
+                                    }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
                                         flex: 1,
-                                        alignItems: 'center',
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-around'
-                                    }}>
-                                        <Image style={{
-                                            flex: .3,
-                                            height: 45,
-                                            width: 45
-                                        }} resizeMode="contain" source={{
-                                            uri: data.image
-                                        }}></Image>
+                                        backgroundColor: 'white',
+                                        marginTop: 5,
+                                        marginBottom: 1,
+                                        paddingTop: 5,
+                                        paddingRight: 10,
+                                        paddingBottom: 10
+                                    }} elevation={2}>
                                         <View style={{
-                                            flex: 1
+                                            flex: 1,
+                                            alignItems: 'center',
+                                            flexDirection: 'row',
+                                            justifyContent: 'space-around'
                                         }}>
-                                            <Text style={{
-                                                color: '#36393b',
-                                                fontSize: 13
+                                            <TouchableOpacity style={{
+                                                flex: 1,
+                                                alignItems: 'center',
+                                                flexDirection: 'row',
+                                                justifyContent: 'space-around'
                                             }}>
-                                                {data.name}
-                                            </Text>
-                                            <Text style={{
-                                                color: '#e3ae22',
-                                                fontSize: 12.5
+                                                <Image style={{
+                                                    flex: .3,
+                                                    height: 45,
+                                                    width: 45
+                                                }} resizeMode="contain" source={{
+                                                    uri: data.image
+                                                }}></Image>
+                                                <View style={{
+                                                    flex: 1
+                                                }}>
+                                                    <Text style={{
+                                                        color: '#36393b',
+                                                        fontSize: 13
+                                                    }}>
+                                                        {data.name}
+                                                    </Text>
+                                                    <Text style={{
+                                                        color: '#e3ae22',
+                                                        fontSize: 12.5
+                                                    }}>
+                                                        From Rs: {data.num_price}
+                                                    </Text>
+                                                    <Text style={{
+                                                        fontSize: 12
+                                                    }}>
+                                                        {`${data.sellers} Sellers`}
+                                                    </Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                            <TouchableOpacity style={{
+                                                flexDirection: 'row',
+                                                alignItems: 'flex-end',
+                                                marginTop: 50
                                             }}>
-                                                From Rs: {data.num_price}
-                                            </Text>
-                                            <Text style={{
-                                                fontSize: 12
-                                            }}>
-                                                {`${data.sellers} Sellers`}
-                                            </Text>
+                                                <Icon size={20} name="ios-heart-outline" backgroundColor="#3b5998"/>
+                                            </TouchableOpacity>
                                         </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={{
-                                        flexDirection: 'row',
-                                        alignItems: 'flex-end',
-                                        marginTop: 50
-                                    }}>
-                                        <Icon size={20} name="ios-heart-outline" backgroundColor="#3b5998"/>
-                                    </TouchableOpacity>
+                                    </View>}/>
                                 </View>
-                            </View>}/>
-                        </View>
-                    </ScrollView>
+                            </ScrollView>
+                        </View>}
                 </View>
                 {animating
                     ? <View style={style.loder}>

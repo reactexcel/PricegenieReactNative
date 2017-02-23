@@ -26,5 +26,13 @@ module.exports = StyleSheet.create({
         borderRadius: 5,
         padding: 5
 
+    },
+    loder_inside: {
+        height: height - 116,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#e4e4e4',
+        opacity: 1
     }
 });
