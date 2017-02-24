@@ -55,17 +55,7 @@ export class Filter extends Component {
     renderOptions(option, selected, onSelect, index) {
         return (
             <TouchableWithoutFeedback onPress={onSelect} key={index}>
-                <View style={selected
-                    ? {
-                        padding: 14,
-                        flexDirection: 'row',
-                        justifyContent: 'center'
-                    }
-                    : {
-                        padding: 14,
-                        flexDirection: 'row',
-                        justifyContent: 'center'
-                    }}>
+                <View style={style.unselectView}>
                     <Text style={{
                         fontWeight: 'bold',
                         textAlign: 'center'

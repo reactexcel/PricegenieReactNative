@@ -47,6 +47,15 @@ export class ProductPage extends Component {
     _previouspage() {
         this.props.navigator.pop()
     }
+    selectedProduct(data) {
+        var id = data.href.split('/')[6];
+        this.props.navigator.push({
+            name: 'productview',
+            payload: {
+                id: id
+            }
+        })
+    }
     componentDidMount(props) {
         actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page, this.state.shorting).then((val) => {
             if (val.display_data && !val.display_data.length) {
@@ -94,7 +103,6 @@ export class ProductPage extends Component {
         );
     }
     selectOption(options) {
-        console.log(options.name);
         if (options.name == "Filter") {
             this.props.navigator.push({name: 'filter'})
         } else {
@@ -218,7 +226,7 @@ export class ProductPage extends Component {
                                             flexDirection: 'row',
                                             justifyContent: 'space-around'
                                         }}>
-                                            <TouchableOpacity style={{
+                                            <TouchableOpacity onPress={() => this.selectedProduct(data)} style={{
                                                 flex: 1,
                                                 alignItems: 'center',
                                                 flexDirection: 'row',
