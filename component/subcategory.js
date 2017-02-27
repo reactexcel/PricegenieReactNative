@@ -75,7 +75,7 @@ export class Subcategory extends Component {
                             }}>
                                 {user_data.cat_name}
                             </Text>
-                            <Icon name="ios-arrow-forward-outline" size={25} color="#e3e0e0" style={{
+                            <Icon name="ios-arrow-forward-outline" size={25} color={STRING.GreyColor} style={{
                                 margin: 10
                             }}/>
                         </TouchableOpacity>
@@ -125,7 +125,7 @@ export class Subcategory extends Component {
                 </View>
                 {animating
                     ? <View style={style.loder}>
-                            <ActivityIndicator animating={this.state.animating} color="#01579b" size="large"/>
+                            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large"/>
                         </View>
                     : null}
             </View>

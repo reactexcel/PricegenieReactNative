@@ -42,7 +42,7 @@ export class Home extends Component {
             <View style={{
                 flex: 1,
                 flexDirection: 'column',
-                backgroundColor: '#e3e0e0'
+                backgroundColor: STRING.GreyColor
             }}>
                 <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
                     {
@@ -105,7 +105,7 @@ export class Home extends Component {
                                 backgroundColor: 'white',
                                 justifyContent: 'space-around',
                                 borderBottomWidth: 2,
-                                borderBottomColor: '#e3e0e0'
+                                borderBottomColor: STRING.GreyColor
                             }}>
                                 <View style={{
                                     flex: 1,
@@ -124,7 +124,7 @@ export class Home extends Component {
                                         marginTop: 1,
                                         marginLeft: 10
                                     }}>{data.name}</Text>
-                                    <Icon name="ios-arrow-forward-outline" size={25} color="#e3e0e0" style={{
+                                    <Icon name="ios-arrow-forward-outline" size={25} color={STRING.GreyColor} style={{
                                         marginTop: 3,
                                         marginRight: 10
                                     }}/>

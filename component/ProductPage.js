@@ -47,6 +47,15 @@ export class ProductPage extends Component {
     _previouspage() {
         this.props.navigator.pop()
     }
+    selectedProduct(data) {
+        var id = data.href.split('/')[6];
+        this.props.navigator.push({
+            name: 'productview',
+            payload: {
+                id: id
+            }
+        })
+    }
     componentDidMount(props) {
         actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page, this.state.shorting).then((val) => {
             if (val.display_data && !val.display_data.length) {
@@ -89,12 +98,11 @@ export class ProductPage extends Component {
                                     }
                                 ]
                             }
-                        ]} animating={this.state.load} color="#01579b" size={32}/>
+                        ]} animating={this.state.load} color={STRING.BlueColor} size={32}/>
                     : null}</View>
         );
     }
     selectOption(options) {
-        console.log(options.name);
         if (options.name == "Filter") {
             this.props.navigator.push({name: 'filter'})
         } else {
@@ -130,7 +138,7 @@ export class ProductPage extends Component {
                 <View style={{
                     flex: 1,
                     flexDirection: 'column',
-                    backgroundColor: '#e3e0e0'
+                    backgroundColor: STRING.GreyColor
                 }}>
                     <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
                         {
@@ -193,7 +201,7 @@ export class ProductPage extends Component {
                             <ScrollView >
                                 {filter
                                     ? <View style={style.loder_inside}>
-                                            <ActivityIndicator animating={this.state.filter} color="#01579b" size="large"/>
+                                            <ActivityIndicator animating={this.state.filter} color={STRING.BlueColor} size="large"/>
                                         </View>
                                     : null}
                                 <View style={{
@@ -218,7 +226,7 @@ export class ProductPage extends Component {
                                             flexDirection: 'row',
                                             justifyContent: 'space-around'
                                         }}>
-                                            <TouchableOpacity style={{
+                                            <TouchableOpacity onPress={() => this.selectedProduct(data)} style={{
                                                 flex: 1,
                                                 alignItems: 'center',
                                                 flexDirection: 'row',
@@ -235,13 +243,13 @@ export class ProductPage extends Component {
                                                     flex: 1
                                                 }}>
                                                     <Text style={{
-                                                        color: '#36393b',
+                                                        color: STRING.LightBlackColor,
                                                         fontSize: 13
                                                     }}>
                                                         {data.name}
                                                     </Text>
                                                     <Text style={{
-                                                        color: '#e3ae22',
+                                                        color: STRING.YelloColor,
                                                         fontSize: 12.5
                                                     }}>
                                                         From Rs: {data.num_price}
@@ -258,7 +266,7 @@ export class ProductPage extends Component {
                                                 alignItems: 'flex-end',
                                                 marginTop: 50
                                             }}>
-                                                <Icon size={20} name="ios-heart-outline" backgroundColor="#3b5998"/>
+                                                <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor}/>
                                             </TouchableOpacity>
                                         </View>
                                     </View>}/>
@@ -268,7 +276,7 @@ export class ProductPage extends Component {
                 </View>
                 {animating
                     ? <View style={style.loder}>
-                            <ActivityIndicator animating={this.state.animating} color="#01579b" size="large"/>
+                            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large"/>
                         </View>
                     : null}
             </View>
