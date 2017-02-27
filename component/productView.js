@@ -193,7 +193,8 @@ export class ProductView extends Component {
                                 <Text style={{
                                     paddingTop: 5,
                                     paddingLeft: 5,
-                                    fontWeight: 'bold'
+                                    fontWeight: 'bold',
+                                    color: STRING.LightBlackColor
                                 }}>
                                     {spec_data.name_text}
                                 </Text>
