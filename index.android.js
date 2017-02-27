@@ -4,6 +4,7 @@
  * @flow
  */
 import CONFIG from './config/config'
+import './style/string';
 import React, {Component} from 'react';
 import {
     AppRegistry,

@@ -72,13 +72,13 @@ export class Filter extends Component {
                 <View style={{
                     flexDirection: 'column',
                     borderBottomWidth: 1,
-                    borderBottomColor: '#e3e0e0'
+                    borderBottomColor: STRING.GreyColor
                 }}>
                     <View style={{
                         padding: 8,
                         flexDirection: 'row'
                     }}>
-                        <Icon size={20} name="ios-radio-button-on" backgroundColor="#3b5998"/>
+                        <Icon size={20} name="ios-radio-button-on" backgroundColor={STRING.LightColor}/>
                         <Text style={{
                             marginLeft: 5
                         }}>Rs.{option.low}
@@ -98,13 +98,13 @@ export class Filter extends Component {
                 <View style={{
                     flexDirection: 'column',
                     borderBottomWidth: 1,
-                    borderBottomColor: '#e3e0e0'
+                    borderBottomColor: STRING.GreyColor
                 }}>
                     <View style={{
                         padding: 8,
                         flexDirection: 'row'
                     }}>
-                        <Icon size={20} name="ios-radio-button-on" backgroundColor="#3b5998"/>
+                        <Icon size={20} name="ios-radio-button-on" backgroundColor={STRING.LightColor}/>
                         <Text style={{
                             marginLeft: 5
                         }}>{option.name
@@ -157,7 +157,7 @@ export class Filter extends Component {
                 }}>
                     <View style={{
                         flex: .6,
-                        backgroundColor: '#e3e0e0'
+                        backgroundColor: STRING.GreyColor
                     }}>
                         <ScrollView showsVerticalScrollIndicator={false}>
                             <RadioButtons options={this.state.filter_option} onSelection={this.selectFilter} selectedOption={this.state.selectedOptions} renderOption={this.renderOptions} extractText={(option) => option.name}/>
