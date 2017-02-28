@@ -8,3 +8,12 @@ export function renderProduct(id) {
         })
     });
 }
+export function relatedProduct(id) {
+    return new Promise(function(resolve, reject) {
+        actions.ajaxFire("product_related&query_id=" + id).then((val) => {
+            resolve(val.data)
+        }, (error) => {
+            reject(error)
+        })
+    })
+}
