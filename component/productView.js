@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 var _ = require('lodash');
 import Button from 'react-native-button';
 import * as action from '../services/viewProduct';
+import {PieChartBasic} from './graph'
+import * as get from '../services/pricehistroy';
 import {
     View,
     Text,
@@ -24,29 +26,45 @@ export class ProductView extends Component {
             rowHasChanged: (r1, r2) => r1 !== r2
         });
         this.state = {
+            product_id: '',
+            nodata: false,
             result: [],
             specficiation: [],
             loading: true,
             ds: ds,
             dataSource: ds.cloneWithRows([]),
-            data: []
+            selected: true
         }
         this._previouspage = this._previouspage.bind(this);
         this.selectedProduct = this.selectedProduct.bind(this);
+        this.dailylowest = this.dailylowest.bind(this);
+        this.yearly = this.yearly.bind(this);
     }
     _previouspage() {
         this.props.navigator.pop()
     }
     selectedProduct(data) {
-        this.setState({loading: true})
+        this.setState({loading: true, product_id: data.query_id})
         action.renderProduct(data.query_id).then((val) => {
-            this.setState({result: val.result, specficiation: val, loading: false})
+            this.setState({result: val.result, specficiation: val})
+        })
+        get.pricehistroy(this.state.product_id).then((dataPoints) => {
+            if (dataPoints && dataPoints.length > 1) {
+                this.setState({nodata: true})
+            }
         })
         action.relatedProduct(data.query_id).then((val) => {
             this.setState({
-                dataSource: this.state.ds.cloneWithRows(val.related)
+                dataSource: this.state.ds.cloneWithRows(val.related),
+                loading: false
             })
         })
+    }
+    dailylowest() {
+        this.setState({selected: true})
+    }
+    yearly() {
+        this.setState({selected: false})
     }
     pressButton(url) {
         Linking.canOpenURL(url).then(supported => {
@@ -59,7 +77,12 @@ export class ProductView extends Component {
     }
     componentDidMount(props) {
         action.renderProduct(this.props.id).then((val) => {
-            this.setState({result: val.result, specficiation: val, loading: false})
+            this.setState({product_id: this.props.id, result: val.result, specficiation: val, loading: false})
+        })
+        get.pricehistroy(this.props.id).then((dataPoints) => {
+            if (dataPoints && dataPoints.length > 1) {
+                this.setState({nodata: true})
+            }
         })
         action.relatedProduct(this.props.id).then((val) => {
             this.setState({
@@ -68,6 +91,8 @@ export class ProductView extends Component {
         })
     }
     render() {
+        var {nodata} = this.state
+        var {selected} = this.state
         var {height, width} = Dimensions.get('window');
         let {loading} = this.state;
         let result_data = this.state.result;
@@ -279,8 +304,65 @@ export class ProductView extends Component {
                                     {product_data}
                                 </View>
                             </View>
+                            {nodata
+                                ? <View elevation={4} style={{
+                                        flex: 1.3,
+                                        backgroundColor: 'white',
+                                        marginLeft: 9,
+                                        marginRight: 9,
+                                        marginTop: 9
+                                    }}>
+                                        <View style={{
+                                            marginLeft: 30,
+                                            paddingTop: 5,
+                                            paddingBottom: 5,
+                                            marginRight: 10,
+                                            flex: 1,
+                                            flexDirection: 'row',
+                                            justifyContent: 'space-between',
+                                            borderBottomWidth: 1,
+                                            borderBottomColor: STRING.GreyColor
+                                        }}>
+                                            <Text style={{
+                                                color: STRING.LightBlackColor,
+                                                fontSize: 16,
+                                                fontWeight: 'bold',
+                                                marginTop: 3.5
+                                            }}>
+                                                PRICE HISTROY
+                                            </Text>
+                                            <View style={{
+                                                marginLeft: 75,
+                                                flexDirection: 'row'
+                                            }}>
+                                                <Icon.Button name="ios-stats" style={{
+                                                    height: 30
+                                                }} backgroundColor="white" color={selected
+                                                    ? STRING.LightBlackColor
+                                                    : STRING.GreyColor} onPress={this.dailylowest}/>
+                                                <Icon.Button name="ios-book" backgroundColor="white" color={selected
+                                                    ? STRING.GreyColor
+                                                    : STRING.LightBlackColor} style={{
+                                                    height: 30
+                                                }} onPress={this.yearly}/>
+                                            </View>
+                                        </View>
+                                        {selected
+                                            ? <View style={{
+                                                    marginTop: 10,
+                                                    marginLeft: 6
+                                                }}>
+                                                    <PieChartBasic id={this.state.product_id}/>
+                                                </View>
+                                            : <View>
+                                                <Text>
+                                                    2nd graph
+                                                </Text>
+                                            </View>}
+                                    </View>
+                                : null}
                             <View style={{
-                                flex: 1,
+                                flex: .1,
                                 marginLeft: 9,
                                 marginRight: 9
                             }}>
@@ -300,9 +382,7 @@ export class ProductView extends Component {
                                     }}>
                                         YOU MAY ALSO LIKE
                                     </Text>
-                                    <ListView style={{
-                                        height: height - 150
-                                    }} dataSource={this.state.dataSource} initialListSize={4} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
+                                    <ListView dataSource={this.state.dataSource} initialListSize={5} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
                                         marginTop: 5,
                                         marginLeft: 5,
                                         marginRight: 1,

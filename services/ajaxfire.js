@@ -8,3 +8,12 @@ export function ajaxFire(params) {
         })
     })
 };
+export function priceGraph(params) {
+    return new Promise(function(resolve, reject) {
+        axios.get(CONFI.baseURL + params).then((data) => {
+            resolve(data)
+        }, (error) => {
+            reject(error)
+        })
+    })
+};

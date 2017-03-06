@@ -23,10 +23,37 @@ uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:7:5-77
 MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:11:5-78
 MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:11:5-78
 	android:name
 		ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:7:22-75
 uses-sdk
 ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:9:5-11:41
+MERGED from [PriceGenie_React_Native:react-native-svg:unspecified] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/PriceGenie_React_Native/react-native-svg/unspecified/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:23.0.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.0.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fresco:fresco:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fresco:fbcore:0.11.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.1.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:2:3-70
 MERGED from [PriceGenie_React_Native:react-native-vector-icons:unspecified] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/PriceGenie_React_Native/react-native-vector-icons/unspecified/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:23.0.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43
@@ -90,6 +117,17 @@ MERGED from [com.facebook.soloader:soloader:0.1.0] /var/www/html/PriceGenie_Reac
 		INJECTED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:13:5-29:19
+MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:appcompat-v7:23.0.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.soloader:soloader:0.1.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:3:3-17
+MERGED from [org.webkit:android-jsc:r174650] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/org.webkit/android-jsc/r174650/AndroidManifest.xml:2:3-17
 MERGED from [com.facebook.react:react-native:0.40.0] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/AndroidManifest.xml:13:5-20
 MERGED from [com.android.support:appcompat-v7:23.0.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.2.1] /var/www/html/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/AndroidManifest.xml:22:5-20

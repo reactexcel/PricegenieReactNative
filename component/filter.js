@@ -40,16 +40,18 @@ export class Filter extends Component {
         })
         getLocalStorageData("filter").then((value) => {
             let fil_array = JSON.parse(value);
-            var fill_object = Object.keys(fil_array);
-            let {filter_option} = this.state;
-            _.forEach(fill_object, (object) => {
-                var object_array = object.split('_');
-                var array = _.map(object_array, (str) => {
-                    return str.charAt(0).toUpperCase() + str.slice(1)
-                }).join(" ");
-                filter_option.push(array);
-            })
-            this.setState({filter_option});
+            if (fil_array !== null) {
+                var fill_object = Object.keys(fil_array);
+                let {filter_option} = this.state;
+                _.forEach(fill_object, (object) => {
+                    var object_array = object.split('_');
+                    var array = _.map(object_array, (str) => {
+                        return str.charAt(0).toUpperCase() + str.slice(1)
+                    }).join(" ");
+                    filter_option.push(array);
+                })
+                this.setState({filter_option});
+            }
         })
     }
     renderOptions(option, selected, onSelect, index) {

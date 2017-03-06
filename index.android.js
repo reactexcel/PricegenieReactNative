@@ -4,6 +4,7 @@
  * @flow
  */
 import CONFIG from './config/config'
+import CONFI from './config/config'
 import './style/string';
 import React, {Component} from 'react';
 import {
@@ -21,7 +22,8 @@ import {setLocalStorageData} from './services/localstorage'
 import {Subcategory} from './component/subcategory';
 import {ProductPage} from './component/ProductPage';
 import {Filter} from './component/filter';
-import {ProductView} from './component/productView'
+import {ProductView} from './component/productView';
+import {PieChartBasic} from './component/graph'
 let onMainScreen = true
 BackAndroid.addEventListener('hardwareBackPress', function() {
     if (route.name !== "home") {
@@ -61,6 +63,8 @@ export class PriceGenie_React_Native extends Component {
             return (<Filter navigator={navigator} {...route.payload}/>);
         } else if (route.name === 'productview') {
             return (<ProductView navigator={navigator} {...route.payload}/>);
+        } else if (route.name === 'graph') {
+            return (<PieChartBasic navigator={navigator} {...route.payload}/>);
         }
     }
     configureScene(route, routeStack) {
@@ -73,6 +77,8 @@ export class PriceGenie_React_Native extends Component {
         } else if (route.name === 'filter') {
             return Navigator.SceneConfigs.FadeAndroid
         } else if (route.name === 'productview') {
+            return Navigator.SceneConfigs.FadeAndroid
+        } else if (route.name === 'graph') {
             return Navigator.SceneConfigs.FadeAndroid
         }
     }
