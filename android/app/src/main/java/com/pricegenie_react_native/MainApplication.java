@@ -1,9 +1,10 @@
 package com.pricegenie_react_native;
-
+ 
 import android.app.Application;
 import android.util.Log;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.RNSvgPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -24,8 +25,10 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+            new RNSvgPackage()
 	,new VectorIconsPackage()
+	
       );
     }
   };

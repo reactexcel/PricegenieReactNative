@@ -58,7 +58,6 @@ export class ProductPage extends Component {
     }
     componentDidMount(props) {
         actions.getProduct(this.props.name, this.props.id, this.props.sub_id, this.state.page, this.state.shorting).then((val) => {
-            console.log(val.display_data);
             if (val.display_data && !val.display_data.length) {
                 this.setState({msg: true});
             }
