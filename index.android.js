@@ -23,7 +23,8 @@ import {Subcategory} from './component/subcategory';
 import {ProductPage} from './component/ProductPage';
 import {Filter} from './component/filter';
 import {ProductView} from './component/productView';
-import {PieChartBasic} from './component/graph'
+import {PieChartBasic} from './component/graph';
+import {VariantPoduct} from './component/variant'
 let onMainScreen = true
 BackAndroid.addEventListener('hardwareBackPress', function() {
     if (route.name !== "home") {
@@ -65,6 +66,8 @@ export class PriceGenie_React_Native extends Component {
             return (<ProductView navigator={navigator} {...route.payload}/>);
         } else if (route.name === 'graph') {
             return (<PieChartBasic navigator={navigator} {...route.payload}/>);
+        } else if (route.name === 'variant') {
+            return (<VariantPoduct navigator={navigator} {...route.payload}/>);
         }
     }
     configureScene(route, routeStack) {
@@ -80,6 +83,8 @@ export class PriceGenie_React_Native extends Component {
             return Navigator.SceneConfigs.FadeAndroid
         } else if (route.name === 'graph') {
             return Navigator.SceneConfigs.FadeAndroid
+        } else if (route.name === 'variant') {
+            return Navigator.SceneConfigs.FloatFromBottom
         }
     }
 }
