@@ -6,6 +6,7 @@ var _ = require('lodash');
 import Button from 'react-native-button';
 import * as action from '../services/viewProduct';
 import {PieChartBasic} from './graph'
+import {ProductList} from './showproduct'
 import * as get from '../services/pricehistroy';
 import {
     View,
@@ -22,19 +23,18 @@ import {
 export class ProductView extends Component {
     constructor(props) {
         super(props)
-        const ds = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        });
         this.state = {
             product_id: '',
             nodata: false,
             result: [],
+            data: [],
             specficiation: [],
             loading: true,
-            ds: ds,
-            dataSource: ds.cloneWithRows([]),
-            data: [],
-            priceData: []
+            relatedProduct: [],
+            priceData: [],
+            similarProduct: [],
+            norelatedProduct: false,
+            nosimilarProduct: false
         }
         this._previouspage = this._previouspage.bind(this);
         this.selectedProduct = this.selectedProduct.bind(this);
@@ -43,23 +43,24 @@ export class ProductView extends Component {
         this.props.navigator.pop()
     }
     selectedProduct(data) {
-        this.setState({nodata: false, loading: true, product_id: data.query_id})
-        action.renderProduct(data.query_id).then((val) => {
-            this.setState({result: val.result, specficiation: val})
-        })
+        this.setState({nodata: false, loading: true, product_id: data.query_id, norelatedProduct: false, norelatedProduct: false})
         get.pricehistroy(data.query_id).then((dataPoints) => {
             if (dataPoints && dataPoints.length >= 1) {
                 this.setState({data: dataPoints, nodata: true})
             }
         })
         action.relatedProduct(data.query_id).then((val) => {
-            this.setState({
-                dataSource: this.state.ds.cloneWithRows(val.related),
-                loading: false
-            })
+            if (val.related && val.related.length) {
+                this.setState({relatedProduct: val.related, norelatedProduct: true})
+            }
+            if (val.similar && val.similar.length) {
+                this.setState({similarProduct: val.similar, nosimilarProduct: true})
+            }
+        })
+        action.renderProduct(data.query_id).then((val) => {
+            this.setState({result: val.result, specficiation: val, loading: false})
         })
     }
-
     pressButton(url) {
         Linking.canOpenURL(url).then(supported => {
             if (supported) {
@@ -73,13 +74,13 @@ export class ProductView extends Component {
         get.pricehistroy(this.props.id).then((dataPoints) => {
             this.setState({data: dataPoints, nodata: true})
         });
-        // get.graphHistroy(this.props.id).then((dataPoints) => {
-        //     this.setState({priceData: dataPoints, nodata: true})
-        // });
         action.relatedProduct(this.props.id).then((val) => {
-            this.setState({
-                dataSource: this.state.ds.cloneWithRows(val.related)
-            })
+            if (val.related && val.related.length) {
+                this.setState({relatedProduct: val.related, norelatedProduct: true})
+            }
+            if (val.similar && val.similar.length) {
+                this.setState({similarProduct: val.similar, nosimilarProduct: true})
+            }
         })
         action.renderProduct(this.props.id).then((val) => {
             this.setState({product_id: this.props.id, result: val.result, specficiation: val, loading: false})
@@ -87,6 +88,8 @@ export class ProductView extends Component {
     }
     render() {
         var {nodata} = this.state
+        var {norelatedProduct} = this.state
+        var {nosimilarProduct} = this.state
         var {selected} = this.state
         var {height, width} = Dimensions.get('window');
         let {loading} = this.state;
@@ -345,82 +348,58 @@ export class ProductView extends Component {
                                         </View>
                                     </View>
                                 : null}
-                            <View style={{
-                                flex: .1,
-                                marginLeft: 9,
-                                marginRight: 9
-                            }}>
-                                <View style={{
-                                    flex: 1,
-                                    backgroundColor: 'white',
-                                    marginTop: 10,
-                                    marginBottom: 1,
-                                    paddingTop: 5,
-                                    paddingRight: 10,
-                                    paddingBottom: 10,
-                                    marginBottom: 10
-                                }} elevation={4}>
-                                    <Text style={{
-                                        padding: 5,
-                                        fontWeight: 'bold'
+                            {nosimilarProduct
+                                ? <View style={{
+                                        flex: .1,
+                                        marginLeft: 9,
+                                        marginRight: 9
                                     }}>
-                                        YOU MAY ALSO LIKE
-                                    </Text>
-                                    <ListView dataSource={this.state.dataSource} initialListSize={5} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
-                                        marginTop: 5,
-                                        marginLeft: 5,
-                                        marginRight: 1,
-                                        alignItems: 'center',
-                                        flexDirection: 'row',
-                                        justifyContent: 'space-around',
-                                        borderTopWidth: 1,
-                                        borderTopColor: STRING.GreyColor
-                                    }}>
-                                        <TouchableOpacity onPress={() => this.selectedProduct(data)} style={{
+                                        <View style={{
                                             flex: 1,
-                                            alignItems: 'center',
-                                            flexDirection: 'row',
-                                            justifyContent: 'space-around'
-                                        }}>
-                                            <Image style={{
-                                                flex: .3,
-                                                height: 45,
-                                                width: 45
-                                            }} resizeMode="contain" source={{
-                                                uri: data.image
-                                            }}></Image>
-                                            <View style={{
-                                                flex: 1
+                                            backgroundColor: 'white',
+                                            marginTop: 10,
+                                            marginBottom: 1,
+                                            paddingTop: 5,
+                                            paddingRight: 10,
+                                            paddingBottom: 10,
+                                            marginBottom: 10
+                                        }} elevation={4}>
+                                            <Text style={{
+                                                padding: 5,
+                                                fontWeight: 'bold'
                                             }}>
-                                                <Text style={{
-                                                    color: STRING.LightBlackColor,
-                                                    fontSize: 13
-                                                }}>
-                                                    {data.full_name}
-                                                </Text>
-                                                <Text style={{
-                                                    color: STRING.YelloColor,
-                                                    fontSize: 12.5
-                                                }}>
-                                                    From Rs: {data.price}
-                                                </Text>
-                                                <Text style={{
-                                                    fontSize: 12
-                                                }}>
-                                                    {`${data.sellers} Sellers`}
-                                                </Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={{
-                                            flexDirection: 'row',
-                                            alignItems: 'flex-end',
-                                            marginTop: 50
-                                        }}>
-                                            <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor}/>
-                                        </TouchableOpacity>
-                                    </View>}/>
-                                </View>
-                            </View>
+                                                PRODUCT FROM SAME BRAND
+                                            </Text>
+                                            <ProductList data={this.state.similarProduct} selectedProduct={this.selectedProduct}/>
+                                        </View>
+                                    </View>
+                                : null}
+                            {norelatedProduct
+                                ? <View style={{
+                                        flex: .1,
+                                        marginLeft: 9,
+                                        marginRight: 9
+                                    }}>
+                                        <View style={{
+                                            flex: 1,
+                                            backgroundColor: 'white',
+                                            marginTop: 10,
+                                            marginBottom: 1,
+                                            paddingTop: 5,
+                                            paddingRight: 10,
+                                            paddingBottom: 10,
+                                            marginBottom: 10
+                                        }} elevation={4}>
+                                            <Text style={{
+                                                padding: 5,
+                                                fontWeight: 'bold'
+                                            }}>
+                                                YOU MAY ALSO LIKE
+                                            </Text>
+                                            <ProductList data={this.state.relatedProduct} selectedProduct={this.selectedProduct}/>
+                                        </View>
+                                    </View>
+                                : null}
                         </View>}
                 </ScrollView>
             </View>
