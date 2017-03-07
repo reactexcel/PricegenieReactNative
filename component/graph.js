@@ -10,38 +10,28 @@ export class PieChartBasic extends Component {
         super(props);
         this.state = {
             data: null,
+            priceData: null,
             min_value: "0"
         }
     }
-    componentDidMount() {
-        action.pricehistroy(this.props.id).then((dataPoints) => {
-            let data = [];
-            let set = [];
-            data.push(dataPoints.map((dataPoint, idx) => {
-                let time = dataPoint.timeslot,
-                    yDataPoint = dataPoint.price
-                set.push(yDataPoint)
-                xDataPoint = moment(time, 'DD-MMM').unix() * 1000;
-                return {xDataPoint, yDataPoint};
-            }));
-            var min_val = Math.min.apply(null, set) - 20
-            this.setState({data: data, min_value: min_val});
-        })
+    componentWillMount(props) {
+        this.setState({data: this.props.data})
     }
 
     render() {
         let {data} = this.state;
         let {min_value} = this.state;
         let options = {
-            width: 260,
+            width: 250,
             height: 150,
-            min: min_value,
+            min: 0,
+
             color: '#01579b',
             margin: {
                 top: 10,
                 left: 28,
                 bottom: 30,
-                right: 15
+                right: 50
             },
             animate: {
                 type: 'delayed',
@@ -58,7 +48,7 @@ export class PieChartBasic extends Component {
                 showAreas: false,
                 strokeWidth: 0,
                 labelFunction: ((v) => {
-                    return moment(v).format('DD MMM')
+                    return moment(v * 1000).format('DD MMM')
                 }),
                 label: {
                     fontFamily: 'Arial',
@@ -87,8 +77,8 @@ export class PieChartBasic extends Component {
 
         return (
             <View style={{
-                flex: 1,
-                flexDirection: 'column'
+                flex: .1,
+                flexDirection: 'row'
             }}>
                 {data
                     ? <StockLine data={data} options={options} xKey='xDataPoint' yKey='yDataPoint'/>

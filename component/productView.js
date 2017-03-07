@@ -33,24 +33,23 @@ export class ProductView extends Component {
             loading: true,
             ds: ds,
             dataSource: ds.cloneWithRows([]),
-            selected: true
+            data: [],
+            priceData: []
         }
         this._previouspage = this._previouspage.bind(this);
         this.selectedProduct = this.selectedProduct.bind(this);
-        this.dailylowest = this.dailylowest.bind(this);
-        this.yearly = this.yearly.bind(this);
     }
     _previouspage() {
         this.props.navigator.pop()
     }
     selectedProduct(data) {
-        this.setState({loading: true, product_id: data.query_id})
+        this.setState({nodata: false, loading: true, product_id: data.query_id})
         action.renderProduct(data.query_id).then((val) => {
             this.setState({result: val.result, specficiation: val})
         })
-        get.pricehistroy(this.state.product_id).then((dataPoints) => {
-            if (dataPoints && dataPoints.length > 1) {
-                this.setState({nodata: true})
+        get.pricehistroy(data.query_id).then((dataPoints) => {
+            if (dataPoints && dataPoints.length >= 1) {
+                this.setState({data: dataPoints, nodata: true})
             }
         })
         action.relatedProduct(data.query_id).then((val) => {
@@ -60,12 +59,7 @@ export class ProductView extends Component {
             })
         })
     }
-    dailylowest() {
-        this.setState({selected: true})
-    }
-    yearly() {
-        this.setState({selected: false})
-    }
+
     pressButton(url) {
         Linking.canOpenURL(url).then(supported => {
             if (supported) {
@@ -75,19 +69,20 @@ export class ProductView extends Component {
             }
         });
     }
-    componentDidMount(props) {
-        action.renderProduct(this.props.id).then((val) => {
-            this.setState({product_id: this.props.id, result: val.result, specficiation: val, loading: false})
-        })
+    componentWillMount(props) {
         get.pricehistroy(this.props.id).then((dataPoints) => {
-            if (dataPoints && dataPoints.length > 1) {
-                this.setState({nodata: true})
-            }
-        })
+            this.setState({data: dataPoints, nodata: true})
+        });
+        // get.graphHistroy(this.props.id).then((dataPoints) => {
+        //     this.setState({priceData: dataPoints, nodata: true})
+        // });
         action.relatedProduct(this.props.id).then((val) => {
             this.setState({
                 dataSource: this.state.ds.cloneWithRows(val.related)
             })
+        })
+        action.renderProduct(this.props.id).then((val) => {
+            this.setState({product_id: this.props.id, result: val.result, specficiation: val, loading: false})
         })
     }
     render() {
@@ -337,28 +332,17 @@ export class ProductView extends Component {
                                             }}>
                                                 <Icon.Button name="ios-stats" style={{
                                                     height: 30
-                                                }} backgroundColor="white" color={selected
-                                                    ? STRING.LightBlackColor
-                                                    : STRING.GreyColor} onPress={this.dailylowest}/>
-                                                <Icon.Button name="ios-book" backgroundColor="white" color={selected
-                                                    ? STRING.GreyColor
-                                                    : STRING.LightBlackColor} style={{
-                                                    height: 30
-                                                }} onPress={this.yearly}/>
+                                                }} backgroundColor="white" color={STRING.GreyColor}/>
                                             </View>
                                         </View>
-                                        {selected
-                                            ? <View style={{
-                                                    marginTop: 10,
-                                                    marginLeft: 6
-                                                }}>
-                                                    <PieChartBasic id={this.state.product_id}/>
-                                                </View>
-                                            : <View>
-                                                <Text>
-                                                    2nd graph
-                                                </Text>
-                                            </View>}
+                                        <View style={{
+                                            flex: 1,
+                                            marginTop: 10,
+                                            marginLeft: 6,
+                                            marginRight: 10
+                                        }}>
+                                            <PieChartBasic data={this.state.data}/>
+                                        </View>
                                     </View>
                                 : null}
                             <View style={{
