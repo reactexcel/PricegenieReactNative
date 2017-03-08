@@ -2,6 +2,7 @@ package com.pricegenie_react_native;
  
 import android.app.Application;
 import android.util.Log;
+import com.magus.fblogin.FacebookLoginPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactApplication;
 import com.horcrux.svg.RNSvgPackage;
@@ -27,7 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNSvgPackage()
-	,new VectorIconsPackage()
+	,new VectorIconsPackage(),
+	new FacebookLoginPackage()
 	
       );
     }

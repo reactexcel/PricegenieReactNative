@@ -121,6 +121,7 @@ export class VariantPoduct extends Component {
                 }} elevation={4}>
                     <ScrollView >
                         <View style={{
+                            flex: 1.3,
                             flexDirection: 'column',
                             marginLeft: 28,
                             marginRight: 28,

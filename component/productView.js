@@ -80,7 +80,9 @@ export class ProductView extends Component {
     }
     componentWillMount(props) {
         get.pricehistroy(this.props.id).then((dataPoints) => {
-            this.setState({data: dataPoints, nodata: true})
+            if (dataPoints && dataPoints.length >= 1) {
+                this.setState({data: dataPoints, nodata: true})
+            }
         });
         action.relatedProduct(this.props.id).then((val) => {
             if (val.related && val.related.length) {
