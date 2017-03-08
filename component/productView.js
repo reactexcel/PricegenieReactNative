@@ -42,6 +42,14 @@ export class ProductView extends Component {
     _previouspage() {
         this.props.navigator.pop()
     }
+    callVaiant(data) {
+        this.props.navigator.push({
+            name: 'variant',
+            payload: {
+                data: data
+            }
+        })
+    }
     selectedProduct(data) {
         this.setState({nodata: false, loading: true, product_id: data.query_id, norelatedProduct: false, norelatedProduct: false})
         get.pricehistroy(data.query_id).then((dataPoints) => {
@@ -181,7 +189,7 @@ export class ProductView extends Component {
                             uri: data.logo
                         }}></Image>
                         <TouchableOpacity onPress={() => {
-                            this.callVaiant()
+                            this.callVaiant(data.varient_data.data)
                         }}>
                             {data.varient_data.data
                                 ? <Text style={{
