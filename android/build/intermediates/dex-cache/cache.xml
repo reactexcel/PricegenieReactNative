@@ -54,7 +54,7 @@
         jar="/var/www/html/backup/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/PriceGenie_React_Native/react-native-svg/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="2afe5aad915f1124d38b3967ab5523b450f3856f">
+        sha1="c396225b384b56cfd221db08a55b314d277ee3e6">
         <dex dex="/var/www/html/backup/PriceGenie_React_Native/android/app/build/intermediates/pre-dexed/debug/classes-fe6e11ea3978e48799452a8232bc194264a2f752.jar" />
     </item>
     <item
@@ -124,7 +124,7 @@
         jar="/var/www/html/backup/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/PriceGenie_React_Native/react-native-vector-icons/unspecified/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="37f40236069947bf518e6f2d2974c679e95467d8">
+        sha1="616125c8c099f21bab2d71960f34b99b03cf05d1">
         <dex dex="/var/www/html/backup/PriceGenie_React_Native/android/app/build/intermediates/pre-dexed/debug/classes-d4326ee7b7c3a394a4394e55ab595f22be4edbfb.jar" />
     </item>
     <item
