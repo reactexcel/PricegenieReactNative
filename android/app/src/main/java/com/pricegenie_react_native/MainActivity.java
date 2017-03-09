@@ -1,4 +1,4 @@
-package com.pricegenie_react_native;
+package com.excellence.PriceGenie;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactActivity;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    
    @Override
     protected String getMainComponentName() {
-        return "PriceGenie_React_Native";
+        return "excellence.PriceGenie";
 
     }
 }

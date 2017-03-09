@@ -1,4 +1,4 @@
-package com.pricegenie_react_native;
+package com.excellence.PriceGenie;
  
 import android.app.Application;
 import android.util.Log;
