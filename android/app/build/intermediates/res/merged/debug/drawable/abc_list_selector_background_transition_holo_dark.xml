@@ -18,4 +18,3 @@
     <item android:drawable="@drawable/abc_list_pressed_holo_dark"  />
     <item android:drawable="@drawable/abc_list_longpressed_holo"  />
 </transition>
-<!-- From: file:/var/www/html/backup/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable/abc_list_selector_background_transition_holo_dark.xml -->

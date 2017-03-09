@@ -30,4 +30,3 @@
                  android:bottom="@dimen/abc_button_padding_vertical_material" />
     </shape>
 </inset>
-<!-- From: file:/var/www/html/backup/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/drawable/abc_btn_default_mtrl_shape.xml -->

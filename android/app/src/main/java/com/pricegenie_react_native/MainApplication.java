@@ -2,6 +2,7 @@ package com.pricegenie_react_native;
  
 import android.app.Application;
 import android.util.Log;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactApplication;
@@ -29,7 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNSvgPackage()
 	,new VectorIconsPackage(),
-	new FacebookLoginPackage()
+	new FacebookLoginPackage(),
+	new RNGoogleSigninPackage()
 	
       );
     }
