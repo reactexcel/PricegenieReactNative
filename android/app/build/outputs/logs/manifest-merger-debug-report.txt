@@ -2,7 +2,7 @@
 manifest
 ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:1:1-31:12
 	package
-		ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:2:5-42
+		ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:2:5-40
 		INJECTED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml
 		INJECTED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -162,7 +162,7 @@ MERGED from [org.webkit:android-jsc:r174650] /var/www/html/PriceGenie_React_Nati
 		ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:18:7-38
 	android:name
 		ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:14:7-38
-activity#com.pricegenie_react_native.MainActivity
+activity#com.excellence.PriceGenie.MainActivity
 ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:19:7-27:18
 	android:label
 		ADDED from /var/www/html/PriceGenie_React_Native/android/app/src/main/AndroidManifest.xml:21:9-41

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pricegenie_react_native"
+    package="com.excellence.PriceGenie"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -16,13 +16,13 @@
     <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.pricegenie_react_native.MainApplication"
+        android:name="com.excellence.PriceGenie.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.pricegenie_react_native.MainActivity"
+            android:name="com.excellence.PriceGenie.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
