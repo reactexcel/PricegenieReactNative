@@ -46,7 +46,7 @@ export class PriceGenie_React_Native extends Component {
             <View style={styles.container}>
                 <StatusBar backgroundColor="#01579b" barStyle="light-content"/>
                 <Navigator initialRoute={{
-                    name: 'login',
+                    name: 'home',
                     payload: {}
                 }} renderScene={this.renderScene} configureScene={this.configureScene}/>
             </View>

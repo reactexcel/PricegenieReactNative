@@ -8,6 +8,8 @@
     <string msgid="4076576682505996667" name="abc_action_mode_done">"Hotovo"</string>
     <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Zobraziť všetko"</string>
     <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Zvoľte aplikáciu"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"VYP."</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ZAP."</string>
     <string msgid="7723749260725869598" name="abc_search_hint">"Vyhľadať…"</string>
     <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Vymazať dopyt"</string>
     <string msgid="2550479030709304392" name="abc_searchview_description_query">"Vyhľadávací dopyt"</string>
@@ -17,6 +19,28 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Zdieľať pomocou"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Zdieľať pomocou %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Zbaliť"</string>
+    <string name="com_facebook_device_auth_instructions">Navštívte stránku &lt;b>facebook.com/device&lt;/b> a zadajte kód zobrazený vyššie.</string>
+    <string name="com_facebook_image_download_unknown_error">Pri sťahovaní obrázka sa vyskytla neočakávaná chyba.</string>
+    <string name="com_facebook_internet_permission_error_message">Na prihlásenie sa v rozhraní WebView sa vyžaduje povolenie pre INTERNET</string>
+    <string name="com_facebook_internet_permission_error_title">Chyba súboru AndroidManifest</string>
+    <string name="com_facebook_like_button_liked">Páči sa mi to</string>
+    <string name="com_facebook_like_button_not_liked">Páči sa mi to</string>
+    <string name="com_facebook_loading">Načítava sa…</string>
+    <string name="com_facebook_loginview_cancel_action">Zrušiť</string>
+    <string name="com_facebook_loginview_log_in_button">Prihlásiť sa</string>
+    <string name="com_facebook_loginview_log_in_button_continue">Pokračovať s Facebookom</string>
+    <string name="com_facebook_loginview_log_in_button_long">Prihlásiť sa cez Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Odhlásiť sa</string>
+    <string name="com_facebook_loginview_log_out_button">Odhlásiť sa</string>
+    <string name="com_facebook_loginview_logged_in_as">Prihlásený ako: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Prihlásený cez Facebook</string>
+    <string name="com_facebook_send_button_text">Odoslať</string>
+    <string name="com_facebook_share_button_text">Zdieľať</string>
+    <string name="com_facebook_smart_device_instructions">Na pripojenie svojho účtu otvorte vo svojom mobilnom zariadení aplikáciu Facebook a skontrolujte upozornenia.</string>
+    <string name="com_facebook_smart_device_instructions_or">- ALEBO -</string>
+    <string name="com_facebook_smart_login_confirmation_cancel">Nie ste to vy?</string>
+    <string name="com_facebook_smart_login_confirmation_title">Potvrdiť prihlásenie</string>
+    <string name="com_facebook_tooltip_default">Máte to pod kontrolou: vyberte, ktoré informácie chcete zdieľať s aplikáciami.</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Povoliť"</string>
     <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"Aplikácia <ns1:g id="APP_NAME">%1$s</ns1:g> bude fungovať až po povolení služieb Google Play."</string>
     <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Povoliť služby Google Play"</string>
@@ -34,5 +58,6 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Otvoriť v telefóne"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Prihlásiť sa"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Prihlásiť sa do účtu Google"</string>
+    <string msgid="146198913615257606" name="search_menu_title">"Vyhľadávanie"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

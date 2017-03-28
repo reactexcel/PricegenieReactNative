@@ -132,10 +132,12 @@ project.ext.vectoricons = [
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 dependencies {
     compile project(':react-native-google-signin')
+    compile project(':react-native-facebook-login')
     compile project(':react-native-svg')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile project(':react-native-vector-icons')
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile 'com.google.firebase:firebase-core:10.2.1'

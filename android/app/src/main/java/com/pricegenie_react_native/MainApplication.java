@@ -1,5 +1,6 @@
 package com.excellence.PriceGenie;
  
+import com.magus.fblogin.FacebookLoginPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage; 
 import android.app.Application;
 import android.util.Log;
@@ -29,7 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNSvgPackage(),
 	new RNGoogleSigninPackage()
-	,new VectorIconsPackage()
+	,new VectorIconsPackage(),
+	new FacebookLoginPackage()
 	
       );
     }

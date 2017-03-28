@@ -8,6 +8,8 @@
     <string msgid="4076576682505996667" name="abc_action_mode_done">"Hotovo"</string>
     <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Zobrazit vše"</string>
     <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Vybrat aplikaci"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"VYPNUTO"</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ZAPNUTO"</string>
     <string msgid="7723749260725869598" name="abc_search_hint">"Vyhledat…"</string>
     <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Smazat dotaz"</string>
     <string msgid="2550479030709304392" name="abc_searchview_description_query">"Vyhledávací dotaz"</string>
@@ -17,6 +19,28 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Sdílet pomocí"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Sdílet pomocí %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Sbalit"</string>
+    <string name="com_facebook_device_auth_instructions">Navštivte &lt;b>facebook.com/device&lt;/b> a zadejte nahoře uvedený kód.</string>
+    <string name="com_facebook_image_download_unknown_error">Při stahování obrázku došlo k nečekané chybě.</string>
+    <string name="com_facebook_internet_permission_error_message">Webové přihlášení vyžaduje oprávnění použít INTERNET</string>
+    <string name="com_facebook_internet_permission_error_title">Chyba AndroidManifest</string>
+    <string name="com_facebook_like_button_liked">Už se mi to líbí</string>
+    <string name="com_facebook_like_button_not_liked">To se mi líbí</string>
+    <string name="com_facebook_loading">Načítání…</string>
+    <string name="com_facebook_loginview_cancel_action">Zrušit</string>
+    <string name="com_facebook_loginview_log_in_button">Přihlásit</string>
+    <string name="com_facebook_loginview_log_in_button_continue">Pokračovat přes Facebook</string>
+    <string name="com_facebook_loginview_log_in_button_long">Přihlásit se přes Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Odhlásit</string>
+    <string name="com_facebook_loginview_log_out_button">Odhlásit</string>
+    <string name="com_facebook_loginview_logged_in_as">Přihlášen(a) jako: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Přihlášen(a) přes Facebook</string>
+    <string name="com_facebook_send_button_text">Odeslat</string>
+    <string name="com_facebook_share_button_text">Sdílet</string>
+    <string name="com_facebook_smart_device_instructions">Účet si můžete připojit tak, že si na mobilním zařízení spustíte aplikaci Facebook a podíváte se do upozornění.</string>
+    <string name="com_facebook_smart_device_instructions_or">- NEBO -</string>
+    <string name="com_facebook_smart_login_confirmation_cancel">Nejste to vy?</string>
+    <string name="com_facebook_smart_login_confirmation_title">Potvrdit přihlášení</string>
+    <string name="com_facebook_tooltip_default">Je jen na vás, které informace chcete s aplikacemi sdílet.</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"Povolit"</string>
     <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"Ke spuštění aplikace <ns1:g id="APP_NAME">%1$s</ns1:g> je třeba aktivovat služby Google Play."</string>
     <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"Aktivace služeb Google Play"</string>
@@ -34,5 +58,7 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Otevřít v telefonu"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Přihlásit se"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Přihlásit se k účtu Google"</string>
+    <string name="messenger_send_button_text">Odeslat</string>
+    <string msgid="146198913615257606" name="search_menu_title">"Hledat"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>
