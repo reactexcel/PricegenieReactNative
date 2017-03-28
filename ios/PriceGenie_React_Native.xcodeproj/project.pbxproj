@@ -35,6 +35,11 @@
 		FDEDF021DB88465DBB88A34B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CF3E35F4F524057907394FE /* SimpleLineIcons.ttf */; };
 		CD4DF720CC33493795914FCF /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA9CC0AD32843DBB4CB523E /* Zocial.ttf */; };
 		15E240602C384D42B428D0C5 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB38BA5A5DED45D2BC621890 /* libRNSVG.a */; };
+		96108536D2F544F59A9555E7 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F36A16326A7C4C26B53EDCA2 /* libRNGoogleSignin.a */; };
+		E86E4C8D5AB64ECAA51DAF4B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9318EDB6AD724BA2A1A0883E /* libz.tbd */; };
+		FD5D16681E7746D6A2ABFF69 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CAF0E2C7A44B39887EC874 /* SafariServices.framework */; };
+		A0235ACD7C144C989BAF1D0F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 740E405E8E1F4EC49EB87ABC /* SystemConfiguration.framework */; };
+		FFB667812CC84D2D9EA473EE /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6728FB1CE7574DF18420995E /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +264,12 @@
 		8EA9CC0AD32843DBB4CB523E /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		80FF3BB657584E2E8199B17E /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		EB38BA5A5DED45D2BC621890 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		39AB2A2B7D544AD1A393E5C9 /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; name = "RNGoogleSignin.xcodeproj"; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F36A16326A7C4C26B53EDCA2 /* libRNGoogleSignin.a */ = {isa = PBXFileReference; name = "libRNGoogleSignin.a"; path = "libRNGoogleSignin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		9318EDB6AD724BA2A1A0883E /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		14CAF0E2C7A44B39887EC874 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		740E405E8E1F4EC49EB87ABC /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		6728FB1CE7574DF18420995E /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +298,11 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				4AC7FD24F89942F2829C0AD9 /* libRNVectorIcons.a in Frameworks */,
 				15E240602C384D42B428D0C5 /* libRNSVG.a in Frameworks */,
+				96108536D2F544F59A9555E7 /* libRNGoogleSignin.a in Frameworks */,
+				E86E4C8D5AB64ECAA51DAF4B /* libz.tbd in Frameworks */,
+				FD5D16681E7746D6A2ABFF69 /* SafariServices.framework in Frameworks */,
+				A0235ACD7C144C989BAF1D0F /* SystemConfiguration.framework in Frameworks */,
+				FFB667812CC84D2D9EA473EE /* AddressBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +449,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				381801B9259A4223B3F8D523 /* RNVectorIcons.xcodeproj */,
 				80FF3BB657584E2E8199B17E /* RNSVG.xcodeproj */,
+				39AB2A2B7D544AD1A393E5C9 /* RNGoogleSignin.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -454,6 +471,7 @@
 				00E356EF1AD99517003FC87E /* PriceGenie_React_NativeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				F8EDDB83941A4CEDAF924493 /* Resources */,
+				FAD64214829048C8A0E327B3 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -483,6 +501,18 @@
 				8EA9CC0AD32843DBB4CB523E /* Zocial.ttf */,
 			);
 			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
+		FAD64214829048C8A0E327B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9318EDB6AD724BA2A1A0883E /* libz.tbd */,
+				14CAF0E2C7A44B39887EC874 /* SafariServices.framework */,
+				740E405E8E1F4EC49EB87ABC /* SystemConfiguration.framework */,
+				6728FB1CE7574DF18420995E /* AddressBook.framework */,
+			);
+			name = Frameworks;
 			path = "";
 			sourceTree = "<group>";
 		};
@@ -887,6 +917,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -903,6 +934,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PriceGenie_React_Native.app/PriceGenie_React_Native";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
