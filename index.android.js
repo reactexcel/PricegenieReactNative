@@ -24,7 +24,8 @@ import {ProductPage} from './component/ProductPage';
 import {Filter} from './component/filter';
 import {ProductView} from './component/productView';
 import {PieChartBasic} from './component/graph';
-import {VariantPoduct} from './component/variant'
+import {VariantPoduct} from './component/variant';
+import {LoginPage} from './component/loginpage';
 let onMainScreen = true
 BackAndroid.addEventListener('hardwareBackPress', function() {
     if (route.name !== "home") {
@@ -45,7 +46,7 @@ export class PriceGenie_React_Native extends Component {
             <View style={styles.container}>
                 <StatusBar backgroundColor="#01579b" barStyle="light-content"/>
                 <Navigator initialRoute={{
-                    name: 'home',
+                    name: 'login',
                     payload: {}
                 }} renderScene={this.renderScene} configureScene={this.configureScene}/>
             </View>
@@ -68,6 +69,8 @@ export class PriceGenie_React_Native extends Component {
             return (<PieChartBasic navigator={navigator} {...route.payload}/>);
         } else if (route.name === 'variant') {
             return (<VariantPoduct navigator={navigator} {...route.payload}/>);
+        } else if (route.name === 'login') {
+            return (<LoginPage navigator={navigator} {...route.payload}/>);
         }
     }
     configureScene(route, routeStack) {
@@ -85,6 +88,8 @@ export class PriceGenie_React_Native extends Component {
             return Navigator.SceneConfigs.FadeAndroid
         } else if (route.name === 'variant') {
             return Navigator.SceneConfigs.FloatFromBottom
+        } else if (route.name === 'login') {
+            return Navigator.SceneConfigs.PushFromRight
         }
     }
 }
