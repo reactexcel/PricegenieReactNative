@@ -8,6 +8,7 @@ import * as action from '../services/viewProduct';
 import {PieChartBasic} from './graph'
 import {ProductList} from './showproduct'
 import * as get from '../services/pricehistroy';
+import * as alert from '../services/pricealert';
 import {
     View,
     Text,
@@ -17,7 +18,8 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     Dimensions,
-    ListView
+    ListView,
+    ToastAndroid
 } from 'react-native'
 
 export class ProductView extends Component {
@@ -66,6 +68,7 @@ export class ProductView extends Component {
             }
         })
         action.renderProduct(data.query_id).then((val) => {
+            console.log(data.query_id);
             this.setState({result: val.result, specficiation: val, loading: false})
         })
     }
@@ -77,6 +80,17 @@ export class ProductView extends Component {
                 console.log('Don\'t know how to open URI: ' + url);
             }
         });
+    }
+    setAlert(data) {
+        getLocalStorageData('user').then((email) => {
+            alert.pricealert(data._id.$id, email).then((value) => {
+                if (!email) {
+                    this.props.navigator.push({name: 'login'})
+                } else {
+                    ToastAndroid.show(value.message, ToastAndroid.SHORT)
+                }
+            })
+        })
     }
     componentWillMount(props) {
         get.pricehistroy(this.props.id).then((dataPoints) => {
@@ -155,25 +169,52 @@ export class ProductView extends Component {
                                 fontWeight: 'bold'
                             }}>Rs. {data.price}</Text>
                             <View style={{
-                                marginTop: 13,
-                                width: 90,
-                                height: 45
+                                flex: 1,
+                                flexDirection: 'row'
                             }}>
-                                <Button containerStyle={{
-                                    padding: 4.5,
-                                    height: 25,
-                                    borderRadius: 3,
-                                    backgroundColor: STRING.RedColor
-                                }} style={{
-                                    fontSize: 11,
-                                    color: 'white'
-                                }} styleDisabled={{
-                                    color: 'blue'
-                                }} onPress={() => {
-                                    this.pressButton(data.url)
+                                <View style={{
+                                    marginTop: 13,
+                                    width: 70,
+                                    height: 45
                                 }}>
-                                    BUY NOW
-                                </Button>
+                                    <Button containerStyle={{
+                                        padding: 4.5,
+                                        height: 25,
+                                        borderRadius: 3,
+                                        backgroundColor: STRING.RedColor
+                                    }} style={{
+                                        fontSize: 11,
+                                        color: 'white'
+                                    }} styleDisabled={{
+                                        color: 'blue'
+                                    }} onPress={() => {
+                                        this.pressButton(data.url)
+                                    }}>
+                                        BUY NOW
+                                    </Button>
+                                </View>
+                                <View style={{
+                                    marginLeft: 20,
+                                    marginTop: 13,
+                                    width: 70,
+                                    height: 45
+                                }}>
+                                    <Button containerStyle={{
+                                        padding: 4.5,
+                                        height: 25,
+                                        borderRadius: 3,
+                                        backgroundColor: STRING.RedColor
+                                    }} style={{
+                                        fontSize: 11,
+                                        color: 'white'
+                                    }} styleDisabled={{
+                                        color: 'blue'
+                                    }} onPress={() => {
+                                        this.setAlert(data)
+                                    }}>
+                                        SET ALERT
+                                    </Button>
+                                </View>
                             </View>
                         </View>
                     </View>

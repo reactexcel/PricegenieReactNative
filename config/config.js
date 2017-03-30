@@ -4,3 +4,6 @@ CONFIG = {
 CONFI = {
     baseURL: 'http://pricegenie.co/price_history_graph.php?work=productgraph&action='
 }
+CONFIGURE = {
+    baseURL: 'http://144.76.34.244:5005/v2/genie_alerts/set_genie_alert/'
+}

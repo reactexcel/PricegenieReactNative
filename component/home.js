@@ -36,6 +36,9 @@ export class Home extends Component {
             }
         })
     }
+    actioncall() {
+        this.props.navigator.push({name: "login"})
+    }
     render() {
         var {width, height} = Dimensions.get('window');
         return (
@@ -44,7 +47,9 @@ export class Home extends Component {
                 flexDirection: 'column',
                 backgroundColor: STRING.GreyColor
             }}>
-                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
+                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} title='' style={style.toolbar} titleColor='white' onActionSelected={() => {
+                    this.actioncall()
+                }} overflowIconName="md-more" actions={[
                     {
                         title: 'fav',
                         iconName: 'md-notifications',

@@ -6,33 +6,26 @@ import {View, Text, Button, Dimensions} from 'react-native';
 import '../style/basicStyle'
 var style = require('../style/basicStyle');
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as action from '../services/google';
 
 export class LoginPage extends Component {
     constructor(props) {
         super(props);
+        this.cust_login = this.cust_login.bind(this);
     }
-    _google() {
-        GoogleSignin.hasPlayServices({autoResolve: true}).then(() => {
-            // play services are available. can now configure library
-            GoogleSignin.configure({}).then(() => {
-                // you can now call currentUserAsync()
-                console.log('here');
-                GoogleSignin.currentUserAsync().then((user) => {
-                    console.log('USER', user);
-                    if (user) {
-                        this.setState({user: user});
-                    } else {
-                        console.log('user not found');
-                        GoogleSignin.signIn().then((user) => {
-                            console.log(user);
-                            this.setState({user: user});
-                        }).catch((err) => {
-                            console.log('WRONG SIGNIN', err);
-                        }).done();
-                    }
-                }).done();
-            });
-        })
+    cust_login() {
+        action.google().then((data) => {
+            if (data && data.email) {
+                let userEmail = data.email;
+                setLocalStorageData('user', userEmail);
+                this.props.navigator.push({name: 'home'});
+            }
+        }, (error) => {
+            console.log(error);
+        });
+    }
+    _previouspage() {
+        this.props.navigator.pop()
     }
     render() {
         return (
@@ -40,7 +33,9 @@ export class LoginPage extends Component {
                 flex: 1,
                 flexDirection: 'column'
             }}>
-                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" action={[]} elevation={4}>
+                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={() => {
+                    this._previouspage()
+                }} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" action={[]} elevation={4}>
                     <View style={{
                         flex: 1,
                         alignSelf: 'center',
@@ -62,32 +57,17 @@ export class LoginPage extends Component {
                     flex: 1,
                     flexDirection: 'column'
                 }}>
-                    <Button onPress={this._google} title="Sign in with Google" color="#841584"/>
+                    <Button onPress={this.cust_login} title="Sign in with Google" color="#841584"/>
                     <View style={{
                         marginTop: 50
                     }}>
-                        <Button title='test' style={{
-                            marginTop: 10
+                        <FBLogin style={{
+                            marginTop: 10,
+                            padding: 20
                         }} onpress={(fbLogin) => {
                             this.fbLogin = fbLogin
                         }} permissions={["email", "user_friends"]} loginBehavior={FBLoginManager.LoginBehaviors.Native} onLogin={function(data) {
-                            console.log("Logged in!");
-                            console.log(data);
-                        }} onLogout={function() {
-                            console.log("Logged out.");
-                        }} onLoginFound={function(data) {
-                            console.log("Existing login found.");
-                            console.log(data);
-                        }} onLoginNotFound={function() {
-                            console.log("No user logged in.");
-                        }} onError={function(data) {
-                            console.log("ERROR");
-                            console.log(data);
-                        }} onCancel={function() {
-                            console.log("User cancelled.");
-                        }} onPermissionsMissing={function(data) {
-                            console.log("Check permissions!");
-                            console.log(data);
+                            setLocalStorageData('user', user.email)
                         }}/>
                     </View>
                 </View>
