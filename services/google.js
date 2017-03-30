@@ -6,12 +6,10 @@ export function google() {
             // play services are available. can now configure library
             GoogleSignin.configure({}).then(() => {
                 // you can now call currentUserAsync()
-                console.log('here');
                 GoogleSignin.currentUserAsync().then((user) => {
                     if (user) {
                         resolve(user);
                     } else {
-                        console.log('user not found');
                         GoogleSignin.signIn().then((user) => {
                             resolve(user);
                         }).catch((err) => {

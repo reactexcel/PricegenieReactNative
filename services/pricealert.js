@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function pricealert(productId, email) {
     console.log(productId, email);
-    return axios.post('http://144.76.34.244:5005/v2/genie_alerts/set_genie_alert/', {
+    return axios.post(CONFIGURE.baseURL, {
         mongo_id: productId,
         website: 'pricegenie',
         email_id: email
