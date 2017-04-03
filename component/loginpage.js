@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
+import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
+var DeviceInfo = require('react-native-device-info');
 var {FBLogin, FBLoginManager} = require('react-native-facebook-login');
 var {width, height} = Dimensions.get('window');
-import {View, Text, Button, Dimensions} from 'react-native';
+import {View, Text, Button, Dimensions, ToastAndroid} from 'react-native';
 import '../style/basicStyle'
 var style = require('../style/basicStyle');
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as action from '../services/google';
+import * as set from '../services/regisuser';
 
 export class LoginPage extends Component {
     constructor(props) {
@@ -16,9 +19,24 @@ export class LoginPage extends Component {
     cust_login() {
         action.google().then((data) => {
             if (data && data.email) {
+                let info = "mobile_google";
+                let id = data.id
+                let name = data.name;
                 let userEmail = data.email;
+                let gender = 'male';
+                let device_id = DeviceInfo.getUniqueID();
+                set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {
+                    let user_key = value.data.userid;
+                    FCM.getFCMToken().then(token => {
+                        let fcm_reg_id = token;
+                        set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {})
+                        ToastAndroid.showWithGravity('welcome ' + data.email, ToastAndroid.LONG, ToastAndroid.BOTTOM,)
+                        setLocalStorageData('user', userEmail);
+                    });
+                    this.props.navigator.push({name: 'home'});
+                })
+                ToastAndroid.showWithGravity('welcome' + data.email, ToastAndroid.LONG, ToastAndroid.BOTTOM,)
                 setLocalStorageData('user', userEmail);
-                this.props.navigator.push({name: 'home'});
             }
         }, (error) => {
             console.log(error);
@@ -40,7 +58,7 @@ export class LoginPage extends Component {
                         flex: 1,
                         alignSelf: 'center',
                         borderWidth: 0,
-                        paddingLeft: width / 4.5,
+                        paddingLeft: width / 4.3,
                         paddingTop: 15
                     }}>
                         <Text style={{
@@ -61,14 +79,17 @@ export class LoginPage extends Component {
                     <View style={{
                         marginTop: 50
                     }}>
-                        <FBLogin style={{
-                            marginTop: 10,
-                            padding: 20
+                        <FBLogin facebookText={'SIGN IN WITH FACEBOOK'} style={{
+                            flex: null,
+                            padding: 10,
+                            marginTop: 10
                         }} onpress={(fbLogin) => {
                             this.fbLogin = fbLogin
                         }} permissions={["email", "user_friends"]} loginBehavior={FBLoginManager.LoginBehaviors.Native} onLogin={function(data) {
-                            setLocalStorageData('user', user.email)
-                        }}/>
+                            ToastAndroid.showWithGravity('welcome ' + data.profile.name, ToastAndroid.LONG, ToastAndroid.BOTTOM,);
+                            this.props.navigator.push({name: 'home'});
+                            setLocalStorageData('user', data.profile.email)
+                        }} onLogout={function() {}} onLoginFound={function(data) {}} onLoginNotFound={function() {}} onError={function(data) {}} onCancel={function() {}} onPermissionsMissing={function(data) {}}/>
                     </View>
                 </View>
             </View>

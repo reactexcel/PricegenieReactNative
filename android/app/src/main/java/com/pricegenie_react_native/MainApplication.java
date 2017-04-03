@@ -1,5 +1,6 @@
 package com.excellence.PriceGenie;
 
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
@@ -33,7 +34,8 @@ public class MainApplication extends Application implements ReactApplication {
 	new RNGoogleSigninPackage()
 	,new VectorIconsPackage(),
 	new FacebookLoginPackage(),
-  new FIRMessagingPackage()
+  new FIRMessagingPackage(),
+  new RNDeviceInfo()
       );
     }
   };

@@ -131,6 +131,7 @@ project.ext.vectoricons = [
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 dependencies {
+    compile project(':react-native-device-info')
     compile project(':react-native-fcm')
     compile project(':react-native-google-signin')
     compile project(':react-native-facebook-login')
