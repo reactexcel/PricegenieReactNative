@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import '../style/basicStyle'
+import '../style/basicStyle';
 var style = require('../style/basicStyle');
 import json_data from '../data/category';
 import {

@@ -1025,10 +1025,12 @@ int string common_signin_button_text_long 0x7f070039
 int string default_web_client_id 0x7f070062
 int string facebook_app_id 0x7f070063
 int string fb_login_protocol_scheme 0x7f070064
-int string gcm_defaultSenderId 0x7f070065
-int string google_api_key 0x7f070066
-int string google_app_id 0x7f070067
-int string google_crash_reporting_api_key 0x7f070068
+int string firebase_database_url 0x7f070065
+int string gcm_defaultSenderId 0x7f070066
+int string google_api_key 0x7f070067
+int string google_app_id 0x7f070068
+int string google_crash_reporting_api_key 0x7f070069
+int string google_storage_bucket 0x7f07006a
 int string messenger_send_button_text 0x7f07003a
 int string search_menu_title 0x7f07003b
 int string status_bar_notification_info_overflow 0x7f07003c
