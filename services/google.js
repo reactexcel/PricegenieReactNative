@@ -12,10 +12,8 @@ export function google() {
             resolve(user);
           } else {
             GoogleSignin.signIn().then((user) => {
-              console.log(user, 'idtest');
               resolve(user);
             }).catch((err) => {
-              console.log(err);
               reject(err);
             });
           }

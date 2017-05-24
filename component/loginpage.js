@@ -1,24 +1,35 @@
+/* eslint-disable global-require*/
+/* eslint-disable import/prefer-default-export*/
+/* eslint-disable no-undef*/
+/* eslint-disable camelcase*/
+/* eslint-disable no-redeclare*/
+/* eslint-disable func-names*/
+/* eslint-disable no-console*/
+/* eslint-disable no-shadow*/
+/* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
+import { View, Text, Button, Dimensions, ToastAndroid } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
-const DeviceInfo = require('react-native-device-info');
-const { FBLogin, FBLoginManager } = require('react-native-facebook-login');
-const { width, height } = Dimensions.get('window');
-import { View, Text, Button, Dimensions, ToastAndroid } from 'react-native';
-import '../style/basicStyle';
-const style = require('../style/basicStyle');
+import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
 import Icon from 'react-native-vector-icons/Ionicons';
+import DeviceInfo from 'react-native-device-info';
 import * as action from '../services/google';
 import * as set from '../services/regisuser';
+import '../style/basicStyle';
+
+const style = require('../style/basicStyle');
+
+const { width, height } = Dimensions.get('window');
 
 export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.cust_login = this.cust_login.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
   cust_login() {
     action.google().then((data) => {
-      console.log(data, 'testlogin');
       if (data && data.email) {
         const info = 'mobile_google';
         const id = data.id;
@@ -43,6 +54,14 @@ export class LoginPage extends Component {
       console.log(error);
     });
   }
+  handleLogin(data) {
+    console.log(data, 'data');
+    console.log(this.props.navigator, 'nav');
+    ToastAndroid.showWithGravity(`welcome ${data.profile.name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+    console.log(this.props.navigator, 'nav');
+    this.props.navigator.push({ name: 'home' });
+    setLocalStorageData('user', data.profile.email);
+  }
   _previouspage() {
     this.props.navigator.pop();
   }
@@ -54,9 +73,17 @@ export class LoginPage extends Component {
       }}
       >
         <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')} onIconClicked={() => {
+          logo={require('../img/genie-logo-g.png')}
+          onIconClicked={() => {
             this._previouspage();
-          }} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" action={[]} elevation={4}
+          }}
+          navIconName="ios-arrow-back"
+          title=""
+          style={style.toolbar}
+          titleColor="white"
+          overflowIconName="md-more"
+          action={[]}
+          elevation={4}
         >
           <View style={{
             flex: 1,
@@ -71,8 +98,8 @@ export class LoginPage extends Component {
               color: 'white',
             }}
             >
-                            Sign IN
-                        </Text>
+              Sign IN
+            </Text>
           </View>
         </Icon.ToolbarAndroid>
         <View style={{
@@ -88,17 +115,26 @@ export class LoginPage extends Component {
           }}
           >
             <FBLogin
-              facebookText={'SIGN IN WITH FACEBOOK'} style={{
+              facebookText={'SIGN IN WITH FACEBOOK'}
+              style={{
                 flex: null,
                 padding: 10,
                 marginTop: 10,
-              }} onpress={(fbLogin) => {
+              }}
+              onpress={(fbLogin) => {
                 this.fbLogin = fbLogin;
-              }} permissions={['email', 'user_friends']} loginBehavior={FBLoginManager.LoginBehaviors.Native} onLogin={function (data) {
-                ToastAndroid.showWithGravity(`welcome ${data.profile.name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
-                this.props.navigator.push({ name: 'home' });
-                setLocalStorageData('user', data.profile.email);
-              }} onLogout={function () {}} onLoginFound={function (data) {}} onLoginNotFound={function () {}} onError={function (data) {}} onCancel={function () {}} onPermissionsMissing={function (data) {}}
+              }}
+              permissions={['email', 'user_friends']}
+              loginBehavior={FBLoginManager.LoginBehaviors.Native}
+              onLogin={
+                (data) => { this.handleLogin(data); }
+              }
+              onLogout={function () {}}
+              onLoginFound={function (data) {}}
+              onLoginNotFound={function () {}}
+              onError={function (data) {}}
+              onCancel={function () {}}
+              onPermissionsMissing={function (data) {}}
             />
           </View>
         </View>
@@ -106,3 +142,6 @@ export class LoginPage extends Component {
     );
   }
 }
+LoginPage.propTypes = {
+  navigator: React.PropTypes.any.isRequired,
+};
