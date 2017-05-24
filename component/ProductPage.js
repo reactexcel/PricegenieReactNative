@@ -90,16 +90,16 @@ export class ProductPage extends Component {
         let {loader} = this.state;
         return (
             <View>{loader
-                    ? <ActivityIndicator style={[
-                            styles.centering, {
+              ? <ActivityIndicator style={[
+                styles.centering, {
                                 transform: [
-                                    {
+                  {
                                         scale: .7
-                                    }
+                  }
                                 ]
-                            }
-                        ]} animating={this.state.load} color={STRING.BlueColor} size={32}/>
-                    : null}</View>
+                }
+              ]} animating={this.state.load} color={STRING.BlueColor} size={32}/>
+            : null}</View>
         );
     }
     selectOption(options) {
@@ -126,6 +126,7 @@ export class ProductPage extends Component {
         }
     }
     render() {
+      console.log(this.state.dataSource,'testpro');
         var {height, width} = Dimensions.get('window');
         let {animating} = this.state;
 
@@ -135,83 +136,83 @@ export class ProductPage extends Component {
             <View style={{
                 flex: 1
             }}>
-                <View style={{
+              <View style={{
                     flex: 1,
                     flexDirection: 'column',
                     backgroundColor: STRING.GreyColor
-                }}>
-                    <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
-                        {
+              }}>
+                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[
+                  {
                             title: 'Login',
                             iconSize: 25
-                        }, {
+                  }, {
                             title: 'fav',
                             iconSize: 25,
                             iconName: 'md-notifications',
                             show: 'always'
-                        }, {
+                  }, {
                             title: 'Search',
                             iconSize: 25,
                             iconName: 'md-search',
                             show: 'always'
-                        }
-                    ]}></Icon.ToolbarAndroid>
-                    {msg
-                        ? <View style={{
+                  }
+                ]}></Icon.ToolbarAndroid>
+                {msg
+                  ? <View style={{
                                 flex: 1,
                                 flexDirection: 'row',
                                 height: height,
                                 justifyContent: 'space-around'
-                            }}>
-                                <View>
-                                    <Text style={{
+                  }}>
+                    <View>
+                      <Text style={{
                                         padding: 10,
                                         borderRadius: 10,
                                         backgroundColor: 'white',
                                         margin: 10
-                                    }}>
-                                        Sorry!!!!No Product Found
-                                    </Text>
-                                </View>
-                            </View>
-                        : <View>
-                            <View style={{
+                      }}>
+                        Sorry!!!!No Product Found
+                      </Text>
+                    </View>
+                  </View>
+                  : <View>
+                    <View style={{
                                 backgroundColor: 'white'
-                            }}>
-                                <View style={{
+                    }}>
+                      <View style={{
                                     padding: 5
-                                }}>
-                                    <SegmentedControls renderOption={(option, selected, onSelect, index) => {
-                                        return <View style={{
+                      }}>
+                        <SegmentedControls renderOption={(option, selected, onSelect, index) => {
+                          return <View style={{
                                             flexDirection: "row",
                                             justifyContent: "center"
-                                        }}>
-                                            <View >
-                                                <Text>{option.name}</Text>
-                                            </View>
-                                            <View style={{
-                                                marginLeft: 2
-                                            }}>
-                                                <Icon {...option.icon}/>
-                                            </View>
-                                        </View>
-                                    }} options={this.state.options} onSelection={this.selectOption} selectedOption={this.state.shorting} extractText={(option) => option.name}/>
-                                </View>
+                          }}>
+                            <View >
+                              <Text>{option.name}</Text>
                             </View>
-                            <ScrollView >
-                                {filter
-                                    ? <View style={style.loder_inside}>
-                                            <ActivityIndicator animating={this.state.filter} color={STRING.BlueColor} size="large"/>
-                                        </View>
-                                    : null}
-                                <View style={{
+                            <View style={{
+                                                marginLeft: 2
+                            }}>
+                              <Icon {...option.icon}/>
+                            </View>
+                          </View>
+                        }} options={this.state.options} onSelection={this.selectOption} selectedOption={this.state.shorting} extractText={(option) => option.name}/>
+                      </View>
+                    </View>
+                    <ScrollView >
+                      {filter
+                        ? <View style={style.loder_inside}>
+                          <ActivityIndicator animating={this.state.filter} color={STRING.BlueColor} size="large"/>
+                        </View>
+                      : null}
+                      <View style={{
                                     flex: 1,
                                     marginLeft: 6,
                                     marginRight: 6
-                                }} elevation={15}>
-                                    <ListView style={{
+                      }} elevation={15}>
+                        <ListView style={{
                                         height: height - 116
-                                    }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
+                        }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
                                         flex: 1,
                                         backgroundColor: 'white',
                                         marginTop: 5,
@@ -219,66 +220,66 @@ export class ProductPage extends Component {
                                         paddingTop: 5,
                                         paddingRight: 10,
                                         paddingBottom: 10
-                                    }} elevation={2}>
-                                        <View style={{
+                        }} elevation={2}>
+                          <View style={{
                                             flex: 1,
                                             alignItems: 'center',
                                             flexDirection: 'row',
                                             justifyContent: 'space-around'
-                                        }}>
-                                            <TouchableOpacity onPress={() => this.selectedProduct(data)} style={{
+                          }}>
+                            <TouchableOpacity onPress={() => this.selectedProduct(data)} style={{
                                                 flex: 1,
                                                 alignItems: 'center',
                                                 flexDirection: 'row',
                                                 justifyContent: 'space-around'
-                                            }}>
-                                                <Image style={{
+                            }}>
+                              <Image style={{
                                                     flex: .3,
                                                     height: 45,
                                                     width: 45
-                                                }} resizeMode="contain" source={{
+                              }} resizeMode="contain" source={{
                                                     uri: data.image
-                                                }}></Image>
-                                                <View style={{
+                              }}></Image>
+                              <View style={{
                                                     flex: 1
-                                                }}>
-                                                    <Text style={{
+                              }}>
+                                <Text style={{
                                                         color: STRING.LightBlackColor,
                                                         fontSize: 13
-                                                    }}>
-                                                        {data.name}
-                                                    </Text>
-                                                    <Text style={{
+                                }}>
+                                  {data.name}
+                                </Text>
+                                <Text style={{
                                                         color: STRING.YelloColor,
                                                         fontSize: 12.5
-                                                    }}>
-                                                        From Rs: {data.num_price}
-                                                    </Text>
-                                                    <Text style={{
+                                }}>
+                                  From Rs: {data.num_price}
+                                </Text>
+                                <Text style={{
                                                         fontSize: 12
-                                                    }}>
-                                                        {`${data.sellers} Sellers`}
-                                                    </Text>
-                                                </View>
-                                            </TouchableOpacity>
-                                            <TouchableOpacity style={{
+                                }}>
+                                  {`${data.sellers} Sellers`}
+                                </Text>
+                              </View>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{
                                                 flexDirection: 'row',
                                                 alignItems: 'flex-end',
                                                 marginTop: 50
-                                            }}>
-                                                <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor}/>
-                                            </TouchableOpacity>
-                                        </View>
-                                    </View>}/>
-                                </View>
-                            </ScrollView>
-                        </View>}
+                            }}>
+                              <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor}/>
+                            </TouchableOpacity>
+                          </View>
+                        </View>}/>
+                      </View>
+                    </ScrollView>
+                  </View>}
+              </View>
+              {animating
+                ? <View style={style.loder}>
+                  <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large"/>
                 </View>
-                {animating
-                    ? <View style={style.loder}>
-                            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large"/>
-                        </View>
-                    : null}
+              : null}
             </View>
         );
     }

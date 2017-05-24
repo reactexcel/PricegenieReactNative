@@ -62,23 +62,23 @@ export class Subcategory extends Component {
             if (user.key === this.state.subcat) {
                 catg = _.map(user.data, (user_data, i) => (
                     <View key={i} style={style.touch}>
-                        <TouchableOpacity onPress={() => this._onPressSingleRequest(user_data)} style={{
+                      <TouchableOpacity onPress={() => this._onPressSingleRequest(user_data)} style={{
                             flex: 1,
                             flexDirection: 'row',
                             justifyContent: 'space-around'
-                        }}>
-                            <Text style={{
+                      }}>
+                        <Text style={{
                                 flex: 1,
                                 flexDirection: 'column',
                                 margin: 10,
                                 alignSelf: 'center'
-                            }}>
-                                {user_data.cat_name}
-                            </Text>
-                            <Icon name="ios-arrow-forward-outline" size={25} color={STRING.GreyColor} style={{
+                        }}>
+                          {user_data.cat_name}
+                        </Text>
+                        <Icon name="ios-arrow-forward-outline" size={25} color={STRING.GreyColor} style={{
                                 margin: 10
-                            }}/>
-                        </TouchableOpacity>
+                        }}/>
+                      </TouchableOpacity>
                     </View>
                 ))
             }
@@ -87,47 +87,47 @@ export class Subcategory extends Component {
             <View style={{
                 flex: 1
             }}>
-                <View style={{
+              <View style={{
                     flex: 1,
                     flexDirection: 'column',
                     backgroundColor: 'white'
-                }}>
-                    <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[{
+              }}>
+                <Icon.ToolbarAndroid logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title='' style={style.toolbar} titleColor='white' overflowIconName="md-more" actions={[{
                             title: 'Login',
                             iconSize: 25
-                        }
-                    ]}>
-                        <View style={{
+                }
+                ]}>
+                  <View style={{
                             flex: 1,
                             alignSelf: 'center',
                             borderWidth: 0,
                             paddingLeft: width / 9,
                             paddingTop: 15
-                        }}>
-                            <Text style={{
+                  }}>
+                    <Text style={{
                                 fontSize: 15,
                                 color: 'white'
-                            }}>
-                                {this.state.subcat}
-                            </Text>
-                        </View>
-                    </Icon.ToolbarAndroid>
-                    <ScrollView>
-                        <View style={{
+                    }}>
+                      {this.state.subcat}
+                    </Text>
+                  </View>
+                </Icon.ToolbarAndroid>
+                <ScrollView>
+                  <View style={{
                             flex: 1,
                             flexDirection: 'column',
                             backgroundColor: 'white',
                             justifyContent: 'space-around'
-                        }}>
-                            {catg}
-                        </View>
-                    </ScrollView>
+                  }}>
+                    {catg}
+                  </View>
+                </ScrollView>
+              </View>
+              {animating
+                ? <View style={style.loder}>
+                  <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large"/>
                 </View>
-                {animating
-                    ? <View style={style.loder}>
-                            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large"/>
-                        </View>
-                    : null}
+              : null}
             </View>
         );
     }

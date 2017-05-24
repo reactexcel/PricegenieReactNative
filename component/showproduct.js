@@ -27,6 +27,7 @@ export class ProductList extends Component {
         })
     }
     render() {
+      console.log(this.state.dataSource,'testshowpro');
         return (
             <ListView dataSource={this.state.dataSource} initialListSize={5} enableEmptySections={true} renderRow={(data, key) => <View key={key} style={{
                 marginTop: 5,
@@ -38,48 +39,48 @@ export class ProductList extends Component {
                 borderTopWidth: 1,
                 borderTopColor: STRING.GreyColor
             }}>
-                <TouchableOpacity onPress={() => this.props.selectedProduct(data)} style={{
+              <TouchableOpacity onPress={() => this.props.selectedProduct(data)} style={{
                     flex: 1,
                     alignItems: 'center',
                     flexDirection: 'row',
                     justifyContent: 'space-around'
-                }}>
-                    <Image style={{
+              }}>
+                <Image style={{
                         flex: .3,
                         height: 45,
                         width: 45
-                    }} resizeMode="contain" source={{
+                }} resizeMode="contain" source={{
                         uri: data.image
-                    }}></Image>
-                    <View style={{
+                }}></Image>
+                <View style={{
                         flex: 1
-                    }}>
-                        <Text style={{
+                }}>
+                  <Text style={{
                             color: STRING.LightBlackColor,
                             fontSize: 13
-                        }}>
-                            {data.full_name}
-                        </Text>
-                        <Text style={{
+                  }}>
+                    {data.full_name}
+                  </Text>
+                  <Text style={{
                             color: STRING.YelloColor,
                             fontSize: 12.5
-                        }}>
-                            From Rs: {data.price}
-                        </Text>
-                        <Text style={{
+                  }}>
+                    From Rs: {data.price}
+                  </Text>
+                  <Text style={{
                             fontSize: 12
-                        }}>
-                            {`${data.sellers} Sellers`}
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={{
+                  }}>
+                    {`${data.sellers} Sellers`}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={{
                     flexDirection: 'row',
                     alignItems: 'flex-end',
                     marginTop: 50
-                }}>
-                    <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor}/>
-                </TouchableOpacity>
+              }}>
+                <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor}/>
+              </TouchableOpacity>
             </View>}/>
         )
     }
