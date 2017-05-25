@@ -36,31 +36,34 @@ export class LoginPage extends Component {
         const name = data.name;
         const userEmail = data.email;
         const gender = 'male';
+        const logintype = 'google';
         const device_id = DeviceInfo.getUniqueID();
+        const islogin = true;
+        const userdata = [{ data, logintype, islogin }];
         set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {
           const user_key = value.data.userid;
           FCM.getFCMToken().then((token) => {
             const fcm_reg_id = token;
             set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
             ToastAndroid.showWithGravity(`welcome ${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
-            setLocalStorageData('user', userEmail);
+            setLocalStorageData('user', JSON.stringify(userdata));
           });
           this.props.navigator.push({ name: 'home' });
         });
+        setLocalStorageData('user', JSON.stringify(userdata));
         ToastAndroid.showWithGravity(`welcome${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
-        setLocalStorageData('user', userEmail);
       }
     }, (error) => {
       console.log(error);
     });
   }
   handleLogin(data) {
-    console.log(data, 'data');
-    console.log(this.props.navigator, 'nav');
-    ToastAndroid.showWithGravity(`welcome ${data.profile.name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
-    console.log(this.props.navigator, 'nav');
+    const logintype = 'facebook';
+    const islogin = true;
+    const userdata = [{ data, logintype, islogin }];
+    setLocalStorageData('user', JSON.stringify(userdata));
+    ToastAndroid.showWithGravity(`welcome ${data.profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
     this.props.navigator.push({ name: 'home' });
-    setLocalStorageData('user', data.profile.email);
   }
   _previouspage() {
     this.props.navigator.pop();
@@ -129,7 +132,7 @@ export class LoginPage extends Component {
               onLogin={
                 (data) => { this.handleLogin(data); }
               }
-              onLogout={function () {}}
+              onLogout={() => { }}
               onLoginFound={function (data) {}}
               onLoginNotFound={function () {}}
               onError={function (data) {}}

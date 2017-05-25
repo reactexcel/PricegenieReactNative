@@ -18,16 +18,23 @@ import {
     AsyncStorage,
     TouchableOpacity,
     Image,
+    ToastAndroid,
 } from 'react-native';
 import * as style from '../style/basicStyle';
 // const style = require('../style/basicStyle');
 import json_data from '../data/category';
+import * as action from '../services/google';
+import * as actions from '../services/facebook';
 
 const styles = StyleSheet.create({});
 
 export class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: '',
+      buttonName: '',
+    };
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
@@ -35,6 +42,12 @@ export class Home extends Component {
       dataSource: ds.cloneWithRows(json_data),
     };
     this._sendDataforward = this._sendDataforward.bind(this);
+    this.handleAction = this.handleAction.bind(this);
+  }
+  componentDidMount() {
+    getLocalStorageData('user').then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    });
   }
   _sendDataforward(data) {
     const cat = data.case;
@@ -48,22 +61,66 @@ export class Home extends Component {
   actioncall() {
     this.props.navigator.push({ name: 'login' });
   }
+  handleAction() {
+    if (this.state.user[0].logintype == 'facebook') {
+      actions.facebooksignout().then(() => {
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', userdata);
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'home' });
+      }, (error) => {
+        console.log(error);
+      });
+    } else if (this.state.user[0].logintype == 'google') {
+      action.googlesignout().then(() => {
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', JSON.stringify(userdata));
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'home' });
+      }, (error) => {
+        console.log(error);
+      });
+    }
+  }
   render() {
-    const { width, height } = Dimensions.get('window');
-    return (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: STRING.GreyColor,
-      }}
-      >
+    let button = (
+      <Icon.ToolbarAndroid
+        logo={require('../img/genie-logo-g.png')}
+        title=""
+        style={style.toolbar}
+        titleColor="white"
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+        overflowIconName="md-more"
+        actions={[
+          {
+            title: 'fav',
+            iconName: 'md-notifications',
+            iconSize: 25,
+            show: 'always',
+          }, {
+            title: 'Login',
+            iconSize: 25,
+          },
+        ]}
+      />);
+    if (this.state.user !== undefined) {
+      console.log(this.state.user);
+      button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')}
           title=""
           style={style.toolbar}
           titleColor="white"
           onActionSelected={() => {
-            this.actioncall();
+            this.handleAction();
           }}
           overflowIconName="md-more"
           actions={[
@@ -73,11 +130,43 @@ export class Home extends Component {
               iconSize: 25,
               show: 'always',
             }, {
-              title: 'Login',
+              title: 'Log Out',
               iconSize: 25,
             },
           ]}
-        />
+        />) :
+      (<Icon.ToolbarAndroid
+        logo={require('../img/genie-logo-g.png')}
+        title=""
+        style={style.toolbar}
+        titleColor="white"
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+        overflowIconName="md-more"
+        actions={[
+          {
+            title: 'fav',
+            iconName: 'md-notifications',
+            iconSize: 25,
+            show: 'always',
+          }, {
+            title: 'Login',
+            iconSize: 25,
+          },
+        ]}
+      />)
+      ;
+    }
+    const { width, height } = Dimensions.get('window');
+    return (
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        backgroundColor: STRING.GreyColor,
+      }}
+      >
+        {button}
         <ScrollView>
           <View style={{
             flex: 1,

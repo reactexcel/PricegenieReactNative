@@ -95,8 +95,8 @@ export class VariantPoduct extends Component {
                   this.pressButton(data.url);
                 }}
               >
-                                    BUY NOW
-                                </Button>
+                BUY NOW
+              </Button>
             </View>
           </View>
         </View>

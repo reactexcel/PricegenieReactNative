@@ -29,6 +29,8 @@ import { ProductView } from './component/productView';
 import { PieChartBasic } from './component/graph';
 import { VariantPoduct } from './component/variant';
 import { LoginPage } from './component/loginpage';
+
+
 const onMainScreen = true;
 BackAndroid.addEventListener('hardwareBackPress', () => {
   if (route.name !== 'home') {

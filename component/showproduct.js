@@ -75,7 +75,7 @@ export class ProductList extends Component {
                 fontSize: 12.5,
               }}
               >
-                    From Rs: {data.price}
+                From Rs: {data.price}
               </Text>
               <Text style={{
                 fontSize: 12,

@@ -16,17 +16,63 @@ import {
     Image,
     ActivityIndicator,
 } from 'react-native';
-const style = require('../style/basicStyle');
 import * as actions from '../services/category';
+import * as action from '../services/google';
+import * as facebook from '../services/facebook';
+
+const style = require('../style/basicStyle');
+
 export class Subcategory extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: '',
+      buttonName: '',
+    };
     this.state = {
       subcat: '',
       arrcat: [],
       animating: true,
     };
     this._previouspage = this._previouspage.bind(this);
+    this.handleAction = this.handleAction.bind(this);
+  }
+  componentDidMount() {
+    getLocalStorageData('user').then((value) => {
+      console.log(JSON.parse(value), 'test');
+      this.setState({ user: JSON.parse(value) });
+    });
+  }
+  handleAction() {
+    console.log(this.state.user[0], 'logout');
+    if (this.state.user[0].logintype == 'facebook') {
+      facebook.facebooksignout().then(() => {
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', userdata);
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'home' });
+      }, (error) => {
+        console.log(error);
+      });
+    } else if (this.state.user[0].logintype == 'google') {
+      action.googlesignout().then(() => {
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', JSON.stringify(userdata));
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'home' });
+      }, (error) => {
+        console.log(error);
+      });
+    }
+  }
+  actioncall() {
+    this.props.navigator.push({ name: 'login' });
   }
   _previouspage() {
     this.props.navigator.pop();
@@ -54,6 +100,96 @@ export class Subcategory extends Component {
     });
   }
   render() {
+    let button = (
+      <Icon.ToolbarAndroid
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
+        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
+          title: 'Login',
+          iconSize: 25,
+        },
+        ]}
+      >
+        <View style={{
+          flex: 1,
+          alignSelf: 'center',
+          borderWidth: 0,
+          paddingLeft: width / 9,
+          paddingTop: 15,
+        }}
+        >
+          <Text style={{
+            fontSize: 15,
+            color: 'white',
+          }}
+          >
+            {this.state.subcat}
+          </Text>
+        </View>
+      </Icon.ToolbarAndroid>
+        );
+    if (this.state.user !== undefined && this.state.user !== null) {
+      button = this.state.user[0].islogin == true ? (
+        <Icon.ToolbarAndroid
+          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
+          navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
+            title: 'Log Out',
+            iconSize: 25,
+          },
+          ]}
+          onActionSelected={() => {
+            this.handleAction();
+          }}
+        >
+          <View style={{
+            flex: 1,
+            alignSelf: 'center',
+            borderWidth: 0,
+            paddingLeft: width / 9,
+            paddingTop: 15,
+          }}
+          >
+            <Text style={{
+              fontSize: 15,
+              color: 'white',
+            }}
+            >
+              {this.state.subcat}
+            </Text>
+          </View>
+        </Icon.ToolbarAndroid>
+          ) :
+      (<Icon.ToolbarAndroid
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
+        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
+          title: 'Login',
+          iconSize: 25,
+        },
+        ]}
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+      >
+        <View style={{
+          flex: 1,
+          alignSelf: 'center',
+          borderWidth: 0,
+          paddingLeft: width / 9,
+          paddingTop: 15,
+        }}
+        >
+          <Text style={{
+            fontSize: 15,
+            color: 'white',
+          }}
+          >
+            {this.state.subcat}
+          </Text>
+        </View>
+      </Icon.ToolbarAndroid>
+        )
+      ;
+    }
+
     const { height, width } = Dimensions.get('window');
     let catg = null;
     const sub_cat = this.state.arrcat;
@@ -99,13 +235,14 @@ export class Subcategory extends Component {
           backgroundColor: 'white',
         }}
         >
-          <Icon.ToolbarAndroid
+          {button}
+          {/* <Icon.ToolbarAndroid
             logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
               title: 'Login',
               iconSize: 25,
             },
             ]}
-          >
+            >
             <View style={{
               flex: 1,
               alignSelf: 'center',
@@ -122,7 +259,7 @@ export class Subcategory extends Component {
                 {this.state.subcat}
               </Text>
             </View>
-          </Icon.ToolbarAndroid>
+          </Icon.ToolbarAndroid> */}
           <ScrollView>
             <View style={{
               flex: 1,
@@ -136,10 +273,10 @@ export class Subcategory extends Component {
           </ScrollView>
         </View>
         {animating
-                ? <View style={style.loder}>
-                  <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large" />
-                </View>
-              : null}
+          ? <View style={style.loder}>
+            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large" />
+          </View>
+        : null}
       </View>
     );
   }

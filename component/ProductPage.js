@@ -22,6 +22,8 @@ import { SegmentedControls } from 'react-native-radio-buttons';
 import Buttons_data from '../data/buttons';
 import '../style/basicStyle';
 import * as actions from '../services/product';
+import * as action from '../services/google';
+import * as facebook from '../services/facebook';
 
 
 const _ = require('lodash');
@@ -31,6 +33,10 @@ const style = require('../style/basicStyle');
 export class ProductPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: '',
+      buttonName: '',
+    };
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
@@ -49,17 +55,12 @@ export class ProductPage extends Component {
     this._loadMore = this._loadMore.bind(this);
     this._footer = this._footer.bind(this);
     this.selectOption = this.selectOption.bind(this);
+    this.handleAction = this.handleAction.bind(this);
   }
-  _previouspage() {
-    this.props.navigator.pop();
-  }
-  selectedProduct(data) {
-    const id = data.href.split('/')[6];
-    this.props.navigator.push({
-      name: 'productview',
-      payload: {
-        id,
-      },
+  componentDidMount() {
+    getLocalStorageData('user').then((value) => {
+      console.log(JSON.parse(value), 'test');
+      this.setState({ user: JSON.parse(value) });
     });
   }
   componentWillMount(props) {
@@ -75,6 +76,47 @@ export class ProductPage extends Component {
       });
     });
   }
+  handleAction() {
+    console.log(this.state.user[0], 'logout');
+    if (this.state.user[0].logintype == 'facebook') {
+      facebook.facebooksignout().then(() => {
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', userdata);
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'home' });
+      }, (error) => {
+        console.log(error);
+      });
+    } else if (this.state.user[0].logintype == 'google') {
+      action.googlesignout().then(() => {
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', JSON.stringify(userdata));
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'home' });
+      }, (error) => {
+        console.log(error);
+      });
+    }
+  }
+  _previouspage() {
+    this.props.navigator.pop();
+  }
+  selectedProduct(data) {
+    const id = data.href.split('/')[6];
+    this.props.navigator.push({
+      name: 'productview',
+      payload: {
+        id,
+      },
+    });
+  }
+
   _loadMore() {
     const data = this.state.data;
     actions.getProduct(this.props.name, this.props.id, this.props.sub_id, ++this.state.page, this.state.shorting).then((val) => {
@@ -134,7 +176,83 @@ export class ProductPage extends Component {
       });
     }
   }
+  actioncall() {
+    this.props.navigator.push({ name: 'login' });
+  }
   render() {
+    let button = (
+      <Icon.ToolbarAndroid
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+
+        actions={[
+          {
+            title: 'Login',
+            iconSize: 25,
+          }, {
+            title: 'fav',
+            iconSize: 25,
+            iconName: 'md-notifications',
+            show: 'always',
+          }, {
+            title: 'Search',
+            iconSize: 25,
+            iconName: 'md-search',
+            show: 'always',
+          },
+        ]}
+      />);
+    if (this.state.user !== undefined && this.state.user !== null) {
+      button = this.state.user[0].islogin == true ? (
+        <Icon.ToolbarAndroid
+          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+          onActionSelected={() => {
+            this.handleAction();
+          }}
+          actions={[
+            {
+              title: 'Log Out',
+              iconSize: 25,
+            }, {
+              title: 'fav',
+              iconSize: 25,
+              iconName: 'md-notifications',
+              show: 'always',
+            }, {
+              title: 'Search',
+              iconSize: 25,
+              iconName: 'md-search',
+              show: 'always',
+            },
+          ]}
+        />) :
+      (<Icon.ToolbarAndroid
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+        actions={[
+          {
+            title: 'Login',
+            iconSize: 25,
+          }, {
+            title: 'fav',
+            iconSize: 25,
+            iconName: 'md-notifications',
+            show: 'always',
+          }, {
+            title: 'Search',
+            iconSize: 25,
+            iconName: 'md-search',
+            show: 'always',
+          },
+        ]}
+      />)
+      ;
+    }
+
     const { height, width } = Dimensions.get('window');
     const { animating } = this.state;
 
@@ -151,24 +269,7 @@ export class ProductPage extends Component {
           backgroundColor: STRING.GreyColor,
         }}
         >
-          <Icon.ToolbarAndroid
-            logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[
-              {
-                title: 'Login',
-                iconSize: 25,
-              }, {
-                title: 'fav',
-                iconSize: 25,
-                iconName: 'md-notifications',
-                show: 'always',
-              }, {
-                title: 'Search',
-                iconSize: 25,
-                iconName: 'md-search',
-                show: 'always',
-              },
-            ]}
-          />
+          {button}
           {msg
             ? <View style={{
               flex: 1,
@@ -190,10 +291,10 @@ export class ProductPage extends Component {
               </View>
             </View>
             : <View>
-              <View style={{
+              {/* <View style={{
                 backgroundColor: 'white',
-              }}
-              >
+                }}
+                >
                 <View style={{
                   padding: 5,
                 }}
@@ -203,7 +304,7 @@ export class ProductPage extends Component {
                       flexDirection: 'row',
                       justifyContent: 'center',
                     }}
-                    >
+                                                                          >
                       <View >
                         <Text>{option.name}</Text>
                       </View>
@@ -216,7 +317,7 @@ export class ProductPage extends Component {
                     </View>)} options={this.state.options} onSelection={this.selectOption} selectedOption={this.state.shorting} extractText={option => option.name}
                   />
                 </View>
-              </View>
+              </View> */}
               <ScrollView >
                 {filter
                   ? <View style={style.loder_inside}>
