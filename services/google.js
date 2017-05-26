@@ -28,7 +28,7 @@ export function google() {
     });
   });
 }
-export function googlesignout() {
+export function googleSignOut() {
   return new Promise((resolve, reject) => {
     GoogleSignin.configure({}).then(() => {
       GoogleSignin.signOut().then(() => {

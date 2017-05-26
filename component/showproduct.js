@@ -27,7 +27,6 @@ export class ProductList extends Component {
     });
   }
   render() {
-    console.log(this.state.dataSource, 'testshowpro');
     return (
       <ListView
         dataSource={this.state.dataSource} initialListSize={5} enableEmptySections renderRow={(data, key) => (<View

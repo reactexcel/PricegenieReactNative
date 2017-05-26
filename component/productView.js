@@ -53,12 +53,10 @@ export class ProductView extends Component {
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
-      console.log(JSON.parse(value), 'test');
       this.setState({ user: JSON.parse(value) });
     });
   }
   handleAction() {
-    console.log(this.state.user[0], 'logout');
     if (this.state.user[0].logintype == 'facebook') {
       facebook.facebooksignout().then(() => {
         const data = '';
@@ -68,11 +66,9 @@ export class ProductView extends Component {
         setLocalStorageData('user', userdata);
         ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         this.props.navigator.push({ name: 'home' });
-      }, (error) => {
-        console.log(error);
-      });
+      }, error => error);
     } else if (this.state.user[0].logintype == 'google') {
-      actions.googlesignout().then(() => {
+      actions.googleSignOut().then(() => {
         const data = '';
         const logintype = '';
         const islogin = false;
@@ -80,9 +76,7 @@ export class ProductView extends Component {
         setLocalStorageData('user', JSON.stringify(userdata));
         ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         this.props.navigator.push({ name: 'home' });
-      }, (error) => {
-        console.log(error);
-      });
+      }, error => error);
     }
   }
   _previouspage() {

@@ -53,9 +53,7 @@ export class LoginPage extends Component {
         setLocalStorageData('user', JSON.stringify(userdata));
         ToastAndroid.showWithGravity(`welcome${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
       }
-    }, (error) => {
-      console.log(error);
-    });
+    }, error => error);
   }
   handleLogin(data) {
     const logintype = 'facebook';

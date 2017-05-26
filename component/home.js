@@ -71,11 +71,9 @@ export class Home extends Component {
         setLocalStorageData('user', userdata);
         ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         this.props.navigator.push({ name: 'home' });
-      }, (error) => {
-        console.log(error);
-      });
+      }, error => error);
     } else if (this.state.user[0].logintype == 'google') {
-      action.googlesignout().then(() => {
+      action.googleSignOut().then(() => {
         const data = '';
         const logintype = '';
         const islogin = false;
@@ -83,9 +81,7 @@ export class Home extends Component {
         setLocalStorageData('user', JSON.stringify(userdata));
         ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
         this.props.navigator.push({ name: 'home' });
-      }, (error) => {
-        console.log(error);
-      });
+      }, error => error);
     }
   }
   render() {
@@ -112,7 +108,6 @@ export class Home extends Component {
         ]}
       />);
     if (this.state.user !== undefined) {
-      console.log(this.state.user);
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')}
