@@ -91,21 +91,21 @@ export class Home extends Component {
         title=""
         style={style.toolbar}
         titleColor="white"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
+        // onActionSelected={() => {
+        //   this.actioncall();
+        // }}
         overflowIconName="md-more"
-        actions={[
-          {
-            title: 'fav',
-            iconName: 'md-notifications',
-            iconSize: 25,
-            show: 'always',
-          }, {
-            title: 'Login',
-            iconSize: 25,
-          },
-        ]}
+        // actions={[
+        //   {
+        //     title: 'fav',
+        //     iconName: 'md-notifications',
+        //     iconSize: 25,
+        //     show: 'always',
+        //   }, {
+        //     title: 'Login',
+        //     iconSize: 25,
+        //   },
+        // ]}
       />);
     if (this.state.user !== undefined) {
       button = this.state.user[0].islogin == true ? (
@@ -114,42 +114,31 @@ export class Home extends Component {
           title=""
           style={style.toolbar}
           titleColor="white"
-          onActionSelected={() => {
-            this.handleAction();
-          }}
+          // onActionSelected={() => {
+          //   this.handleAction();
+          // }}
           overflowIconName="md-more"
-          actions={[
-            {
-              title: 'fav',
-              iconName: 'md-notifications',
-              iconSize: 25,
-              show: 'always',
-            }, {
-              title: 'Log Out',
-              iconSize: 25,
-            },
-          ]}
+          // actions={[
+          //   {
+          //     title: 'fav',
+          //     iconName: 'md-notifications',
+          //     iconSize: 25,
+          //     show: 'always',
+          //   }, {
+          //     title: 'Log Out',
+          //     iconSize: 25,
+          //   },
+          // ]}
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')}
         title=""
         style={style.toolbar}
         titleColor="white"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
+        // onActionSelected={() => {
+        //   this.actioncall();
+        // }}
         overflowIconName="md-more"
-        actions={[
-          {
-            title: 'fav',
-            iconName: 'md-notifications',
-            iconSize: 25,
-            show: 'always',
-          }, {
-            title: 'Login',
-            iconSize: 25,
-          },
-        ]}
       />)
       ;
     }
@@ -178,14 +167,14 @@ export class Home extends Component {
               }}
               elevation={3}
             >
-              <View style={{
+              {/* <View style={{
                 flex: 1,
                 marginLeft: 20,
                 marginTop: 3,
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-              }}
-              >
+                }}
+                >
                 <Icon
                   name="md-search"
                   size={25}
@@ -209,7 +198,7 @@ export class Home extends Component {
                   placeholder={'Search product to get Lowest prize'}
                   onChangeText={text => this.setState({ name: text })}
                 />
-              </View>
+              </View> */}
             </View>
             <View>
               <Text style={{

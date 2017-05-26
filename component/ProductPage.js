@@ -177,72 +177,43 @@ export class ProductPage extends Component {
     let button = (
       <Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
+        // onActionSelected={() => {
+        //   this.actioncall();
+        // }}
 
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-          }, {
-            title: 'fav',
-            iconSize: 25,
-            iconName: 'md-notifications',
-            show: 'always',
-          }, {
-            title: 'Search',
-            iconSize: 25,
-            iconName: 'md-search',
-            show: 'always',
-          },
-        ]}
+        // actions={[
+        //   {
+        //     title: 'Login',
+        //     iconSize: 25,
+        //   }, {
+        //     title: 'fav',
+        //     iconSize: 25,
+        //     iconName: 'md-notifications',
+        //     show: 'always',
+        //   },
+        // ]}
       />);
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          onActionSelected={() => {
-            this.handleAction();
-          }}
-          actions={[
-            {
-              title: 'Log Out',
-              iconSize: 25,
-            }, {
-              title: 'fav',
-              iconSize: 25,
-              iconName: 'md-notifications',
-              show: 'always',
-            }, {
-              title: 'Search',
-              iconSize: 25,
-              iconName: 'md-search',
-              show: 'always',
-            },
-          ]}
+          // onActionSelected={() => {
+          //   this.handleAction();
+          // }}
+          // actions={[
+          //   {
+          //     title: 'Log Out',
+          //     iconSize: 25,
+          //   }, {
+          //     title: 'fav',
+          //     iconSize: 25,
+          //     iconName: 'md-notifications',
+          //     show: 'always',
+          //   },
+          // ]}
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-          }, {
-            title: 'fav',
-            iconSize: 25,
-            iconName: 'md-notifications',
-            show: 'always',
-          }, {
-            title: 'Search',
-            iconSize: 25,
-            iconName: 'md-search',
-            show: 'always',
-          },
-        ]}
       />)
       ;
     }

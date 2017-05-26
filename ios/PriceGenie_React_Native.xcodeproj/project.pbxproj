@@ -40,6 +40,9 @@
 		FD5D16681E7746D6A2ABFF69 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CAF0E2C7A44B39887EC874 /* SafariServices.framework */; };
 		A0235ACD7C144C989BAF1D0F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 740E405E8E1F4EC49EB87ABC /* SystemConfiguration.framework */; };
 		FFB667812CC84D2D9EA473EE /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6728FB1CE7574DF18420995E /* AddressBook.framework */; };
+		DFC36F8780F54A3284D27CDE /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3E265FDEB24AC4AE75F635 /* libRNDeviceInfo.a */; };
+		172382B22F6743F2B01F0C4D /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BF4FE31014402787DBE6AC /* libRCTFBLogin.a */; };
+		520734494CE14416A9556A89 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8947A3FF261B4C93A347B635 /* libRNFIRMessaging.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +273,12 @@
 		14CAF0E2C7A44B39887EC874 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		740E405E8E1F4EC49EB87ABC /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		6728FB1CE7574DF18420995E /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		81682552D41B49F7851F154C /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; name = "RNDeviceInfo.xcodeproj"; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		8F3E265FDEB24AC4AE75F635 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; name = "libRNDeviceInfo.a"; path = "libRNDeviceInfo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		F18A67DFB76D49468C0F6F72 /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; name = "RCTFBLogin.xcodeproj"; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		32BF4FE31014402787DBE6AC /* libRCTFBLogin.a */ = {isa = PBXFileReference; name = "libRCTFBLogin.a"; path = "libRCTFBLogin.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		1E413BE2A01E41F685862428 /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; name = "RNFIRMessaging.xcodeproj"; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		8947A3FF261B4C93A347B635 /* libRNFIRMessaging.a */ = {isa = PBXFileReference; name = "libRNFIRMessaging.a"; path = "libRNFIRMessaging.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,6 +312,9 @@
 				FD5D16681E7746D6A2ABFF69 /* SafariServices.framework in Frameworks */,
 				A0235ACD7C144C989BAF1D0F /* SystemConfiguration.framework in Frameworks */,
 				FFB667812CC84D2D9EA473EE /* AddressBook.framework in Frameworks */,
+				DFC36F8780F54A3284D27CDE /* libRNDeviceInfo.a in Frameworks */,
+				172382B22F6743F2B01F0C4D /* libRCTFBLogin.a in Frameworks */,
+				520734494CE14416A9556A89 /* libRNFIRMessaging.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +462,9 @@
 				381801B9259A4223B3F8D523 /* RNVectorIcons.xcodeproj */,
 				80FF3BB657584E2E8199B17E /* RNSVG.xcodeproj */,
 				39AB2A2B7D544AD1A393E5C9 /* RNGoogleSignin.xcodeproj */,
+				81682552D41B49F7851F154C /* RNDeviceInfo.xcodeproj */,
+				F18A67DFB76D49468C0F6F72 /* RCTFBLogin.xcodeproj */,
+				1E413BE2A01E41F685862428 /* RNFIRMessaging.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -918,6 +933,9 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -934,6 +952,9 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PriceGenie_React_Native.app/PriceGenie_React_Native";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

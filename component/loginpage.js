@@ -8,11 +8,12 @@
 /* eslint-disable no-shadow*/
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
-import { View, Text, Button, Dimensions, ToastAndroid } from 'react-native';
+import { View, Text, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Icons from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
 import * as action from '../services/google';
 import * as set from '../services/regisuser';
@@ -110,17 +111,29 @@ export class LoginPage extends Component {
           flexDirection: 'column',
         }}
         >
-          <Button onPress={this.cust_login} title="Sign in with Google" color="#841584" />
+
+          <TouchableNativeFeedback onPress={this.cust_login}>
+            <View style={{ backgroundColor: '#841584', height: 40, width: 250, borderRadius: 10, justifyContent: 'center' }}>
+              <Icon name="logo-google" size={25} color="white" >
+                <Text style={{ color: 'white' }}> Sign in with Google</Text>
+              </Icon>
+            </View>
+          </TouchableNativeFeedback>
+          {/* <Button onPress={this.cust_login} title="Sign in with Google" color="#841584" /> */}
           <View style={{
             marginTop: 50,
           }}
           >
+            <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
+              Login with Facebook
+            </Icons.Button>
             <FBLogin
               facebookText={'SIGN IN WITH FACEBOOK'}
               style={{
                 flex: null,
                 padding: 10,
                 marginTop: 10,
+                borderRadius: 10,
               }}
               onpress={(fbLogin) => {
                 this.fbLogin = fbLogin;

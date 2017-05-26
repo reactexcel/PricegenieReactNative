@@ -68,7 +68,7 @@ export class Subcategory extends Component {
   actioncall() {
     this.props.navigator.push({ name: 'login' });
   }
-  _previouspaggoogleSignOut
+  _previouspage() {
     this.props.navigator.pop();
   }
   componentWillMount() {
@@ -96,8 +96,10 @@ export class Subcategory extends Component {
   render() {
     let button = (
       <Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
-        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
+        logo={require('../img/genie-logo-g.png')}
+        onIconClicked={this._previouspage}
+        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        actions={[{
           title: 'Login',
           iconSize: 25,
         },
@@ -125,7 +127,8 @@ export class Subcategory extends Component {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
-          navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
+          navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+          actions={[{
             title: 'Log Out',
             iconSize: 25,
           },

@@ -114,19 +114,26 @@ export class ProductView extends Component {
       if (supported) {
         Linking.openURL(url);
       } else {
-        console.log(`Don't know how to open URI: ${url}`);
+        ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       }
     });
   }
   setAlert(data) {
     getLocalStorageData('user').then((email) => {
-      alert.pricealert(data._id.$id, email).then((value) => {
-        if (!email) {
-          this.props.navigator.push({ name: 'login' });
-        } else {
-          ToastAndroid.show(value.message, ToastAndroid.SHORT);
-        }
-      });
+      const checkUser = JSON.parse(email);
+      if (checkUser[0].islogin == true) {
+        alert.pricealert(data._id.$id, email).then((value) => {
+          if (!email) {
+            this.props.navigator.push({ name: 'login' });
+          } else {
+            ToastAndroid.show(value.message, ToastAndroid.SHORT);
+          }
+        });
+      } else {
+        ToastAndroid.showWithGravity('Sign In Required', ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM);
+        this.props.navigator.push({ name: 'login' });
+      }
     });
   }
   componentWillMount(props) {
@@ -160,13 +167,9 @@ export class ProductView extends Component {
             iconSize: 25,
             iconName: 'md-notifications',
             show: 'always',
-          }, {
-            title: 'Search',
-            iconSize: 25,
-            iconName: 'md-search',
-            show: 'always',
           },
         ]}
+        elevation={4}
       />);
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
@@ -184,13 +187,9 @@ export class ProductView extends Component {
               iconSize: 25,
               iconName: 'md-notifications',
               show: 'always',
-            }, {
-              title: 'Search',
-              iconSize: 25,
-              iconName: 'md-search',
-              show: 'always',
             },
           ]}
+          elevation={4}
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
@@ -206,13 +205,9 @@ export class ProductView extends Component {
             iconSize: 25,
             iconName: 'md-notifications',
             show: 'always',
-          }, {
-            title: 'Search',
-            iconSize: 25,
-            iconName: 'md-search',
-            show: 'always',
           },
         ]}
+        elevation={4}
       />)
       ;
     }
