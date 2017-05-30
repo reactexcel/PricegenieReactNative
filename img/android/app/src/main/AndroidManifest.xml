@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.excellence.PriceGenie"
+    xmlns:tools="http://schemas.android.com/tools">
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="22" />
+
+    <application
+      android:name=".MainApplication"
+      android:allowBackup="true"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:launchMode="singleTop"
+      android:theme="@style/AppTheme">
+        <activity tools:replace="android:theme"
+                android:name="com.facebook.FacebookActivity"
+                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                android:label="@string/app_name"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+      <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+      <service android:name="com.evollu.react.fcm.MessagingService" android:enabled="true" android:exported="true">
+      <intent-filter>
+       <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+      </intent-filter>
+      <intent-filter>
+     <action android:name="fcm.ACTION.HELLO" />
+     <category android:name="android.intent.category.DEFAULT" />
+   </intent-filter>
+      </service>
+
+      <service android:name="com.evollu.react.fcm.InstanceIdService" android:exported="false">
+        <intent-filter>
+       <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+      </intent-filter>
+      </service>
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+      </application>
+
+</manifest>

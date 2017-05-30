@@ -1,0 +1,34 @@
+{
+  "name": "PriceGenie",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "lodash": "^4.17.4",
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.44.2",
+    "react-native-button": "^1.8.2",
+    "react-native-chart": "^1.0.8-beta",
+    "react-native-deprecated-custom-components": "^0.1.0",
+    "react-native-device-info": "^0.10.2",
+    "react-native-facebook-login": "^1.5.0",
+    "react-native-fcm": "^6.2.3",
+    "react-native-google-signin": "^0.10.0",
+    "react-native-pathjs-charts": "0.0.28",
+    "react-native-radio-buttons": "^0.14.0",
+    "react-native-vector-icons": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "1.9.2",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.6"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
