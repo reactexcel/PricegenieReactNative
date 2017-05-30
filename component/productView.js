@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-const style = require('../style/basicStyle');
 import '../style/basicStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 const _ = require('lodash');
@@ -23,6 +22,8 @@ import {
 } from 'react-native';
 import * as facebook from '../services/facebook';
 import * as actions from '../services/google';
+
+const style = require('../style/basicStyle');
 
 export class ProductView extends Component {
   constructor(props) {
@@ -158,57 +159,57 @@ export class ProductView extends Component {
     let button = (
       <Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-          }, {
-            title: 'fav',
-            iconSize: 25,
-            iconName: 'md-notifications',
-            show: 'always',
-          },
-        ]}
+        // actions={[
+        //   {
+        //     title: 'Login',
+        //     iconSize: 25,
+        //   }, {
+        //     title: 'fav',
+        //     iconSize: 25,
+        //     iconName: 'md-notifications',
+        //     show: 'always',
+        //   },
+        // ]}
         elevation={4}
       />);
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          onActionSelected={() => {
-            this.handleAction();
-          }}
-          actions={[
-            {
-              title: 'Log Out',
-              iconSize: 25,
-            }, {
-              title: 'fav',
-              iconSize: 25,
-              iconName: 'md-notifications',
-              show: 'always',
-            },
-          ]}
+          // onActionSelected={() => {
+          //   this.handleAction();
+          // }}
+          // actions={[
+          //   {
+          //     title: 'Log Out',
+          //     iconSize: 25,
+          //   }, {
+          //     title: 'fav',
+          //     iconSize: 25,
+          //     iconName: 'md-notifications',
+          //     show: 'always',
+          //   },
+          // ]}
           elevation={4}
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-          }, {
-            title: 'fav',
-            iconSize: 25,
-            iconName: 'md-notifications',
-            show: 'always',
-          },
-        ]}
+        // onActionSelected={() => {
+        //   this.actioncall();
+        // }}
+        // actions={[
+        //   {
+        //     title: 'Login',
+        //     iconSize: 25,
+        //   }, {
+        //     title: 'fav',
+        //     iconSize: 25,
+        //     iconName: 'md-notifications',
+        //     show: 'always',
+        //   },
+        // ]}
         elevation={4}
-      />)
+       />)
       ;
     }
 
@@ -328,9 +329,10 @@ export class ProductView extends Component {
                     color: 'white',
                   }} styleDisabled={{
                     color: 'blue',
-                  }} onPress={() => {
-                    this.setAlert(data);
                   }}
+                  //  onPress={() => {
+                  //   this.setAlert(data);
+                  // }}
                 >
                   SET ALERT
                 </Button>
@@ -361,14 +363,14 @@ export class ProductView extends Component {
                 marginLeft: 38,
                 fontSize: 11,
               }}
-              >
+                >
                 {`${data.varient_data.data.length} Varient`}
               </Text>
               : <Text style={{
                 marginLeft: 38,
                 fontSize: 11,
               }}
-              />}
+                />}
           </TouchableOpacity>
         </View>
       </View>

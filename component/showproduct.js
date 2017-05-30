@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    Navigator,
+    // Navigator,
     ListView,
     TouchableOpacity,
     Image,
 } from 'react-native';
+import { Navigator } from 'react-native-deprecated-custom-components';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export class ProductList extends Component {
@@ -40,7 +41,7 @@ export class ProductList extends Component {
             borderTopWidth: 1,
             borderTopColor: STRING.GreyColor,
           }}
-        >
+                                                                                                              >
           <TouchableOpacity
             onPress={() => this.props.selectedProduct(data)} style={{
               flex: 1,
@@ -84,14 +85,14 @@ export class ProductList extends Component {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={{
+          {/* <TouchableOpacity style={{
             flexDirection: 'row',
             alignItems: 'flex-end',
             marginTop: 50,
-          }}
-          >
+            }}
+            >
             <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>)}
       />
     );

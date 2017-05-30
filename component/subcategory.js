@@ -13,6 +13,7 @@ import {
     TextInput,
     TouchableOpacity,
     AsyncStorage,
+    ToastAndroid,
     Image,
     ActivityIndicator,
 } from 'react-native';
@@ -99,11 +100,11 @@ export class Subcategory extends Component {
         logo={require('../img/genie-logo-g.png')}
         onIconClicked={this._previouspage}
         navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        actions={[{
-          title: 'Login',
-          iconSize: 25,
-        },
-        ]}
+        // actions={[{
+        //   title: 'Login',
+        //   iconSize: 25,
+        // },
+        // ]}
       >
         <View style={{
           flex: 1,
@@ -128,14 +129,14 @@ export class Subcategory extends Component {
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
           navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          actions={[{
-            title: 'Log Out',
-            iconSize: 25,
-          },
-          ]}
-          onActionSelected={() => {
-            this.handleAction();
-          }}
+          // actions={[{
+          //   title: 'Log Out',
+          //   iconSize: 25,
+          // },
+          // ]}
+          // onActionSelected={() => {
+          //   this.handleAction();
+          // }}
         >
           <View style={{
             flex: 1,
@@ -157,15 +158,8 @@ export class Subcategory extends Component {
           ) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
-        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
-          title: 'Login',
-          iconSize: 25,
-        },
-        ]}
-        onActionSelected={() => {
-          this.actioncall();
-        }}
-      >
+        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+       >
         <View style={{
           flex: 1,
           alignSelf: 'center',

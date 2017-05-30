@@ -8,10 +8,10 @@
 /* eslint-disable no-shadow*/
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
+import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
 import { View, Text, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
-import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';

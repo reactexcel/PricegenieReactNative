@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-const style = require('../style/basicStyle');
 import '../style/basicStyle';
 import {
     View,
     Text,
-    Navigator,
+    // Navigator,
     ListView,
     TouchableOpacity,
     Image,
@@ -12,9 +11,12 @@ import {
     ScrollView,
     Linking,
 } from 'react-native';
-const _ = require('lodash');
+import { Navigator } from 'react-native-deprecated-custom-components';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+const _ = require('lodash');
+const style = require('../style/basicStyle');
 
 export class VariantPoduct extends Component {
   constructor(props) {

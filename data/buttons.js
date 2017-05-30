@@ -1,4 +1,4 @@
-export default Buttons_data = [
+const Buttons_data = [
   {
     name: 'Price',
     case: 'pricelth',
@@ -29,3 +29,4 @@ export default Buttons_data = [
     },
   },
 ];
+export default Buttons_data;

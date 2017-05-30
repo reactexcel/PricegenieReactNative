@@ -136,13 +136,13 @@ export class ProductPage extends Component {
           style={[
             styles.centering, {
               transform: [
-                {
+              {
                   scale: 0.7,
-                },
+              },
               ],
             },
           ]} animating={this.state.load} color={STRING.BlueColor} size={32}
-        />
+          />
       : null}</View>
     );
   }
@@ -214,7 +214,7 @@ export class ProductPage extends Component {
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-      />)
+       />)
       ;
     }
 
@@ -242,7 +242,7 @@ export class ProductPage extends Component {
               height,
               justifyContent: 'space-around',
             }}
-            >
+              >
               <View>
                 <Text style={{
                   padding: 10,
@@ -298,7 +298,7 @@ export class ProductPage extends Component {
                 >
                   <ListView
                     style={{
-                      height: height - 116,
+                      height: height - 40,
                     }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false} enableEmptySections renderRow={(data, key) => (<View
                       key={key} style={{
                         flex: 1,
@@ -309,7 +309,7 @@ export class ProductPage extends Component {
                         paddingRight: 10,
                         paddingBottom: 10,
                       }} elevation={2}
-                    >
+                                                                                                                                                                                                                                                        >
                       <View style={{
                         flex: 1,
                         alignItems: 'center',
@@ -360,14 +360,14 @@ export class ProductPage extends Component {
                             </Text>
                           </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={{
+                        {/* <TouchableOpacity style={{
                           flexDirection: 'row',
                           alignItems: 'flex-end',
                           marginTop: 50,
-                        }}
-                        >
+                          }}
+                          >
                           <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                       </View>
                     </View>)}
                   />

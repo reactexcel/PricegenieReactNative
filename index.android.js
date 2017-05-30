@@ -1,5 +1,7 @@
 /**
  * Sample React Native App
+/**
+ * Sample React Native App
  * https://github.com/facebook/react-native
  * @flow
  */
@@ -16,9 +18,10 @@ import {
     Text,
     View,
     StatusBar,
-    Navigator,
+    // Navigator,
     BackAndroid,
 } from 'react-native';
+import { Navigator } from 'react-native-deprecated-custom-components';
 import { Home } from './component/home';
 import { getLocalStorageData } from './services/localstorage';
 import { setLocalStorageData } from './services/localstorage';
@@ -32,16 +35,9 @@ import { LoginPage } from './component/loginpage';
 
 
 const onMainScreen = true;
-BackAndroid.addEventListener('hardwareBackPress', () => {
-  if (route.name !== 'home') {
-    navigator.pop();
-    return true;
-  }
-  return false;
-});
 
-export class PriceGenie_React_Native extends Component {
-  constructor(props) {
+export default class PriceGenie extends Component {
+constructor(props) {
     super(props);
     this.renderScene = this.renderScene.bind(this);
     this.configureScene = this.configureScene.bind(this);
@@ -100,10 +96,17 @@ export class PriceGenie_React_Native extends Component {
     }
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
 });
-AppRegistry.registerComponent('PriceGenie_React_Native', () => PriceGenie_React_Native);
+
+AppRegistry.registerComponent('PriceGenie', () => PriceGenie);
