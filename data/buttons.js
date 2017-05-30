@@ -20,13 +20,14 @@ const Buttons_data = [
       name: 'ios-heart-outline',
       size: 0,
     },
-  }, {
-    name: 'Filter',
-    case: 'filter',
-    icon: {
-      name: 'ios-color-filter-outline',
-      size: 20,
-    },
   },
+  // {
+  //   name: 'Filter',
+  //   case: 'filter',
+  //   icon: {
+  //     name: 'ios-color-filter-outline',
+  //     size: 20,
+  //   },
+  // },
 ];
 export default Buttons_data;

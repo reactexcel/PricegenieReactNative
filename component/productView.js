@@ -311,32 +311,7 @@ export class ProductView extends Component {
                   BUY NOW
                 </Button>
               </View>
-              <View style={{
-                marginLeft: 20,
-                marginTop: 13,
-                width: 70,
-                height: 45,
-              }}
-              >
-                <Button
-                  containerStyle={{
-                    padding: 4.5,
-                    height: 25,
-                    borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
-                  }} style={{
-                    fontSize: 11,
-                    color: 'white',
-                  }} styleDisabled={{
-                    color: 'blue',
-                  }}
-                  //  onPress={() => {
-                  //   this.setAlert(data);
-                  // }}
-                >
-                  SET ALERT
-                </Button>
-              </View>
+              
             </View>
           </View>
         </View>

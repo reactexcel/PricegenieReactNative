@@ -14,7 +14,7 @@ import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome';
-import DeviceInfo from 'react-native-device-info';
+// import DeviceInfo from 'react-native-device-info';
 import * as action from '../services/google';
 import * as set from '../services/regisuser';
 import '../style/basicStyle';
@@ -38,7 +38,7 @@ export class LoginPage extends Component {
         const userEmail = data.email;
         const gender = 'male';
         const logintype = 'google';
-        const device_id = DeviceInfo.getUniqueID();
+        // const device_id = DeviceInfo.getUniqueID();
         const islogin = true;
         const userdata = [{ data, logintype, islogin }];
         set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {

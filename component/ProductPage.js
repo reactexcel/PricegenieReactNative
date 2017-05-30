@@ -147,11 +147,12 @@ export class ProductPage extends Component {
     );
   }
   selectOption(options) {
-    if (options.name == 'Filter') {
-      this.props.navigator.push({ name: 'filter' });
-    } else {
-      let short = options.case,
-        { name, sub_id, id } = this.props,
+    console.log(options);
+    // if (options.name == 'Filter') {
+    //   this.props.navigator.push({ name: 'filter' });
+    // } else {
+    if(options.name !== 'Filter'){
+      let short = options.case,{ name, sub_id, id } = this.props,
         opt = options.name;
       component = this;
       this.setState({
@@ -256,33 +257,40 @@ export class ProductPage extends Component {
               </View>
             </View>
             : <View>
-              {/* <View style={{
+              <View style={{
                 backgroundColor: 'white',
-                }}
-                >
+              }}
+              >
                 <View style={{
                   padding: 5,
                 }}
                 >
                   <SegmentedControls
-                    renderOption={(option, selected, onSelect, index) => (<View style={{
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                    }}
-                                                                          >
-                      <View >
-                        <Text>{option.name}</Text>
-                      </View>
+                    renderOption={(option, selected, onSelect, index) => { if(option.name !== 'Filter'){ return(
                       <View style={{
-                        marginLeft: 2,
+                        flexDirection: 'row',
+                        justifyContent: 'center',
                       }}
                       >
-                        <Icon {...option.icon} />
-                      </View>
-                    </View>)} options={this.state.options} onSelection={this.selectOption} selectedOption={this.state.shorting} extractText={option => option.name}
+                        <View >
+                          <Text>{option.name}</Text>
+                        </View>
+                        <View style={{
+                          marginLeft: 2,
+                        }}
+                        >
+                          <Icon {...option.icon} />
+                        </View>
+                      </View>)
+                    }
+                    }}
+                    options={this.state.options}
+                    onSelection={this.selectOption}
+                    selectedOption={this.state.shorting}
+                    extractText={option => option.name}
                   />
                 </View>
-              </View> */}
+              </View>
               <ScrollView >
                 {filter
                   ? <View style={style.loder_inside}>
@@ -298,8 +306,10 @@ export class ProductPage extends Component {
                 >
                   <ListView
                     style={{
-                      height: height - 40,
-                    }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore} initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false} enableEmptySections renderRow={(data, key) => (<View
+                      height: height - 116,
+                    }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore}
+                    initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false}
+                    enableEmptySections renderRow={(data, key) => (<View
                       key={key} style={{
                         flex: 1,
                         backgroundColor: 'white',
@@ -308,8 +318,7 @@ export class ProductPage extends Component {
                         paddingTop: 5,
                         paddingRight: 10,
                         paddingBottom: 10,
-                      }} elevation={2}
-                                                                                                                                                                                                                                                        >
+                      }} elevation={2} >
                       <View style={{
                         flex: 1,
                         alignItems: 'center',
@@ -334,9 +343,7 @@ export class ProductPage extends Component {
                               uri: data.image,
                             }}
                           />
-                          <View style={{
-                            flex: 1,
-                          }}
+                          <View style={{ flex: 1 }}
                           >
                             <Text style={{
                               color: STRING.LightBlackColor,

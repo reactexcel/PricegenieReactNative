@@ -19,7 +19,7 @@ import {
     View,
     StatusBar,
     // Navigator,
-    BackAndroid,
+    BackHandler,
 } from 'react-native';
 import { Navigator } from 'react-native-deprecated-custom-components';
 import { Home } from './component/home';
@@ -35,6 +35,13 @@ import { LoginPage } from './component/loginpage';
 
 
 const onMainScreen = true;
+BackHandler.addEventListener('hardwareBackPress', function() {
+    if (route.name !== "home") {
+        navigator.pop();
+        return true;
+    }
+    return false;
+});
 
 export default class PriceGenie extends Component {
 constructor(props) {
