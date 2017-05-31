@@ -90,8 +90,8 @@ android {
         applicationId "com.excellence.PriceGenie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 100259
-        versionName "1.0.26"
+        versionCode 100260
+        versionName "1.0.27"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -143,7 +143,6 @@ dependencies {
     compile project(':react-native-fcm')
     compile 'com.google.firebase:firebase-core:10.0.1' //this decides your firebase SDK version
     compile project(':react-native-facebook-login')
-    compile project(':react-native-device-info')
     compile project(':react-native-google-signin')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"

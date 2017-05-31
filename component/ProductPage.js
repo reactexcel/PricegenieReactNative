@@ -306,13 +306,14 @@ export class ProductPage extends Component {
                 >
                   <ListView
                     style={{
-                      height: height - 116,
+                      height: height - 105,
                     }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore}
-                    initialListSize={4} onEndReachedThreshold={100} showsVerticalScrollIndicator={false}
+                    initialListSize={4} onEndReachedThreshold={30} showsVerticalScrollIndicator={false}
                     enableEmptySections renderRow={(data, key) => (<View
                       key={key} style={{
                         flex: 1,
                         backgroundColor: 'white',
+                        height:90,
                         marginTop: 5,
                         marginBottom: 1,
                         paddingTop: 5,
