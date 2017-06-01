@@ -48,6 +48,7 @@ export class ProductView extends Component {
     this._previouspage = this._previouspage.bind(this);
     this.selectedProduct = this.selectedProduct.bind(this);
     this.handleAction = this.handleAction.bind(this);
+    this.actioncall=this.actioncall.bind(this);
   }
   actioncall() {
     this.props.navigator.push({ name: 'login' });
@@ -159,55 +160,62 @@ export class ProductView extends Component {
     let button = (
       <Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        // actions={[
-        //   {
-        //     title: 'Login',
-        //     iconSize: 25,
-        //   }, {
-        //     title: 'fav',
-        //     iconSize: 25,
-        //     iconName: 'md-notifications',
-        //     show: 'always',
-        //   },
-        // ]}
+        onActionSelected={() => {
+          console.log('hello');
+          this.actioncall();
+        }}
+        actions={[
+          {
+            title: 'Login',
+            iconSize: 25,
+          },
+          // {
+          //   title: 'fav',
+          //   iconSize: 25,
+          //   iconName: 'md-notifications',
+          //   show: 'always',
+          // },
+        ]}
         elevation={4}
       />);
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          // onActionSelected={() => {
-          //   this.handleAction();
-          // }}
-          // actions={[
-          //   {
-          //     title: 'Log Out',
-          //     iconSize: 25,
-          //   }, {
-          //     title: 'fav',
-          //     iconSize: 25,
-          //     iconName: 'md-notifications',
-          //     show: 'always',
-          //   },
-          // ]}
+          onActionSelected={() => {
+            this.handleAction();
+          }}
+          actions={[
+            {
+              title: 'Log Out',
+              iconSize: 25,
+            },
+            // {
+            //   title: 'fav',
+            //   iconSize: 25,
+            //   iconName: 'md-notifications',
+            //   show: 'always',
+            // },
+          ]}
           elevation={4}
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        // onActionSelected={() => {
-        //   this.actioncall();
-        // }}
-        // actions={[
-        //   {
-        //     title: 'Login',
-        //     iconSize: 25,
-        //   }, {
-        //     title: 'fav',
-        //     iconSize: 25,
-        //     iconName: 'md-notifications',
-        //     show: 'always',
-        //   },
-        // ]}
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+        actions={[
+          {
+            title: 'Login',
+            iconSize: 25,
+          },
+          // {
+          //   title: 'fav',
+          //   iconSize: 25,
+          //   iconName: 'md-notifications',
+          //   show: 'always',
+          // },
+        ]}
         elevation={4}
        />)
       ;
@@ -311,7 +319,7 @@ export class ProductView extends Component {
                   BUY NOW
                 </Button>
               </View>
-              
+
             </View>
           </View>
         </View>
@@ -364,11 +372,11 @@ export class ProductView extends Component {
               style={{
                 height: height - 90,
               }} animating={this.state.load} color={STRING.BlueColor} size={32}
-            />
+              />
             : <View style={{
               flex: 1,
             }}
-            >
+              >
               <View
                 style={{
                   flex: 1,
@@ -464,7 +472,7 @@ export class ProductView extends Component {
                     marginRight: 9,
                     marginTop: 9,
                   }}
-                >
+                  >
                   <View style={{
                     marginLeft: 30,
                     paddingTop: 5,
@@ -515,7 +523,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                >
+                  >
                   <View
                     style={{
                       flex: 1,

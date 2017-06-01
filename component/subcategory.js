@@ -55,7 +55,7 @@ export class Subcategory extends Component {
         this.props.navigator.push({ name: 'home' });
       }, error => error);
     } else if (this.state.user[0].logintype == 'google') {
-      action.googlesignout().then(() => {
+      action.googleSignOut().then(() => {
         const data = '';
         const logintype = '';
         const islogin = false;
@@ -100,11 +100,15 @@ export class Subcategory extends Component {
         logo={require('../img/genie-logo-g.png')}
         onIconClicked={this._previouspage}
         navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        // actions={[{
-        //   title: 'Login',
-        //   iconSize: 25,
-        // },
-        // ]}
+        onActionSelected={() => {
+          console.log('hello');
+          this.actioncall();
+        }}
+        actions={[{
+          title: 'Login',
+          iconSize: 25,
+        },
+        ]}
       >
         <View style={{
           flex: 1,
@@ -129,14 +133,14 @@ export class Subcategory extends Component {
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
           navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          // actions={[{
-          //   title: 'Log Out',
-          //   iconSize: 25,
-          // },
-          // ]}
-          // onActionSelected={() => {
-          //   this.handleAction();
-          // }}
+          actions={[{
+            title: 'Log Out',
+            iconSize: 25,
+          },
+          ]}
+          onActionSelected={() => {
+            this.handleAction();
+          }}
         >
           <View style={{
             flex: 1,
@@ -157,8 +161,17 @@ export class Subcategory extends Component {
         </Icon.ToolbarAndroid>
           ) :
       (<Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
+        logo={require('../img/genie-logo-g.png')}
+        onIconClicked={this._previouspage}
         navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+        actions={[{
+          title: 'Login',
+          iconSize: 25,
+        },
+        ]}
        >
         <View style={{
           flex: 1,

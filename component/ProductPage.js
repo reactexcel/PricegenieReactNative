@@ -16,6 +16,7 @@ import {
     AsyncStorage,
     Image,
     ActivityIndicator,
+    ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SegmentedControls } from 'react-native-radio-buttons';
@@ -147,7 +148,6 @@ export class ProductPage extends Component {
     );
   }
   selectOption(options) {
-    console.log(options);
     // if (options.name == 'Filter') {
     //   this.props.navigator.push({ name: 'filter' });
     // } else {
@@ -178,43 +178,61 @@ export class ProductPage extends Component {
     let button = (
       <Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        // onActionSelected={() => {
-        //   this.actioncall();
-        // }}
+        onActionSelected={() => {
+          this.actioncall();
+        }}
 
-        // actions={[
-        //   {
-        //     title: 'Login',
-        //     iconSize: 25,
-        //   }, {
-        //     title: 'fav',
-        //     iconSize: 25,
-        //     iconName: 'md-notifications',
-        //     show: 'always',
-        //   },
-        // ]}
+        actions={[
+          {
+            title: 'Login',
+            iconSize: 25,
+          },
+          // {
+          //   title: 'fav',
+          //   iconSize: 25,
+          //   iconName: 'md-notifications',
+          //   show: 'always',
+          // },
+        ]}
       />);
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          // onActionSelected={() => {
-          //   this.handleAction();
-          // }}
-          // actions={[
-          //   {
-          //     title: 'Log Out',
-          //     iconSize: 25,
-          //   }, {
-          //     title: 'fav',
-          //     iconSize: 25,
-          //     iconName: 'md-notifications',
-          //     show: 'always',
-          //   },
-          // ]}
+          onActionSelected={() => {
+            this.handleAction();
+          }}
+          actions={[
+            {
+              title: 'Log Out',
+              iconSize: 25,
+            },
+            // {
+            //   title: 'fav',
+            //   iconSize: 25,
+            //   iconName: 'md-notifications',
+            //   show: 'always',
+            // },
+          ]}
         />) :
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        onActionSelected={() => {
+          this.actioncall();
+        }}
+
+        actions={[
+          {
+            title: 'Login',
+            iconSize: 25,
+          },
+          // {
+          //   title: 'fav',
+          //   iconSize: 25,
+          //   iconName: 'md-notifications',
+          //   show: 'always',
+          // },
+        ]}
        />)
       ;
     }

@@ -95,65 +95,68 @@ export class Home extends Component {
           this.actioncall();
         }}
         overflowIconName="md-more"
-        // actions={[
-        //   {
-        //     title: 'fav',
-        //     iconName: 'md-notifications',
-        //     iconSize: 25,
-        //     show: 'always',
-        //   }, {
-        //     title: 'Login',
-        //     iconSize: 25,
-        //   },
-        // ]}
+        actions={[
+          // {
+          //   title: 'fav',
+          //   iconName: 'md-notifications',
+          //   iconSize: 25,
+          //   show: 'always',
+          // },
+          {
+            title: 'Login',
+            iconSize: 25,
+          },
+        ]}
       />);
-    // if (this.state.user !== undefined && this.state.user !== null) {
-    //   button = this.state.user[0].islogin == true ? (
-    //     <Icon.ToolbarAndroid
-    //       logo={require('../img/genie-logo-g.png')}
-    //       title=""
-    //       style={style.toolbar}
-    //       titleColor="white"
-    //       // onActionSelected={() => {
-    //       //   this.handleAction();
-    //       // }}
-    //       overflowIconName="md-more"
-    //       // actions={[
-    //       //   {
-    //       //     title: 'fav',
-    //       //     iconName: 'md-notifications',
-    //       //     iconSize: 25,
-    //       //     show: 'always',
-    //       //   }, {
-    //       //     title: 'Log Out',
-    //       //     iconSize: 25,
-    //       //   },
-    //       // ]}
-    //     />) :
-    //   (
-    //     <Icon.ToolbarAndroid
-    //       logo={require('../img/genie-logo-g.png')}
-    //       title=""
-    //       style={style.toolbar}
-    //       titleColor="white"
-    //       // onActionSelected={() => {
-    //       //   this.actioncall();
-    //       // }}
-    //       overflowIconName="md-more"
-    //       // actions={[
-    //       //   {
-    //       //     title: 'fav',
-    //       //     iconName: 'md-notifications',
-    //       //     iconSize: 25,
-    //       //     show: 'always',
-    //       //   }, {
-    //       //     title: 'Login',
-    //       //     iconSize: 25,
-    //       //   },
-    //       // ]}
-    //     />
-    //   );
-    // }
+    if (this.state.user !== undefined && this.state.user !== null) {
+      button = this.state.user[0].islogin == true ? (
+        <Icon.ToolbarAndroid
+          logo={require('../img/genie-logo-g.png')}
+          title=""
+          style={style.toolbar}
+          titleColor="white"
+          onActionSelected={() => {
+            this.handleAction();
+          }}
+          overflowIconName="md-more"
+          actions={[
+            // {
+            //   title: 'fav',
+            //   iconName: 'md-notifications',
+            //   iconSize: 25,
+            //   show: 'always',
+            // },
+            {
+              title: 'Log Out',
+              iconSize: 25,
+            },
+          ]}
+        />) :
+      (
+        <Icon.ToolbarAndroid
+          logo={require('../img/genie-logo-g.png')}
+          title=""
+          style={style.toolbar}
+          titleColor="white"
+          onActionSelected={() => {
+            this.actioncall();
+          }}
+          overflowIconName="md-more"
+          actions={[
+            // {
+            //   title: 'fav',
+            //   iconName: 'md-notifications',
+            //   iconSize: 25,
+            //   show: 'always',
+            // },
+            {
+              title: 'Login',
+              iconSize: 25,
+            },
+          ]}
+        />
+      );
+    }
     const { width, height } = Dimensions.get('window');
     return (
       <View style={{

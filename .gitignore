@@ -24,7 +24,7 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-android/
+android/app/google-services.json
 android/.gradle/*
 android/.gradle/2.4/taskArtifacts/*.bin
 build/

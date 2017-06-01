@@ -32,11 +32,9 @@ export function googleSignOut() {
   return new Promise((resolve, reject) => {
     GoogleSignin.configure({}).then(() => {
       GoogleSignin.signOut().then(() => {
-        console.log('out');
         const out = true;
         resolve(out);
       }).catch((err) => {
-        console.log('apitest');
         reject(err);
       });
     });

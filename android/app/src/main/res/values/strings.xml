@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PriceGenie</string>
+    <string name="fb_app_id">467986553238213</string>
+    <string name="fb_login_protocol_scheme">fb{467986553238213}</string>
 </resources>

@@ -14,8 +14,9 @@ import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icons from 'react-native-vector-icons/FontAwesome';
-// import DeviceInfo from 'react-native-device-info';
+import DeviceInfo from 'react-native-device-info';
 import * as action from '../services/google';
+import * as actions from '../services/facebook';
 import * as set from '../services/regisuser';
 import '../style/basicStyle';
 
@@ -28,6 +29,7 @@ export class LoginPage extends Component {
     super(props);
     this.cust_login = this.cust_login.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.loginWithFacebook=this.loginWithFacebook.bind(this);
   }
   cust_login() {
     action.google().then((data) => {
@@ -38,7 +40,7 @@ export class LoginPage extends Component {
         const userEmail = data.email;
         const gender = 'male';
         const logintype = 'google';
-        // const device_id = DeviceInfo.getUniqueID();
+        const device_id = DeviceInfo.getUniqueID();
         const islogin = true;
         const userdata = [{ data, logintype, islogin }];
         set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {
@@ -52,9 +54,23 @@ export class LoginPage extends Component {
           this.props.navigator.push({ name: 'home' });
         });
         setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity(`welcome${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+        ToastAndroid.showWithGravity(`welcome ${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
       }
     }, error => error);
+  }
+  loginWithFacebook(){
+    actions.facebooksignin().then((data)=>{
+      console.log(data);
+      const user = JSON.stringify(data);
+      const profile=JSON.parse(user);
+      console.log(profile.profile);
+      const logintype = 'facebook';
+      const islogin = true;
+      const userdata = [{ data, logintype, islogin }];
+      setLocalStorageData('user', JSON.stringify(userdata));
+      ToastAndroid.showWithGravity(`welcome User`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      this.props.navigator.push({ name: 'home' });
+    },error => error);
   }
   handleLogin(data) {
     const logintype = 'facebook';
@@ -111,15 +127,9 @@ export class LoginPage extends Component {
           flexDirection: 'column',
         }}
         >
-
-          <TouchableNativeFeedback onPress={this.cust_login}>
-            <View style={{ backgroundColor: '#841584', height: 40, width: 250, borderRadius: 10, justifyContent: 'center' }}>
-              <Icon name="logo-google" size={25} color="white" >
-                <Text style={{ color: 'white' }}> Sign in with Google</Text>
-              </Icon>
-            </View>
-          </TouchableNativeFeedback>
-          {/* <Button onPress={this.cust_login} title="Sign in with Google" color="#841584" /> */}
+          <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_login}>
+            Login with Google
+          </Icons.Button>
           <View style={{
             marginTop: 50,
           }}
@@ -127,7 +137,7 @@ export class LoginPage extends Component {
             <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
               Login with Facebook
             </Icons.Button>
-            <FBLogin
+            {/* <FBLogin
               facebookText={'SIGN IN WITH FACEBOOK'}
               style={{
                 flex: null,
@@ -149,7 +159,7 @@ export class LoginPage extends Component {
               onError={function (data) {}}
               onCancel={function () {}}
               onPermissionsMissing={function (data) {}}
-            />
+            /> */}
           </View>
         </View>
       </View>
