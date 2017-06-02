@@ -24,57 +24,66 @@ const style = require('../style/basicStyle');
 
 const { width, height } = Dimensions.get('window');
 
-export class LoginPage extends Component {
+export class LogoutPage extends Component {
   constructor(props) {
     super(props);
-    this.cust_login = this.cust_login.bind(this);
-    this.loginWithFacebook=this.loginWithFacebook.bind(this);
+    this.state={
+      user : '',
+    }
+    this.cust_logout = this.cust_logout.bind(this);
+    this.logoutWithFacebook=this.logoutWithFacebook.bind(this);
   }
-  cust_login() {
-    action.google().then((data) => {
-      if (data && data.email) {
-        const info = 'mobile_google';
-        const id = data.id;
-        const name = data.name;
-        const userEmail = data.email;
-        const gender = 'male';
-        const logintype = 'google';
-        const device_id = DeviceInfo.getUniqueID();
-        const islogin = true;
-        const userdata = [{ data, logintype, islogin }];
-        set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {
-          const user_key = value.data.userid;
-          FCM.getFCMToken().then((token) => {
-            const fcm_reg_id = token;
-            set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
-            setLocalStorageData('user', JSON.stringify(userdata));
-            ToastAndroid.showWithGravity(`welcome ${name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
-          });
-          this.props.close();
-          this.props.navigator.push({name:'home'});
-        });
-        setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity(`welcome ${name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
-      }
+  componentDidMount() {
+    getLocalStorageData('user').then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    });
+  }
+  cust_logout() {
+    action.googleSignOut().then(() => {
+      const data = '';
+      const logintype = '';
+      const islogin = false;
+      const userdata = [{ data, logintype, islogin }];
+      setLocalStorageData('user', JSON.stringify(userdata));
+      ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      this.props.close();
+      this.props.navigator.push({name:'home'})
     }, error => error);
   }
-  loginWithFacebook(){
-    actions.facebooksignin().then((data)=>{
-      const user = data.profile;
-      const profile=JSON.parse(user);
-      const logintype = 'facebook';
-      const islogin = true;
-      const userdata = [{ data, logintype, islogin, profile }];
-      setLocalStorageData('user', JSON.stringify(userdata));
-      ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+  logoutWithFacebook(){
+    actions.facebooksignout().then(() => {
+      const data = '';
+      const logintype = '';
+      const islogin = false;
+      const userdata = [{ data, logintype, islogin }];
+      setLocalStorageData('user', userdata);
+      ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       this.props.close();
-      this.props.navigator.push({name:'home'});
-    },error => error);
+      this.props.navigator.push({name:'home'})
+    }, error => error);
   }
   _previouspage() {
     this.props.navigator.pop();
   }
   render() {
+    let button=<Text></Text>;
+    let name=<Text></Text>;
+    if(this.state.user !== undefined && this.state.user !== ''){
+      if(this.state.user[0].logintype==='google'){
+        name=this.state.user[0].data.name;
+      } else {
+        name=this.state.user[0].profile.name;
+      }
+      button=this.state.user[0].logintype==="google"?(
+        <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_logout}>
+          Logout with Google
+        </Icons.Button>
+      ):(
+        <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.logoutWithFacebook}>
+          Logout with Facebook
+        </Icons.Button>
+      )
+    }
     return (
       <View style={{
         flex: 1,
@@ -107,7 +116,7 @@ export class LoginPage extends Component {
               color: 'white',
             }}
             >
-              Sign IN
+              Sign Out
             </Text>
           </View>
         </Icon.ToolbarAndroid> */}
@@ -119,21 +128,17 @@ export class LoginPage extends Component {
         }}
         >
           <View style={{marginBottom:30,flexDirection:'row',justifyContent:'center'}}>
-            <Text style={{fontSize:20,fontWeight:'bold'}}>Hello Guest</Text>
+            <Text style={{fontSize:20,fontWeight:'bold'}}>Hello {name}</Text>
           </View>
           <View style={{borderColor:'black',borderWidth:1,marginBottom:20}}>
           </View>
-          <Icons.Button  name="google" backgroundColor="#841584" onPress={this.cust_login}>
-            Login with Google
-          </Icons.Button>
-          <View style={{
-            marginTop: 50,
-          }}
-          >
-            <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
-              Login with Facebook
+          {button}
+          {/* <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_logout}>
+            Logout with Google
             </Icons.Button>
-          </View>
+            <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.logoutWithFacebook}>
+            Logout with Facebook
+          </Icons.Button> */}
         </View>
       </View>
     );

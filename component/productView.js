@@ -161,7 +161,6 @@ export class ProductView extends Component {
       <Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
         onActionSelected={() => {
-          console.log('hello');
           this.actioncall();
         }}
         actions={[
@@ -254,50 +253,75 @@ export class ProductView extends Component {
       <View
         key={key} style={{
           marginTop: 5,
-          borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderRadius:10,
+          // borderWidth: 1,
+          borderColor: STRING.GreyColor,
         }}
       >
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-        >
-          <Image
-            style={{
-              marginTop: 13,
-              marginLeft: 3,
-              borderColor: 'red',
-              height: 75,
-              width: 75,
-            }} resizeMode="contain" source={{
-              uri: data.image,
-            }}
-          />
-          <View style={{
+        <View style={{marginBottom:5,marginTop:5}}>
+          {/* <View style={{
             flex: 1,
-            marginTop: 10,
-            marginLeft: 5,
-            flexDirection: 'column',
-          }}
-          >
+            flexDirection: 'row',
+            borderBottomWidth:1,
+            borderBottomColor:STRING.GreyColor,
+            }}
+            >
             <Text style={{
-              fontSize: 14,
+              marginLeft:5,
+              fontSize: 13,
+              fontWeight:'bold'
             }}
             >{data.name}</Text>
-            <Text style={{
-              fontSize: 14.5,
-              fontWeight: 'bold',
+          </View> */}
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent:'center',
+          }}
+          >
+            <Image
+              style={{
+                marginTop:20,
+                marginLeft:5,
+                height: 55,
+                width: 75,
+              }} resizeMode="contain" source={{
+                uri: data.logo,
+              }}
+            />
+            <Image
+              style={{
+                marginTop: 10,
+                marginLeft: 3,
+                borderColor: 'red',
+                height: 65,
+                width: 65,
+              }} resizeMode="contain" source={{
+                uri: data.image,
+              }}
+            />
+            <View style={{
+              flex: 1,
+              marginTop: 34,
+              // marginLeft: 5,
+              flexDirection: 'column',
             }}
-            >Rs. {data.price}</Text>
+            >
+              <Text style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+              }}
+              >Rs. {data.price}</Text>
+            </View>
             <View style={{
               flex: 1,
               flexDirection: 'row',
             }}
             >
               <View style={{
-                marginTop: 13,
-                width: 70,
+                marginTop: 30,
+                marginLeft:13,
+                width: 57,
                 height: 45,
               }}
               >
@@ -319,42 +343,43 @@ export class ProductView extends Component {
                   BUY NOW
                 </Button>
               </View>
-
             </View>
           </View>
         </View>
         <View style={{
-          flex: 1,
-          marginBottom: 10,
-          flexDirection: 'row',
+            flex: 1,
+            flexDirection: 'row',
+            marginTop:3,
+            borderTopWidth: 1,
+            borderTopColor: STRING.GreyColor,
+            borderBottomWidth: 1,
+            borderBottomColor: STRING.GreyColor,
         }}
         >
-          <Image
-            style={{
-              height: 17,
-              width: 44,
-            }} resizeMode="contain" source={{
-              uri: data.logo,
-            }}
-          />
-          <TouchableOpacity onPress={() => {
-            this.callVaiant(data.varient_data.data);
-          }}
-          >
-            {data.varient_data.data
-              ? <Text style={{
-                marginLeft: 38,
-                fontSize: 11,
+          <View style={{width:140,marginTop:2,marginBottom:2,borderRightWidth:1,borderRightColor:STRING.GreyColor}} />
+          <View style={{width:95,marginTop:2,marginBottom:2,justifyContent:'center',borderRightWidth:1,borderRightColor:STRING.GreyColor}} >
+            <View>
+              <TouchableOpacity onPress={() => {
+                this.callVaiant(data.varient_data.data);
               }}
-                >
-                {`${data.varient_data.data.length} Varient`}
-              </Text>
-              : <Text style={{
-                marginLeft: 38,
-                fontSize: 11,
-              }}
-                />}
-          </TouchableOpacity>
+              >
+                {data.varient_data.data
+                  ? <Text style={{
+                    alignSelf:'center',
+                    fontSize: 16,
+                  }}
+                    >
+                    {`${data.varient_data.data.length} Varient`}
+                  </Text>
+                  : <Text style={{
+                    alignSelf:'center',
+                    fontSize: 13,
+                    height:15,
+                  }}>
+                  </Text>}
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </View>
             ));
@@ -444,8 +469,8 @@ export class ProductView extends Component {
                 <View style={{
                   flex: 1,
                   flexDirection: 'column',
-                  marginLeft: 28,
-                  marginRight: 28,
+                  marginLeft: 10,
+                  marginRight: 10,
                   marginTop: 9,
                   marginBottom: 9,
                 }}
@@ -553,7 +578,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                >
+                  >
                   <View
                     style={{
                       flex: 1,

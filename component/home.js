@@ -43,11 +43,15 @@ export class Home extends Component {
     };
     this._sendDataforward = this._sendDataforward.bind(this);
     this.handleAction = this.handleAction.bind(this);
+    this.openDrawer=this.openDrawer.bind(this);
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
     });
+  }
+  openDrawer(){
+    this.props.openstate();
   }
   _sendDataforward(data) {
     const cat = data.case;
@@ -92,7 +96,7 @@ export class Home extends Component {
         style={style.toolbar}
         titleColor="white"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
         overflowIconName="md-more"
         actions={[
@@ -116,7 +120,7 @@ export class Home extends Component {
           style={style.toolbar}
           titleColor="white"
           onActionSelected={() => {
-            this.handleAction();
+            this.openDrawer();
           }}
           overflowIconName="md-more"
           actions={[
@@ -139,7 +143,7 @@ export class Home extends Component {
           style={style.toolbar}
           titleColor="white"
           onActionSelected={() => {
-            this.actioncall();
+            this.openDrawer();
           }}
           overflowIconName="md-more"
           actions={[
