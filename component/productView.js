@@ -279,54 +279,50 @@ export class ProductView extends Component {
             justifyContent:'center',
           }}
           >
-            <Image
-              style={{
-                marginTop:20,
-                marginLeft:5,
-                height: 55,
-                width: 75,
-              }} resizeMode="contain" source={{
-                uri: data.logo,
-              }}
-            />
-            <Image
-              style={{
-                marginTop: 10,
-                marginLeft: 3,
-                borderColor: 'red',
-                height: 65,
-                width: 65,
-              }} resizeMode="contain" source={{
-                uri: data.image,
-              }}
-            />
+            <View style={{width:155,flexDirection:'row'}}>
+              <Image
+                style={{
+                  marginTop:20,
+                  marginLeft:5,
+                  height: 55,
+                  width: 110,
+                }} resizeMode="contain" source={{
+                  uri: data.logo,
+                }}
+              />
+            </View>
+            <View >
+              <Image
+                style={{
+                  marginTop: 10,
+                  // marginLeft: 3,
+                  borderColor: 'red',
+                  height: 65,
+                  width: 75,
+                }} resizeMode="contain" source={{
+                  uri: data.image,
+                }}
+              />
+            </View>
             <View style={{
               flex: 1,
-              marginTop: 34,
+              marginTop: 10,
               // marginLeft: 5,
               flexDirection: 'column',
             }}
             >
               <Text style={{
-                fontSize: 20,
+                alignSelf:'flex-end',
+                fontSize: 19,
                 fontWeight: 'bold',
               }}
               >Rs. {data.price}</Text>
-            </View>
-            <View style={{
-              flex: 1,
-              flexDirection: 'row',
-            }}
-            >
-              <View style={{
-                marginTop: 30,
-                marginLeft:13,
-                width: 57,
-                height: 45,
-              }}
-              >
+              <View style={{justifyContent:'center',alignSelf:'center'}}>
                 <Button
                   containerStyle={{
+                    marginTop:8,
+                    marginLeft:15,
+                    width:70,
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
@@ -344,6 +340,37 @@ export class ProductView extends Component {
                 </Button>
               </View>
             </View>
+            {/* <View style={{
+              flex: 1,
+              flexDirection: 'row',
+              }}
+            > */}
+            {/* <View style={{
+                marginTop: 30,
+                marginLeft:13,
+                width: 57,
+                height: 45,
+                }}
+                >
+                <Button
+                  containerStyle={{
+                    padding: 4.5,
+                    height: 25,
+                    borderRadius: 3,
+                    backgroundColor: STRING.RedColor,
+                  }} style={{
+                    fontSize: 11,
+                    color: 'white',
+                  }} styleDisabled={{
+                    color: 'blue',
+                  }} onPress={() => {
+                    this.pressButton(data.url);
+                  }}
+                >
+                  BUY NOW
+                </Button>
+            </View> */}
+            {/* </View> */}
           </View>
         </View>
         <View style={{
@@ -356,8 +383,8 @@ export class ProductView extends Component {
             borderBottomColor: STRING.GreyColor,
         }}
         >
-          <View style={{width:140,marginTop:2,marginBottom:2,borderRightWidth:1,borderRightColor:STRING.GreyColor}} />
-          <View style={{width:95,marginTop:2,marginBottom:2,justifyContent:'center',borderRightWidth:1,borderRightColor:STRING.GreyColor}} >
+          <View style={{width:150,marginTop:2,marginBottom:2,borderRightWidth:1,borderRightColor:STRING.GreyColor}} />
+          <View style={{width:98,marginTop:2,marginBottom:2,justifyContent:'center',borderRightWidth:1,borderRightColor:STRING.GreyColor}} >
             <View>
               <TouchableOpacity onPress={() => {
                 this.callVaiant(data.varient_data.data);

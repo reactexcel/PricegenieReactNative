@@ -40,83 +40,96 @@ export class VariantPoduct extends Component {
     const variant_product = _.map(dataPoints, (data, key) => (
       <View
         key={key} style={{
-          marginTop: 5,
-          borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderBottomWidth: 1,
+          borderBottomColor: STRING.GreyColor,
         }}
       >
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-        >
-          <Image
-            style={{
-              marginTop: 13,
-              marginLeft: 3,
-              height: 90,
-              width: 90,
-            }} resizeMode="contain" source={{
-              uri: data.image,
-            }}
-          />
-          <View style={{
+        <View style={{marginBottom:5,marginTop:5}}>
+          {/* <View style={{
             flex: 1,
-            marginTop: 10,
-            marginLeft: 5,
-            flexDirection: 'column',
-          }}
-          >
-            <Text style={{
-              fontSize: 14,
-            }}
-            >{data.name}</Text>
-            <Text style={{
-              fontSize: 14.5,
-              fontWeight: 'bold',
-            }}
-            >Rs. {data.price}</Text>
-            <View style={{
-              marginTop: 12,
-              width: 90,
-              height: 45,
+            flexDirection: 'row',
+            borderBottomWidth:1,
+            borderBottomColor:STRING.GreyColor,
             }}
             >
-              <Button
-                containerStyle={{
-                  padding: 4.5,
-                  height: 25,
-                  borderRadius: 3,
-                  backgroundColor: STRING.RedColor,
-                }} style={{
-                  fontSize: 11,
-                  color: 'white',
-                }} styleDisabled={{
-                  color: 'blue',
-                }} onPress={() => {
-                  this.pressButton(data.url);
+            <Text style={{
+              marginLeft:5,
+              fontSize: 13,
+              fontWeight:'bold'
+            }}
+            >{data.name}</Text>
+          </View> */}
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent:'center',
+            marginBottom:10,
+          }}
+          >
+            <View style={{width:115,flexDirection:'row'}}>
+              <Image
+                style={{
+                  marginTop:10,
+                  marginLeft:5,
+                  height: 55,
+                  width: 110,
+                }} resizeMode="contain" source={{
+                  uri: data.logo,
                 }}
-              >
-                BUY NOW
-              </Button>
+              />
+            </View>
+            <View >
+              <Image
+                style={{
+                  marginTop: 5,
+                  // marginLeft: 3,
+                  borderColor: 'red',
+                  height: 65,
+                  width: 75,
+                }} resizeMode="contain" source={{
+                  uri: data.image,
+                }}
+              />
+            </View>
+            <View style={{
+              flex: 1,
+              marginTop: 5,
+              // marginLeft: 5,
+              flexDirection: 'column',
+            }}
+            >
+              <Text style={{
+                alignSelf:'flex-end',
+                fontSize: 18,
+                fontWeight: 'bold',
+              }}
+              >Rs. {data.price}</Text>
+              <View style={{justifyContent:'center',alignSelf:'center'}}>
+                <Button
+                  containerStyle={{
+                    marginTop:8,
+                    marginLeft:55,
+                    width:70,
+                    padding: 4.5,
+                    height: 25,
+                    borderRadius: 3,
+                    backgroundColor: STRING.RedColor,
+                  }} style={{
+                    fontSize: 11,
+                    color: 'white',
+                  }} styleDisabled={{
+                    color: 'blue',
+                  }} onPress={() => {
+                    this.pressButton(data.url);
+                  }}
+                >
+                  BUY NOW
+                </Button>
+              </View>
             </View>
           </View>
         </View>
-        <View style={{
-          flex: 1,
-          marginBottom: 10,
-          flexDirection: 'column',
-        }}
-        >
-          <Image
-            style={{
-              height: 17,
-              width: 44,
-            }} resizeMode="contain" source={{
-              uri: data.logo,
-            }}
-          />
-        </View>
+
       </View>
             ));
     return (
@@ -138,8 +151,8 @@ export class VariantPoduct extends Component {
           <ScrollView >
             <View style={{
               flexDirection: 'column',
-              marginLeft: 28,
-              marginRight: 28,
+              marginLeft: 10,
+              marginRight: 10,
               marginTop: 9,
               marginBottom: 9,
             }}
