@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "146739917342",
+    "firebase_url": "https://micro-citadel-503.firebaseio.com",
+    "project_id": "micro-citadel-503",
+    "storage_bucket": "micro-citadel-503.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146739917342:android:95981ce1c3c03894",
+        "android_client_info": {
+          "package_name": "com.excellence.PriceGenie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146739917342-p8f9m8iiheik9vk8co3j2gtrpiba80oa.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "146739917342-qda4pkgllv3taic63i0oeklh6pmq5u0p.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "146739917342-8m51alco75k2e1d95dg3ebotq7stegai.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.excellence.PriceGenie",
+            "certificate_hash": "052dda60050c34c0b99738dcb0ebed0bbea1f628"
+          }
+        },
+        {
+          "client_id": "146739917342.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABWxULOH10iADOJjJcrm2zdv2_NqDKsVQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146739917342-p8f9m8iiheik9vk8co3j2gtrpiba80oa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

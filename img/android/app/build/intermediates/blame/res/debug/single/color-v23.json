@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_track.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_spinner.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_edittext.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_text_material.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_seek_thumb.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_default.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_default.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_btn_checkable.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_thumb.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "/var/www/html/native/implement/PriceGenie_React_Native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+    }
+]

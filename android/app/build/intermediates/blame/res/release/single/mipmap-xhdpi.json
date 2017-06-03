@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/var/www/html/native/implement/App/PriceGenie/android/app/build/intermediates/res/merged/release/mipmap-xhdpi/icon.png",
+        "source": "/var/www/html/native/implement/App/PriceGenie/android/app/src/main/res/mipmap-xhdpi/icon.png"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PriceGenie/android/app/build/intermediates/res/merged/release/mipmap-xhdpi/ic_launcher.png",
+        "source": "/var/www/html/native/implement/App/PriceGenie/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    }
+]

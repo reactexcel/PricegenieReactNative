@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/var/www/html/native/implement/App/PriceGenie_2/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/var/www/html/native/implement/App/PriceGenie_2/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PriceGenie/android/app/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/var/www/html/native/implement/App/PriceGenie/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/color-v23/abc_color_highlight_material.xml"
+    }
+]
