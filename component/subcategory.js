@@ -28,7 +28,8 @@ export class Subcategory extends Component {
     super(props);
     this.state = {
       user: '',
-      buttonName: '',
+      currentRoute: {},
+      previousRoute: {},
     };
     this.state = {
       subcat: '',
@@ -36,43 +37,10 @@ export class Subcategory extends Component {
       animating: true,
     };
     this._previouspage = this._previouspage.bind(this);
-    this.handleAction = this.handleAction.bind(this);
-  }
-  componentDidMount() {
-    getLocalStorageData('user').then((value) => {
-      this.setState({ user: JSON.parse(value) });
-    });
-  }
-  handleAction() {
-    if (this.state.user[0].logintype == 'facebook') {
-      facebook.facebooksignout().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', userdata);
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    } else if (this.state.user[0].logintype == 'google') {
-      action.googleSignOut().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    }
-  }
-  actioncall() {
-    this.props.navigator.push({ name: 'login' });
-  }
-  _previouspage() {
-    this.props.navigator.pop();
+    this.openDrawer = this.openDrawer.bind(this);
   }
   componentWillMount() {
+    console.log('will');
     const sub_name = this.props.name;
     this.setState({ subcat: sub_name });
     actions.getCategory('subcategory').then((data) => {
@@ -80,6 +48,57 @@ export class Subcategory extends Component {
         this.setState({ arrcat: data, animating: false });
       }
     });
+    getLocalStorageData('currentRoute').then((val) => {
+      console.log(val, 'curr');
+      if (val === null) {
+        console.log('null');
+        console.log(route, 'route');
+        const routeName = route.name;
+        const routePayload = route.payload;
+        const routeData = ({ routeName, routePayload });
+        setLocalStorageData('currentRoute', JSON.stringify(routeData));
+      } else {
+        console.log('mamam');
+        const routeValue = JSON.parse(val);
+        console.log(routeValue, 'check');
+        if (routeValue.routeName !== route.name) {
+          console.log('not match');
+          const routeName = route.name;
+          const routePayload = route.payload;
+          const routeData = ({ routeName, routePayload });
+          setLocalStorageData('currentRoute', JSON.stringify(routeData));
+          console.log('state');
+        } else {
+          console.log('match');
+          this.setState({ currentRoute: JSON.parse(val) });
+        }
+      }
+    });
+    getLocalStorageData('previousRoute').then((val) => {
+      console.log(val, 'prev');
+      if (val === null) {
+        console.log(route, 'route');
+        const routeName = route.name;
+        const routePayload = route.payload;
+        const routeData = ({ routeName, routePayload });
+        setLocalStorageData('previousRoute', JSON.stringify(routeData));
+      } else {
+        this.setState({ prev: JSON.parse(val) });
+      }
+    });
+  }
+  componentDidMount() {
+    console.log('did');
+    getLocalStorageData('user').then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    });
+  }
+
+  openDrawer() {
+    this.props.openstate();
+  }
+  _previouspage() {
+    this.props.navigator.pop();
   }
   _onPressSingleRequest(data) {
     const cat_name = data.cat_name;
@@ -99,20 +118,23 @@ export class Subcategory extends Component {
       <Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')}
         onIconClicked={this._previouspage}
-        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        // overflowIconName="ios-list"
         onActionSelected={() => {
-          console.log('hello');
-          this.actioncall();
+          this.openDrawer();
         }}
         actions={[{
           title: 'Login',
           iconSize: 25,
+          iconName: 'ios-list',
+          show: 'always',
         },
         ]}
       >
         <View style={{
           flex: 1,
           alignSelf: 'center',
+          justifyContent: 'center',
           borderWidth: 0,
           paddingLeft: width / 9,
           paddingTop: 15,
@@ -120,6 +142,7 @@ export class Subcategory extends Component {
         >
           <Text style={{
             fontSize: 15,
+            alignSelf: 'center',
             color: 'white',
           }}
           >
@@ -132,14 +155,17 @@ export class Subcategory extends Component {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
           logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage}
-          navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+          navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+          // overflowIconName="ios-list"
           actions={[{
             title: 'Log Out',
             iconSize: 25,
+            iconName: 'ios-list',
+            show: 'always',
           },
           ]}
           onActionSelected={() => {
-            this.handleAction();
+            this.openDrawer();
           }}
         >
           <View style={{
@@ -163,16 +189,19 @@ export class Subcategory extends Component {
       (<Icon.ToolbarAndroid
         logo={require('../img/genie-logo-g.png')}
         onIconClicked={this._previouspage}
-        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        // overflowIconName="ios-list"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
         actions={[{
           title: 'Login',
           iconSize: 25,
+          iconName: 'ios-list',
+          show: 'always',
         },
         ]}
-       >
+      >
         <View style={{
           flex: 1,
           alignSelf: 'center',
@@ -241,7 +270,7 @@ export class Subcategory extends Component {
         >
           {button}
           {/* <Icon.ToolbarAndroid
-            logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" actions={[{
+            logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="ios-list" actions={[{
               title: 'Login',
               iconSize: 25,
             },

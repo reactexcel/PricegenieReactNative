@@ -79,7 +79,7 @@
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="4f4c677a84addb433473e2f1d2374bb48f4ec802">
+        sha1="21476696faec01ac1ed7fc2e7bc3ca16584e2b97">
         <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-google-signin-unspecified_5bda356db4857294e3fb8bf16c931fe2861e9838.jar" />
     </item>
     <item

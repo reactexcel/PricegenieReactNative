@@ -9,7 +9,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import { View, Text, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
+import { View, Text, Button, Image, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -51,7 +51,7 @@ export class LoginPage extends Component {
             ToastAndroid.showWithGravity(`welcome ${name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
           });
           this.props.close();
-          this.props.navigator.push({ name: 'home' });
+          this.props.handleStorage(1);
         });
         setLocalStorageData('user', JSON.stringify(userdata));
         ToastAndroid.showWithGravity(`welcome ${name}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
@@ -68,12 +68,12 @@ export class LoginPage extends Component {
       setLocalStorageData('user', JSON.stringify(userdata));
       ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       this.props.close();
-      this.props.navigator.push({ name: 'home' });
     }, error => error);
   }
   _previouspage() {
     this.props.navigator.pop();
   }
+
   render() {
     return (
       // <Image source={require('../img/splash.png')}>
@@ -82,38 +82,9 @@ export class LoginPage extends Component {
         flexDirection: 'column',
       }}
       >
-        {/* <Icon.ToolbarAndroid
-            logo={require('../img/genie-logo-g.png')}
-            onIconClicked={() => {
-            this._previouspage();
-            }}
-            navIconName="ios-arrow-back"
-            title=""
-            style={style.toolbar}
-            titleColor="white"
-            overflowIconName="md-more"
-            action={[]}
-            elevation={4}
-            >
-            <View style={{
-            flex: 1,
-            alignSelf: 'center',
-            borderWidth: 0,
-            paddingLeft: width / 4.3,
-            paddingTop: 15,
-            }}
-            >
-            <Text style={{
-              fontSize: 15,
-              color: 'white',
-            }}
-            >
-              Sign IN
-            </Text>
-            </View>
-          </Icon.ToolbarAndroid> */}
+        <Image style={{ height: 170, width: 150, borderRadius: 100, alignSelf: 'center' }} source={require('../img/images.jpg')} />
         <View style={{
-          marginTop: 100,
+          marginTop: 30,
             // margin: 50,
           flex: 1,
           flexDirection: 'column',
@@ -124,15 +95,15 @@ export class LoginPage extends Component {
           </View>
           <View style={{ borderColor: 'black', borderWidth: 1, marginBottom: 20 }} />
           <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_login}>
-              Login with Google
-            </Icons.Button>
+            Login with Google
+          </Icons.Button>
           <View style={{
             marginTop: 50,
           }}
           >
             <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
-                Login with Facebook
-              </Icons.Button>
+              Login with Facebook
+            </Icons.Button>
           </View>
         </View>
       </View>

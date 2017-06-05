@@ -24,7 +24,6 @@ import Drawer from 'react-native-drawer';
 import { Home } from './home';
 import { getLocalStorageData } from '../services/localstorage';
 import { setLocalStorageData } from '../services/localstorage';
-import * as store from '../services/localstorage';
 import { Subcategory } from './subcategory';
 import { ProductPage } from './ProductPage';
 import { Filter } from './filter';
@@ -87,13 +86,16 @@ export default class Index extends Component {
       const child = <Home navigator={navigator} openstate={this.openDrawer} {...route.payload} />;
       return (<DrawerView navigator={navigator} openDrawer={this.state.drawerOpen} closeDrawer={this.closeDrawer} child={child} {...route.payload} />);
     } else if (route.name === 'subcategory') {
-      return (<Subcategory navigator={navigator} {...route.payload} />);
+      const child = <Subcategory navigator={navigator} openstate={this.openDrawer} {...route.payload} />;
+      return (<DrawerView navigator={navigator} openDrawer={this.state.drawerOpen} closeDrawer={this.closeDrawer} child={child} {...route.payload} />);
     } else if (route.name === 'productPage') {
-      return (<ProductPage navigator={navigator} {...route.payload} />);
+      const child = <ProductPage navigator={navigator} openstate={this.openDrawer} {...route.payload} />;
+      return (<DrawerView navigator={navigator} openDrawer={this.state.drawerOpen} closeDrawer={this.closeDrawer} child={child} {...route.payload} />);
     } else if (route.name === 'filter') {
       return (<Filter navigator={navigator} {...route.payload} />);
     } else if (route.name === 'productview') {
-      return (<ProductView navigator={navigator} {...route.payload} />);
+      const child = <ProductView navigator={navigator} openstate={this.openDrawer} {...route.payload} />;
+      return (<DrawerView navigator={navigator} openDrawer={this.state.drawerOpen} closeDrawer={this.closeDrawer} child={child} {...route.payload} />);
     } else if (route.name === 'graph') {
       return (<PieChartBasic navigator={navigator} {...route.payload} />);
     } else if (route.name === 'variant') {

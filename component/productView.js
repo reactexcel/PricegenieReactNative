@@ -47,39 +47,15 @@ export class ProductView extends Component {
     };
     this._previouspage = this._previouspage.bind(this);
     this.selectedProduct = this.selectedProduct.bind(this);
-    this.handleAction = this.handleAction.bind(this);
-    this.actioncall=this.actioncall.bind(this);
+    this.openDrawer = this.openDrawer.bind(this);
   }
-  actioncall() {
-    this.props.navigator.push({ name: 'login' });
+  openDrawer() {
+    this.props.openstate();
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
     });
-  }
-  handleAction() {
-    if (this.state.user[0].logintype == 'facebook') {
-      facebook.facebooksignout().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', userdata);
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    } else if (this.state.user[0].logintype == 'google') {
-      actions.googleSignOut().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    }
   }
   _previouspage() {
     this.props.navigator.pop();
@@ -159,14 +135,17 @@ export class ProductView extends Component {
   render() {
     let button = (
       <Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        // overflowIconName="md-more"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
         actions={[
           {
             title: 'Login',
             iconSize: 25,
+            show: 'always',
+            iconName: 'ios-list',
           },
           // {
           //   title: 'fav',
@@ -180,14 +159,17 @@ export class ProductView extends Component {
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+          // overflowIconName="md-more"
           onActionSelected={() => {
-            this.handleAction();
+            this.openDrawer();
           }}
           actions={[
             {
               title: 'Log Out',
               iconSize: 25,
+              show: 'always',
+              iconName: 'ios-list',
             },
             // {
             //   title: 'fav',
@@ -199,14 +181,17 @@ export class ProductView extends Component {
           elevation={4}
         />) :
       (<Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        // overflowIconName="md-more"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
         actions={[
           {
             title: 'Login',
             iconSize: 25,
+            show: 'always',
+            iconName: 'ios-list',
           },
           // {
           //   title: 'fav',
@@ -216,7 +201,7 @@ export class ProductView extends Component {
           // },
         ]}
         elevation={4}
-       />)
+      />)
       ;
     }
 
@@ -253,12 +238,12 @@ export class ProductView extends Component {
       <View
         key={key} style={{
           marginTop: 5,
-          borderRadius:10,
+          borderRadius: 10,
           // borderWidth: 1,
           borderColor: STRING.GreyColor,
         }}
       >
-        <View style={{marginBottom:5,marginTop:5}}>
+        <View style={{ marginBottom: 5, marginTop: 5 }}>
           {/* <View style={{
             flex: 1,
             flexDirection: 'row',
@@ -276,16 +261,16 @@ export class ProductView extends Component {
           <View style={{
             flex: 1,
             flexDirection: 'row',
-            justifyContent:'center',
+            justifyContent: 'center',
           }}
           >
-            <View style={{width:155,flexDirection:'row'}}>
+            <View style={{ width: 155, flexDirection: 'row' }}>
               <Image
                 style={{
-                  marginTop:20,
-                  marginLeft:5,
-                  height: 55,
-                  width: 110,
+                  marginTop: 20,
+                  marginLeft: 5,
+                  height: '50%',
+                  width: '75%',
                 }} resizeMode="contain" source={{
                   uri: data.logo,
                 }}
@@ -297,7 +282,7 @@ export class ProductView extends Component {
                   marginTop: 10,
                   // marginLeft: 3,
                   borderColor: 'red',
-                  height: 65,
+                  height: '85%',
                   width: 75,
                 }} resizeMode="contain" source={{
                   uri: data.image,
@@ -307,22 +292,21 @@ export class ProductView extends Component {
             <View style={{
               flex: 1,
               marginTop: 10,
-              // marginLeft: 5,
               flexDirection: 'column',
             }}
             >
               <Text style={{
-                alignSelf:'flex-end',
+                alignSelf: 'flex-end',
                 fontSize: 19,
                 fontWeight: 'bold',
               }}
               >Rs. {data.price}</Text>
-              <View style={{justifyContent:'center',alignSelf:'center'}}>
+              <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 <Button
                   containerStyle={{
-                    marginTop:8,
-                    marginLeft:15,
-                    width:70,
+                    marginTop: 8,
+                    marginLeft: 15,
+                    width: 70,
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
@@ -374,17 +358,17 @@ export class ProductView extends Component {
           </View>
         </View>
         <View style={{
-            flex: 1,
-            flexDirection: 'row',
-            marginTop:3,
-            borderTopWidth: 1,
-            borderTopColor: STRING.GreyColor,
-            borderBottomWidth: 1,
-            borderBottomColor: STRING.GreyColor,
+          flex: 1,
+          flexDirection: 'row',
+          marginTop: 3,
+          borderTopWidth: 1,
+          borderTopColor: STRING.GreyColor,
+          borderBottomWidth: 1,
+          borderBottomColor: STRING.GreyColor,
         }}
         >
-          <View style={{width:150,marginTop:2,marginBottom:2,borderRightWidth:1,borderRightColor:STRING.GreyColor}} />
-          <View style={{width:98,marginTop:2,marginBottom:2,justifyContent:'center',borderRightWidth:1,borderRightColor:STRING.GreyColor}} >
+          <View style={{ width: 150, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
+          <View style={{ width: 98, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
             <View>
               <TouchableOpacity onPress={() => {
                 this.callVaiant(data.varient_data.data);
@@ -392,18 +376,18 @@ export class ProductView extends Component {
               >
                 {data.varient_data.data
                   ? <Text style={{
-                    alignSelf:'center',
-                    fontSize: 16,
+                    alignSelf: 'center',
+                    fontSize: 12,
                   }}
-                    >
-                    {`${data.varient_data.data.length} Varient`}
+                  >
+                    {`${data.varient_data.data.length} Variant`}
                   </Text>
                   : <Text style={{
-                    alignSelf:'center',
+                    alignSelf: 'center',
                     fontSize: 13,
-                    height:15,
-                  }}>
-                  </Text>}
+                    height: 13,
+                  }}
+                  />}
               </TouchableOpacity>
             </View>
           </View>
@@ -424,11 +408,11 @@ export class ProductView extends Component {
               style={{
                 height: height - 90,
               }} animating={this.state.load} color={STRING.BlueColor} size={32}
-              />
+            />
             : <View style={{
               flex: 1,
             }}
-              >
+            >
               <View
                 style={{
                   flex: 1,
@@ -524,7 +508,7 @@ export class ProductView extends Component {
                     marginRight: 9,
                     marginTop: 9,
                   }}
-                  >
+                >
                   <View style={{
                     marginLeft: 30,
                     paddingTop: 5,
@@ -575,7 +559,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                  >
+                >
                   <View
                     style={{
                       flex: 1,
@@ -605,7 +589,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                  >
+                >
                   <View
                     style={{
                       flex: 1,

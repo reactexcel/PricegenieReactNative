@@ -56,7 +56,7 @@ export class ProductPage extends Component {
     this._loadMore = this._loadMore.bind(this);
     this._footer = this._footer.bind(this);
     this.selectOption = this.selectOption.bind(this);
-    this.handleAction = this.handleAction.bind(this);
+    this.openDrawer = this.openDrawer.bind(this);
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
@@ -76,28 +76,8 @@ export class ProductPage extends Component {
       });
     });
   }
-  handleAction() {
-    if (this.state.user[0].logintype == 'facebook') {
-      facebook.facebooksignout().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', userdata);
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    } else if (this.state.user[0].logintype == 'google') {
-      action.googleSignOut().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    }
+  openDrawer() {
+    this.props.openstate();
   }
   _previouspage() {
     this.props.navigator.pop();
@@ -178,15 +158,18 @@ export class ProductPage extends Component {
   render() {
     let button = (
       <Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        overflowIconName="ios-list"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
 
         actions={[
           {
             title: 'Login',
             iconSize: 25,
+            show: 'always',
+            iconName: 'ios-list',
           },
           // {
           //   title: 'fav',
@@ -199,14 +182,17 @@ export class ProductPage extends Component {
     if (this.state.user !== undefined && this.state.user !== null) {
       button = this.state.user[0].islogin == true ? (
         <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+          // overflowIconName="ios-list"
           onActionSelected={() => {
-            this.handleAction();
+            this.openDrawer();
           }}
           actions={[
             {
               title: 'Log Out',
               iconSize: 25,
+              show: 'always',
+              iconName: 'ios-list',
             },
             // {
             //   title: 'fav',
@@ -217,15 +203,18 @@ export class ProductPage extends Component {
           ]}
         />) :
       (<Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        // overflowIconName="ios-list"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
 
         actions={[
           {
             title: 'Login',
             iconSize: 25,
+            show: 'always',
+            iconName: 'ios-list',
           },
           // {
           //   title: 'fav',

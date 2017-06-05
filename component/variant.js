@@ -71,8 +71,8 @@ export class VariantPoduct extends Component {
                 style={{
                   marginTop: 10,
                   marginLeft: 5,
-                  height: 55,
-                  width: 110,
+                  height: '75%',
+                  width: '90%',
                 }} resizeMode="contain" source={{
                   uri: data.logo,
                 }}
@@ -83,7 +83,7 @@ export class VariantPoduct extends Component {
                 style={{
                   marginTop: 5,
                   borderColor: 'red',
-                  height: 65,
+                  height: '85%',
                   width: 75,
                 }} resizeMode="contain" source={{
                   uri: data.image,
@@ -106,7 +106,7 @@ export class VariantPoduct extends Component {
                 <Button
                   containerStyle={{
                     marginTop: 9,
-                    marginLeft: 65,
+                    marginLeft: 60,
                     width: 68,
                     padding: 4.5,
                     height: 25,

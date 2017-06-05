@@ -9,10 +9,10 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import { View, Text, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
+import { View, Text, Image, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Zocial';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import DeviceInfo from 'react-native-device-info';
 import * as action from '../services/google';
@@ -27,11 +27,11 @@ const { width, height } = Dimensions.get('window');
 export class LogoutPage extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      user : '',
-    }
+    this.state = {
+      user: '',
+    };
     this.cust_logout = this.cust_logout.bind(this);
-    this.logoutWithFacebook=this.logoutWithFacebook.bind(this);
+    this.logoutWithFacebook = this.logoutWithFacebook.bind(this);
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
@@ -47,10 +47,10 @@ export class LogoutPage extends Component {
       setLocalStorageData('user', JSON.stringify(userdata));
       ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       this.props.close();
-      this.props.navigator.push({name:'home'})
+      this.props.handleStorage(1);
     }, error => error);
   }
-  logoutWithFacebook(){
+  logoutWithFacebook() {
     actions.facebooksignout().then(() => {
       const data = '';
       const logintype = '';
@@ -59,88 +59,71 @@ export class LogoutPage extends Component {
       setLocalStorageData('user', userdata);
       ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       this.props.close();
-      this.props.navigator.push({name:'home'})
+      this.props.handleStorage(1);
     }, error => error);
   }
   _previouspage() {
     this.props.navigator.pop();
   }
   render() {
-    let button=<Text></Text>;
-    let name=<Text></Text>;
-    if(this.state.user !== undefined && this.state.user !== ''){
-      if(this.state.user[0].logintype==='google'){
-        name=this.state.user[0].data.name;
+    let button = <Text />;
+    let name = <Text />;
+    let pic = <Image style={{ height: 170, width: 150, borderRadius: 100, alignSelf: 'center' }} source={require('../img/images.jpg')} />;
+    if (this.state.user !== undefined && this.state.user !== '') {
+      if (this.state.user[0].logintype === 'google') {
+        name = this.state.user[0].data.name;
+        if (this.state.user[0].data.photo !== null && this.state.user[0].data.photo !== undefined) {
+          pic = <Image style={{ height: 150, width: 150, alignSelf: 'center', borderRadius: 100 }} source={{ uri: this.state.user[0].data.photo }} />;
+        } else {
+          pic = <Image style={{ height: 170, width: 150, borderRadius: 100, alignSelf: 'center' }} source={require('../img/images.jpg')} />;
+        }
       } else {
-        name=this.state.user[0].profile.name;
+        const photo = JSON.parse(this.state.user[0].data.profile);
+        if (photo.picture.data.url !== null && photo.picture.data.url !== undefined) {
+          pic = <Image style={{ height: 150, width: 150, borderWidth: 1, borderColor: 'black', alignSelf: 'center', borderRadius: 100 }} source={{ uri: photo.picture.data.url }} />;
+        } else {
+          pic = <Image style={{ height: 170, width: 150, borderRadius: 100, alignSelf: 'center' }} source={require('../img/images.jpg')} />;
+        }
+        name = this.state.user[0].profile.name;
       }
-      button=this.state.user[0].logintype==="google"?(
-        <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_logout}>
-          Logout with Google
-        </Icons.Button>
-      ):(
-        <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.logoutWithFacebook}>
-          Logout with Facebook
-        </Icons.Button>
-      )
+      button = this.state.user[0].logintype === 'google' ? (
+        <TouchableNativeFeedback onPress={this.cust_logout}>
+          <View style={{ flexDirection: 'row' }}>
+            <Icons name="sign-out" size={19} style={{ marginRight: 5 }} />
+            <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold' }}>Logout</Text>
+          </View>
+        </TouchableNativeFeedback>
+      ) : (
+        <TouchableNativeFeedback onPress={this.logoutWithFacebook}>
+          <View style={{ flexDirection: 'row' }}>
+            <Icons name="sign-out" size={19} style={{ marginRight: 5 }} />
+            <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold' }}>Logout</Text>
+          </View>
+        </TouchableNativeFeedback>
+      );
     }
     return (
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-      }}
-      >
-        {/* <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')}
-          onIconClicked={() => {
-            this._previouspage();
-          }}
-          navIconName="ios-arrow-back"
-          title=""
-          style={style.toolbar}
-          titleColor="white"
-          overflowIconName="md-more"
-          action={[]}
-          elevation={4}
-          >
-          <View style={{
-            flex: 1,
-            alignSelf: 'center',
-            borderWidth: 0,
-            paddingLeft: width / 4.3,
-            paddingTop: 15,
-          }}
-          >
-            <Text style={{
-              fontSize: 15,
-              color: 'white',
-            }}
-            >
-              Sign Out
-            </Text>
-          </View>
-        </Icon.ToolbarAndroid> */}
+      <View>
         <View style={{
-          marginTop: 100,
-          // margin: 50,
           flex: 1,
           flexDirection: 'column',
         }}
         >
-          <View style={{marginBottom:30,flexDirection:'row',justifyContent:'center'}}>
-            <Text style={{fontSize:20,fontWeight:'bold'}}>Hello {name}</Text>
+          {pic}
+          <View style={{
+            marginTop: 40,
+            flex: 1,
+            flexDirection: 'column',
+          }}
+          >
+            <View style={{ marginBottom: 30, flexDirection: 'row', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Hello {name}</Text>
+            </View>
+            <View style={{ borderColor: 'black', borderWidth: 1, marginBottom: 20 }} />
+            {button}
           </View>
-          <View style={{borderColor:'black',borderWidth:1,marginBottom:20}}>
-          </View>
-          {button}
-          {/* <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_logout}>
-            Logout with Google
-            </Icons.Button>
-            <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.logoutWithFacebook}>
-            Logout with Facebook
-          </Icons.Button> */}
         </View>
       </View>
     );
   }
-}
+        }

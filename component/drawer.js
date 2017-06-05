@@ -1,29 +1,31 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import Drawer from 'react-native-drawer';
-import  ControlPanel from './controlpanel';
+import ControlPanel from './controlpanel';
 
-class DrawerView extends Component{
- constructor(){
-   super();
-   this.state={
-     drawer:false,
-   }
-   this.closeDrawer=this.closeDrawer.bind(this);
- }
- componentWillReceiveProps(props){
-  if (props.openDrawer=== true) {
-    this.setState({drawer:true})
-  }else if (props.openDrawer === false) {
-    this.setState({drawer:false})
+class DrawerView extends Component {
+  constructor() {
+    super();
+    this.state = {
+      drawer: false,
+    };
+    this.closeDrawer = this.closeDrawer.bind(this);
   }
- }
+  componentWillReceiveProps(props) {
+    if (props.openDrawer === true) {
+      this.setState({ drawer: true });
+    } else if (props.openDrawer === false) {
+      this.setState({ drawer: false });
+    }
+  }
   closeDrawer() {
     this.props.closeDrawer();
-  };
-  render(){
-    return(
+  }
+  render() {
+    console.log(route);
+    console.log(this.props.navigator, 'nav');
+    return (
       <Drawer
-        ref={(ref) => this._drawer = ref}
+        ref={ref => this._drawer = ref}
         type="overlay"
         open={this.state.drawer}
         content={
@@ -31,7 +33,7 @@ class DrawerView extends Component{
         }
         tapToClose
         side="right"
-        styles={{main: {shadowColor: '#fff', shadowOpacity: 0.3, shadowRadius: 15}}}
+        styles={{ main: { shadowColor: '#fff', shadowOpacity: 0.3, shadowRadius: 15 } }}
         onClose={() => {
           this.closeDrawer();
         }}
@@ -39,10 +41,10 @@ class DrawerView extends Component{
         tweenDuration={100}
         panCloseMask={0.2}
         panThreshold={0.01}
-        tweenHandler={(ratio) => ({
-          main: { opacity:(2-ratio)/2 }
+        tweenHandler={ratio => ({
+          main: { opacity: (2 - ratio) / 2 },
         })}
-        openDrawerOffset={0.2}
+        openDrawerOffset={0.3}
         closeDrawerOffser={-3}
       >
         {this.props.child}
@@ -52,4 +54,4 @@ class DrawerView extends Component{
 }
 
 
-export default DrawerView
+export default DrawerView;
