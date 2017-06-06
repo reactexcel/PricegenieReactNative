@@ -73,6 +73,7 @@ export class Filter extends Component {
       filter_option: ['Brands', 'Price Ranges'],
     };
     this.selectFilter = this.selectFilter.bind(this);
+    this.openDrawer = this.openDrawer.bind(this);
   }
   componentDidMount() {
     getLocalStorageData('filter_brands').then((value) => {
@@ -91,6 +92,9 @@ export class Filter extends Component {
         this.setState({ filter_option });
       }
     });
+  }
+  openDrawer() {
+    this.props.openstate();
   }
   selectFilter(object) {
     const { options } = this.state;

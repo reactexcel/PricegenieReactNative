@@ -56,7 +56,7 @@ export class ProductPage extends Component {
     this._loadMore = this._loadMore.bind(this);
     this._footer = this._footer.bind(this);
     this.selectOption = this.selectOption.bind(this);
-    this.handleAction = this.handleAction.bind(this);
+    this.openDrawer = this.openDrawer.bind(this);
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
@@ -76,30 +76,11 @@ export class ProductPage extends Component {
       });
     });
   }
-  handleAction() {
-    if (this.state.user[0].logintype == 'facebook') {
-      facebook.facebooksignout().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', userdata);
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    } else if (this.state.user[0].logintype == 'google') {
-      action.googleSignOut().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    }
+  openDrawer() {
+    this.props.openstate();
   }
   _previouspage() {
+    this.props.handleState(1);
     this.props.navigator.pop();
   }
   selectedProduct(data) {
@@ -137,22 +118,20 @@ export class ProductPage extends Component {
           style={[
             styles.centering, {
               transform: [
-              {
+                {
                   scale: 0.7,
-              },
+                },
               ],
             },
           ]} animating={this.state.load} color={STRING.BlueColor} size={32}
-          />
+        />
       : null}</View>
     );
   }
   selectOption(options) {
-    // if (options.name == 'Filter') {
-    //   this.props.navigator.push({ name: 'filter' });
-    // } else {
-    if(options.name !== 'Filter'){
-      let short = options.case,{ name, sub_id, id } = this.props,
+    if (options.name !== 'Filter') {
+      let short = options.case,
+        { name, sub_id, id } = this.props,
         opt = options.name;
       component = this;
       this.setState({
@@ -175,17 +154,20 @@ export class ProductPage extends Component {
     this.props.navigator.push({ name: 'login' });
   }
   render() {
-    let button = (
+    const button = (
       <Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
+        overflowIconName="ios-list"
         onActionSelected={() => {
-          this.actioncall();
+          this.openDrawer();
         }}
 
         actions={[
           {
             title: 'Login',
             iconSize: 25,
+            show: 'always',
+            iconName: 'ios-list',
           },
           // {
           //   title: 'fav',
@@ -195,48 +177,6 @@ export class ProductPage extends Component {
           // },
         ]}
       />);
-    if (this.state.user !== undefined && this.state.user !== null) {
-      button = this.state.user[0].islogin == true ? (
-        <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          onActionSelected={() => {
-            this.handleAction();
-          }}
-          actions={[
-            {
-              title: 'Log Out',
-              iconSize: 25,
-            },
-            // {
-            //   title: 'fav',
-            //   iconSize: 25,
-            //   iconName: 'md-notifications',
-            //   show: 'always',
-            // },
-          ]}
-        />) :
-      (<Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
-
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-          },
-          // {
-          //   title: 'fav',
-          //   iconSize: 25,
-          //   iconName: 'md-notifications',
-          //   show: 'always',
-          // },
-        ]}
-       />)
-      ;
-    }
-
     const { height, width } = Dimensions.get('window');
     const { animating } = this.state;
 
@@ -261,7 +201,7 @@ export class ProductPage extends Component {
               height,
               justifyContent: 'space-around',
             }}
-              >
+            >
               <View>
                 <Text style={{
                   padding: 10,
@@ -284,23 +224,25 @@ export class ProductPage extends Component {
                 }}
                 >
                   <SegmentedControls
-                    renderOption={(option, selected, onSelect, index) => { if(option.name !== 'Filter'){ return(
-                      <View style={{
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                      }}
-                      >
-                        <View >
-                          <Text>{option.name}</Text>
-                        </View>
-                        <View style={{
-                          marginLeft: 2,
-                        }}
-                        >
-                          <Icon {...option.icon} />
-                        </View>
-                      </View>)
-                    }
+                    renderOption={(option, selected, onSelect, index) => {
+                      if (option.name !== 'Filter') {
+                        return (
+                          <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                          }}
+                          >
+                            <View >
+                              <Text>{option.name}</Text>
+                            </View>
+                            <View style={{
+                              marginLeft: 2,
+                            }}
+                            >
+                              <Icon {...option.icon} />
+                            </View>
+                          </View>);
+                      }
                     }}
                     options={this.state.options}
                     onSelection={this.selectOption}
@@ -327,75 +269,76 @@ export class ProductPage extends Component {
                       height: height - 105,
                     }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore}
                     initialListSize={4} onEndReachedThreshold={30} showsVerticalScrollIndicator={false}
-                    enableEmptySections renderRow={(data, key) => (<View
-                      key={key} style={{
-                        flex: 1,
-                        backgroundColor: 'white',
-                        height:90,
-                        marginTop: 5,
-                        marginBottom: 1,
-                        paddingTop: 5,
-                        paddingRight: 10,
-                        paddingBottom: 10,
-                      }} elevation={2} >
-                      <View style={{
-                        flex: 1,
-                        alignItems: 'center',
-                        flexDirection: 'row',
-                        justifyContent: 'space-around',
-                      }}
+                    enableEmptySections renderRow={(data, key) => (
+                      <View
+                        key={key} style={{
+                          flex: 1,
+                          backgroundColor: 'white',
+                          height: 90,
+                          marginTop: 5,
+                          marginBottom: 1,
+                          paddingTop: 5,
+                          paddingRight: 10,
+                          paddingBottom: 10,
+                        }} elevation={2}
                       >
-                        <TouchableOpacity
-                          onPress={() => this.selectedProduct(data)} style={{
-                            flex: 1,
-                            alignItems: 'center',
-                            flexDirection: 'row',
-                            justifyContent: 'space-around',
-                          }}
-                        >
-                          <Image
-                            style={{
-                              flex: 0.3,
-                              height: 45,
-                              width: 45,
-                            }} resizeMode="contain" source={{
-                              uri: data.image,
-                            }}
-                          />
-                          <View style={{ flex: 1 }}
-                          >
-                            <Text style={{
-                              color: STRING.LightBlackColor,
-                              fontSize: 13,
-                            }}
-                            >
-                              {data.name}
-                            </Text>
-                            <Text style={{
-                              color: STRING.YelloColor,
-                              fontSize: 12.5,
-                            }}
-                            >
-                              From Rs: {data.num_price}
-                            </Text>
-                            <Text style={{
-                              fontSize: 12,
-                            }}
-                            >
-                              {`${data.sellers} Sellers`}
-                            </Text>
-                          </View>
-                        </TouchableOpacity>
-                        {/* <TouchableOpacity style={{
+                        <View style={{
+                          flex: 1,
+                          alignItems: 'center',
                           flexDirection: 'row',
-                          alignItems: 'flex-end',
-                          marginTop: 50,
-                          }}
+                          justifyContent: 'space-around',
+                        }}
+                        >
+                          <TouchableOpacity
+                            onPress={() => this.selectedProduct(data)} style={{
+                              flex: 1,
+                              alignItems: 'center',
+                              flexDirection: 'row',
+                              justifyContent: 'space-around',
+                            }}
                           >
-                          <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
-                        </TouchableOpacity> */}
-                      </View>
-                    </View>)}
+                            <Image
+                              style={{
+                                flex: 0.3,
+                                height: 45,
+                                width: 45,
+                              }} resizeMode="contain" source={{
+                                uri: data.image,
+                              }}
+                            />
+                            <View style={{ flex: 1 }}>
+                              <Text style={{
+                                color: STRING.LightBlackColor,
+                                fontSize: 13,
+                              }}
+                              >
+                                {data.name}
+                              </Text>
+                              <Text style={{
+                                color: STRING.YelloColor,
+                                fontSize: 12.5,
+                              }}
+                              >
+                                From Rs: {data.num_price}
+                              </Text>
+                              <Text style={{
+                                fontSize: 12,
+                              }}
+                              >
+                                {`${data.sellers} Sellers`}
+                              </Text>
+                            </View>
+                          </TouchableOpacity>
+                          {/* <TouchableOpacity style={{
+                            flexDirection: 'row',
+                            alignItems: 'flex-end',
+                            marginTop: 50,
+                            }}
+                            >
+                            <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
+                          </TouchableOpacity> */}
+                        </View>
+                      </View>)}
                   />
                 </View>
               </ScrollView>

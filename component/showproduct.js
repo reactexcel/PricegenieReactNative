@@ -41,7 +41,7 @@ export class ProductList extends Component {
             borderTopWidth: 1,
             borderTopColor: STRING.GreyColor,
           }}
-                                                                                                              >
+        >
           <TouchableOpacity
             onPress={() => this.props.selectedProduct(data)} style={{
               flex: 1,

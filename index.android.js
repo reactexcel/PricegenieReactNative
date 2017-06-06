@@ -6,17 +6,14 @@
  * @flow
  */
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, View, BackHandler } from 'react-native';
-// import Drawer from 'react-native-drawer';
-// import Icons from 'react-native-vector-icons/FontAwesome';
-import  Index  from './component/index';
-// import  ControlPanel from './component/controlpanel';
+import { AppRegistry, StyleSheet, View, BackHandler } from 'react-native';
+import Index from './component/index';
 
 export default class PriceGenie extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Index  />
+        <Index />
       </View>
     );
   }

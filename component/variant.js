@@ -44,12 +44,12 @@ export class VariantPoduct extends Component {
           borderBottomColor: STRING.GreyColor,
         }}
       >
-        <View style={{marginBottom:5,marginTop:5}}>
+        <View style={{ marginBottom: 5, marginTop: 5 }}>
           {/* <View style={{
-            flex: 1,
-            flexDirection: 'row',
-            borderBottomWidth:1,
-            borderBottomColor:STRING.GreyColor,
+              flex: 1,
+              flexDirection: 'row',
+              borderBottomWidth:1,
+              borderBottomColor:STRING.GreyColor,
             }}
             >
             <Text style={{
@@ -62,17 +62,17 @@ export class VariantPoduct extends Component {
           <View style={{
             flex: 1,
             flexDirection: 'row',
-            justifyContent:'center',
-            marginBottom:10,
+            justifyContent: 'center',
+            marginBottom: 12,
           }}
           >
-            <View style={{width:115,flexDirection:'row'}}>
+            <View style={{ width: 115, flexDirection: 'row' }}>
               <Image
                 style={{
-                  marginTop:10,
-                  marginLeft:5,
-                  height: 55,
-                  width: 110,
+                  marginTop: 10,
+                  marginLeft: 5,
+                  height: '75%',
+                  width: '90%',
                 }} resizeMode="contain" source={{
                   uri: data.logo,
                 }}
@@ -82,9 +82,8 @@ export class VariantPoduct extends Component {
               <Image
                 style={{
                   marginTop: 5,
-                  // marginLeft: 3,
                   borderColor: 'red',
-                  height: 65,
+                  height: '85%',
                   width: 75,
                 }} resizeMode="contain" source={{
                   uri: data.image,
@@ -94,22 +93,21 @@ export class VariantPoduct extends Component {
             <View style={{
               flex: 1,
               marginTop: 5,
-              // marginLeft: 5,
               flexDirection: 'column',
             }}
             >
               <Text style={{
-                alignSelf:'flex-end',
+                alignSelf: 'flex-end',
                 fontSize: 18,
                 fontWeight: 'bold',
               }}
               >Rs. {data.price}</Text>
-              <View style={{justifyContent:'center',alignSelf:'center'}}>
+              <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 <Button
                   containerStyle={{
-                    marginTop:8,
-                    marginLeft:55,
-                    width:70,
+                    marginTop: 9,
+                    marginLeft: 60,
+                    width: 68,
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
@@ -129,7 +127,6 @@ export class VariantPoduct extends Component {
             </View>
           </View>
         </View>
-
       </View>
             ));
     return (

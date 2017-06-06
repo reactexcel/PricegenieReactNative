@@ -1,0 +1,672 @@
+[
+    {
+        "outputFile": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-gu/values-gu.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 105,
+                    "endColumn": 167,
+                    "endOffset": 268
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 167,
+                        "endOffset": 218
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 273,
+                    "endColumn": 110,
+                    "endOffset": 379
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 223,
+                        "endColumn": 110,
+                        "endOffset": 329
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 384,
+                    "endColumn": 120,
+                    "endOffset": 500
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 334,
+                        "endColumn": 120,
+                        "endOffset": 450
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 505,
+                    "endColumn": 92,
+                    "endOffset": 593
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 455,
+                        "endColumn": 92,
+                        "endOffset": 543
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 598,
+                    "endColumn": 70,
+                    "endOffset": 664
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 548,
+                        "endColumn": 70,
+                        "endOffset": 614
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 669,
+                    "endColumn": 71,
+                    "endOffset": 736
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 619,
+                        "endColumn": 71,
+                        "endOffset": 686
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 741,
+                    "endColumn": 69,
+                    "endOffset": 806
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 691,
+                        "endColumn": 69,
+                        "endOffset": 756
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 811,
+                    "endColumn": 71,
+                    "endOffset": 878
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 761,
+                        "endColumn": 71,
+                        "endOffset": 828
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 883,
+                    "endColumn": 75,
+                    "endOffset": 954
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 833,
+                        "endColumn": 75,
+                        "endOffset": 904
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 959,
+                    "endColumn": 92,
+                    "endOffset": 1047
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 909,
+                        "endColumn": 92,
+                        "endOffset": 997
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1052,
+                    "endColumn": 77,
+                    "endOffset": 1125
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1002,
+                        "endColumn": 77,
+                        "endOffset": 1075
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1130,
+                    "endColumn": 77,
+                    "endOffset": 1203
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1080,
+                        "endColumn": 77,
+                        "endOffset": 1153
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1208,
+                    "endColumn": 89,
+                    "endOffset": 1293
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1158,
+                        "endColumn": 89,
+                        "endOffset": 1243
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1298,
+                    "endColumn": 107,
+                    "endOffset": 1401
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1248,
+                        "endColumn": 107,
+                        "endOffset": 1351
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1406,
+                    "endColumn": 63,
+                    "endOffset": 1465
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1356,
+                        "endColumn": 63,
+                        "endOffset": 1415
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1470,
+                    "endColumn": 66,
+                    "endOffset": 1532
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1420,
+                        "endColumn": 66,
+                        "endOffset": 1482
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1537,
+                    "endColumn": 146,
+                    "endOffset": 1679
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1487,
+                        "endColumn": 146,
+                        "endOffset": 1629
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1684,
+                    "endColumn": 109,
+                    "endOffset": 1789
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 283,
+                        "endColumn": 105,
+                        "endOffset": 388
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1794,
+                    "endColumn": 197,
+                    "endOffset": 1987
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 0,
+                        "startOffset": 389,
+                        "endColumn": 197,
+                        "endOffset": 586
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1992,
+                    "endColumn": 126,
+                    "endOffset": 2114
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 0,
+                        "startOffset": 587,
+                        "endColumn": 122,
+                        "endOffset": 709
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2119,
+                    "endColumn": 113,
+                    "endOffset": 2228
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 0,
+                        "startOffset": 710,
+                        "endColumn": 109,
+                        "endOffset": 819
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2233,
+                    "endColumn": 196,
+                    "endOffset": 2425
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 0,
+                        "startOffset": 820,
+                        "endColumn": 196,
+                        "endOffset": 1016
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 2430,
+                    "endColumn": 123,
+                    "endOffset": 2549
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 0,
+                        "startOffset": 1017,
+                        "endColumn": 119,
+                        "endOffset": 1136
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 2554,
+                    "endColumn": 128,
+                    "endOffset": 2678
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 0,
+                        "startOffset": 1137,
+                        "endColumn": 124,
+                        "endOffset": 1261
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 2683,
+                    "endColumn": 205,
+                    "endOffset": 2884
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 205,
+                        "endOffset": 490
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 2889,
+                    "endColumn": 206,
+                    "endOffset": 3091
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 0,
+                        "startOffset": 1262,
+                        "endColumn": 206,
+                        "endOffset": 1468
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 3096,
+                    "endColumn": 109,
+                    "endOffset": 3201
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 0,
+                        "startOffset": 1469,
+                        "endColumn": 105,
+                        "endOffset": 1574
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 3206,
+                    "endColumn": 194,
+                    "endOffset": 3396
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 0,
+                        "startOffset": 1575,
+                        "endColumn": 194,
+                        "endOffset": 1769
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 3401,
+                    "endColumn": 126,
+                    "endOffset": 3523
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 0,
+                        "startOffset": 1770,
+                        "endColumn": 122,
+                        "endOffset": 1892
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 3528,
+                    "endColumn": 201,
+                    "endOffset": 3725
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 0,
+                        "startOffset": 1893,
+                        "endColumn": 201,
+                        "endOffset": 2094
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 3730,
+                    "endColumn": 179,
+                    "endOffset": 3905
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 0,
+                        "startOffset": 2095,
+                        "endColumn": 175,
+                        "endOffset": 2270
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 3910,
+                    "endColumn": 90,
+                    "endOffset": 3996
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 0,
+                        "startOffset": 2271,
+                        "endColumn": 86,
+                        "endOffset": 2357
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 4001,
+                    "endColumn": 95,
+                    "endOffset": 4092
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 0,
+                        "startOffset": 2358,
+                        "endColumn": 91,
+                        "endOffset": 2449
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 4097,
+                    "endColumn": 110,
+                    "endOffset": 4203
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/res/values-gu/values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 0,
+                        "startOffset": 2450,
+                        "endColumn": 106,
+                        "endOffset": 2556
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 4208,
+                    "endColumn": 60,
+                    "endOffset": 4264
+                },
+                "from": {
+                    "file": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/values-gu/values-gu.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1634,
+                        "endColumn": 60,
+                        "endOffset": 1690
+                    }
+                }
+            }
+        ]
+    }
+]
