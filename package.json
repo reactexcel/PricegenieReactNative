@@ -22,6 +22,7 @@
     "react-native-google-signin": "^0.10.0",
     "react-native-pathjs-charts": "0.0.28",
     "react-native-radio-buttons": "^0.14.0",
+    "react-native-splash-screen": "^2.1.0",
     "react-native-svg": "^5.1.8",
     "react-native-vector-icons": "^4.1.1"
   },

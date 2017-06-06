@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/icon.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxhdpi/icon.png"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/splash.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxhdpi/splash.png"
+    }
+]
