@@ -58,7 +58,7 @@ import com.android.build.OutputFile
  *   inputExcludes: ["android/**", "ios/**"],
  *
  *   // override which node gets called and with what additional arguments
- *   nodeExecutableAndArgs: ["node"]
+ *   nodeExecutableAndArgs: ["node"],
  *
  *   // supply additional arguments to the packager
  *   extraPackagerArgs: []
@@ -90,9 +90,8 @@ android {
         applicationId "com.excellence.PriceGenie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-	multiDexEnabled true
+        versionCode 100260
+        versionName "1.0.27"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -105,8 +104,20 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+     signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
     buildTypes {
         release {
+	    signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -125,28 +136,23 @@ android {
         }
     }
 }
-project.ext.vectoricons = [
-    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf', 'FontAwesome.ttf', 'Ionicons.ttf' ] // Name of the font files you want to copy
-]
 
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 dependencies {
+    compile project(':react-native-splash-screen')
     compile project(':react-native-device-info')
-    compile project(':react-native-fcm')
-    compile project(':react-native-google-signin')
-    compile project(':react-native-facebook-login')
     compile project(':react-native-svg')
     compile project(':react-native-vector-icons')
+    compile project(':react-native-fcm')
+    compile 'com.google.firebase:firebase-core:10.0.1' //this decides your firebase SDK version
+    compile project(':react-native-facebook-login')
+    compile project(':react-native-google-signin')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-    compile project(':react-native-vector-icons')
     compile "com.facebook.react:react-native:+"  // From node_modules
-    compile 'com.google.firebase:firebase-core:10.0.1'
-    compile(project(":react-native-google-signin")){
+    compile(project(":react-native-google-signin")){         
         exclude group: "com.google.android.gms" // very important
     }
-    compile 'com.google.android.gms:play-services-auth:10.0.1'
+    compile 'com.google.android.gms:play-services-auth:10.0.1' // should be at least 9.0.0
 }
 
 // Run this once to be able to run the application with BUCK

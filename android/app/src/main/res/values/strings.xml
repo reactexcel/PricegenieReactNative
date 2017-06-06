@@ -1,6 +1,5 @@
 <resources>
-
-    <string name="app_name">PriceGenie_React_Native</string>
-    <string name="facebook_app_id">467986553238213</string>
+    <string name="app_name">PriceGenie</string>
+    <string name="fb_app_id">467986553238213</string>
     <string name="fb_login_protocol_scheme">fb{467986553238213}</string>
 </resources>
