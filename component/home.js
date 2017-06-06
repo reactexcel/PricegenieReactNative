@@ -33,8 +33,6 @@ export class Home extends Component {
     super(props);
     this.state = {
       user: '',
-      currentRoute: {},
-      previousRoute: {},
     };
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -48,42 +46,6 @@ export class Home extends Component {
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
-    });
-    getLocalStorageData('currentRoute').then((val) => {
-      console.log(val, 'curr');
-      if (val === null) {
-        console.log(route, 'route');
-        const routeName = route.name;
-        const routePayload = route.payload;
-        const routeData = ({ routeName, routePayload });
-        setLocalStorageData('currentRoute', JSON.stringify(routeData));
-      } else {
-        const routeValue = JSON.parse(val);
-        console.log(routeValue, 'check');
-        if (routeValue.routeName !== route.name) {
-          console.log('not match');
-          const routeName = route.name;
-          const routePayload = route.payload;
-          const routeData = ({ routeName, routePayload });
-          setLocalStorageData('currentRoute', JSON.stringify(routeData));
-          console.log('state');
-        } else {
-          console.log('match');
-          this.setState({ currentRoute: JSON.parse(val) });
-        }
-      }
-    });
-    getLocalStorageData('previousRoute').then((val) => {
-      console.log(val, 'prev');
-      if (val === null) {
-        console.log(route, 'route');
-        const routeName = route.name;
-        const routePayload = route.payload;
-        const routeData = ({ routeName, routePayload });
-        setLocalStorageData('previousRoute', JSON.stringify(routeData));
-      } else {
-        this.setState({ prev: JSON.parse(val) });
-      }
     });
   }
   openDrawer() {

@@ -21,11 +21,8 @@ class DrawerView extends Component {
     this.props.closeDrawer();
   }
   render() {
-    console.log(route);
-    console.log(this.props.navigator, 'nav');
     return (
       <Drawer
-        ref={ref => this._drawer = ref}
         type="overlay"
         open={this.state.drawer}
         content={

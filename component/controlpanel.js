@@ -21,13 +21,12 @@ export default class ControlPanel extends Component {
     };
     this.handleStorage = this.handleStorage.bind(this);
   }
-  componentDidMount() {
+  componentDidUpdate() {
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
     });
   }
   handleStorage(value) {
-    console.log(value);
     if (value == 1) {
       this.setState({ isLoading: true });
       getLocalStorageData('user').then((value) => {
