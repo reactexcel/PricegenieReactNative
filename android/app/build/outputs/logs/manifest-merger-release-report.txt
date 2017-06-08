@@ -33,6 +33,7 @@ MERGED from [com.facebook.react:react-native:0.44.2] /var/www/html/native/implem
 		ADDED from /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/AndroidManifest.xml:8:22-75
 uses-sdk
 ADDED from /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/AndroidManifest.xml:10:5-12:41
+MERGED from [PriceGenie:react-native-splash-screen:unspecified] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-splash-screen/unspecified/AndroidManifest.xml:7:5-9:41
 MERGED from [PriceGenie:react-native-device-info:unspecified] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-device-info/unspecified/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-gcm:10.2.6] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.2.6/AndroidManifest.xml:17:5-43
 MERGED from [com.google.android.gms:play-services-iid:10.2.6] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.2.6/AndroidManifest.xml:17:5-43
@@ -86,6 +87,7 @@ MERGED from [com.android.support:support-compat:25.2.0] /var/www/html/native/imp
 		INJECTED from /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/AndroidManifest.xml:14:5-64:19
+MERGED from [PriceGenie:react-native-splash-screen:unspecified] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-splash-screen/unspecified/AndroidManifest.xml:11:5-15:19
 MERGED from [com.google.android.gms:play-services-gcm:10.2.6] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.2.6/AndroidManifest.xml:23:5-19
 MERGED from [com.google.android.gms:play-services-iid:10.2.6] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.2.6/AndroidManifest.xml:23:5-19
 MERGED from [com.google.firebase:firebase-messaging:10.2.6] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.2.6/AndroidManifest.xml:19:5-29:19
@@ -115,6 +117,8 @@ MERGED from [com.android.support:support-core-utils:25.2.0] /var/www/html/native
 MERGED from [com.android.support:support-compat:25.2.0] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.2.0/AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/AndroidManifest.xml:17:7-39
+	android:supportsRtl
+		ADDED from [PriceGenie:react-native-splash-screen:unspecified] /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-splash-screen/unspecified/AndroidManifest.xml:14:9-35
 	android:allowBackup
 		ADDED from /var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/AndroidManifest.xml:16:7-33
 	android:icon

@@ -8,7 +8,6 @@ import {
   View,
   AsyncStorage,
 } from 'react-native';
-// import { getLocalStorageData } from '../services/localstorage';
 import { LoginPage } from './loginpage';
 import { LogoutPage } from './logout';
 

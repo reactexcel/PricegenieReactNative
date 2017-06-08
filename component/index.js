@@ -18,7 +18,6 @@ import {
     View,
     StatusBar,
     BackHandler,
-    Dimensions,
 } from 'react-native';
 import { Navigator } from 'react-native-deprecated-custom-components';
 import Drawer from 'react-native-drawer';
@@ -34,11 +33,8 @@ import { PieChartBasic } from './graph';
 import { VariantPoduct } from './variant';
 import { LoginPage } from './loginpage';
 import { LogoutPage } from './logout';
-import Splash from './splash';
 import DrawerView from './drawer';
 
-
-const { height, width } = Dimensions.get('window');
 const onMainScreen = true;
 BackHandler.addEventListener('hardwareBackPress', () => {
   if (route.name !== 'home') {
@@ -85,7 +81,6 @@ export default class Index extends Component {
     }
   }
   render() {
-    console.log(width, 'di', height);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#01579b" barStyle="light-content" />
@@ -101,9 +96,7 @@ export default class Index extends Component {
   renderScene(route, navigator) {
     global.route = route;
     global.navigator = navigator;
-    if (route.name === 'splash') {
-      return (<Splash navigator={navigator} {...route.payload} />);
-    } else if (route.name === 'home') {
+    if (route.name === 'home') {
       const child = <Home handleState={this.handleState} navigator={navigator} openstate={this.openDrawer} {...route.payload} />;
       return (<DrawerView stateset={this.stateset} handleState={this.state.loginState} navigator={navigator} openDrawer={this.state.drawerOpen} closeDrawer={this.closeDrawer} child={child} {...route.payload} />);
     } else if (route.name === 'subcategory') {
@@ -146,8 +139,6 @@ export default class Index extends Component {
       return Navigator.SceneConfigs.FadeAndroid;
     } else if (route.name === 'logout') {
       return Navigator.SceneConfigs.FadeAndroid;
-    } else if (route.name === 'splash') {
-      return Navigator.SceneConfigs.HorizontalSwipeJump;
     }
   }
 }
