@@ -80,6 +80,10 @@
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/res/layout/messenger_button_send_blue_small.xml"
     },
     {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/release/layout/launch_screen.xml",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/layout/launch_screen.xml"
+    },
+    {
         "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/release/layout/abc_action_menu_item_layout.xml",
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/layout/abc_action_menu_item_layout.xml"
     },
