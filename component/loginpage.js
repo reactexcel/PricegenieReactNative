@@ -9,7 +9,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import { View, Text, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
+import { View, Text, Button, Image, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -28,8 +28,7 @@ export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.cust_login = this.cust_login.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.loginWithFacebook=this.loginWithFacebook.bind(this);
+    this.loginWithFacebook = this.loginWithFacebook.bind(this);
   }
   cust_login() {
     action.google().then((data) => {
@@ -42,91 +41,75 @@ export class LoginPage extends Component {
         const logintype = 'google';
         const device_id = DeviceInfo.getUniqueID();
         const islogin = true;
+        const showName = name !== null ? name : userEmail;
         const userdata = [{ data, logintype, islogin }];
-        set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {
+        set.setuserinfo(info, id, showName, userEmail, gender, device_id).then((value) => {
           const user_key = value.data.userid;
           FCM.getFCMToken().then((token) => {
+            console.log(token);
             const fcm_reg_id = token;
             set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
-            ToastAndroid.showWithGravity(`welcome ${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
             setLocalStorageData('user', JSON.stringify(userdata));
+            ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
           });
-          this.props.navigator.push({ name: 'home' });
+          this.props.close();
+          this.props.handleStorage(1);
         });
         setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity(`welcome ${data.email}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+        ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
       }
     }, error => error);
   }
-  loginWithFacebook(){
-    actions.facebooksignin().then((data)=>{
-      console.log(data);
-      const user = JSON.stringify(data);
-      const profile=JSON.parse(user);
-      console.log(profile.profile);
+  loginWithFacebook() {
+    actions.facebooksignin().then((data) => {
+      const info = 'mobile_facebook';
+      const device_id = DeviceInfo.getUniqueID();
+      const user = data.profile;
+      const profile = JSON.parse(user);
+      const id = profile.id;
+      const name = profile.name;
+      const gender = profile.gender;
+      const userEmail = profile.email;
       const logintype = 'facebook';
       const islogin = true;
-      const userdata = [{ data, logintype, islogin }];
-      setLocalStorageData('user', JSON.stringify(userdata));
-      ToastAndroid.showWithGravity(`welcome User`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-      this.props.navigator.push({ name: 'home' });
-    },error => error);
-  }
-  handleLogin(data) {
-    const logintype = 'facebook';
-    const islogin = true;
-    const userdata = [{ data, logintype, islogin }];
-    setLocalStorageData('user', JSON.stringify(userdata));
-    ToastAndroid.showWithGravity(`welcome ${data.profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-    this.props.navigator.push({ name: 'home' });
+      const userdata = [{ data, logintype, islogin, profile }];
+      set.setuserinfo(info, id, name, userEmail, gender, device_id).then((value) => {
+        const user_key = value.data.userid;
+        FCM.getFCMToken().then((token) => {
+          const fcm_reg_id = token;
+          set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
+          setLocalStorageData('user', JSON.stringify(userdata));
+          ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          this.props.close();
+          this.props.handleStorage(1);
+        });
+      });
+    }, error => error);
   }
   _previouspage() {
     this.props.navigator.pop();
   }
+
   render() {
     return (
+      // <Image source={require('../img/splash.png')}>
       <View style={{
         flex: 1,
         flexDirection: 'column',
       }}
       >
-        <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')}
-          onIconClicked={() => {
-            this._previouspage();
-          }}
-          navIconName="ios-arrow-back"
-          title=""
-          style={style.toolbar}
-          titleColor="white"
-          overflowIconName="md-more"
-          action={[]}
-          elevation={4}
-        >
-          <View style={{
-            flex: 1,
-            alignSelf: 'center',
-            borderWidth: 0,
-            paddingLeft: width / 4.3,
-            paddingTop: 15,
-          }}
-          >
-            <Text style={{
-              fontSize: 15,
-              color: 'white',
-            }}
-            >
-              Sign IN
-            </Text>
-          </View>
-        </Icon.ToolbarAndroid>
+        <Image style={{ height: 170, width: 150, borderRadius: 100, alignSelf: 'center' }} source={require('../img/images.jpg')} />
         <View style={{
-          marginTop: 200,
-          margin: 50,
+          marginTop: 30,
+            // margin: 50,
           flex: 1,
           flexDirection: 'column',
         }}
         >
+          <View style={{ marginBottom: 30, flexDirection: 'row', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Hello Guest</Text>
+          </View>
+          <View style={{ borderColor: 'black', borderWidth: 1, marginBottom: 20 }} />
           <Icons.Button name="google" backgroundColor="#841584" onPress={this.cust_login}>
             Login with Google
           </Icons.Button>
@@ -137,35 +120,9 @@ export class LoginPage extends Component {
             <Icons.Button name="facebook" backgroundColor="#3b5998" onPress={this.loginWithFacebook}>
               Login with Facebook
             </Icons.Button>
-            {/* <FBLogin
-              facebookText={'SIGN IN WITH FACEBOOK'}
-              style={{
-                flex: null,
-                padding: 10,
-                marginTop: 10,
-                borderRadius: 10,
-              }}
-              onpress={(fbLogin) => {
-                this.fbLogin = fbLogin;
-              }}
-              permissions={['email', 'user_friends']}
-              loginBehavior={FBLoginManager.LoginBehaviors.Native}
-              onLogin={
-                (data) => { this.handleLogin(data); }
-              }
-              onLogout={() => { }}
-              onLoginFound={function (data) {}}
-              onLoginNotFound={function () {}}
-              onError={function (data) {}}
-              onCancel={function () {}}
-              onPermissionsMissing={function (data) {}}
-            /> */}
           </View>
         </View>
       </View>
     );
   }
 }
-LoginPage.propTypes = {
-  navigator: React.PropTypes.any.isRequired,
-};

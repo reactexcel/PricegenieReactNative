@@ -24,7 +24,7 @@ export class PieChartBasic extends Component {
     const { data } = this.state;
     const { min_value } = this.state;
     const options = {
-      width: 300,
+      width: 250,
       height: 150,
       min: 0,
 

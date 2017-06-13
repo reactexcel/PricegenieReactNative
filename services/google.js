@@ -8,7 +8,7 @@ export function google() {
       GoogleSignin.configure({}).then(() => {
                 // you can now call currentUserAsync()
         GoogleSignin.currentUserAsync().then((user) => {
-          if (user) {
+          if (user !== null) {
             resolve(user);
           } else {
             GoogleSignin.signIn().then((user) => {

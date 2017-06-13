@@ -1,7 +1,10 @@
 package com.excellence.PriceGenie;
 
+import android.os.Bundle;
+
 import com.facebook.react.ReactActivity;
 import android.content.Intent;
+import com.cboy.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
 
@@ -17,5 +20,10 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "PriceGenie";
+    }
+     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this,true);
+        super.onCreate(savedInstanceState);
     }
 }

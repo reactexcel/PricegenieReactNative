@@ -8,6 +8,7 @@ import { PieChartBasic } from './graph';
 import { ProductList } from './showproduct';
 import * as get from '../services/pricehistroy';
 import * as alert from '../services/pricealert';
+import * as alerts from '../services/unsetpricealert';
 import {
     View,
     Text,
@@ -30,7 +31,8 @@ export class ProductView extends Component {
     super(props);
     this.state = {
       user: '',
-      buttonName: '',
+      isLoad: false,
+      loadId: '',
     };
     this.state = {
       product_id: '',
@@ -47,48 +49,45 @@ export class ProductView extends Component {
     };
     this._previouspage = this._previouspage.bind(this);
     this.selectedProduct = this.selectedProduct.bind(this);
-    this.handleAction = this.handleAction.bind(this);
-    this.actioncall=this.actioncall.bind(this);
+    this.openDrawer = this.openDrawer.bind(this);
+    this.checkAlert = this.checkAlert.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
-  actioncall() {
-    this.props.navigator.push({ name: 'login' });
+  openDrawer() {
+    this.props.openstate();
   }
-  componentDidMount() {
+  componentWillReceiveProps() {
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
     });
-  }
-  handleAction() {
-    if (this.state.user[0].logintype == 'facebook') {
-      facebook.facebooksignout().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', userdata);
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    } else if (this.state.user[0].logintype == 'google') {
-      actions.googleSignOut().then(() => {
-        const data = '';
-        const logintype = '';
-        const islogin = false;
-        const userdata = [{ data, logintype, islogin }];
-        setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'home' });
-      }, error => error);
-    }
+    get.pricehistroy(this.props.id).then((dataPoints) => {
+      if (dataPoints && dataPoints.length >= 1) {
+        this.setState({ data: dataPoints, nodata: true });
+      }
+    });
+    action.relatedProduct(this.props.id).then((val) => {
+      if (val.related && val.related.length) {
+        this.setState({ relatedProduct: val.related, norelatedProduct: true });
+      }
+      if (val.similar && val.similar.length) {
+        this.setState({ similarProduct: val.similar, nosimilarProduct: true });
+      }
+    });
+    action.renderProduct(this.props.id).then((val) => {
+      this.setState({ product_id: this.props.id, result: val.result, specficiation: val, loading: false });
+    });
   }
   _previouspage() {
+    this.props.handleState(1);
     this.props.navigator.pop();
   }
-  callVaiant(data) {
+  callVaiant(data, productId) {
     this.props.navigator.push({
       name: 'variant',
       payload: {
         data,
+        productId,
+        id: this.props.id,
       },
     });
   }
@@ -121,21 +120,106 @@ export class ProductView extends Component {
     });
   }
   setAlert(data) {
+    this.setState({
+      isLoad: true,
+      loadId: data._id.$id,
+    });
     getLocalStorageData('user').then((email) => {
       const checkUser = JSON.parse(email);
-      if (checkUser[0].islogin == true) {
-        alert.pricealert(data._id.$id, email).then((value) => {
-          if (!email) {
-            this.props.navigator.push({ name: 'login' });
+      if (checkUser !== null) {
+        if (checkUser[0].islogin == true) {
+          if (checkUser[0].logintype === 'google') {
+            alert.pricealert(data._id.$id, checkUser[0].data.email).then((value) => {
+              if (!checkUser[0].data.email) {
+                this.setState({ isLoad: false });
+                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+              ToastAndroid.BOTTOM);
+              } else {
+                this.updateState(value.message);
+              }
+            });
           } else {
-            ToastAndroid.show(value.message, ToastAndroid.SHORT);
+            alert.pricealert(data._id.$id, checkUser[0].profile.email).then((value) => {
+              if (!checkUser[0].profile.email) {
+                this.setState({ isLoad: false });
+                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+              ToastAndroid.BOTTOM);
+              } else {
+                this.updateState(value.message);
+              }
+            });
           }
-        });
+        } else {
+          this.setState({ isLoad: false });
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM);
+        }
       } else {
-        ToastAndroid.showWithGravity('Sign In Required', ToastAndroid.SHORT,
+        this.setState({ isLoad: false });
+        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
         ToastAndroid.BOTTOM);
-        this.props.navigator.push({ name: 'login' });
       }
+    });
+  }
+  unsetAlert(data) {
+    this.setState({
+      isLoad: true,
+      loadId: data._id.$id,
+    });
+    getLocalStorageData('user').then((email) => {
+      const checkUser = JSON.parse(email);
+      if (checkUser !== null) {
+        if (checkUser[0].islogin == true) {
+          if (checkUser[0].logintype === 'google') {
+            alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
+              if (!checkUser[0].data.email) {
+                this.setState({ isLoad: false });
+                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM);
+              } else {
+                this.updateState(value.message);
+              }
+            });
+          } else {
+            alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
+              if (!checkUser[0].profile.email) {
+                this.setState({ isLoad: false });
+                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+              ToastAndroid.BOTTOM);
+              } else {
+                this.updateState(value.message);
+              }
+            });
+          }
+        } else {
+          this.setState({ isLoad: false });
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+          ToastAndroid.BOTTOM);
+        }
+      } else {
+        this.setState({ isLoad: false });
+        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM);
+      }
+    });
+  }
+  updateState(value) {
+    get.pricehistroy(this.props.id).then((dataPoints) => {
+      if (dataPoints && dataPoints.length >= 1) {
+        this.setState({ data: dataPoints, nodata: true });
+      }
+    });
+    action.relatedProduct(this.props.id).then((val) => {
+      if (val.related && val.related.length) {
+        this.setState({ relatedProduct: val.related, norelatedProduct: true });
+      }
+      if (val.similar && val.similar.length) {
+        this.setState({ similarProduct: val.similar, nosimilarProduct: true });
+      }
+    });
+    action.renderProduct(this.props.id).then((val) => {
+      this.setState({ product_id: this.props.id, result: val.result, specficiation: val, isLoad: false, loadId: '' });
+      ToastAndroid.show(value, ToastAndroid.SHORT);
     });
   }
   componentWillMount(props) {
@@ -156,71 +240,98 @@ export class ProductView extends Component {
       this.setState({ product_id: this.props.id, result: val.result, specficiation: val, loading: false });
     });
   }
+
+  checkAlert(alertdata, user) {
+    let isMatch = false;
+    let isUnmatch = false;
+    _.map(alertdata.genie_alerts, (alertData, alertKey) => {
+      if (user[0].logintype === 'google') {
+        const check = alertData.email_id === user[0].data.email;
+        check === true ? isMatch = true : isUnmatch = true;
+      } else {
+        const check = alertData.email_id === user[0].profile.email;
+        check === true ? isMatch = true : isUnmatch = true;
+      }
+    });
+    return (isMatch === true ?
+      <View style={{ flex: 1, backgroundColor: '#E08283' }}>
+        {this.state.isLoad === true ?
+          (this.state.loadId === alertdata._id.$id ?
+            <ActivityIndicator
+              animating={this.state.isLoad} color={'white'} size={15}
+            />
+            : <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
+              <Text style={{
+                color: 'white',
+                marginLeft: 1,
+                textAlign: 'center',
+                fontSize: 11,
+                fontWeight: 'bold',
+              }}
+              >Remove Price Alert</Text>
+            </TouchableOpacity>)
+          :
+            <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
+              <Text style={{
+                color: 'white',
+                marginLeft: 1,
+                textAlign: 'center',
+                fontSize: 11,
+                fontWeight: 'bold',
+              }}
+              >Remove Price Alert</Text>
+            </TouchableOpacity>
+        }
+      </View>
+   :
+      <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+        {this.state.isLoad === true ?
+          (this.state.loadId === alertdata._id.$id ?
+            <ActivityIndicator
+              animating={this.state.isLoad} color={'white'} size={15}
+            />
+            : <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
+              <Text style={{
+                color: 'white',
+                marginLeft: 1,
+                textAlign: 'center',
+                fontSize: 11,
+                fontWeight: 'bold',
+              }}
+              >Set Price Alert</Text>
+            </TouchableOpacity>)
+          :
+            <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
+              <Text style={{
+                color: 'white',
+                marginLeft: 1,
+                textAlign: 'center',
+                fontSize: 11,
+                fontWeight: 'bold',
+              }}
+              >Set Price Alert</Text>
+            </TouchableOpacity>
+        }
+      </View>)
+      ;
+  }
   render() {
-    let button = (
+    const button = (
       <Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
+        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
         onActionSelected={() => {
-          console.log('hello');
-          this.actioncall();
+          this.openDrawer();
         }}
         actions={[
           {
             title: 'Login',
             iconSize: 25,
+            show: 'always',
+            iconName: 'ios-list',
           },
-          // {
-          //   title: 'fav',
-          //   iconSize: 25,
-          //   iconName: 'md-notifications',
-          //   show: 'always',
-          // },
         ]}
         elevation={4}
       />);
-    if (this.state.user !== undefined && this.state.user !== null) {
-      button = this.state.user[0].islogin == true ? (
-        <Icon.ToolbarAndroid
-          logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-          onActionSelected={() => {
-            this.handleAction();
-          }}
-          actions={[
-            {
-              title: 'Log Out',
-              iconSize: 25,
-            },
-            // {
-            //   title: 'fav',
-            //   iconSize: 25,
-            //   iconName: 'md-notifications',
-            //   show: 'always',
-            // },
-          ]}
-          elevation={4}
-        />) :
-      (<Icon.ToolbarAndroid
-        logo={require('../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more"
-        onActionSelected={() => {
-          this.actioncall();
-        }}
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-          },
-          // {
-          //   title: 'fav',
-          //   iconSize: 25,
-          //   iconName: 'md-notifications',
-          //   show: 'always',
-          // },
-        ]}
-        elevation={4}
-       />)
-      ;
-    }
-
     const { nodata } = this.state;
     const { norelatedProduct } = this.state;
     const { nosimilarProduct } = this.state;
@@ -250,114 +361,204 @@ export class ProductView extends Component {
         );
       }
     });
-    const product_data = _.map(result_data, (data, key) => (
-      <View
-        key={key} style={{
-          marginTop: 5,
-          borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
-        }}
-      >
-        <View style={{
-          flex: 1,
-          flexDirection: 'row',
-        }}
-        >
-          <Image
-            style={{
-              marginTop: 13,
-              marginLeft: 3,
-              borderColor: 'red',
-              height: 75,
-              width: 75,
-            }} resizeMode="contain" source={{
-              uri: data.image,
-            }}
-          />
-          <View style={{
-            flex: 1,
-            marginTop: 10,
-            marginLeft: 5,
-            flexDirection: 'column',
-          }}
-          >
-            <Text style={{
-              fontSize: 14,
-            }}
-            >{data.name}</Text>
-            <Text style={{
-              fontSize: 14.5,
-              fontWeight: 'bold',
-            }}
-            >Rs. {data.price}</Text>
-            <View style={{
-              flex: 1,
-              flexDirection: 'row',
-            }}
-            >
-              <View style={{
-                marginTop: 13,
-                width: 70,
-                height: 45,
-              }}
-              >
-                <Button
-                  containerStyle={{
-                    padding: 4.5,
-                    height: 25,
-                    borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
-                  }} style={{
-                    fontSize: 11,
-                    color: 'white',
-                  }} styleDisabled={{
-                    color: 'blue',
-                  }} onPress={() => {
-                    this.pressButton(data.url);
-                  }}
-                >
-                  BUY NOW
-                </Button>
-              </View>
+    const product_data = _.map(result_data, (data, key) =>
+       (
+         <View
+           key={key} style={{
+             marginTop: 5,
+             borderRadius: 10,
+             borderColor: STRING.GreyColor,
+           }}
+         >
+           <View style={{ marginBottom: 5, marginTop: 5 }}>
+             {/* <View style={{
+               flex: 1,
+               flexDirection: 'row',
+               borderBottomWidth:1,
+               borderBottomColor:STRING.GreyColor,
+               }}
+               >
+               <Text style={{
+               marginLeft:5,
+               fontSize: 13,
+               fontWeight:'bold'
+               }}
+               >{data.name}</Text>
+             </View> */}
+             <View style={{
+               flex: 1,
+               flexDirection: 'row',
+               justifyContent: 'center',
+             }}
+             >
+               <View style={{ width: '40%', flexDirection: 'row' }}>
+                 <Image
+                   style={{
+                     marginTop: 20,
+                     marginLeft: 5,
+                     height: '50%',
+                     width: '75%',
+                   }} resizeMode="contain" source={{
+                     uri: data.logo,
+                   }}
+                 />
+               </View>
+               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                 <Image
+                   style={{
+                     marginTop: 10,
+                     borderColor: 'red',
+                     height: '85%',
+                     width: 75,
+                   }} resizeMode="contain" source={{
+                     uri: data.image,
+                   }}
+                 />
+               </View>
+               <View style={{
+                 flex: 1,
+                 marginTop: 10,
+                 flexDirection: 'column',
+               }}
+               >
+                 <Text style={{
+                   alignSelf: 'flex-end',
+                   fontSize: 19,
+                   fontWeight: 'bold',
+                 }}
+                 >Rs. {data.price}</Text>
+                 <View style={{ justifyContent: 'center', alignSelf: 'flex-end' }}>
+                   <Button
+                     containerStyle={{
+                       marginTop: 8,
+                       marginLeft: 25,
+                       width: 70,
+                       padding: 4.5,
+                       height: 25,
+                       borderRadius: 3,
+                       backgroundColor: STRING.RedColor,
+                     }} style={{
+                       fontSize: 11,
+                       color: 'white',
+                     }} styleDisabled={{
+                       color: 'blue',
+                     }} onPress={() => {
+                       this.pressButton(data.url);
+                     }}
+                   >
+                     BUY NOW
+                   </Button>
+                 </View>
+               </View>
+             </View>
+           </View>
+           <View style={{
+             flex: 1,
+             flexDirection: 'row',
+             marginTop: 3,
+             marginBottom: 3,
+             borderTopWidth: 1,
+             borderTopColor: STRING.GreyColor,
+             borderBottomWidth: 1,
+             borderBottomColor: STRING.GreyColor,
+           }}
+           >
+             <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
+             <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+               <View>
+                 <TouchableOpacity onPress={() => {
+                   this.callVaiant(data.varient_data.data, data._id.$id);
+                 }}
+                 >
+                   {data.varient_data.data
+                     ? <Text style={{
+                       alignSelf: 'center',
+                       fontSize: 12,
+                       height: 16,
+                     }}
+                     >
+                       {`${data.varient_data.data.length} Variant`}
+                     </Text>
+                     : <Text style={{
+                       alignSelf: 'center',
+                       fontSize: 12,
+                       height: 16,
+                     }}
+                     />}
+                 </TouchableOpacity>
+               </View>
+             </View>
+             <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
 
-            </View>
-          </View>
-        </View>
-        <View style={{
-          flex: 1,
-          marginBottom: 10,
-          flexDirection: 'row',
-        }}
-        >
-          <Image
-            style={{
-              height: 17,
-              width: 44,
-            }} resizeMode="contain" source={{
-              uri: data.logo,
-            }}
-          />
-          <TouchableOpacity onPress={() => {
-            this.callVaiant(data.varient_data.data);
-          }}
-          >
-            {data.varient_data.data
-              ? <Text style={{
-                marginLeft: 38,
-                fontSize: 11,
-              }}
-                >
-                {`${data.varient_data.data.length} Varient`}
-              </Text>
-              : <Text style={{
-                marginLeft: 38,
-                fontSize: 11,
-              }}
-                />}
-          </TouchableOpacity>
-        </View>
-      </View>
-            ));
+               {this.state.user !== null ? (
+                 this.state.user[0].islogin ?
+                 this.checkAlert(data, this.state.user)
+                 :
+                 <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+                   {this.state.isLoad === true ?
+                       (this.state.loadId === data._id.$id ?
+                         <ActivityIndicator
+                           animating={this.state.isLoad} color={'white'} size={15}
+                         />
+                         : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                           <Text style={{
+                             color: 'white',
+                             marginLeft: 1,
+                             textAlign: 'center',
+                             fontSize: 11,
+                             fontWeight: 'bold',
+                           }}
+                           >Set Price Alert</Text>
+                         </TouchableOpacity>)
+                       :
+                         <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                           <Text style={{
+                             color: 'white',
+                             marginLeft: 1,
+                             textAlign: 'center',
+                             fontSize: 11,
+                             fontWeight: 'bold',
+                           }}
+                           >Set Price Alert</Text>
+                         </TouchableOpacity>
+                     }
+                 </View>
+               )
+                 :
+                 <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+                   {this.state.isLoad === true ?
+                     (this.state.loadId === data._id.$id ?
+                       <ActivityIndicator
+                         animating={this.state.isLoad} color={'white'} size={15}
+                       />
+                       : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                         <Text style={{
+                           color: 'white',
+                           marginLeft: 1,
+                           textAlign: 'center',
+                           fontSize: 11,
+                           fontWeight: 'bold',
+                         }}
+                         >Set Price Alert</Text>
+                       </TouchableOpacity>)
+                       :
+                       <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                         <Text style={{
+                           color: 'white',
+                           marginLeft: 1,
+                           textAlign: 'center',
+                           fontSize: 11,
+                           fontWeight: 'bold',
+                         }}
+                         >Set Price Alert</Text>
+                       </TouchableOpacity>
+                   }
+                 </View>
+               }
+             </View>
+           </View>
+         </View>
+      ));
     return (
       <View style={{
         flex: 1,
@@ -371,12 +572,12 @@ export class ProductView extends Component {
             ? <ActivityIndicator
               style={{
                 height: height - 90,
-              }} animating={this.state.load} color={STRING.BlueColor} size={32}
-              />
+              }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+            />
             : <View style={{
               flex: 1,
             }}
-              >
+            >
               <View
                 style={{
                   flex: 1,
@@ -444,8 +645,8 @@ export class ProductView extends Component {
                 <View style={{
                   flex: 1,
                   flexDirection: 'column',
-                  marginLeft: 28,
-                  marginRight: 28,
+                  marginLeft: 10,
+                  marginRight: 10,
                   marginTop: 9,
                   marginBottom: 9,
                 }}
@@ -463,7 +664,7 @@ export class ProductView extends Component {
                   {product_data}
                 </View>
               </View>
-              {nodata
+              {/* {nodata
                 ? <View
                   elevation={4} style={{
                     flex: 1.3,
@@ -492,7 +693,7 @@ export class ProductView extends Component {
                       marginTop: 3.5,
                     }}
                     >
-                      PRICE HISTROY
+                      PRICE HISTORY
                     </Text>
                     <View style={{
                       marginLeft: 75,
@@ -516,14 +717,14 @@ export class ProductView extends Component {
                     <PieChartBasic data={this.state.data} />
                   </View>
                 </View>
-              : null}
+              : null} */}
               {nosimilarProduct
                 ? <View style={{
                   flex: 0.1,
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                  >
+                >
                   <View
                     style={{
                       flex: 1,
