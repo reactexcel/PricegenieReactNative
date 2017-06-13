@@ -20,7 +20,8 @@ const message = { // this may vary according to the message type (single recipie
 
   },
 
-  data: {  // you can send only notification or only data(or include both)
+  data: {
+     // you can send only notification or only data(or include both)
     product_id: '58a293952e834f267d0ab732',
     my_another_key: 'my another value',
   },
