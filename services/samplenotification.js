@@ -1,27 +1,55 @@
-const serverKey = 'AAAAoDVUotg:APA91bGSSsdmlLFx9ihoi3Kq7XMrYr24pMKfL93j4M9p7qNg8eWeqYWmp9HSfbUhaqjZxEC9uvrXQ6_Fgs5mKUcov2xNKHqkKxUNx9Bd7rjhYJ2g7472Z-DxkPLZYv4cny8wah4w1LON';
-
 const FirebaseConstants = {
-  key: serverKey,
+  KEY: 'AIzaSyDc-fjqk-bEhWV-Ream--VyNUzfr51R6xE',
 };
-export function sendData(type) {
-  console.log('call');
-  const body = {
-    to: 'd-2T05qAQXM:APA91bHw0FCiOMSEM7Q2mg64THCGSORWujf0IzJS5fBQamon9mtaZKsCoDVZ40P3t5B_HdwcsP2YRD1U1tZn8MCoW3eCsrJ0AQu0PbiASjRc-9zcYkLMeVmPHscRzwx0CKZjHLbOjwYE',
-    notification: {
-      title: 'name',
-      body: 'text',
-      sound: 'default',
+
+const API_URL = 'https://fcm.googleapis.com/fcm/send';
+
+class FirebaseClient {
+
+  constructor() {
+    this.sendNotification = this.sendNotification.bind(this);
+  }
+
+  sendNotification() {
+    const body = {
+    	to: 'cdwl9YdAClA:APA91bGJ1ZpDl2Gz0XAwdPm_K2mzKP0gAv_xIK4AFY_MIHUyRG6ZyJSeTBZOJWSsnC1WpooY-9yd91NeqTImcndRy5Oc0sAZlTeNEp4gXbcL489o1NMOMcpsEiYSlVo33qy6gMQo8top',
+      notification: {
+    		title: 'price genie',
+    		body: 'This is a notification from price genie.',
+    		sound: 'default',
+        icon: 'ic_notif',
+    		click_action: 'fcm.ACTION.HELLO',
+    	},
+      data: {
+    		title: 'PriceGenie',
+    		body: {
+      id: '123',
+      name: 'pricegenie',
+      image: 'url',
+      text: 'description',
     },
-    priority: 'high',
-  };
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    'Content-Length': parseInt(body.length),
+    		click_action: 'fcm.ACTION.HELLO',
+    		remote: true,
+    	},
+    	priority: 'high',
+    };
+
+    this._send(JSON.stringify(body), 'notification');
+  }
+
+  _send(body, type) {
+  	const headers = new Headers({
+  		'Content-Type': 'application/json',
+  		'Content-Length': parseInt(body.length),
     Authorization: `key=${FirebaseConstants.KEY}`,
-  });
-  return fetch('https://fcm.googleapis.com/fcm/send', { method: 'POST', headers, body })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch(error => (error));
+  	});
+
+  	fetch(API_URL, { method: 'POST', headers, body })
+  		.then(response => console.log(`Send ${type} response`, response))
+  		.catch(error => console.log(`Error sending ${type}`, error));
+  }
+
 }
+
+const firebaseClient = new FirebaseClient();
+export default firebaseClient;

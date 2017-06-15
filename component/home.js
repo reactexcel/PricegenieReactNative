@@ -19,15 +19,18 @@ import {
     TouchableOpacity,
     Image,
     ToastAndroid,
+    AppState,
 } from 'react-native';
+import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import * as style from '../style/basicStyle';
 // const style = require('../style/basicStyle');
 import json_data from '../data/category';
 import * as action from '../services/google';
 import * as actions from '../services/facebook';
-import * as notif from '../services/samplenotification';
+import firebaseClient from '../services/samplenotification';
 
 const styles = StyleSheet.create({});
+
 
 export class Home extends Component {
   constructor(props) {
@@ -45,7 +48,7 @@ export class Home extends Component {
     this.openDrawer = this.openDrawer.bind(this);
   }
   componentDidMount() {
-    notif.sendData();
+    // firebaseClient.sendNotification();
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
     });

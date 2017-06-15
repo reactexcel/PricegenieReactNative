@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_stat_merge_type.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/mipmap-xhdpi/ic_stat_merge_type.png"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/icon.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/mipmap-xhdpi/icon.png"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_notif.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/mipmap-xhdpi/ic_notif.png"
+    }
+]

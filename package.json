@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "fcm-node": "^1.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "react": "16.0.0-alpha.6",
