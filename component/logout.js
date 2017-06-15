@@ -32,6 +32,7 @@ export class LogoutPage extends Component {
     this.cust_logout = this.cust_logout.bind(this);
     this.logoutWithFacebook = this.logoutWithFacebook.bind(this);
     this.navigateToSuscribe = this.navigateToSuscribe.bind(this);
+    this.navigateToScrap = this.navigateToScrap.bind(this);
   }
   componentDidMount() {
     getLocalStorageData('user').then((value) => {
@@ -64,6 +65,15 @@ export class LogoutPage extends Component {
   }
   _previouspage() {
     this.props.navigator.pop();
+  }
+  navigateToScrap() {
+    this.props.close();
+    this.props.navigator.push({
+      name: 'scrapproduct',
+      payload: {
+        id: '5940cb71a4266e615e6243ed',
+      },
+    });
   }
   navigateToSuscribe() {
     let email = '';
@@ -129,6 +139,15 @@ export class LogoutPage extends Component {
           <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold', textAlign: 'center' }}>My Genie Alerts</Text>
         </View>
       </TouchableNativeFeedback>);
+    const scrappage =
+        (<TouchableNativeFeedback
+          onPress={this.navigateToScrap}
+        >
+          <View style={{ flexDirection: 'row', flex: 1, marginTop: 5, marginBottom: 5 }}>
+            <Icons name="bell-o" size={19} style={{ marginRight: 5, marginTop: 3 }} />
+            <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold', textAlign: 'center' }}>Scrap product</Text>
+          </View>
+        </TouchableNativeFeedback>);
     return (
       <View>
         <View style={{
@@ -147,6 +166,7 @@ export class LogoutPage extends Component {
               <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Hello {name}</Text>
             </View>
             <View style={{ borderColor: 'black', borderWidth: 1, marginBottom: 20 }} />
+            {scrappage}
             {alertPage}
             {button}
           </View>

@@ -17,6 +17,7 @@ export class PieChartBasic extends Component {
     };
   }
   componentWillMount(props) {
+    console.log(this.props);
     this.setState({ data: this.props.data });
   }
 
@@ -24,8 +25,8 @@ export class PieChartBasic extends Component {
     const { data } = this.state;
     const { min_value } = this.state;
     const options = {
-      width: 250,
-      height: 150,
+      width: 295,
+      height: 185,
       min: 0,
 
       color: '#01579b',
@@ -43,7 +44,7 @@ export class PieChartBasic extends Component {
       axisX: {
         showAxis: false,
         showLines: false,
-        showLabels: true,
+        showLabels: false,
         showTicks: true,
         zeroAxis: false,
         orient: 'bottom',
@@ -58,7 +59,7 @@ export class PieChartBasic extends Component {
         },
       },
       axisY: {
-        showAxis: true,
+        showAxis: false,
         showLines: false,
         showLabels: true,
         showTicks: true,
@@ -77,7 +78,7 @@ export class PieChartBasic extends Component {
 
     return (
       <View style={{
-        flex: 0.1,
+        flex: 1,
         flexDirection: 'row',
       }}
       >

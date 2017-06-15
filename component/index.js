@@ -37,6 +37,7 @@ import { VariantPoduct } from './variant';
 import { LoginPage } from './loginpage';
 import { GenieSuscribe } from './geniesuscribe';
 import { LogoutPage } from './logout';
+import { ScrapProductView } from './scrapproductpage';
 import DrawerView from './drawer';
 
 const onMainScreen = true;
@@ -210,6 +211,8 @@ export default class Index extends Component {
       return (<LogoutPage navigator={navigator} {...route.payload} />);
     } else if (route.name === 'suscribelist') {
       return (<GenieSuscribe navigator={navigator} {...route.payload} />);
+    } else if (route.name === 'scrapproduct') {
+      return (<ScrapProductView navigator={navigator} {...route.payload} />);
     }
   }
   configureScene(route, routeStack) {
@@ -232,6 +235,8 @@ export default class Index extends Component {
     } else if (route.name === 'logout') {
       return Navigator.SceneConfigs.FadeAndroid;
     } else if (route.name === 'suscribelist') {
+      return Navigator.SceneConfigs.FloatFromBottom;
+    } else if (route.name === 'scrapproduct') {
       return Navigator.SceneConfigs.FloatFromBottom;
     }
   }

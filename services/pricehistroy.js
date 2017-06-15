@@ -4,6 +4,7 @@ export function pricehistroy(id) {
   return new Promise((resolve, reject) => {
     actions.priceGraph(`dailylowest&query_id=${id}&resource=mobile_api&result_show=json`).then((val) => {
       const data = [];
+      console.log(val);
       if (val.data && val.data.json_dataProvider) {
         data.push(val.data.json_dataProvider.map((dataPoint, idx) => {
           let time = dataPoint.timeslot,
