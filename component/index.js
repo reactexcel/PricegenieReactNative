@@ -59,6 +59,9 @@ export default class Index extends Component {
       route: '',
       loginState: 0,
       isReceive: false,
+      active: 0,
+      background: false,
+      set: true,
     };
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
@@ -66,93 +69,10 @@ export default class Index extends Component {
     this.renderScene = this.renderScene.bind(this);
     this.configureScene = this.configureScene.bind(this);
     this.stateset = this.stateset.bind(this);
-    this.checkState = this.checkState.bind(this);
-    this.showLocalNotification = this.showLocalNotification.bind(this);
   }
-  componentWillMount() {
-    this.notificationListner = FCM.on(FCMEvent.Notification, async (notif) => {
-      if (notif.opened_from_tray) {
-        return;
-      }
-      if (Platform.OS === 'ios') {
-        switch (notif._notificationType) {
-          case NotificationType.Remote:
-            notif.finish(RemoteNotificationResult.NewData);
-            break;
-          case NotificationType.NotificationResponse:
-            notif.finish();
-            break;
-          case NotificationType.WillPresent:
-            notif.finish(WillPresentNotificationResult.All);
-            break;
-        }
-      }
-    });
-    AppState.addEventListener('change', this.showLocalNotification);
-  }
+
   componentDidMount() {
     SplashScreen.hide();
-  }
-  componentWillUnmount() {
-    this.notificationListner.remove();
-  }
-  showLocalNotification(change) {
-    if (change == 'active') {
-      const data = [];
-      console.log('hello');
-      FCM.getInitialNotification().then((notif) => {
-        data.push(notif);
-        console.log(data);
-        console.log('INITIAL NOTIFICATION', notif);
-        this.setState({
-          initNotif: notif,
-        });
-      });
-      FCM.presentLocalNotification({
-        vibrate: 500,
-        title: 'Hello',
-        body: 'Test Notification',
-        priority: 'high',
-        show_in_foreground: true,
-        picture: 'https://firebase.google.com/_static/af7ae4b3fc/images/firebase/lockup.png',
-      });
-
-    // this clear all notification from notification center/tray
-      FCM.removeAllDeliveredNotifications();
-      // navigator
-      if (data !== null && data[0] !== undefined) {
-        console.log(data.length);
-        console.log(data, 'inside if');
-      }
-      console.log(this.state.initNotif);
-      console.log(data);
-      if (this.state.initNotif !== undefined && this.state.initNotif.body) {
-        console.log(this.state.initNotif);
-        console.log('push');
-        navigator.push({
-          name: 'subcategory',
-          payload: {
-            name: 'MobilesTablets',
-          },
-        });
-      }
-    }
-  }
-  checkState() {
-    if (this.state.isReceive) {
-      console.log('do somthing', this.state.initNotif);
-      this.setState({
-        isReceive: false,
-      });
-      navigator.push({
-        name: 'subcategory',
-        payload: {
-          name: 'MobilesTablets',
-        },
-      });
-    } else {
-      console.log('do nothing');
-    }
   }
   closeDrawer() {
     this.setState({ drawerOpen: false });

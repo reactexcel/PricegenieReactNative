@@ -509,7 +509,7 @@ public final class R {
 		public static final int common_google_signin_btn_text_light_normal_background = 0x7f020077;
 		public static final int googleg_disabled_color_18 = 0x7f020078;
 		public static final int googleg_standard_color_18 = 0x7f020079;
-		public static final int notification_template_icon_bg = 0x7f02008f;
+		public static final int notification_template_icon_bg = 0x7f020091;
 	}
 	public static final class id {
 		public static final int action0 = 0x7f0d007c;

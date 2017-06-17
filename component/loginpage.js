@@ -46,9 +46,8 @@ export class LoginPage extends Component {
         set.setuserinfo(info, id, showName, userEmail, gender, device_id).then((value) => {
           const user_key = value.data.userid;
           FCM.getFCMToken().then((token) => {
-            console.log(token);
             const fcm_reg_id = token;
-            set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
+            set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => { console.log(value); });
             setLocalStorageData('user', JSON.stringify(userdata));
             ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
           });

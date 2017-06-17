@@ -203,6 +203,14 @@ export class ProductView extends Component {
       }
     });
   }
+  loadScrapProductPage(id) {
+    this.props.navigator.push({
+      name: 'scrapproduct',
+      payload: {
+        id,
+      },
+    });
+  }
   updateState(value) {
     get.pricehistroy(this.props.id).then((dataPoints) => {
       if (dataPoints && dataPoints.length >= 1) {
@@ -224,7 +232,6 @@ export class ProductView extends Component {
   }
   componentWillMount(props) {
     get.pricehistroy(this.props.id).then((dataPoints) => {
-      console.log(dataPoints);
       if (dataPoints && dataPoints.length >= 1) {
         this.setState({ data: dataPoints, nodata: true });
       }
@@ -362,17 +369,16 @@ export class ProductView extends Component {
         );
       }
     });
-    const product_data = _.map(result_data, (data, key) =>
-       (
-         <View
-           key={key} style={{
-             marginTop: 5,
-             borderRadius: 10,
-             borderColor: STRING.GreyColor,
-           }}
-         >
-           <View style={{ marginBottom: 5, marginTop: 5 }}>
-             {/* <View style={{
+    const product_data = _.map(result_data, (data, key) => (
+      <View
+        key={key} style={{
+          marginTop: 5,
+          borderRadius: 10,
+          borderColor: STRING.GreyColor,
+        }}
+      >
+        <View style={{ marginBottom: 5, marginTop: 5 }}>
+          {/* <View style={{
                flex: 1,
                flexDirection: 'row',
                borderBottomWidth:1,
@@ -385,118 +391,124 @@ export class ProductView extends Component {
                fontWeight:'bold'
                }}
                >{data.name}</Text>
-             </View> */}
-             <View style={{
-               flex: 1,
-               flexDirection: 'row',
-               justifyContent: 'center',
-             }}
-             >
-               <View style={{ width: '40%', flexDirection: 'row' }}>
-                 <Image
-                   style={{
-                     marginTop: 20,
-                     marginLeft: 5,
-                     height: '50%',
-                     width: '75%',
-                   }} resizeMode="contain" source={{
-                     uri: data.logo,
-                   }}
-                 />
-               </View>
-               <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                 <Image
-                   style={{
-                     marginTop: 10,
-                     borderColor: 'red',
-                     height: '85%',
-                     width: 75,
-                   }} resizeMode="contain" source={{
-                     uri: data.image,
-                   }}
-                 />
-               </View>
-               <View style={{
-                 flex: 1,
-                 marginTop: 10,
-                 flexDirection: 'column',
-               }}
-               >
-                 <Text style={{
-                   alignSelf: 'flex-end',
-                   fontSize: 19,
-                   fontWeight: 'bold',
-                 }}
-                 >Rs. {data.price}</Text>
-                 <View style={{ justifyContent: 'center', alignSelf: 'flex-end' }}>
-                   <Button
-                     containerStyle={{
-                       marginTop: 8,
-                       marginLeft: 25,
-                       width: 70,
-                       padding: 4.5,
-                       height: 25,
-                       borderRadius: 3,
-                       backgroundColor: STRING.RedColor,
-                     }} style={{
-                       fontSize: 11,
-                       color: 'white',
-                     }} styleDisabled={{
-                       color: 'blue',
-                     }} onPress={() => {
-                       this.pressButton(data.url);
-                     }}
-                   >
-                     BUY NOW
-                   </Button>
-                 </View>
-               </View>
-             </View>
-           </View>
-           <View style={{
-             flex: 1,
-             flexDirection: 'row',
-             marginTop: 3,
-             marginBottom: 3,
-             borderTopWidth: 1,
-             borderTopColor: STRING.GreyColor,
-             borderBottomWidth: 1,
-             borderBottomColor: STRING.GreyColor,
-           }}
-           >
-             <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
-             <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
-               <View>
-                 <TouchableOpacity onPress={() => {
-                   this.callVaiant(data.varient_data.data, data._id.$id);
-                 }}
-                 >
-                   {data.varient_data.data
-                     ? <Text style={{
-                       alignSelf: 'center',
-                       fontSize: 12,
-                       height: 16,
-                     }}
-                     >
-                       {`${data.varient_data.data.length} Variant`}
-                     </Text>
-                     : <Text style={{
-                       alignSelf: 'center',
-                       fontSize: 12,
-                       height: 16,
-                     }}
-                     />}
-                 </TouchableOpacity>
-               </View>
-             </View>
-             <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
+          </View> */}
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'center',
+          }}
+          >
+            <View style={{ width: '40%', flexDirection: 'row' }}>
+              <Image
+                style={{
+                  marginTop: 20,
+                  marginLeft: 5,
+                  height: '50%',
+                  width: '75%',
+                }} resizeMode="contain" source={{
+                  uri: data.logo,
+                }}
+              />
+            </View>
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <Image
+                style={{
+                  marginTop: 10,
+                  borderColor: 'red',
+                  height: '85%',
+                  width: 75,
+                }} resizeMode="contain" source={{
+                  uri: data.image,
+                }}
+              />
+            </View>
+            <View style={{
+              flex: 1,
+              marginTop: 10,
+              flexDirection: 'column',
+            }}
+            >
+              <Text style={{
+                alignSelf: 'flex-end',
+                fontSize: 19,
+                fontWeight: 'bold',
+              }}
+              >Rs. {data.price}</Text>
+              <View style={{ justifyContent: 'center', alignSelf: 'flex-end' }}>
+                <Button
+                  containerStyle={{
+                    marginTop: 8,
+                    marginLeft: 25,
+                    width: 70,
+                    padding: 4.5,
+                    height: 25,
+                    borderRadius: 3,
+                    backgroundColor: STRING.RedColor,
+                  }} style={{
+                    fontSize: 11,
+                    color: 'white',
+                  }} styleDisabled={{
+                    color: 'blue',
+                  }} onPress={() => {
+                    this.pressButton(data.url);
+                  }}
+                >
+                  BUY NOW
+                </Button>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View style={{
+          flex: 1,
+          flexDirection: 'row',
+          marginTop: 3,
+          marginBottom: 3,
+          borderTopWidth: 1,
+          borderTopColor: STRING.GreyColor,
+          borderBottomWidth: 1,
+          borderBottomColor: STRING.GreyColor,
+        }}
+        >
+          <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+            <View>
+              <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
+                <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+            <View>
+              <TouchableOpacity onPress={() => {
+                this.callVaiant(data.varient_data.data, data._id.$id);
+              }}
+              >
+                {data.varient_data.data
+                  ? <Text style={{
+                    alignSelf: 'center',
+                    fontSize: 12,
+                    height: 16,
+                  }}
+                  >
+                    {`${data.varient_data.data.length} Variant`}
+                  </Text>
+                    : <Text style={{
+                      alignSelf: 'center',
+                      fontSize: 12,
+                      height: 16,
+                    }}
+                    />}
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
 
-               {this.state.user !== null ? (
+            {this.state.user !== null ? (
                  this.state.user[0].islogin ?
-                 this.checkAlert(data, this.state.user)
+                this.checkAlert(data, this.state.user)
                  :
-                 <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
-                   {this.state.isLoad === true ?
+                <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+                  {this.state.isLoad === true ?
                        (this.state.loadId === data._id.$id ?
                          <ActivityIndicator
                            animating={this.state.isLoad} color={'white'} size={15}
@@ -523,43 +535,44 @@ export class ProductView extends Component {
                            >Set Price Alert</Text>
                          </TouchableOpacity>
                      }
-                 </View>
-               )
+                </View>
+              )
                  :
-                 <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
-                   {this.state.isLoad === true ?
-                     (this.state.loadId === data._id.$id ?
-                       <ActivityIndicator
-                         animating={this.state.isLoad} color={'white'} size={15}
-                       />
-                       : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                         <Text style={{
-                           color: 'white',
-                           marginLeft: 1,
-                           textAlign: 'center',
-                           fontSize: 11,
-                           fontWeight: 'bold',
-                         }}
-                         >Set Price Alert</Text>
-                       </TouchableOpacity>)
+                <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+                  {this.state.isLoad === true ?
+                    (this.state.loadId === data._id.$id ?
+                      <ActivityIndicator
+                        animating={this.state.isLoad} color={'white'} size={15}
+                      />
+                      : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                        <Text style={{
+                          color: 'white',
+                          marginLeft: 1,
+                          textAlign: 'center',
+                          fontSize: 11,
+                          fontWeight: 'bold',
+                        }}
+                        >Set Price Alert</Text>
+                      </TouchableOpacity>)
                        :
-                       <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                         <Text style={{
-                           color: 'white',
-                           marginLeft: 1,
-                           textAlign: 'center',
-                           fontSize: 11,
-                           fontWeight: 'bold',
-                         }}
-                         >Set Price Alert</Text>
-                       </TouchableOpacity>
-                   }
-                 </View>
-               }
-             </View>
-           </View>
-         </View>
-      ));
+                      <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                        <Text style={{
+                          color: 'white',
+                          marginLeft: 1,
+                          textAlign: 'center',
+                          fontSize: 11,
+                          fontWeight: 'bold',
+                        }}
+                        >Set Price Alert</Text>
+                      </TouchableOpacity>
+                  }
+                </View>
+              }
+          </View>
+        </View>
+      </View>
+      ),
+    );
     return (
       <View style={{
         flex: 1,

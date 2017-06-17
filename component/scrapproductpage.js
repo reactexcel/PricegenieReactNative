@@ -23,6 +23,7 @@ import {
 } from 'react-native';
 import moment from 'moment';
 
+
 const style = require('../style/basicStyle');
 
 export class ScrapProductView extends Component {
@@ -53,7 +54,6 @@ export class ScrapProductView extends Component {
   }
   componentWillMount(props) {
     alert.renderScrapProduct(this.props.id).then((val) => {
-      console.log(val);
       const history = [];
       history.push(val.price_history.map((dataPoint, idx) => {
         let time = dataPoint.date,
@@ -61,7 +61,6 @@ export class ScrapProductView extends Component {
         xDataPoint = moment(time, 'YYYY-MM-DD').unix();
         return { xDataPoint, yDataPoint };
       }));
-      console.log(history);
       this.setState({
         data: val,
         history,
@@ -84,117 +83,126 @@ export class ScrapProductView extends Component {
          flex: 1,
        }}
        >
-         <View
-           style={{
-             flex: 1,
-             backgroundColor: 'white',
-           }} elevation={4}
-         >
-           <Text style={{
-             paddingTop: 5,
-             paddingLeft: 5,
-             fontWeight: 'bold',
-             color: STRING.LightBlackColor,
-           }}
-           >
-             {data.name}
-           </Text>
-           <View style={{
-             paddingTop: 4,
-             paddingBottom: 14,
-             flexDirection: 'row',
-             alignSelf: 'center',
-           }}
-           >
-             <Image
-               style={{
-                 marginTop: 4,
-                 height: 160,
-                 width: 160,
-                 alignSelf: 'center',
-               }} resizeMode="contain" source={{
-                 uri: data.img,
-               }}
-             />
-           </View>
-         </View>
-         {data.price_history
-           ? <View
-             elevation={4} style={{
+         <ScrollView>
+           <View
+             style={{
                flex: 1,
                backgroundColor: 'white',
-               marginLeft: 9,
-               marginRight: 9,
-               marginTop: 9,
-             }}
+             }} elevation={4}
            >
-             <View style={{
-               marginLeft: 30,
+             <Text style={{
                paddingTop: 5,
-               paddingBottom: 5,
-               marginRight: 10,
-               flex: 1,
-               flexDirection: 'row',
-               justifyContent: 'space-between',
-               borderBottomWidth: 1,
-               borderBottomColor: STRING.GreyColor,
+               paddingLeft: 5,
+               fontWeight: 'bold',
+               color: STRING.LightBlackColor,
              }}
              >
+               {data.name}
+             </Text>
+             <View style={{
+               paddingTop: 4,
+               paddingBottom: 14,
+               flexDirection: 'row',
+               alignSelf: 'center',
+             }}
+             >
+               <Image
+                 style={{
+                   marginTop: 4,
+                   height: 150,
+                   width: 150,
+                   alignSelf: 'center',
+                 }} resizeMode="contain" source={{
+                   uri: data.img,
+                 }}
+               />
+             </View>
+             <View style={{ alignItems: 'center', flex: 1, marginBottom: 5 }}>
                <Text style={{
-                 color: STRING.LightBlackColor,
-                 fontSize: 16,
+                 fontSize: 19,
                  fontWeight: 'bold',
-                 marginTop: 3.5,
                }}
-               >
-                 PRICE HISTORY
-               </Text>
+               >Rs. {data.price}</Text>
+             </View>
+           </View>
+           {data.price_history
+             ? <View
+               elevation={4} style={{
+                 flex: 1,
+                 backgroundColor: 'white',
+                 marginLeft: 9,
+                 marginRight: 9,
+                 marginTop: 9,
+               }}
+             >
                <View style={{
-                 marginLeft: 75,
+                 marginLeft: 30,
+                 paddingTop: 5,
+                 paddingBottom: 5,
+                 marginRight: 10,
+                 flex: 1,
                  flexDirection: 'row',
+                 justifyContent: 'space-between',
+                 borderBottomWidth: 1,
+                 borderBottomColor: STRING.GreyColor,
                }}
                >
-                 <Icon.Button
-                   name="ios-stats" style={{
-                     height: 30,
-                   }} backgroundColor="white" color={STRING.GreyColor}
-                 />
+                 <Text style={{
+                   color: STRING.LightBlackColor,
+                   fontSize: 16,
+                   fontWeight: 'bold',
+                   marginTop: 3.5,
+                 }}
+                 >
+                   PRICE HISTORY
+                 </Text>
+                 <View style={{
+                   marginLeft: 75,
+                   flexDirection: 'row',
+                 }}
+                 >
+                   <Icon.Button
+                     name="ios-stats" style={{
+                       height: 30,
+                     }} backgroundColor="white" color={STRING.GreyColor}
+                   />
+                 </View>
+               </View>
+               <View style={{
+                 flex: 1,
+                 marginTop: 10,
+                 marginLeft: 6,
+                 marginRight: 10,
+               }}
+               >
+                 <PieChartBasic data={this.state.history} />
                </View>
              </View>
-             <View style={{
-               flex: 1,
-               marginTop: 10,
-               marginLeft: 6,
-               marginRight: 10,
-             }}
-             >
-               <PieChartBasic data={this.state.history} />
+           : null}
+           <View style={{ flex: 1, flexDirection: 'row', height: 40 }}>
+             <View style={{ flex: 1, marginTop: 8 }}>
+               <Button
+                 containerStyle={{
+                   height: '100%',
+                   marginRight: 5,
+                   marginLeft: 5,
+                   borderRadius: 3,
+                   backgroundColor: STRING.RedColor,
+                 }} style={{
+                   marginTop: 8,
+                   fontSize: 11,
+                   color: 'white',
+                 }} styleDisabled={{
+                   color: 'blue',
+                 }} onPress={() => {
+                   this.pressButton(data.href);
+                 }}
+               >
+                 BUY NOW
+               </Button>
              </View>
            </View>
-         : null}
-         <View style={{ flex: 1, flexDirection: 'row', height: 40 }}>
-           <View style={{ flex: 1, marginTop: 8 }}>
-             <Button
-               containerStyle={{
-                 height: '100%',
-                 marginRight: 5,
-                 marginLeft: 5,
-                 borderRadius: 3,
-                 backgroundColor: STRING.RedColor,
-               }} style={{
-                 marginTop: 8,
-                 fontSize: 11,
-                 color: 'white',
-               }} styleDisabled={{
-                 color: 'blue',
-               }} onPress={() => {
-                 this.pressButton(data.href);
-               }}
-             >
-               BUY NOW
-             </Button>
-           </View>
-         </View>
+         </ScrollView>
        </View>
       );
     return (

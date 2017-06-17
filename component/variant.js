@@ -57,6 +57,14 @@ export class VariantPoduct extends Component {
       this.setState({ user: JSON.parse(value) });
     });
   }
+  loadScrapProductPage(id) {
+    this.props.navigator.push({
+      name: 'scrapproduct',
+      payload: {
+        id,
+      },
+    });
+  }
   updateState(value) {
     action.renderProduct(this.props.id).then((val) => {
       _.map(val.result, (data) => {
@@ -306,11 +314,11 @@ export class VariantPoduct extends Component {
                 fontWeight: 'bold',
               }}
               >Rs. {data.price}</Text>
-              <View style={{ justifyContent: 'center', alignSelf: 'flex-end' }}>
+              <View style={{ justifyContent: 'center', alignSelf: 'center' }}>
                 <Button
                   containerStyle={{
                     marginTop: 9,
-                    marginLeft: 60,
+                    marginLeft: 25,
                     width: 68,
                     padding: 4.5,
                     height: 25,
@@ -339,7 +347,13 @@ export class VariantPoduct extends Component {
           borderTopColor: STRING.GreyColor,
         }}
         >
-          <View style={{ width: '50%', marginTop: 2, marginBottom: 2 }} />
+          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }}>
+            <View>
+              <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
+                <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
           <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
             {this.state.user !== null && this.state.user[0] !== undefined ? (

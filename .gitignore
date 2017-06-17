@@ -1,6 +1,7 @@
 node_modules
 android/.geadle
 *.apk
+android/*
 android/.gradle/*
 android/.gradle/2.14.1/taskArtifacts/*.bin
 android/.gradle/2.14.1/taskArtifacts/*

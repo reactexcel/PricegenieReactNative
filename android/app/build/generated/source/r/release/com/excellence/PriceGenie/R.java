@@ -2245,28 +2245,30 @@ containing a value of this type.
         public static final int common_google_signin_btn_text_light_normal_background=0x7f020077;
         public static final int googleg_disabled_color_18=0x7f020078;
         public static final int googleg_standard_color_18=0x7f020079;
-        public static final int icon=0x7f02007a;
-        public static final int img_cat_icon_cameraaccessories=0x7f02007b;
-        public static final int img_cat_icon_computercomponents=0x7f02007c;
-        public static final int img_cat_icon_desktoplaptopaccessories=0x7f02007d;
-        public static final int img_cat_icon_homeappliances=0x7f02007e;
-        public static final int img_cat_icon_kitchenappliances=0x7f02007f;
-        public static final int img_cat_icon_laptops=0x7f020080;
-        public static final int img_cat_icon_mobiles=0x7f020081;
-        public static final int img_cat_icon_television=0x7f020082;
-        public static final int img_genielogog=0x7f020083;
-        public static final int img_images=0x7f020084;
-        public static final int messenger_bubble_large_blue=0x7f020085;
-        public static final int messenger_bubble_large_white=0x7f020086;
-        public static final int messenger_bubble_small_blue=0x7f020087;
-        public static final int messenger_bubble_small_white=0x7f020088;
-        public static final int messenger_button_blue_bg_round=0x7f020089;
-        public static final int messenger_button_blue_bg_selector=0x7f02008a;
-        public static final int messenger_button_send_round_shadow=0x7f02008b;
-        public static final int messenger_button_white_bg_round=0x7f02008c;
-        public static final int messenger_button_white_bg_selector=0x7f02008d;
-        public static final int notification_template_icon_bg=0x7f02008f;
-        public static final int splash=0x7f02008e;
+        public static final int ic_notif=0x7f02007a;
+        public static final int ic_stat_merge_type=0x7f02007b;
+        public static final int icon=0x7f02007c;
+        public static final int img_cat_icon_cameraaccessories=0x7f02007d;
+        public static final int img_cat_icon_computercomponents=0x7f02007e;
+        public static final int img_cat_icon_desktoplaptopaccessories=0x7f02007f;
+        public static final int img_cat_icon_homeappliances=0x7f020080;
+        public static final int img_cat_icon_kitchenappliances=0x7f020081;
+        public static final int img_cat_icon_laptops=0x7f020082;
+        public static final int img_cat_icon_mobiles=0x7f020083;
+        public static final int img_cat_icon_television=0x7f020084;
+        public static final int img_genielogog=0x7f020085;
+        public static final int img_images=0x7f020086;
+        public static final int messenger_bubble_large_blue=0x7f020087;
+        public static final int messenger_bubble_large_white=0x7f020088;
+        public static final int messenger_bubble_small_blue=0x7f020089;
+        public static final int messenger_bubble_small_white=0x7f02008a;
+        public static final int messenger_button_blue_bg_round=0x7f02008b;
+        public static final int messenger_button_blue_bg_selector=0x7f02008c;
+        public static final int messenger_button_send_round_shadow=0x7f02008d;
+        public static final int messenger_button_white_bg_round=0x7f02008e;
+        public static final int messenger_button_white_bg_selector=0x7f02008f;
+        public static final int notification_template_icon_bg=0x7f020091;
+        public static final int splash=0x7f020090;
     }
     public static final class id {
         public static final int action0=0x7f0d007c;
@@ -2482,7 +2484,9 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f040034;
     }
     public static final class mipmap {
-        public static final int icon=0x7f030000;
+        public static final int ic_notif=0x7f030000;
+        public static final int ic_stat_merge_type=0x7f030001;
+        public static final int icon=0x7f030002;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f070000;

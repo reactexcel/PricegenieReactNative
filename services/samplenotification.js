@@ -12,7 +12,8 @@ class FirebaseClient {
 
   sendNotification() {
     const body = {
-    	to: 'cdwl9YdAClA:APA91bGJ1ZpDl2Gz0XAwdPm_K2mzKP0gAv_xIK4AFY_MIHUyRG6ZyJSeTBZOJWSsnC1WpooY-9yd91NeqTImcndRy5Oc0sAZlTeNEp4gXbcL489o1NMOMcpsEiYSlVo33qy6gMQo8top',
+    	to: 'eBCnW2Fz1nA:APA91bFqXoMtal8hMvSmrWrzofvB2FrHLQjlD5aDLyPUqOcOugh56pgTH6ReMWGDvjl95OCGKhPsqdj1U3ZCoijJC_l180peouDcUx_w1bD-hMUzso6frRN13Ee3YaHdv_rcAK6xCrXz',
+      content_available: true,
       notification: {
     		title: 'price genie',
     		body: 'This is a notification from price genie.',
@@ -23,10 +24,7 @@ class FirebaseClient {
       data: {
     		title: 'PriceGenie',
     		body: {
-      id: '123',
-      name: 'pricegenie',
-      image: 'url',
-      text: 'description',
+      id: '5940cb71a4266e615e6243ed',
     },
     		click_action: 'fcm.ACTION.HELLO',
     		remote: true,

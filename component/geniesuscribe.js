@@ -56,6 +56,14 @@ export class GenieSuscribe extends Component {
       }
     });
   }
+  loadScrapProductPage(id) {
+    this.props.navigator.push({
+      name: 'scrapproduct',
+      payload: {
+        id,
+      },
+    });
+  }
   updateState(value) {
     action.suscribelist(this.props.email).then((val) => {
       if (this.setState({ dataPoints: val.data, loading: false })) {
@@ -139,7 +147,7 @@ export class GenieSuscribe extends Component {
             marginBottom: 12,
           }}
           >
-            <View style={{ width: '40%', flexDirection: 'row' }}>
+            <View style={{ width: '45%', flexDirection: 'row' }}>
               <Text
                 style={{
                     // backgroundColor: 'blue',
@@ -158,7 +166,7 @@ export class GenieSuscribe extends Component {
                 style={{
                   marginTop: 5,
                   borderColor: 'red',
-                  height: '95%',
+                  height: '85%',
                   width: 75,
                 }} resizeMode="contain" source={{
                   uri: data.img,
@@ -181,7 +189,7 @@ export class GenieSuscribe extends Component {
                 <Button
                   containerStyle={{
                     marginTop: 9,
-                    marginLeft: 60,
+                    marginLeft: 10,
                     width: 68,
                     padding: 4.5,
                     height: 25,
@@ -211,7 +219,13 @@ export class GenieSuscribe extends Component {
           borderTopColor: STRING.GreyColor,
         }}
         >
-          <View style={{ width: '50%', marginTop: 2, marginBottom: 2 }} />
+          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }}>
+            <View>
+              <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
+                <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
           <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
           <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
             <View style={{ flex: 1, backgroundColor: '#E08283' }}>
