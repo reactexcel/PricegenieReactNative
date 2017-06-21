@@ -52,7 +52,7 @@ export class ScrapProductView extends Component {
       }
     });
   }
-  componentWillMount(props) {
+  componentWillMount() {
     alert.renderScrapProduct(this.props.id).then((val) => {
       const history = [];
       history.push(val.price_history.map((dataPoint, idx) => {

@@ -23,7 +23,6 @@ import {
 } from 'react-native';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import { Navigator } from 'react-native-deprecated-custom-components';
-import Drawer from 'react-native-drawer';
 import { Home } from './home';
 import SplashScreen from 'react-native-splash-screen';
 import { getLocalStorageData } from '../services/localstorage';
@@ -62,6 +61,9 @@ export default class Index extends Component {
       active: 0,
       background: false,
       set: true,
+      back: false,
+      notify: [],
+      msgid: '1',
     };
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
@@ -69,11 +71,63 @@ export default class Index extends Component {
     this.renderScene = this.renderScene.bind(this);
     this.configureScene = this.configureScene.bind(this);
     this.stateset = this.stateset.bind(this);
+    // this.handleNotification = this.handleNotification.bind(this);
+    // this.handleAppStatus = this.handleAppStatus.bind(this);
+    // this.backgroundListener = this.backgroundListener.bind(this);
+    // this.foregroundListener = this.foregroundListener.bind(this);
   }
 
   componentDidMount() {
     SplashScreen.hide();
   }
+  // componentWillMount() {
+  //   FCM.getInitialNotification().then((notif) => {
+  //     if (notif && notif.body !== undefined) {
+  //       this.handleNotification(notif);
+  //     }
+  //   });
+  //   AppState.addEventListener('change', this.handleAppStatus);
+  // }
+  // handleAppStatus() {
+  //   if (AppState.currentState === 'active') {
+  //     if (this.state.back === false) {
+  //       this.foregroundListener();
+  //     }
+  //   } else {
+  //     this.backgroundListener();
+  //     this.setState({ back: true });
+  //   }
+  // }
+  // backgroundListener() {
+  //   FCM.on(FCMEvent.Notification, (notif) => {
+  //     if (AppState.currentState !== 'active' && notif && notif.body !== undefined && notif.body !== null) {
+  //       console.log(notif);
+  //       console.log('backgroundListener found body');
+  //       this.handleNotification(notif);
+  //     }
+  //   });
+  // }
+  // foregroundListener() {
+  //   FCM.on(FCMEvent.Notification, (notif) => {
+  //     if (AppState.currentState === 'active' && notif && notif.body !== undefined && notif.body !== null) {
+  //       console.log('foregroundListener found body');
+  //       this.state.notify.push(notif);
+  //       // this.handleNotification(notif);
+  //     }
+  //   });
+  // }
+  // handleNotification(data) {
+  //   FCM.removeAllDeliveredNotifications(data);
+  //   FCM.cancelAllLocalNotifications();
+  //   console.log(data, 'data');
+  //   const id = JSON.parse(data.body);
+  //   // navigator.push({
+  //   //   name: 'scrapproduct',
+  //   //   payload: {
+  //   //     id: id.id,
+  //   //   },
+  //   // });
+  // }
   closeDrawer() {
     this.setState({ drawerOpen: false });
   }
@@ -125,10 +179,6 @@ export default class Index extends Component {
       return (<PieChartBasic navigator={navigator} {...route.payload} />);
     } else if (route.name === 'variant') {
       return (<VariantPoduct navigator={navigator} {...route.payload} />);
-    } else if (route.name === 'login') {
-      return (<LoginPage navigator={navigator} {...route.payload} />);
-    } else if (route.name === 'logout') {
-      return (<LogoutPage navigator={navigator} {...route.payload} />);
     } else if (route.name === 'suscribelist') {
       return (<GenieSuscribe navigator={navigator} {...route.payload} />);
     } else if (route.name === 'scrapproduct') {

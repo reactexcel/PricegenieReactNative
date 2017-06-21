@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "com.excellence.PriceGenie";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 100263;
-  public static final String VERSION_NAME = "1.0.30";
+  public static final int VERSION_CODE = 100264;
+  public static final String VERSION_NAME = "1.0.31";
 }

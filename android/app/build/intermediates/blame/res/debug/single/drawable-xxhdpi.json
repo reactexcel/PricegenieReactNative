@@ -4,11 +4,23 @@
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxhdpi/icon.png"
     },
     {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/splash.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/src/main/res/drawable-xxhdpi/splash.png"
+    },
+    {
         "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/splash.png",
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxhdpi/splash.png"
     },
     {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/icon.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/src/main/res/drawable-xxhdpi/icon.png"
+    },
+    {
         "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_notif.png",
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxhdpi/ic_notif.png"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_notif.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/src/main/res/drawable-xxhdpi/ic_notif.png"
     }
 ]

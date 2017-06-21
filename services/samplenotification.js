@@ -12,7 +12,7 @@ class FirebaseClient {
 
   sendNotification() {
     const body = {
-    	to: 'eBCnW2Fz1nA:APA91bFqXoMtal8hMvSmrWrzofvB2FrHLQjlD5aDLyPUqOcOugh56pgTH6ReMWGDvjl95OCGKhPsqdj1U3ZCoijJC_l180peouDcUx_w1bD-hMUzso6frRN13Ee3YaHdv_rcAK6xCrXz',
+    	to: 'ep8X44FF0r0:APA91bEY3y9b6d_BE4SCPTnJ-sbVSdwwjGvCWtbl1xq_mbBXwgFqtafUkp0tt-_CVl5bgROPtc2NskExJYWDKBZUax56o_-xQSwziixg8j9dOHDRCtriJYGsV02fp3yKsETteKLdYqcu',
       content_available: true,
       notification: {
     		title: 'price genie',
