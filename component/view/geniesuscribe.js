@@ -23,7 +23,7 @@ const _ = require('lodash');
 const style = require('../../style/basicStyle');
 const { height, width } = Dimensions.get('window');
 
-export class GenieSuscribe extends Component {
+export default class GenieSuscribe extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,12 +40,12 @@ export class GenieSuscribe extends Component {
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
     });
-    action.suscribelist(this.props.email).then((val) => {
+    action.suscribelist(this.props.navigation.state.params.email).then((val) => {
       this.setState({ dataPoints: val.data, loading: false });
     });
   }
   _previouspage() {
-    this.props.navigator.pop();
+    this.props.navigation.goBack();
   }
   pressButton(url) {
     Linking.canOpenURL(url).then((supported) => {
@@ -57,15 +57,10 @@ export class GenieSuscribe extends Component {
     });
   }
   loadScrapProductPage(id) {
-    this.props.navigator.push({
-      name: 'scrapproduct',
-      payload: {
-        id,
-      },
-    });
+    this.props.navigation.navigate('scrapproductpage', { id });
   }
   updateState(value) {
-    action.suscribelist(this.props.email).then((val) => {
+    action.suscribelist(this.props.navigation.state.params.email).then((val) => {
       if (this.setState({ dataPoints: val.data, loading: false })) {
         ToastAndroid.show(value, ToastAndroid.SHORT);
       }

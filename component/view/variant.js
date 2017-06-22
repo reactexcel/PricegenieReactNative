@@ -244,7 +244,6 @@ export class VariantPoduct extends Component {
     header: null,
   });
   render() {
-    console.log(this.state, 'state');
     const { dataPoints } = this.state;
     const variant_product = _.map(dataPoints, (data, key) => (
       <View

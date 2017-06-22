@@ -46,8 +46,8 @@ export class LogoutPage extends Component {
       const userdata = [{ data, logintype, islogin }];
       setLocalStorageData('user', JSON.stringify(userdata));
       ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-      this.props.close();
-      this.props.handleStorage(1);
+      this.props.handleState();
+      this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
     }, error => error);
   }
   logoutWithFacebook() {
@@ -58,12 +58,9 @@ export class LogoutPage extends Component {
       const userdata = [{ data, logintype, islogin }];
       setLocalStorageData('user', userdata);
       ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-      this.props.close();
-      this.props.handleStorage(1);
+      this.props.handleState();
+      this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
     }, error => error);
-  }
-  _previouspage() {
-    this.props.navigator.pop();
   }
   navigateToSuscribe() {
     let email = '';
@@ -73,14 +70,7 @@ export class LogoutPage extends Component {
       } else if (this.state.user[0].logintype === 'facebook') {
         email = this.state.user[0].profile.email;
       }
-      this.props.close();
-      if (route.name == 'productview') {
-        const name = route.name;
-        const id = route.payload.id;
-        this.props.navigator.push({ name: 'suscribelist', payload: { email, name, id } });
-      } else {
-        this.props.navigator.push({ name: 'suscribelist', payload: { email } });
-      }
+      this.props.navigation.navigate('suscribelist', { email });
     }
   }
   render() {

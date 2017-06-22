@@ -1,6 +1,7 @@
+import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import DrawerView from '../drawer/drawer';
-import { GenieSuscribe } from '../geniesuscribe';
+import GenieSuscribe from '../view/geniesuscribe';
 
 const DrawerRoot = StackNavigator({
   Drawer: {

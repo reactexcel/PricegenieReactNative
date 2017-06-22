@@ -7,9 +7,6 @@ import ControlPanel from './controlpanel';
 import Root from '../route/route';
 
 class DrawerView extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: null,
-  });
   constructor() {
     super();
     this.state = {
@@ -18,25 +15,37 @@ class DrawerView extends Component {
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
   }
-  openDrawer(val) {
+  componentDidMount() {
+    this.props.navigation.setParams({ handleOpen: this.openDrawer });
+  }
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15 }} onPress={() => params.handleOpen()} />,
+    };
+  };
+  openDrawer(val = 1) {
     console.log('open');
     if (val === 1) {
       this.setState({ drawer: true });
     }
   }
-  closeDrawer(val) {
+  closeDrawer(val = 1) {
     if (val === 1) {
       this.setState({ drawer: false });
     }
   }
   render() {
+    console.log(this.props, 'drawer');
     return (
       <Drawer
         type="overlay"
         open={this.state.drawer}
         content={
           <ControlPanel
-            closeDrawer={this.closeDrawer}
+            open={this.openDrawer}
+            close={this.closeDrawer}
+            navigation={this.props.navigation}
           />
         }
         tapToClose
@@ -55,7 +64,7 @@ class DrawerView extends Component {
         openDrawerOffset={0.3}
         closeDrawerOffser={-3}
       >
-        <Root open={this.openDrawer} closeDrawer={this.closeDrawer} />
+        <Root open={this.props.navigation} closeDrawer={this.closeDrawer} />
       </Drawer>
     );
   }

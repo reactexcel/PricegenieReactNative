@@ -54,12 +54,10 @@ export class ProductView extends Component {
     this.updateState = this.updateState.bind(this);
   }
   openDrawer() {
-    this.props.openstate();
+    this.props.navigation.navigate('DrawerOpen');
   }
   componentWillReceiveProps() {
-    getLocalStorageData('user').then((value) => {
-      this.setState({ user: JSON.parse(value) });
-    });
+    console.log('props');
     get.pricehistroy(this.props.navigation.state.params.id).then((dataPoints) => {
       if (dataPoints && dataPoints.length >= 1) {
         this.setState({ data: dataPoints, nodata: true });
@@ -74,7 +72,10 @@ export class ProductView extends Component {
       }
     });
     action.renderProduct(this.props.navigation.state.params.id).then((val) => {
-      this.setState({ product_id: this.props.navigation.state.params.id, result: val.result, specficiation: val, loading: false });
+      this.setState({ product_id: this.props.navigation.state.params.id, result: val.result, specficiation: val });
+    });
+    getLocalStorageData('user').then((value) => {
+      this.setState({ user: JSON.parse(value) });
     });
   }
   _previouspage() {
@@ -221,8 +222,14 @@ export class ProductView extends Component {
       this.setState({ product_id: this.props.navigation.state.params.id, result: val.result, specficiation: val, isLoad: false, loadId: '' });
       ToastAndroid.show(value, ToastAndroid.SHORT);
     });
+    getLocalStorageData('user').then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    });
   }
-  componentWillMount(props) {
+  componentWillMount() {
+    getLocalStorageData('user').then((value) => {
+      this.setState({ user: JSON.parse(value) });
+    });
     get.pricehistroy(this.props.navigation.state.params.id).then((dataPoints) => {
       if (dataPoints && dataPoints.length >= 1) {
         this.setState({ data: dataPoints, nodata: true });
@@ -517,7 +524,7 @@ export class ProductView extends Component {
                     }}
                     >Set Price Alert</Text>
                   </TouchableOpacity>)
-                       :
+                :
                   <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                     <Text style={{
                       color: 'white',
@@ -528,37 +535,37 @@ export class ProductView extends Component {
                     }}
                     >Set Price Alert</Text>
                   </TouchableOpacity>
-                     }
+                }
                 </View>
-              )
-                 :
+            )
+            :
                 <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
                   {this.state.isLoad === true ?
-                    (this.state.loadId === data._id.$id ?
-                      <ActivityIndicator
-                        animating={this.state.isLoad} color={'white'} size={15}
-                      />
-                      : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                        <Text style={{
-                          color: 'white',
-                          marginLeft: 1,
-                          textAlign: 'center',
-                          fontSize: 11,
-                          fontWeight: 'bold',
-                        }}
-                        >Set Price Alert</Text>
-                      </TouchableOpacity>)
+                (this.state.loadId === data._id.$id ?
+                  <ActivityIndicator
+                    animating={this.state.isLoad} color={'white'} size={15}
+                  />
+                : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                  <Text style={{
+                    color: 'white',
+                    marginLeft: 1,
+                    textAlign: 'center',
+                    fontSize: 11,
+                    fontWeight: 'bold',
+                  }}
+                  >Set Price Alert</Text>
+                </TouchableOpacity>)
                        :
-                      <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                        <Text style={{
-                          color: 'white',
-                          marginLeft: 1,
-                          textAlign: 'center',
-                          fontSize: 11,
-                          fontWeight: 'bold',
-                        }}
-                        >Set Price Alert</Text>
-                      </TouchableOpacity>
+                <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                  <Text style={{
+                    color: 'white',
+                    marginLeft: 1,
+                    textAlign: 'center',
+                    fontSize: 11,
+                    fontWeight: 'bold',
+                  }}
+                  >Set Price Alert</Text>
+                </TouchableOpacity>
                   }
                 </View>
               }

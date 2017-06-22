@@ -53,7 +53,7 @@ export class Subcategory extends Component {
   }
 
   openDrawer() {
-    this.props.navigation.state.params.open(1);
+    this.props.navigation.navigate('DrawerOpen');
   }
   static navigationOptions = ({ navigation }) => ({
     header: null,

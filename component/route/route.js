@@ -8,15 +8,10 @@ import { VariantPoduct } from '../view/variant';
 import { GenieSuscribe } from '../view/geniesuscribe';
 import { ScrapProductView } from '../view/scrapproductpage';
 
-// console.log(this.props);
+
 const Root = StackNavigator({
   home: {
     screen: Home,
-    options: {
-      props: {
-        open: this.props,
-      },
-    },
   },
   subcategory: {
     screen: Subcategory,

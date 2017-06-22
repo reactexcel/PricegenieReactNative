@@ -52,8 +52,8 @@ export class LoginPage extends Component {
             setLocalStorageData('user', JSON.stringify(userdata));
             ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
           });
-          this.props.close();
-          this.props.handleStorage(1);
+          this.props.handleState();
+          this.props.navigation.navigate('DrawerClose', { islogin: true }, 'login');
         });
         setLocalStorageData('user', JSON.stringify(userdata));
         ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
@@ -80,14 +80,11 @@ export class LoginPage extends Component {
           set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
           setLocalStorageData('user', JSON.stringify(userdata));
           ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-          this.props.close();
-          this.props.handleStorage(1);
+          this.props.handleState();
+          this.props.navigation.navigate('DrawerClose', { islogin: true }, 'login');
         });
       });
     }, error => error);
-  }
-  _previouspage() {
-    this.props.navigator.pop();
   }
 
   render() {

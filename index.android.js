@@ -7,8 +7,7 @@
  */
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, View, BackHandler } from 'react-native';
-// import Index from './component/index';
-import Index from './component/newindex';
+import Index from './component/index';
 
 export default class PriceGenie extends Component {
   render() {

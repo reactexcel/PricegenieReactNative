@@ -77,7 +77,7 @@ export class ProductPage extends Component {
     });
   }
   openDrawer() {
-    this.props.openstate();
+    this.props.navigation.navigate('DrawerOpen');
   }
   _previouspage() {
     this.props.navigation.goBack();

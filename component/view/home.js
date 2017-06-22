@@ -54,7 +54,7 @@ export class Home extends Component {
     });
   }
   openDrawer() {
-    console.log(this.props);
+    this.props.navigation.navigate('DrawerOpen');
   }
   _sendDataforward(data) {
     const cat = data.case;
@@ -64,6 +64,7 @@ export class Home extends Component {
     header: null,
   });
   render() {
+    // console.log(this.props.navigation.initalRoute);
     const button = (
       <Icon.ToolbarAndroid
         logo={require('../../img/genie-logo-g.png')}
