@@ -31,7 +31,6 @@ const Root = StackNavigator({
   scrapproductpage: {
     screen: ScrapProductView,
   },
-
 });
 
 export default Root;

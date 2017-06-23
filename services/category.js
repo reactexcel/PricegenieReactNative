@@ -4,11 +4,14 @@ export function getCategory(subcategory) {
   return getLocalStorageData(subcategory).then((value) => {
     if (value === null || undefined) {
       return new Promise((resolve, reject) => {
+        console.log('test');
         actions.ajaxFire('category_tree').then((val) => {
+          console.log(val);
           const category = val.data;
           setLocalStorageData(subcategory, JSON.stringify(category));
           resolve(val.data);
         }, (error) => {
+          console.log(error);
           reject(error);
         });
       });

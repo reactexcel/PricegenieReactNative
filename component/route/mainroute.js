@@ -1,5 +1,5 @@
 import React from 'react';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
+import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import Root from './route';
 import DrawerContent from '../drawer/drawercontent';
 import GenieSuscribe from '../view/geniesuscribe';
@@ -15,5 +15,9 @@ const Main = DrawerNavigator({
     drawerPosition: 'right',
     contentComponent: props => <DrawerContent {...props} />,
   });
+
+// const Main = StackNavigator({
+//   main: { screen: Drawer, navigationOptions: { header: null } },
+// });
 
 export default Main;

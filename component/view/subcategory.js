@@ -41,23 +41,17 @@ export class Subcategory extends Component {
     const sub_name = this.props.navigation.state.params.name;
     this.setState({ subcat: sub_name });
     actions.getCategory('subcategory').then((data) => {
+      console.log(data);
       if (data && data.length) {
         this.setState({ arrcat: data, animating: false });
       }
     });
   }
-  componentDidMount() {
-    getLocalStorageData('user').then((value) => {
-      this.setState({ user: JSON.parse(value) });
-    });
-  }
+
 
   openDrawer() {
     this.props.navigation.navigate('DrawerOpen');
   }
-  static navigationOptions = ({ navigation }) => ({
-    header: null,
-  });
   _previouspage() {
     this.props.navigation.goBack();
   }
@@ -73,44 +67,17 @@ export class Subcategory extends Component {
       },
     );
   }
+  static navigationOptions = ({ navigation }) => ({
+    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    title: <Text style={{ fontSize: 15, alignSelf: 'center', color: 'white' }} >
+      { navigation.state.params.name}
+    </Text>,
+    headerLeft: <View style={{ flexDirection: 'row' }}>
+      <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
+      <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
+    headerStyle: style.toolbar,
+  });
   render() {
-    const button = (
-      <Icon.ToolbarAndroid
-        logo={require('../../img/genie-logo-g.png')}
-        onIconClicked={this._previouspage}
-        navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
-        // overflowIconName="ios-list"
-        onActionSelected={() => {
-          this.openDrawer();
-        }}
-        actions={[{
-          title: 'Login',
-          iconSize: 25,
-          iconName: 'ios-list',
-          show: 'always',
-        },
-        ]}
-      >
-        <View style={{
-          flex: 1,
-          alignSelf: 'center',
-          justifyContent: 'center',
-          borderWidth: 0,
-          paddingLeft: width / 9,
-          paddingTop: 15,
-        }}
-        >
-          <Text style={{
-            fontSize: 15,
-            alignSelf: 'center',
-            color: 'white',
-          }}
-          >
-            {this.state.subcat}
-          </Text>
-        </View>
-      </Icon.ToolbarAndroid>
-        );
     const { height, width } = Dimensions.get('window');
     let catg = null;
     const sub_cat = this.state.arrcat;
@@ -156,7 +123,6 @@ export class Subcategory extends Component {
           backgroundColor: 'white',
         }}
         >
-          {button}
           <ScrollView>
             <View style={{
               flex: 1,

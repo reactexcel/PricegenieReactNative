@@ -23,8 +23,8 @@ import {
 } from 'react-native';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import SplashScreen from 'react-native-splash-screen';
-import { getLocalStorageData } from '../services/localstorage';
-import { setLocalStorageData } from '../services/localstorage';
+import { setLocalStorageData, getLocalStorageData } from '../services/localstorage';
+
 // import DrawerRoot from './route/drawerroute';
 import Main from './route/mainroute';
 

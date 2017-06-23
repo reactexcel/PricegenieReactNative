@@ -52,9 +52,6 @@ export class ScrapProductView extends Component {
       }
     });
   }
-  static navigationOptions = ({ navigation }) => ({
-    header: null,
-  });
   componentWillMount() {
     alert.renderScrapProduct(this.props.navigation.state.params.id).then((val) => {
       const history = [];
@@ -71,12 +68,14 @@ export class ScrapProductView extends Component {
       });
     });
   }
+  static navigationOptions = ({ navigation }) => ({
+    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerLeft: <View style={{ flexDirection: 'row' }}>
+      <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
+      <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
+    headerStyle: style.toolbar,
+  });
   render() {
-    const button = (
-      <Icon.ToolbarAndroid
-        logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
-        elevation={4}
-      />);
     const { data } = this.state;
     const { height, width } = Dimensions.get('window');
     const { loading } = this.state;
@@ -215,7 +214,6 @@ export class ScrapProductView extends Component {
         flexDirection: 'column',
       }}
       >
-        {button}
         <ScrollView showsVerticalScrollIndicator={false}>
           {loading
             ? <ActivityIndicator
