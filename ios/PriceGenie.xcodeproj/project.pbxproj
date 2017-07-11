@@ -1426,6 +1426,7 @@
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/yoga",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons",
+					"$(SRCROOT)/../node_modules/axios",
 				);
 				INFOPLIST_FILE = PriceGenie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1462,6 +1463,7 @@
 					"$(SRCROOT)/../node_modules/react-native/ReactCommon/yoga",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons",
+					"$(SRCROOT)/../node_modules/axios",
 				);
 				INFOPLIST_FILE = PriceGenie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
