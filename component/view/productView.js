@@ -247,9 +247,7 @@ export class ProductView extends Component {
       this.setState({ product_id: this.props.navigation.state.params.id, result: val.result, specficiation: val, loading: false });
     });
   }
-  static navigationOptions = ({ navigation }) => ({
-    header: null,
-  });
+
   checkAlert(alertdata, user) {
     let isMatch = false;
     let isUnmatch = false;
@@ -324,23 +322,14 @@ export class ProductView extends Component {
       </View>)
       ;
   }
+  static navigationOptions = ({ navigation }) => ({
+    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerLeft: <View style={{ flexDirection: 'row' }}>
+      <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
+      <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
+    headerStyle: style.toolbar,
+  });
   render() {
-    const button = (
-      <Icon.ToolbarAndroid
-        logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
-        onActionSelected={() => {
-          this.openDrawer();
-        }}
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-            show: 'always',
-            iconName: 'ios-list',
-          },
-        ]}
-        elevation={4}
-      />);
     const { nodata } = this.state;
     const { norelatedProduct } = this.state;
     const { nosimilarProduct } = this.state;
@@ -555,7 +544,7 @@ export class ProductView extends Component {
                   }}
                   >Set Price Alert</Text>
                 </TouchableOpacity>)
-                       :
+              :
                 <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                   <Text style={{
                     color: 'white',
@@ -566,9 +555,9 @@ export class ProductView extends Component {
                   }}
                   >Set Price Alert</Text>
                 </TouchableOpacity>
-                  }
-                </View>
               }
+                </View>
+            }
           </View>
         </View>
       </View>
@@ -581,7 +570,6 @@ export class ProductView extends Component {
         flexDirection: 'column',
       }}
       >
-        {button}
         <ScrollView showsVerticalScrollIndicator={false}>
           {loading
             ? <ActivityIndicator
@@ -682,54 +670,54 @@ export class ProductView extends Component {
               {/* {nodata
                 ? <View
                   elevation={4} style={{
-                    flex: 1.3,
-                    backgroundColor: 'white',
-                    marginLeft: 9,
-                    marginRight: 9,
-                    marginTop: 9,
+                flex: 1.3,
+                backgroundColor: 'white',
+                marginLeft: 9,
+                marginRight: 9,
+                marginTop: 9,
                   }}
                   >
                   <View style={{
-                    marginLeft: 30,
-                    paddingTop: 5,
-                    paddingBottom: 5,
-                    marginRight: 10,
-                    flex: 1,
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    borderBottomWidth: 1,
-                    borderBottomColor: STRING.GreyColor,
+                marginLeft: 30,
+                paddingTop: 5,
+                paddingBottom: 5,
+                marginRight: 10,
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                borderBottomWidth: 1,
+                borderBottomColor: STRING.GreyColor,
                   }}
                   >
-                    <Text style={{
-                      color: STRING.LightBlackColor,
-                      fontSize: 16,
-                      fontWeight: 'bold',
-                      marginTop: 3.5,
-                    }}
-                    >
-                      PRICE HISTORY
-                    </Text>
-                    <View style={{
-                      marginLeft: 75,
-                      flexDirection: 'row',
-                    }}
-                    >
-                      <Icon.Button
-                        name="ios-stats" style={{
-                          height: 30,
-                        }} backgroundColor="white" color={STRING.GreyColor}
-                      />
-                    </View>
+                <Text style={{
+                color: STRING.LightBlackColor,
+                fontSize: 16,
+                fontWeight: 'bold',
+                marginTop: 3.5,
+                }}
+                >
+                PRICE HISTORY
+                </Text>
+                <View style={{
+                marginLeft: 75,
+                flexDirection: 'row',
+                }}
+                >
+                <Icon.Button
+                name="ios-stats" style={{
+                height: 30,
+                }} backgroundColor="white" color={STRING.GreyColor}
+                />
+                </View>
                   </View>
                   <View style={{
-                    flex: 1,
-                    marginTop: 10,
-                    marginLeft: 6,
-                    marginRight: 10,
+                flex: 1,
+                marginTop: 10,
+                marginLeft: 6,
+                marginRight: 10,
                   }}
                   >
-                    <PieChartBasic data={this.state.data} />
+                <PieChartBasic data={this.state.data} />
                   </View>
                 </View>
               : null} */}
@@ -762,7 +750,7 @@ export class ProductView extends Component {
                     <ProductList data={this.state.similarProduct} selectedProduct={this.selectedProduct} />
                   </View>
                 </View>
-              : null}
+                : null}
               {norelatedProduct
                 ? <View style={{
                   flex: 0.1,

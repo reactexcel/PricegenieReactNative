@@ -61,35 +61,11 @@ export class Home extends Component {
     this.props.navigation.navigate('subcategory', { name: cat });
   }
   static navigationOptions = ({ navigation }) => ({
-    header: null,
+    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerLeft: <Image source={require('../../img/genie-logo-g.png')} size={20} style={{ marginLeft: 15 }} />,
+    headerStyle: style.toolbar,
   });
   render() {
-    // console.log(this.props.navigation.initalRoute);
-    const button = (
-      <Icon.ToolbarAndroid
-        logo={require('../../img/genie-logo-g.png')}
-        title=""
-        style={style.toolbar}
-        titleColor="white"
-        onActionSelected={() => {
-          this.openDrawer();
-        }}
-        // overflowIconName="ios-list"
-        actions={[
-          // {
-          //   title: 'fav',
-          //   iconName: 'md-notifications',
-          //   iconSize: 25,
-          //   show: 'always',
-          // },
-          {
-            title: 'Login',
-            iconName: 'ios-list',
-            show: 'always',
-            iconSize: 25,
-          },
-        ]}
-      />);
     const { width, height } = Dimensions.get('window');
     return (
       <View style={{
@@ -98,7 +74,6 @@ export class Home extends Component {
         backgroundColor: STRING.GreyColor,
       }}
       >
-        {button}
         <ScrollView>
           <View style={{
             flex: 1,

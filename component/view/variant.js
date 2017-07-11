@@ -241,7 +241,11 @@ export class VariantPoduct extends Component {
     Linking.canOpenURL(url);
   }
   static navigationOptions = ({ navigation }) => ({
-    header: null,
+    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerLeft: <View style={{ flexDirection: 'row' }}>
+      <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
+      <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
+    headerStyle: style.toolbar,
   });
   render() {
     const { dataPoints } = this.state;
@@ -429,7 +433,6 @@ export class VariantPoduct extends Component {
         flexDirection: 'column',
       }}
       >
-        <Icon.ToolbarAndroid logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" action={[]} elevation={4} />
         <View
           style={{
             flexDirection: 'row',

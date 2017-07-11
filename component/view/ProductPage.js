@@ -86,9 +86,6 @@ export class ProductPage extends Component {
     const id = data.href.split('/')[6];
     this.props.navigation.navigate('productView', { id });
   }
-  static navigationOptions = ({ navigation }) => ({
-    header: null,
-  });
   _loadMore() {
     const data = this.state.data;
     actions.getProduct(this.props.navigation.state.params.name, this.props.navigation.state.params.id, this.props.navigation.state.params.sub_id, ++this.state.page, this.state.shorting).then((val) => {
@@ -146,33 +143,15 @@ export class ProductPage extends Component {
       });
     }
   }
+
   static navigationOptions = ({ navigation }) => ({
-    header: null,
+    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerLeft: <View style={{ flexDirection: 'row' }}>
+      <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
+      <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
+    headerStyle: style.toolbar,
   });
   render() {
-    const button = (
-      <Icon.ToolbarAndroid
-        logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white"
-        overflowIconName="ios-list"
-        onActionSelected={() => {
-          this.openDrawer();
-        }}
-
-        actions={[
-          {
-            title: 'Login',
-            iconSize: 25,
-            show: 'always',
-            iconName: 'ios-list',
-          },
-          // {
-          //   title: 'fav',
-          //   iconSize: 25,
-          //   iconName: 'md-notifications',
-          //   show: 'always',
-          // },
-        ]}
-      />);
     const { height, width } = Dimensions.get('window');
     const { animating } = this.state;
     const { filter } = this.state;
@@ -188,7 +167,6 @@ export class ProductPage extends Component {
           backgroundColor: STRING.GreyColor,
         }}
         >
-          {button}
           {msg
             ? <View style={{
               flex: 1,
