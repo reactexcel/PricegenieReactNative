@@ -13,7 +13,6 @@ export function setuserkey(device_id, user_key, fcm_reg_id) {
   return new Promise((resolve, reject) => {
     const dataLink = `${device_id}&user_key=${user_key}&gcm_reg_id=${fcm_reg_id}`;
     axios.get(ADDUSER.baseURL + dataLink).then((val) => {
-      console.log(ADDUSER.baseURL + dataLink);
       resolve(val);
     }, (error) => {
       reject({ error });
