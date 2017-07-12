@@ -6,8 +6,17 @@
  * @flow
  */
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { AppRegistry, StyleSheet, View, BackHandler } from 'react-native';
 import Index from './component/index';
+=======
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+>>>>>>> 2d8b2f5bf37e489d467594b02ff469b64cb31efa
 
 export default class PriceGenie extends Component {
   render() {

@@ -52,7 +52,6 @@ class DrawerContent extends Component {
     });
   }
   render() {
-    console.log(this.props);
     let view = <Text />;
     if (this.state.user !== undefined && this.state.user !== '' && this.state.user !== null) {
       view = this.state.user[0].islogin == true ? (

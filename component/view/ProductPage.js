@@ -111,13 +111,13 @@ export class ProductPage extends Component {
           style={[
             styles.centering, {
               transform: [
-                {
+              {
                   scale: 0.7,
-                },
+              },
               ],
             },
           ]} animating={this.state.load} color={STRING.BlueColor} size={32}
-        />
+          />
         : null}</View>
     );
   }
@@ -174,7 +174,7 @@ export class ProductPage extends Component {
               height,
               justifyContent: 'space-around',
             }}
-            >
+              >
               <View>
                 <Text style={{
                   padding: 10,

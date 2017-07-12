@@ -4,7 +4,15 @@
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxxhdpi/ic_stat_merge_type.png"
     },
     {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_notif.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/src/main/res/drawable-xxxhdpi/ic_notif.png"
+    },
+    {
         "merged": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_notif.png",
         "source": "/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/src/main/res/drawable-xxxhdpi/ic_notif.png"
+    },
+    {
+        "merged": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi/ic_stat_merge_type.png",
+        "source": "/var/www/html/native/implement/App/PricegenieReactNative/android/app/src/main/res/drawable-xxxhdpi/ic_stat_merge_type.png"
     }
 ]

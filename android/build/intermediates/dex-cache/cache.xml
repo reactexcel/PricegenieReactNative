@@ -21,6 +21,420 @@
     </item>
     <item
         is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_65be763ee9ec34a383995c26af9632aff9c3b64e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vishal/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_219754a70430f9b699f929cf01e77cc1988b5bf5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-svg/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1a890c575bf07c36d1cd822ab5333f2b8f91d6a8">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-svg-unspecified_b06394b93cb81b3e65be180ae6b35b2ecf8ecfc1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ec94bba6a9bbd3461d90830e0a0752a6487f5484">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-10.2.6_cdfc5ae232130ebafddbeb0a64fa4618a230a94c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.6_3e47951e3bd04b883e3266c981f05a21e27ec623.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.2.0_a3e81125ca044010409beaabb262dd466d9b857a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-google-signin/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="21476696faec01ac1ed7fc2e7bc3ca16584e2b97">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-google-signin-unspecified_5bda356db4857294e3fb8bf16c931fe2861e9838.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-iid-10.2.6_9a674b1222f6b4e675348982ebd73647d584756b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.6_8977cb2c2bb0c55b09741d347c277cc43e123667.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-iid-10.2.6_bd11e018c496594eeb5c740e0fc08bf8521783fe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2d1eaa9e0b98f8fc4c2b989d9b30d4f1480648ac">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-customtabs-23.4.0_46a83cc0b7434e69f52bca00e9c48edd7211de2a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="215363c803a119c16058c8bc0ccd0a4ee62e7157">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-10.2.6_03e6abbb68d80bbdd970e99ff9595407296d7188.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_687459fc83a7a71424920137f325cbf11f311f5d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_8089232bd56db10e8a7d6de210b7333b8db1bc7d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_d9c52c9f7807fc5fe40c90c37614158d81d57759.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vishal/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_b9b1a8828ac88e63a9f085facff811bd9dc55957.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-fcm/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2dfe753140df104c179b83dc1fc04e9f60141240">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-fcm-unspecified_26d83a29e4301b598d38e01975a07852c7f398ea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.2.0_bc64294b06a4ee398f913b751cd0b256189e8780.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.4.0_0d0ded3bbbb81db2ec01f99b46d4739cace7e5bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="af9665a44df26b4098e24c934c1109507845ef5e">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.44.2_a914c72f3b89ec6db675ff0c26026a9b9954f3ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.0.1_a95669bbca8125901c8a35b03f275e5bf46e06a2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="21ef913418758caa0a6ddaf988523757aeb488ef">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-vector-icons-unspecified_262c6ee1eb014cdd0c02a52cfcdf899bf0ba84e4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.16.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="99d79164a8f983161bdb59b1403b9e4a1127aae1">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.16.1_592b2e5037274a8141af7a6c6b41bc4557987f16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-google-signin/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="21476696faec01ac1ed7fc2e7bc3ca16584e2b97">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-google-signin-unspecified_5c6c6729e8805e6f45f39fceed758181a6dde258.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.4.0_f89da33e3505478e7e6f4994ae5d7fe26aa99192.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-svg/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1a890c575bf07c36d1cd822ab5333f2b8f91d6a8">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-svg-unspecified_1fe317d30c220a7fdfbd9d6801b0b9fa8d279c71.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.2.0_fb6b3f443ee2e8112088dc3c30a926bfcbdbc913.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_2aa5e36567ae01a73ff93d7d587c932d13181043.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.6_f103665d0ee04fe39cc74f0b5b45d86d840a3c75.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_5ff26df31810dcb7953f556f9e52c2a6483074c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-device-info/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9f9f67392dcdc85b002e8108470d663de198c68">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-device-info-unspecified_7452d9edd7a97951f2709bb9ef7c239dcc20e064.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_9aa91e282a28c9cf8f8bdac25a19fe2fa98f5042.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-10.2.6_43ee2f83b0a063233da5bb2cb77c6f2f5b972939.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="21ef913418758caa0a6ddaf988523757aeb488ef">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-vector-icons-unspecified_34973f6e362b227ba04f0fde4f3ffbf1e3563d18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_47c4255c7b7272d50a5a1b70508109867204df33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_46f902cac06d1ac1f024965b47868e7cc66bf33e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-device-info/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d9f9f67392dcdc85b002e8108470d663de198c68">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-device-info-unspecified_69886d262ddbc4cea45370a85354708007020e69.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.4.0_e00db0e9469466730decc32e856a743617d040de.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9ff5114aff3bfb387577ba92a11408dcf0441c24">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-messaging-10.2.6_000c237a1c02f70313ab182e295ae8c2dc0b7c13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_f30fb65b28525dde4fa0c194f0a0cf21a389a123.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.6_c8403f83c59d7f1fe29f2078be7598bd139d15dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-fcm/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2dfe753140df104c179b83dc1fc04e9f60141240">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-fcm-unspecified_ba79aa684d7dc9a0d18cd9dc1a27efe3cb251a66.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8a43729dd397e849f2a8bdc5d57a2f3170efb3ed">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-base-10.2.6_a4e7c3c9313c56c4b3265c70eca7c1bfa047eb0f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/me.leolin/ShortcutBadger/1.1.10/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c6792fb346d4f11b5b9e6c1a5df3a99c140a9e70">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/me.leolin-ShortcutBadger-1.1.10_c2ac8b982222f6a8d1eba493f44e28ebd05a7b53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.2.0_da9ab6a8841492f3eca65d0aad7e0b75632914c5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/vishal/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1_4b1a142535db6a9f6abfc8be6d084712b8e8f525.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -48,12 +462,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/vishal/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_219754a70430f9b699f929cf01e77cc1988b5bf5.jar" />
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.4.0_4c9c6dba0f6a80821d7b9dcc7e45137431e9f2a7.jar" />
     </item>
     <item
         is-multidex="false"
@@ -66,6 +480,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-common-10.2.6_5b14ca7c5b649b02d57812fd2f7e179e334041d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -75,21 +498,30 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-svg/unspecified/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="1a890c575bf07c36d1cd822ab5333f2b8f91d6a8">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-svg-unspecified_b06394b93cb81b3e65be180ae6b35b2ecf8ecfc1.jar" />
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.4.0_e8847d9417218d8e5dbdc1e63fe1339ec72c738e.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-google-signin/unspecified/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="21476696faec01ac1ed7fc2e7bc3ca16584e2b97">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-google-signin-unspecified_5bda356db4857294e3fb8bf16c931fe2861e9838.jar" />
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-10.2.6_f6caf2451c2e64f0d11a82dba2896f3dc09ff2ba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.2.0_18bcc16d3e67126d589be2665b4c86fd8cc9693b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -102,12 +534,30 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.2.6/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-splash-screen/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-iid-10.2.6_9a674b1222f6b4e675348982ebd73647d584756b.jar" />
+        sha1="cad32edcb3fa8f3c7850969ac2fd45e41335630f">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-splash-screen-unspecified_2d4eba1e1bc26108c812ab39b46f8ebccf9322d3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="af9665a44df26b4098e24c934c1109507845ef5e">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.44.2_a9ebb3d7a0a51ecaa8f347c35e32de5b24e650d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="900a290779cdb4eb2e63b6f7806fd9f30ce4f60d">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-10.2.6_bc988f7f8cf180d7e672211d1b26ae12ba84e68e.jar" />
     </item>
     <item
         is-multidex="false"
@@ -120,39 +570,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.6/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.6_8977cb2c2bb0c55b09741d347c277cc43e123667.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="215363c803a119c16058c8bc0ccd0a4ee62e7157">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-10.2.6_03e6abbb68d80bbdd970e99ff9595407296d7188.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_687459fc83a7a71424920137f325cbf11f311f5d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.2.0_82cee2ec9507ccc215b64791e9611b42ade6e6c3.jar" />
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.2.0_b9fe4475b6f31b097c14e1828c9a67ea64e93370.jar" />
     </item>
     <item
         is-multidex="false"
@@ -165,12 +588,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.2.0_82cee2ec9507ccc215b64791e9611b42ade6e6c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
         <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_dfae43f57618a0ab0ebdf65c5bbf8b2ff6221092.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="215363c803a119c16058c8bc0ccd0a4ee62e7157">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-gcm-10.2.6_20b720d46228434a9f56be5c96066cd4629efb45.jar" />
     </item>
     <item
         is-multidex="false"
@@ -192,6 +633,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.0.1_98ecfc94484f3af6bdd3595ee04bf06b091e1bc4.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/customtabs/23.4.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -201,12 +651,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/home/vishal/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_b9b1a8828ac88e63a9f085facff811bd9dc55957.jar" />
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_30a1b0999fa429f7bc236ca390e3838a020e66fc.jar" />
     </item>
     <item
         is-multidex="false"
@@ -219,30 +669,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.2.0_bc64294b06a4ee398f913b751cd0b256189e8780.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/vishal/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="f162442a19fff13995fbd51ba414d9ee05579080">
         <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_3249a54198b5865c05871c43d7a10d47f01efcb5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.4.0_0d0ded3bbbb81db2ec01f99b46d4739cace7e5bb.jar" />
     </item>
     <item
         is-multidex="false"
@@ -255,33 +687,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.2/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="af9665a44df26b4098e24c934c1109507845ef5e">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.44.2_a914c72f3b89ec6db675ff0c26026a9b9954f3ff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-vector-icons/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="21ef913418758caa0a6ddaf988523757aeb488ef">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-vector-icons-unspecified_262c6ee1eb014cdd0c02a52cfcdf899bf0ba84e4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.2.0_fb6b3f443ee2e8112088dc3c30a926bfcbdbc913.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -291,12 +696,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_2aa5e36567ae01a73ff93d7d587c932d13181043.jar" />
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.2.0_2f6c6d1a45f7b901c1de4fcb793ab5e00dc13f6e.jar" />
     </item>
     <item
         is-multidex="false"
@@ -327,15 +732,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.6_f103665d0ee04fe39cc74f0b5b45d86d840a3c75.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/home/vishal/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
         jumboMode="false"
         optimize="true"
@@ -345,21 +741,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_9aa91e282a28c9cf8f8bdac25a19fe2fa98f5042.jar" />
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-impl-10.2.6_ac08048e0b576d8a3c4cad6be5b5ce7b02844a7f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.6/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-10.2.6_43ee2f83b0a063233da5bb2cb77c6f2f5b972939.jar" />
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.2.0_762047ad0eda904002da51c2e91292d14d5587f0.jar" />
     </item>
     <item
         is-multidex="false"
@@ -381,21 +777,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.0.1_47c4255c7b7272d50a5a1b70508109867204df33.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-device-info/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d9f9f67392dcdc85b002e8108470d663de198c68">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-device-info-unspecified_69886d262ddbc4cea45370a85354708007020e69.jar" />
+        sha1="d54a722583c1b99735f62d395806fa38bf5669ae">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-iid-10.2.6_106275ca1478fa6a7ff747dffd91f9096eed180f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -408,21 +795,30 @@
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.0.1/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.44.2/jars/libs/infer-annotations-1.5.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.0.1_f30fb65b28525dde4fa0c194f0a0cf21a389a123.jar" />
+        sha1="dcac634e137395f79693ec760f081a86eb2bd84e">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/infer-annotations-1.5_cbf0c53bb18ac9912750cee19eb3fcb760fe6b01.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-fcm/unspecified/jars/classes.jar"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/PriceGenie/react-native-facebook-login/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="2dfe753140df104c179b83dc1fc04e9f60141240">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-fcm-unspecified_ba79aa684d7dc9a0d18cd9dc1a27efe3cb251a66.jar" />
+        sha1="786d0d7eec55b1d433a14aea802f002137261d84">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/PriceGenie-react-native-facebook-login-unspecified_877e53a2f553818e10f85d452d3b0416ed2f8ab0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.2.0_c09883274a4724eea39c80193f0582a1b0ef6ed4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -432,24 +828,6 @@
         revision="23.0.1"
         sha1="c6792fb346d4f11b5b9e6c1a5df3a99c140a9e70">
         <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/me.leolin-ShortcutBadger-1.1.10_1315d74ad4b8ff64177d89e3768098ea24415f52.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.2.0_da9ab6a8841492f3eca65d0aad7e0b75632914c5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/home/vishal/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
-        <dex dex="/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1_4b1a142535db6a9f6abfc8be6d084712b8e8f525.jar" />
     </item>
     <item
         is-multidex="false"
