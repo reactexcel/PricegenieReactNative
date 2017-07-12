@@ -33,7 +33,7 @@ import {
 import * as actions from '../../services/product';
 // import style from '../style/basicStyle';
 
-const _ = require('lodash');
+import * as _ from 'lodash';
 
 const { height, width } = Dimensions.get('window');
 

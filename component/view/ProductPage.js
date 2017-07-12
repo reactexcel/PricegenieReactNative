@@ -1,13 +1,8 @@
-/* eslint-disable global-require*/
-/* eslint-disable import/prefer-default-export*/
-/* eslint-disable no-undef*/
-/* eslint-disable camelcase*/
 import React, { Component } from 'react';
 import {
     View,
     Text,
     StyleSheet,
-    ToolbarAndroid,
     Dimensions,
     ListView,
     ScrollView,
@@ -16,20 +11,15 @@ import {
     AsyncStorage,
     Image,
     ActivityIndicator,
-    ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SegmentedControls } from 'react-native-radio-buttons';
-import Buttons_data from '../../data/buttons';
-import '../../style/basicStyle';
+import ButtonData from '../../data/buttons';
+import style from '../../style/basicStyle';
 import * as actions from '../../services/product';
 import * as action from '../../services/google';
 import * as facebook from '../../services/facebook';
-
-
-const _ = require('lodash');
-const style = require('../../style/basicStyle');
-// const style = require('../style/basicStyle');
+import * as _ from 'lodash';
 
 export class ProductPage extends Component {
   constructor(props) {
@@ -50,7 +40,7 @@ export class ProductPage extends Component {
       data: [],
       loader: true,
       shorting: 'popularity',
-      options: Buttons_data,
+      options: ButtonData,
     };
     this._previouspage = this._previouspage.bind(this);
     this._loadMore = this._loadMore.bind(this);
@@ -109,13 +99,7 @@ export class ProductPage extends Component {
       <View>{loader
         ? <ActivityIndicator
           style={[
-            styles.centering, {
-              transform: [
-                {
-                  scale: 0.7,
-                },
-              ],
-            },
+            styles.centering,
           ]} animating={this.state.load} color={STRING.BlueColor} size={32}
         />
         : null}</View>
@@ -145,7 +129,7 @@ export class ProductPage extends Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     headerLeft: <View style={{ flexDirection: 'row' }}>
       <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
       <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
@@ -263,7 +247,8 @@ export class ProductPage extends Component {
                         }}
                         >
                           <TouchableOpacity
-                            onPress={() => this.selectedProduct(data)} style={{
+                            onPress={() => this.selectedProduct(data)}
+                            style={{
                               flex: 1,
                               alignItems: 'center',
                               flexDirection: 'row',

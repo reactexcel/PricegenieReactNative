@@ -9,7 +9,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import { View, Text, Button, Image, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
+import { View, Text, Button, Image, Dimensions, ToastAndroid, TouchableNativeFeedback, Platform, AlertIOS } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -18,9 +18,8 @@ import DeviceInfo from 'react-native-device-info';
 import * as action from '../../services/google';
 import * as actions from '../../services/facebook';
 import * as set from '../../services/regisuser';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 
-const style = require('../../style/basicStyle');
 
 const { width, height } = Dimensions.get('window');
 
@@ -50,13 +49,21 @@ export class LoginPage extends Component {
             const fcm_reg_id = token;
             set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => { });
             setLocalStorageData('user', JSON.stringify(userdata));
-            ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+            if (Platform.OS === 'android') {
+              ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+            } else if (Platform.OS === 'ios') {
+              AlertIOS.prompt(`welcome ${showName}`);
+            }
           });
           this.props.handleState();
           this.props.navigation.navigate('DrawerClose', { islogin: true }, 'login');
         });
         setLocalStorageData('user', JSON.stringify(userdata));
-        ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.prompt(`welcome ${showName}`);
+        }
       }
     }, error => error);
   }
@@ -79,7 +86,11 @@ export class LoginPage extends Component {
           const fcm_reg_id = token;
           set.setuserkey(device_id, user_key, fcm_reg_id).then((value) => {});
           setLocalStorageData('user', JSON.stringify(userdata));
-          ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.OS === 'ios') {
+            AlertIOS.prompt(`welcome ${profile.name}`);
+          }
           this.props.handleState();
           this.props.navigation.navigate('DrawerClose', { islogin: true }, 'login');
         });

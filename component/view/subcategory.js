@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
-const _ = require('lodash');
+import * as _ from 'lodash';
 import {
     View,
     Text,
@@ -21,7 +21,6 @@ import * as actions from '../../services/category';
 import * as action from '../../services/google';
 import * as facebook from '../../services/facebook';
 
-const style = require('../../style/basicStyle');
 
 export class Subcategory extends Component {
   constructor(props) {
@@ -71,7 +70,7 @@ export class Subcategory extends Component {
     );
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     title: <Text style={{ fontSize: 15, alignSelf: 'center', color: 'white' }} >
       { navigation.state.params.name}
     </Text>,
