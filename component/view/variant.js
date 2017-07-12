@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import {
     View,
     ToastAndroid,
@@ -12,6 +12,8 @@ import {
     ScrollView,
     Linking,
     Dimensions,
+    Platform,
+    AlertIOS,
 } from 'react-native';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -19,8 +21,8 @@ import * as alert from '../../services/pricealert';
 import * as alerts from '../../services/unsetpricealert';
 import * as action from '../../services/viewProduct';
 
-const _ = require('lodash');
-const style = require('../../style/basicStyle');
+import * as _ from 'lodash';
+
 const { height, width } = Dimensions.get('window');
 
 export class VariantPoduct extends Component {
@@ -65,7 +67,11 @@ export class VariantPoduct extends Component {
           this.setState({ dataPoints: data.varient_data.data, isLoad: false });
         }
       });
-      ToastAndroid.show(value, ToastAndroid.SHORT);
+      if (Platform.OS === 'android') {
+        ToastAndroid.show(value, ToastAndroid.SHORT);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.prompt(value);
+      }
     });
   }
   _previouspage() {
@@ -84,11 +90,12 @@ export class VariantPoduct extends Component {
             alert.pricealert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.Os === 'ios') {
+                  AlertIOS.prompt('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
@@ -96,24 +103,31 @@ export class VariantPoduct extends Component {
             alert.pricealert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.Os === 'ios') {
+                  AlertIOS.prompt('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
           }
         } else {
           this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.Os === 'ios') {
+            AlertIOS.prompt('Log In Required');
+          }
         }
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.Os === 'ios') {
+          AlertIOS.prompt('Log In Required');
+        }
       }
     });
   }
@@ -130,11 +144,12 @@ export class VariantPoduct extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.Os === 'ios') {
+                  AlertIOS.prompt('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
@@ -142,24 +157,31 @@ export class VariantPoduct extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.Os === 'ios') {
+                  AlertIOS.prompt('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
           }
         } else {
           this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.Os === 'ios') {
+            AlertIOS.prompt('Log In Required');
+          }
         }
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.Os === 'ios') {
+          AlertIOS.prompt('Log In Required');
+        }
       }
     });
   }
@@ -241,7 +263,7 @@ export class VariantPoduct extends Component {
     Linking.canOpenURL(url);
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     headerLeft: <View style={{ flexDirection: 'row' }}>
       <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
       <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,

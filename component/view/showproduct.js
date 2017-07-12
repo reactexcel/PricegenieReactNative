@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    // Navigator,
     ListView,
     TouchableOpacity,
     Image,

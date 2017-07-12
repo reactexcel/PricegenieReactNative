@@ -22,7 +22,7 @@ import {
     AppState,
 } from 'react-native';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
-import * as style from '../../style/basicStyle';
+import style from '../../style/basicStyle';
 // const style = require('../style/basicStyle');
 import json_data from '../../data/category';
 import * as action from '../../services/google';
@@ -61,8 +61,8 @@ export class Home extends Component {
     this.props.navigation.navigate('subcategory', { name: cat });
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
-    headerLeft: <Image source={require('../../img/genie-logo-g.png')} size={20} style={{ marginLeft: 15 }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerLeft: <Image source={require('../../img/genie-logo-g.png')} style={{ marginLeft: 15 }} />,
     headerStyle: style.toolbar,
   });
   render() {
