@@ -90,8 +90,8 @@ android {
         applicationId "com.excellence.PriceGenie"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 100263
-        versionName "1.0.30"
+        versionCode 100264
+        versionName "1.0.31"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

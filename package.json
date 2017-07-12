@@ -19,13 +19,14 @@
     "react-native-device-info": "^0.10.2",
     "react-native-drawer": "^2.3.0",
     "react-native-facebook-login": "^1.5.0",
-    "react-native-fcm": "^6.2.3",
+    "react-native-fcm": "^7.0.3",
     "react-native-google-signin": "^0.10.0",
     "react-native-pathjs-charts": "0.0.28",
     "react-native-radio-buttons": "^0.14.0",
     "react-native-splash-screen": "^2.1.0",
     "react-native-svg": "^5.1.8",
-    "react-native-vector-icons": "^4.1.1"
+    "react-native-vector-icons": "^4.1.1",
+    "react-navigation": "^1.0.0-beta.11"
   },
   "devDependencies": {
     "babel-jest": "20.0.3",

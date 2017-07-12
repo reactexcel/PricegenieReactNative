@@ -1,4 +1,4 @@
-#Wed Jun 14 17:31:46 IST 2017
-base.0=/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Wed Jun 21 13:38:23 IST 2017
+base.0=/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
-file.0=/var/www/html/native/implement/App/PricegenieReactNative-pricegenievishal/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=/var/www/html/native/implement/App/PricegenieReactNative/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

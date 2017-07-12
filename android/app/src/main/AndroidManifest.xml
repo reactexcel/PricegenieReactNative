@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.excellence.PriceGenie"
-    android:versionCode="100263"
-    android:versionName="1.0.30">
+    android:versionCode="100264"
+    android:versionName="1.0.31">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
