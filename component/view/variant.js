@@ -71,8 +71,7 @@ export class VariantPoduct extends Component {
       if (Platform.OS === 'android') {
         ToastAndroid.show(value, ToastAndroid.SHORT);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.alert(value);
-      }
+        AlertIOS.alert(value);      }
     });
   }
   _previouspage() {

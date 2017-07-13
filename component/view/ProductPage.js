@@ -16,7 +16,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import ButtonData from '../../data/buttons';
 import style from '../../style/basicStyle';
-;
 import * as actions from '../../services/product';
 import * as action from '../../services/google';
 import * as facebook from '../../services/facebook';
@@ -156,7 +155,7 @@ export class ProductPage extends Component {
               height,
               justifyContent: 'space-around',
             }}
-            >
+              >
               <View>
                 <Text style={{
                   padding: 10,
