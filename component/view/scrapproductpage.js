@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
-const _ = require('lodash');
+import * as _ from 'lodash';
 import Button from 'react-native-button';
 // import * as action from '../services/viewProduct';
 import { PieChartBasic } from './graph';
@@ -20,11 +20,11 @@ import {
     Dimensions,
     ListView,
     ToastAndroid,
+    Platform,
+    AlertIOS,
 } from 'react-native';
 import moment from 'moment';
 
-
-const style = require('../../style/basicStyle');
 
 export class ScrapProductView extends Component {
   constructor(props) {
@@ -47,8 +47,10 @@ export class ScrapProductView extends Component {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
         Linking.openURL(url);
-      } else {
+      } else if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
       }
     });
   }
@@ -69,7 +71,7 @@ export class ScrapProductView extends Component {
     });
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     headerLeft: <View style={{ flexDirection: 'row' }}>
       <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
       <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
@@ -96,7 +98,7 @@ export class ScrapProductView extends Component {
                paddingTop: 5,
                paddingLeft: 5,
                fontWeight: 'bold',
-               color: STRING.LightBlackColor,
+               color: '#54575a',
              }}
              >
                {data.name}
@@ -146,11 +148,11 @@ export class ScrapProductView extends Component {
                  flexDirection: 'row',
                  justifyContent: 'space-between',
                  borderBottomWidth: 1,
-                 borderBottomColor: STRING.GreyColor,
+                 borderBottomColor: '#e3e0e0',
                }}
                >
                  <Text style={{
-                   color: STRING.LightBlackColor,
+                   color: '#54575a',
                    fontSize: 16,
                    fontWeight: 'bold',
                    marginTop: 3.5,
@@ -166,7 +168,7 @@ export class ScrapProductView extends Component {
                    <Icon.Button
                      name="ios-stats" style={{
                        height: 30,
-                     }} backgroundColor="white" color={STRING.GreyColor}
+                     }} backgroundColor="white" color={'#e3e0e0'}
                    />
                  </View>
                </View>
@@ -189,7 +191,7 @@ export class ScrapProductView extends Component {
                    marginRight: 5,
                    marginLeft: 5,
                    borderRadius: 3,
-                   backgroundColor: STRING.RedColor,
+                   backgroundColor: '#F44336',
                  }} style={{
                    marginTop: 8,
                    fontSize: 11,
@@ -210,7 +212,7 @@ export class ScrapProductView extends Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: STRING.GreyColor,
+        backgroundColor: '#e3e0e0',
         flexDirection: 'column',
       }}
       >
@@ -219,7 +221,7 @@ export class ScrapProductView extends Component {
             ? <ActivityIndicator
               style={{
                 height: height - 90,
-              }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+              }} animating={this.state.loading} color='#01579b' size={32}
             />
             :
             <View>

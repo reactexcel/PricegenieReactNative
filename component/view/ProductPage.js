@@ -1,13 +1,8 @@
-/* eslint-disable global-require*/
-/* eslint-disable import/prefer-default-export*/
-/* eslint-disable no-undef*/
-/* eslint-disable camelcase*/
 import React, { Component } from 'react';
 import {
     View,
     Text,
     StyleSheet,
-    ToolbarAndroid,
     Dimensions,
     ListView,
     ScrollView,
@@ -16,20 +11,16 @@ import {
     AsyncStorage,
     Image,
     ActivityIndicator,
-    ToastAndroid,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SegmentedControls } from 'react-native-radio-buttons';
-import Buttons_data from '../../data/buttons';
-import '../../style/basicStyle';
+import ButtonData from '../../data/buttons';
+import style from '../../style/basicStyle';
+;
 import * as actions from '../../services/product';
 import * as action from '../../services/google';
 import * as facebook from '../../services/facebook';
-
-
-const _ = require('lodash');
-const style = require('../../style/basicStyle');
-// const style = require('../style/basicStyle');
+import * as _ from 'lodash';
 
 export class ProductPage extends Component {
   constructor(props) {
@@ -50,7 +41,7 @@ export class ProductPage extends Component {
       data: [],
       loader: true,
       shorting: 'popularity',
-      options: Buttons_data,
+      options: ButtonData,
     };
     this._previouspage = this._previouspage.bind(this);
     this._loadMore = this._loadMore.bind(this);
@@ -107,16 +98,7 @@ export class ProductPage extends Component {
     const { loader } = this.state;
     return (
       <View>{loader
-        ? <ActivityIndicator
-          style={[
-            styles.centering, {
-              transform: [
-                {
-                  scale: 0.7,
-                },
-              ],
-            },
-          ]} animating={this.state.load} color={STRING.BlueColor} size={32}
+        ? <ActivityIndicator animating={this.state.load} color='#01579b' size="small"
         />
         : null}</View>
     );
@@ -145,7 +127,7 @@ export class ProductPage extends Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     headerLeft: <View style={{ flexDirection: 'row' }}>
       <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
       <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
@@ -164,7 +146,7 @@ export class ProductPage extends Component {
         <View style={{
           flex: 1,
           flexDirection: 'column',
-          backgroundColor: STRING.GreyColor,
+          backgroundColor: '#e3e0e0',
         }}
         >
           {msg
@@ -227,7 +209,7 @@ export class ProductPage extends Component {
               <ScrollView >
                 {filter
                   ? <View style={style.loder_inside}>
-                    <ActivityIndicator animating={this.state.filter} color={STRING.BlueColor} size="large" />
+                    <ActivityIndicator animating={this.state.filter} color='#01579b' size="large" />
                   </View>
                   : null}
                 <View
@@ -242,7 +224,8 @@ export class ProductPage extends Component {
                       height: height - 105,
                     }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore}
                     initialListSize={4} onEndReachedThreshold={30} showsVerticalScrollIndicator={false}
-                    enableEmptySections renderRow={(data, key) => (
+                    enableEmptySections renderRow={(data, key) =>{
+                      return(
                       <View
                         key={key} style={{
                           flex: 1,
@@ -263,7 +246,8 @@ export class ProductPage extends Component {
                         }}
                         >
                           <TouchableOpacity
-                            onPress={() => this.selectedProduct(data)} style={{
+                            onPress={() => this.selectedProduct(data)}
+                            style={{
                               flex: 1,
                               alignItems: 'center',
                               flexDirection: 'row',
@@ -281,14 +265,14 @@ export class ProductPage extends Component {
                             />
                             <View style={{ flex: 1 }}>
                               <Text style={{
-                                color: STRING.LightBlackColor,
+                                color: '#54575a',
                                 fontSize: 13,
                               }}
                               >
                                 {data.name}
                               </Text>
                               <Text style={{
-                                color: STRING.YelloColor,
+                                color: '#e3ae22',
                                 fontSize: 12.5,
                               }}
                               >
@@ -308,10 +292,10 @@ export class ProductPage extends Component {
                             marginTop: 50,
                             }}
                             >
-                            <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
+                            <Icon size={20} name="ios-heart-outline" backgroundColor={'#3b5998'} />
                           </TouchableOpacity> */}
                         </View>
-                      </View>)}
+                      </View>);}}
                   />
                 </View>
               </ScrollView>
@@ -319,7 +303,7 @@ export class ProductPage extends Component {
         </View>
         {animating
           ? <View style={style.loder}>
-            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large" />
+            <ActivityIndicator animating={this.state.animating} color='#01579b' size="large" />
           </View>
           : null}
       </View>

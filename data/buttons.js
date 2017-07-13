@@ -1,4 +1,4 @@
-const Buttons_data = [
+const ButtonData = [
   {
     name: 'Price',
     case: 'pricelth',
@@ -30,4 +30,4 @@ const Buttons_data = [
   //   },
   // },
 ];
-export default Buttons_data;
+export default ButtonData;

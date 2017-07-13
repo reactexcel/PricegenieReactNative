@@ -1,8 +1,9 @@
 import { StyleSheet, Dimensions } from 'react-native';
+
 const { height, width } = Dimensions.get('window');
-module.exports = StyleSheet.create({
+const style = StyleSheet.create({
   toolbar: {
-    height: 50,
+    height: 65,
     backgroundColor: '#085394',
   },
   touch: {
@@ -36,3 +37,4 @@ module.exports = StyleSheet.create({
     opacity: 1,
   },
 });
+export default style;

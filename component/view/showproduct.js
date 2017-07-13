@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    // Navigator,
     ListView,
     TouchableOpacity,
     Image,
@@ -39,7 +38,7 @@ export class ProductList extends Component {
             flexDirection: 'row',
             justifyContent: 'space-around',
             borderTopWidth: 1,
-            borderTopColor: STRING.GreyColor,
+            borderTopColor: '#e3e0e0',
           }}
         >
           <TouchableOpacity
@@ -64,14 +63,14 @@ export class ProductList extends Component {
             }}
             >
               <Text style={{
-                color: STRING.LightBlackColor,
+                color: '#54575a',
                 fontSize: 13,
               }}
               >
                 {data.full_name}
               </Text>
               <Text style={{
-                color: STRING.YelloColor,
+                color: '#e3ae22',
                 fontSize: 12.5,
               }}
               >
@@ -91,7 +90,7 @@ export class ProductList extends Component {
             marginTop: 50,
             }}
             >
-            <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
+            <Icon size={20} name="ios-heart-outline" backgroundColor={'#3b5998'} />
           </TouchableOpacity> */}
         </View>)}
       />

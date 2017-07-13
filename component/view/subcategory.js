@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
-const _ = require('lodash');
+import * as _ from 'lodash';
 import {
     View,
     Text,
@@ -20,8 +20,8 @@ import {
 import * as actions from '../../services/category';
 import * as action from '../../services/google';
 import * as facebook from '../../services/facebook';
+;
 
-const style = require('../../style/basicStyle');
 
 export class Subcategory extends Component {
   constructor(props) {
@@ -41,7 +41,6 @@ export class Subcategory extends Component {
     const sub_name = this.props.navigation.state.params.name;
     this.setState({ subcat: sub_name });
     actions.getCategory('subcategory').then((data) => {
-      console.log(data);
       if (data && data.length) {
         this.setState({ arrcat: data, animating: false });
       }
@@ -68,7 +67,7 @@ export class Subcategory extends Component {
     );
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     title: <Text style={{ fontSize: 15, alignSelf: 'center', color: 'white' }} >
       { navigation.state.params.name}
     </Text>,
@@ -103,7 +102,7 @@ export class Subcategory extends Component {
                 {user_data.cat_name}
               </Text>
               <Icon
-                name="ios-arrow-forward-outline" size={25} color={STRING.GreyColor} style={{
+                name="ios-arrow-forward-outline" size={25} color={'#e3e0e0'} style={{
                   margin: 10,
                 }}
               />
@@ -137,7 +136,7 @@ export class Subcategory extends Component {
         </View>
         {animating
           ? <View style={style.loder}>
-            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large" />
+            <ActivityIndicator animating={this.state.animating} color='#01579b' size="large" />
           </View>
           : null}
       </View>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
-const _ = require('lodash');
+import * as _ from 'lodash';
 import Button from 'react-native-button';
 import * as action from '../../services/viewProduct';
 import { PieChartBasic } from './graph';
@@ -20,11 +20,13 @@ import {
     Dimensions,
     ListView,
     ToastAndroid,
+    Platform,
+    AlertIOS,
 } from 'react-native';
 import * as facebook from '../../services/facebook';
 import * as actions from '../../services/google';
+;
 
-const style = require('../../style/basicStyle');
 
 export class ProductView extends Component {
   constructor(props) {
@@ -57,7 +59,6 @@ export class ProductView extends Component {
     this.props.navigation.navigate('DrawerOpen');
   }
   componentWillReceiveProps() {
-    console.log('props');
     get.pricehistroy(this.props.navigation.state.params.id).then((dataPoints) => {
       if (dataPoints && dataPoints.length >= 1) {
         this.setState({ data: dataPoints, nodata: true });
@@ -112,8 +113,10 @@ export class ProductView extends Component {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
         Linking.openURL(url);
-      } else {
+      } else if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
       }
     });
   }
@@ -130,8 +133,11 @@ export class ProductView extends Component {
             alert.pricealert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
                 this.updateState(value.message);
               }
@@ -140,8 +146,11 @@ export class ProductView extends Component {
             alert.pricealert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
                 this.updateState(value.message);
               }
@@ -149,13 +158,19 @@ export class ProductView extends Component {
           }
         } else {
           this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.OS === 'ios') {
+            AlertIOS.alert('Log In Required');
+          }
         }
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
+        }
       }
     });
   }
@@ -172,8 +187,11 @@ export class ProductView extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-                ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
                 this.updateState(value.message);
               }
@@ -182,8 +200,11 @@ export class ProductView extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
                 this.updateState(value.message);
               }
@@ -191,13 +212,19 @@ export class ProductView extends Component {
           }
         } else {
           this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.OS === 'ios') {
+            AlertIOS.alert('Log In Required');
+          }
         }
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
+        }
       }
     });
   }
@@ -220,7 +247,11 @@ export class ProductView extends Component {
     });
     action.renderProduct(this.props.navigation.state.params.id).then((val) => {
       this.setState({ product_id: this.props.navigation.state.params.id, result: val.result, specficiation: val, isLoad: false, loadId: '' });
-      ToastAndroid.show(value, ToastAndroid.SHORT);
+      if (Platform.OS === 'android') {
+        ToastAndroid.show(value, ToastAndroid.SHORT);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert(value);
+      }
     });
     getLocalStorageData('user').then((value) => {
       this.setState({ user: JSON.parse(value) });
@@ -265,7 +296,7 @@ export class ProductView extends Component {
         {this.state.isLoad === true ?
           (this.state.loadId === alertdata._id.$id ?
             <ActivityIndicator
-              animating={this.state.isLoad} color={'white'} size={15}
+              animating={this.state.isLoad} color={'white'} size="small"
             />
           : <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
             <Text style={{
@@ -295,7 +326,7 @@ export class ProductView extends Component {
         {this.state.isLoad === true ?
           (this.state.loadId === alertdata._id.$id ?
             <ActivityIndicator
-              animating={this.state.isLoad} color={'white'} size={15}
+              animating={this.state.isLoad} color={'white'} size="small"
             />
           : <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
             <Text style={{
@@ -323,7 +354,7 @@ export class ProductView extends Component {
       ;
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     headerLeft: <View style={{ flexDirection: 'row' }}>
       <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
       <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
@@ -364,7 +395,7 @@ export class ProductView extends Component {
         key={key} style={{
           marginTop: 5,
           borderRadius: 10,
-          borderColor: STRING.GreyColor,
+          borderColor: '#e3e0e0',
         }}
       >
         <View style={{ marginBottom: 5, marginTop: 5 }}>
@@ -372,7 +403,7 @@ export class ProductView extends Component {
             flex: 1,
             flexDirection: 'row',
             borderBottomWidth:1,
-            borderBottomColor:STRING.GreyColor,
+            borderBottomColor:'#e3e0e0',
             }}
             >
             <Text style={{
@@ -433,7 +464,7 @@ export class ProductView extends Component {
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
+                    backgroundColor: '#F44336',
                   }} style={{
                     fontSize: 11,
                     color: 'white',
@@ -455,19 +486,19 @@ export class ProductView extends Component {
           marginTop: 3,
           marginBottom: 3,
           borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderTopColor: '#e3e0e0',
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
         >
-          <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+          <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: '#e3e0e0' }} >
             <View>
               <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
                 <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+          <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e3e0e0' }} >
             <View>
               <TouchableOpacity onPress={() => {
                 this.callVaiant(data.varient_data.data, data._id.$id);
@@ -501,7 +532,7 @@ export class ProductView extends Component {
                   {this.state.isLoad === true ?
                   (this.state.loadId === data._id.$id ?
                     <ActivityIndicator
-                      animating={this.state.isLoad} color={'white'} size={15}
+                      animating={this.state.isLoad} color={'white'} size="small"
                     />
                   : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                     <Text style={{
@@ -532,7 +563,7 @@ export class ProductView extends Component {
                   {this.state.isLoad === true ?
                 (this.state.loadId === data._id.$id ?
                   <ActivityIndicator
-                    animating={this.state.isLoad} color={'white'} size={15}
+                    animating={this.state.isLoad} color={'white'} size="small"
                   />
                 : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                   <Text style={{
@@ -566,7 +597,7 @@ export class ProductView extends Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: STRING.GreyColor,
+        backgroundColor: '#e3e0e0',
         flexDirection: 'column',
       }}
       >
@@ -575,7 +606,7 @@ export class ProductView extends Component {
             ? <ActivityIndicator
               style={{
                 height: height - 90,
-              }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+              }} animating={this.state.loading} color='#01579b' size="small"
             />
             : <View style={{
               flex: 1,
@@ -591,7 +622,7 @@ export class ProductView extends Component {
                   paddingTop: 5,
                   paddingLeft: 5,
                   fontWeight: 'bold',
-                  color: STRING.LightBlackColor,
+                  color: '#54575a',
                 }}
                 >
                   {spec_data.name_text}
@@ -622,7 +653,7 @@ export class ProductView extends Component {
                     <Text style={{
                       fontSize: 15,
                       fontWeight: 'bold',
-                      color: STRING.LightBlackColor,
+                      color: '#54575a',
                     }}
                     >
                       Key Features
@@ -656,7 +687,7 @@ export class ProductView extends Component {
                 >
                   <View >
                     <Text style={{
-                      color: STRING.LightBlackColor,
+                      color: '#54575a',
                       fontSize: 16,
                       fontWeight: 'bold',
                     }}
@@ -686,11 +717,11 @@ export class ProductView extends Component {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 borderBottomWidth: 1,
-                borderBottomColor: STRING.GreyColor,
+                borderBottomColor: '#e3e0e0',
                   }}
                   >
                 <Text style={{
-                color: STRING.LightBlackColor,
+                color: '#54575a',
                 fontSize: 16,
                 fontWeight: 'bold',
                 marginTop: 3.5,
@@ -706,7 +737,7 @@ export class ProductView extends Component {
                 <Icon.Button
                 name="ios-stats" style={{
                 height: 30,
-                }} backgroundColor="white" color={STRING.GreyColor}
+                }} backgroundColor="white" color={'#e3e0e0'}
                 />
                 </View>
                   </View>

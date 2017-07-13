@@ -9,7 +9,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import { View, Text, Image, Button, Dimensions, ToastAndroid, TouchableNativeFeedback } from 'react-native';
+import { View, Text, Image, Button, Dimensions, ToastAndroid, TouchableNativeFeedback, Platform, AlertIOS } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icons from 'react-native-vector-icons/FontAwesome';
@@ -17,9 +17,8 @@ import DeviceInfo from 'react-native-device-info';
 import * as action from '../../services/google';
 import * as actions from '../../services/facebook';
 import * as set from '../../services/regisuser';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 
-const style = require('../../style/basicStyle');
 
 const { width, height } = Dimensions.get('window');
 
@@ -45,7 +44,11 @@ export class LogoutPage extends Component {
       const islogin = false;
       const userdata = [{ data, logintype, islogin }];
       setLocalStorageData('user', JSON.stringify(userdata));
-      ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      if (Platform.OS === 'android') {
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert('Sign Out Complete');
+      }
       this.props.handleState();
       this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
     }, error => error);
@@ -57,7 +60,11 @@ export class LogoutPage extends Component {
       const islogin = false;
       const userdata = [{ data, logintype, islogin }];
       setLocalStorageData('user', userdata);
-      ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      if (Platform.OS === 'android') {
+        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert('Sign Out Complete');
+      }
       this.props.handleState();
       this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
     }, error => error);

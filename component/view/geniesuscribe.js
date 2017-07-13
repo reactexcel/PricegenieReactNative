@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import {
     View,
     Text,
@@ -13,6 +13,7 @@ import {
     Linking,
     Dimensions,
     Platform,
+    AlertIOS,
     TabBarIOS,
 } from 'react-native';
 import { Navigator } from 'react-native-deprecated-custom-components';
@@ -21,8 +22,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import * as alerts from '../../services/unsetpricealert';
 import * as action from '../../services/geniesuscribe';
 
-const _ = require('lodash');
-const style = require('../../style/basicStyle');
+import * as _ from 'lodash';
+
 const { height, width } = Dimensions.get('window');
 
 export default class GenieSuscribe extends Component {
@@ -53,8 +54,10 @@ export default class GenieSuscribe extends Component {
     Linking.canOpenURL(url).then((supported) => {
       if (supported) {
         Linking.openURL(url);
-      } else {
+      } else if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
       }
     });
   }
@@ -81,8 +84,11 @@ export default class GenieSuscribe extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
                 this.updateState(value.message);
               }
@@ -91,8 +97,11 @@ export default class GenieSuscribe extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
                 this.updateState(value.message);
               }
@@ -100,41 +109,47 @@ export default class GenieSuscribe extends Component {
           }
         } else {
           this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.OS === 'ios') {
+            AlertIOS.alert('Log In Required');
+          }
         }
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
+        }
       }
     });
   }
-  static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
-    headerLeft: <View style={{ flexDirection: 'row' }}>
-      <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
-      <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
-    headerStyle: style.toolbar,
-  });
   render() {
     const button = (Platform.OS === 'ios') ? (
       <TabBarIOS>
         <Icon.TabBarItem
-          logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" action={[]} elevation={4}
-        >
-          <View style={styles.tabContent}><Text>Home Tab</Text></View>
-        </Icon.TabBarItem>
+          logo={require('../../img/genie-logo-g.png')}
+          onIconClicked={this._previouspage}
+          navIconName="ios-arrow-back"
+          title=""
+          style={style.toolbar}
+          titleColor="white"
+          overflowIconName="md-more"
+          action={[]}
+          elevation={4}
+        />
       </TabBarIOS>
-    ) : (<Icon.ToolbarAndroid logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" action={[]} elevation={4} />);
+    ) : (<Icon.ToolbarAndroid logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} iconSize={35} titleColor="white" overflowIconName="md-more" action={[]} elevation={4} />);
 
     const { dataPoints } = this.state;
     const suscribe_product = _.map(dataPoints, (data, key) => (
       <View
-        key={key} style={{
+        key={key}
+        style={{
           flex: 1,
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
       >
         <View style={{ marginBottom: 5, marginTop: 5 }}>
@@ -143,7 +158,7 @@ export default class GenieSuscribe extends Component {
             flexDirection: 'row',
             marginTop: 10,
             // borderBottomWidth: 1,
-            borderBottomColor: STRING.GreyColor,
+            borderBottomColor: '#e3e0e0',
           }}
           >
             <Text style={{
@@ -182,7 +197,9 @@ export default class GenieSuscribe extends Component {
                   borderColor: 'red',
                   height: '85%',
                   width: 75,
-                }} resizeMode="contain" source={{
+                }}
+                resizeMode="contain"
+                source={{
                   uri: data.img,
                 }}
               />
@@ -208,13 +225,16 @@ export default class GenieSuscribe extends Component {
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
-                  }} style={{
+                    backgroundColor: '#F44336',
+                  }}
+                  style={{
                     fontSize: 11,
                     color: 'white',
-                  }} styleDisabled={{
+                  }}
+                  styleDisabled={{
                     color: 'blue',
-                  }} onPress={() => {
+                  }}
+                  onPress={() => {
                     this.pressButton(data.href);
                   }}
                 >
@@ -230,17 +250,17 @@ export default class GenieSuscribe extends Component {
           flexDirection: 'row',
           marginTop: 3,
           borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderTopColor: '#e3e0e0',
         }}
         >
-          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }}>
+          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: '#e3e0e0' }}>
             <View>
               <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
                 <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
+          <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e3e0e0' }} />
           <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
             <View style={{ flex: 1, backgroundColor: '#E08283' }}>
               <TouchableOpacity onPress={() => { this.unsetAlert(data); }} >
@@ -270,7 +290,10 @@ export default class GenieSuscribe extends Component {
           <ActivityIndicator
             style={{
               height: height - 90,
-            }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+            }}
+            animating={this.state.loading}
+            color="#01579b"
+            size={32}
           /> :
           <ScrollView >
             <View
@@ -282,11 +305,13 @@ export default class GenieSuscribe extends Component {
                 alignItems: 'center',
                 marginRight: 9,
                 marginTop: 9,
-              }} elevation={4}
+              }}
+              elevation={4}
             >
 
 
               <View style={{
+                flex: 1,
                 flexDirection: 'column',
                 marginLeft: 10,
                 marginRight: 10,
@@ -295,19 +320,19 @@ export default class GenieSuscribe extends Component {
               }}
               >
                 {this.state.dataPoints ?
-                  suscribe_product :
-                  <View>
-                    <Text style={{
-                      padding: 10,
-                      borderRadius: 10,
-                      backgroundColor: 'white',
-                      margin: 10,
-                      textAlign: 'center',
-                    }}
-                    >
-                        Sorry!!!!No Product Suscribe
-                      </Text>
-                  </View>
+                suscribe_product :
+                <View>
+                  <Text style={{
+                    padding: 10,
+                    borderRadius: 10,
+                    backgroundColor: 'white',
+                    margin: 10,
+                    textAlign: 'center',
+                  }}
+                  >
+                    Sorry!!!!No Product Suscribe
+                  </Text>
+                </View>
                 }
               </View>
             </View>

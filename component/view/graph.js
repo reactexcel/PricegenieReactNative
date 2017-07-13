@@ -5,7 +5,7 @@ import moment from 'moment';
 import { StockLine } from 'react-native-pathjs-charts';
 import * as action from '../../services/pricehistroy';
 
-const _ = require('lodash');
+import * as _ from 'lodash';
 const { height, width } = Dimensions.get('window');
 
 export class PieChartBasic extends Component {

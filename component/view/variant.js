@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../style/basicStyle';
+import style from '../../style/basicStyle';
 import {
     View,
     ToastAndroid,
@@ -12,15 +12,18 @@ import {
     ScrollView,
     Linking,
     Dimensions,
+    Platform,
+    AlertIOS,
 } from 'react-native';
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as alert from '../../services/pricealert';
 import * as alerts from '../../services/unsetpricealert';
 import * as action from '../../services/viewProduct';
+;
 
-const _ = require('lodash');
-const style = require('../../style/basicStyle');
+import * as _ from 'lodash';
+
 const { height, width } = Dimensions.get('window');
 
 export class VariantPoduct extends Component {
@@ -65,7 +68,11 @@ export class VariantPoduct extends Component {
           this.setState({ dataPoints: data.varient_data.data, isLoad: false });
         }
       });
-      ToastAndroid.show(value, ToastAndroid.SHORT);
+      if (Platform.OS === 'android') {
+        ToastAndroid.show(value, ToastAndroid.SHORT);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert(value);
+      }
     });
   }
   _previouspage() {
@@ -78,17 +85,17 @@ export class VariantPoduct extends Component {
     });
     getLocalStorageData('user').then((email) => {
       const checkUser = JSON.parse(email);
-      if (checkUser !== null) {
-        if (checkUser[0].islogin == true) {
+      if (checkUser !== null && checkUser[0].islogin == true) {
           if (checkUser[0].logintype === 'google') {
             alert.pricealert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
@@ -96,24 +103,24 @@ export class VariantPoduct extends Component {
             alert.pricealert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
           }
-        } else {
-          this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
-        }
+
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
+        }
       }
     });
   }
@@ -130,11 +137,12 @@ export class VariantPoduct extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
@@ -142,24 +150,31 @@ export class VariantPoduct extends Component {
             alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
               if (!checkUser[0].profile.email) {
                 this.setState({ isLoad: false });
-                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-              ToastAndroid.BOTTOM);
+                if (Platform.OS === 'android') {
+                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
+                }
               } else {
-                // this.setState({ isLoad: false, loadId: '' });
-                // ToastAndroid.show(value.message, ToastAndroid.SHORT);
                 this.updateState(value.message);
               }
             });
           }
         } else {
           this.setState({ isLoad: false });
-          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-          ToastAndroid.BOTTOM);
+          if (Platform.OS === 'android') {
+            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+          } else if (Platform.OS === 'ios') {
+            AlertIOS.alert('Log In Required');
+          }
         }
       } else {
         this.setState({ isLoad: false });
-        ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM);
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
+        }
       }
     });
   }
@@ -180,7 +195,7 @@ export class VariantPoduct extends Component {
         {this.state.isLoad === true ?
           (this.state.loadId === alertdata._id.$id ?
             <ActivityIndicator
-              animating={this.state.isLoad} color={'white'} size={15}
+              animating={this.state.isLoad} color={'white'} size="small"
             />
           : <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
             <Text style={{
@@ -210,7 +225,7 @@ export class VariantPoduct extends Component {
         {this.state.isLoad === true ?
           (this.state.loadId === alertdata._id.$id ?
             <ActivityIndicator
-              animating={this.state.isLoad} color={'white'} size={15}
+              animating={this.state.isLoad} color={'white'} size="small"
             />
           : <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
             <Text style={{
@@ -241,7 +256,7 @@ export class VariantPoduct extends Component {
     Linking.canOpenURL(url);
   }
   static navigationOptions = ({ navigation }) => ({
-    headerRight: <Icon name={'ios-list'} size={25} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
+    headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
     headerLeft: <View style={{ flexDirection: 'row' }}>
       <Icon name={'ios-arrow-back-outline'} size={30} style={{ color: 'white', marginLeft: 15, paddingRight: 15, alignSelf: 'center' }} onPress={() => { navigation.goBack(); }} />
       <Image source={require('../../img/genie-logo-g.png')} size={20} /></View>,
@@ -253,7 +268,7 @@ export class VariantPoduct extends Component {
       <View
         key={key} style={{
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
       >
         <View style={{ marginBottom: 5, marginTop: 5 }}>
@@ -261,7 +276,7 @@ export class VariantPoduct extends Component {
               flex: 1,
               flexDirection: 'row',
               borderBottomWidth:1,
-              borderBottomColor:STRING.GreyColor,
+              borderBottomColor:'#e3e0e0',
             }}
             >
             <Text style={{
@@ -323,7 +338,7 @@ export class VariantPoduct extends Component {
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
+                    backgroundColor: '#F44336',
                   }} style={{
                     fontSize: 11,
                     color: 'white',
@@ -344,17 +359,17 @@ export class VariantPoduct extends Component {
           flexDirection: 'row',
           marginTop: 3,
           borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderTopColor: '#e3e0e0',
         }}
         >
-          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }}>
+          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: '#e3e0e0' }}>
             <View>
               <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
                 <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
+          <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e3e0e0' }} />
           <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
             {this.state.user !== null && this.state.user[0] !== undefined ? (
               this.state.user[0].islogin ?
@@ -364,7 +379,7 @@ export class VariantPoduct extends Component {
                   {this.state.isLoad === true ?
                   (this.state.loadId === data._id.$id ?
                     <ActivityIndicator
-                      animating={this.state.isLoad} color={'white'} size={15}
+                      animating={this.state.isLoad} color={'white'} size="small"
                     />
                   : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                     <Text style={{
@@ -396,7 +411,7 @@ export class VariantPoduct extends Component {
                   {this.state.isLoad === true ?
                 (this.state.loadId === data._id.$id ?
                   <ActivityIndicator
-                    animating={this.state.isLoad} color={'white'} size={15}
+                    animating={this.state.isLoad} color={'white'} size="small"
                   />
                 : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                   <Text style={{
@@ -447,7 +462,7 @@ export class VariantPoduct extends Component {
               <ActivityIndicator
                 style={{
                   height: height - 90,
-                }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+                }} animating={this.state.loading} color='#01579b' size="large"
               />
             :
               <View style={{

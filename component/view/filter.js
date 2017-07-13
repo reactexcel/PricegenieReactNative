@@ -33,7 +33,7 @@ import {
 import * as actions from '../../services/product';
 // import style from '../style/basicStyle';
 
-const _ = require('lodash');
+import * as _ from 'lodash';
 
 const { height, width } = Dimensions.get('window');
 
@@ -146,7 +146,7 @@ export class Filter extends Component {
         <View style={{
           flexDirection: 'column',
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
         >
           <View style={{
@@ -154,7 +154,7 @@ export class Filter extends Component {
             flexDirection: 'row',
           }}
           >
-            <Icon size={20} name="ios-radio-button-on" backgroundColor={STRING.LightColor} />
+            <Icon size={20} name="ios-radio-button-on" backgroundColor={'#3b5998'} />
             <Text style={{
               marginLeft: 5,
             }}
@@ -176,7 +176,7 @@ export class Filter extends Component {
         <View style={{
           flexDirection: 'column',
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
         >
           <View style={{
@@ -184,7 +184,7 @@ export class Filter extends Component {
             flexDirection: 'row',
           }}
           >
-            <Icon size={20} name="ios-radio-button-on" backgroundColor={STRING.LightColor} />
+            <Icon size={20} name="ios-radio-button-on" backgroundColor={'#3b5998'} />
             <Text style={{
               marginLeft: 5,
             }}
@@ -212,7 +212,7 @@ export class Filter extends Component {
         >
           <View style={{
             flex: 0.6,
-            backgroundColor: STRING.GreyColor,
+            backgroundColor: '#e3e0e0',
           }}
           >
             <ScrollView showsVerticalScrollIndicator={false}>
