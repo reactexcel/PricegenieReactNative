@@ -252,7 +252,15 @@ export class VariantPoduct extends Component {
       ;
   }
   pressButton(url) {
-    Linking.canOpenURL(url);
+    Linking.canOpenURL(url).then((supported) => {
+      if (supported) {
+        Linking.openURL(url);
+      } else if (Platform.OS === 'android') {
+        ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
+      }
+    });
   }
   static navigationOptions = ({ navigation }) => ({
     headerRight: <Icon name={'ios-list'} size={28} style={{ marginRight: 15, color: 'white', alignSelf: 'center' }} onPress={() => { navigation.navigate('DrawerOpen'); }} />,
