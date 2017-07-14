@@ -18,6 +18,8 @@ import {
     ActivityIndicator,
 } from 'react-native';
 import * as actions from '../../services/category';
+import * as action from '../../services/google';
+import * as facebook from '../../services/facebook';
 
 export class Subcategory extends Component {
   constructor(props) {

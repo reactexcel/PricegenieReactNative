@@ -27,6 +27,7 @@ import json_data from '../../data/category';
 import * as action from '../../services/google';
 import * as actions from '../../services/facebook';
 import firebaseClient from '../../services/samplenotification';
+;
 
 const styles = StyleSheet.create({});
 

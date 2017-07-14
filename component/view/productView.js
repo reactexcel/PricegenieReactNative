@@ -25,6 +25,7 @@ import {
 } from 'react-native';
 import * as facebook from '../../services/facebook';
 import * as actions from '../../services/google';
+;
 
 
 export class ProductView extends Component {
@@ -290,16 +291,16 @@ export class ProductView extends Component {
             >Remove Price Alert</Text>
           </TouchableOpacity>)
         :
-          <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
-            <Text style={{
+        <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
+          <Text style={{
               color: 'white',
               marginLeft: 1,
               textAlign: 'center',
               fontSize: 11,
               fontWeight: 'bold',
-            }}
-            >Remove Price Alert</Text>
-          </TouchableOpacity>
+          }}
+          >Remove Price Alert</Text>
+        </TouchableOpacity>
         }
       </View>
    :
@@ -320,16 +321,16 @@ export class ProductView extends Component {
             >Set Price Alert</Text>
           </TouchableOpacity>)
         :
-          <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
-            <Text style={{
+        <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
+          <Text style={{
               color: 'white',
               marginLeft: 1,
               textAlign: 'center',
               fontSize: 11,
               fontWeight: 'bold',
-            }}
-            >Set Price Alert</Text>
-          </TouchableOpacity>
+          }}
+          >Set Price Alert</Text>
+        </TouchableOpacity>
         }
       </View>)
       ;
@@ -515,14 +516,14 @@ export class ProductView extends Component {
                     animating={this.state.isLoad} color={'white'} size="small"
                   />:
                   <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                  <Text style={{
-                  color: 'white',
-                  marginLeft: 1,
-                  textAlign: 'center',
-                  fontSize: 11,
-                  fontWeight: 'bold',
-                  }}
-                  >Set Price Alert</Text>
+                    <Text style={{
+                      color: 'white',
+                      marginLeft: 1,
+                      textAlign: 'center',
+                      fontSize: 11,
+                      fontWeight: 'bold',
+                    }}
+                    >Set Price Alert</Text>
                   </TouchableOpacity>
                 }
               </View>
@@ -716,7 +717,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                >
+                  >
                   <View
                     style={{
                       flex: 1,
@@ -746,7 +747,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                >
+                  >
                   <View
                     style={{
                       flex: 1,
@@ -769,7 +770,7 @@ export class ProductView extends Component {
                     <ProductList data={this.state.relatedProduct} selectedProduct={this.selectedProduct} />
                   </View>
                 </View>
-              : null}
+                : null}
             </View>}
         </ScrollView>
       </View>

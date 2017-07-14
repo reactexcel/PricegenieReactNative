@@ -227,14 +227,14 @@ export class ProductPage extends Component {
                       return(
                         <View
                           key={key} style={{
-                            flex: 1,
-                            backgroundColor: 'white',
-                            height: 90,
-                            marginTop: 5,
-                            marginBottom: 1,
-                            paddingTop: 5,
-                            paddingRight: 10,
-                            paddingBottom: 10,
+                              flex: 1,
+                              backgroundColor: 'white',
+                              height: 90,
+                              marginTop: 5,
+                              marginBottom: 1,
+                              paddingTop: 5,
+                              paddingRight: 10,
+                              paddingBottom: 10,
                           }} elevation={2}
                         >
                           <View style={{

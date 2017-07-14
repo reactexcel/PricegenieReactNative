@@ -1,5 +1,5 @@
 /* eslint-disable no-shadow*/
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import { GoogleSignin } from 'react-native-google-signin';
 
 export function google() {
   return new Promise((resolve, reject) => {
@@ -38,7 +38,5 @@ export function googleSignOut() {
         reject(err);
       });
     });
-  }).catch(() => {
-    reject('Configure Failed');
   });
 }
