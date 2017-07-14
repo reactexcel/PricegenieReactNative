@@ -52,7 +52,7 @@ export class LoginPage extends Component {
             if (Platform.OS === 'android') {
               ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
             } else if (Platform.OS === 'ios') {
-              AlertIOS.prompt(`welcome ${showName}`);
+              AlertIOS.alert(`welcome ${showName}`);
             }
           });
           this.props.handleState();
@@ -62,7 +62,7 @@ export class LoginPage extends Component {
         if (Platform.OS === 'android') {
           ToastAndroid.showWithGravity(`welcome ${showName}`, ToastAndroid.LONG, ToastAndroid.BOTTOM);
         } else if (Platform.OS === 'ios') {
-          AlertIOS.prompt(`welcome ${showName}`);
+          AlertIOS.alert(`welcome ${showName}`);
         }
       }
     }, error => error);
@@ -89,7 +89,7 @@ export class LoginPage extends Component {
           if (Platform.OS === 'android') {
             ToastAndroid.showWithGravity(`welcome ${profile.name}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
           } else if (Platform.OS === 'ios') {
-            AlertIOS.prompt(`welcome ${profile.name}`);
+            AlertIOS.alert(`welcome ${profile.name}`);
           }
           this.props.handleState();
           this.props.navigation.navigate('DrawerClose', { islogin: true }, 'login');
@@ -100,7 +100,6 @@ export class LoginPage extends Component {
 
   render() {
     return (
-      // <Image source={require('../img/splash.png')}>
       <View style={{
         flex: 1,
         flexDirection: 'column',
@@ -109,7 +108,6 @@ export class LoginPage extends Component {
         <Image style={{ height: 170, width: 150, borderRadius: 100, alignSelf: 'center' }} source={require('../../img/images.jpg')} />
         <View style={{
           marginTop: 30,
-            // margin: 50,
           flex: 1,
           flexDirection: 'column',
         }}

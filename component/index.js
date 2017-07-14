@@ -10,7 +10,7 @@ import CONFI from '../config/config';
 import CONFIGURE from '../config/config';
 import CONF from '../config/config';
 import ADDUSER from '../config/config';
-import '../style/string';
+;
 import React, { Component } from 'react';
 import {
     StyleSheet,

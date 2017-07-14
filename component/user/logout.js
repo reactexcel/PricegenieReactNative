@@ -47,7 +47,7 @@ export class LogoutPage extends Component {
       if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.prompt('Sign Out Complete');
+        AlertIOS.alert('Sign Out Complete');
       }
       this.props.handleState();
       this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
@@ -63,7 +63,7 @@ export class LogoutPage extends Component {
       if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.prompt('Sign Out Complete');
+        AlertIOS.alert('Sign Out Complete');
       }
       this.props.handleState();
       this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');

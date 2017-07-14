@@ -97,20 +97,7 @@ export class ProductPage extends Component {
     const { loader } = this.state;
     return (
       <View>{loader
-        ? <ActivityIndicator
-          style={[
-<<<<<<< HEAD
-            styles.centering, {
-              transform: [
-              {
-                  scale: 0.7,
-              },
-              ],
-            },
-=======
-            styles.centering,
->>>>>>> b68c0c90339fda17a034cb1a9719fbd0b2806072
-          ]} animating={this.state.load} color={STRING.BlueColor} size={32}
+        ? <ActivityIndicator animating={this.state.load} color='#01579b' size="small"
           />
         : null}</View>
     );
@@ -158,7 +145,7 @@ export class ProductPage extends Component {
         <View style={{
           flex: 1,
           flexDirection: 'column',
-          backgroundColor: STRING.GreyColor,
+          backgroundColor: '#e3e0e0',
         }}
         >
           {msg
@@ -221,7 +208,7 @@ export class ProductPage extends Component {
               <ScrollView >
                 {filter
                   ? <View style={style.loder_inside}>
-                    <ActivityIndicator animating={this.state.filter} color={STRING.BlueColor} size="large" />
+                    <ActivityIndicator animating={this.state.filter} color='#01579b' size="large" />
                   </View>
                   : null}
                 <View
@@ -236,77 +223,70 @@ export class ProductPage extends Component {
                       height: height - 105,
                     }} dataSource={this.state.dataSource} renderFooter={this._footer} onEndReached={this._loadMore}
                     initialListSize={4} onEndReachedThreshold={30} showsVerticalScrollIndicator={false}
-                    enableEmptySections renderRow={(data, key) => (
-                      <View
-                        key={key} style={{
-                          flex: 1,
-                          backgroundColor: 'white',
-                          height: 90,
-                          marginTop: 5,
-                          marginBottom: 1,
-                          paddingTop: 5,
-                          paddingRight: 10,
-                          paddingBottom: 10,
-                        }} elevation={2}
-                      >
-                        <View style={{
-                          flex: 1,
-                          alignItems: 'center',
-                          flexDirection: 'row',
-                          justifyContent: 'space-around',
-                        }}
+                    enableEmptySections renderRow={(data, key) =>{
+                      return(
+                        <View
+                          key={key} style={{
+                            flex: 1,
+                            backgroundColor: 'white',
+                            height: 90,
+                            marginTop: 5,
+                            marginBottom: 1,
+                            paddingTop: 5,
+                            paddingRight: 10,
+                            paddingBottom: 10,
+                          }} elevation={2}
                         >
-                          <TouchableOpacity
-                            onPress={() => this.selectedProduct(data)}
-                            style={{
-                              flex: 1,
-                              alignItems: 'center',
-                              flexDirection: 'row',
-                              justifyContent: 'space-around',
-                            }}
-                          >
-                            <Image
-                              style={{
-                                flex: 0.3,
-                                height: 45,
-                                width: 45,
-                              }} resizeMode="contain" source={{
-                                uri: data.image,
-                              }}
-                            />
-                            <View style={{ flex: 1 }}>
-                              <Text style={{
-                                color: STRING.LightBlackColor,
-                                fontSize: 13,
-                              }}
-                              >
-                                {data.name}
-                              </Text>
-                              <Text style={{
-                                color: STRING.YelloColor,
-                                fontSize: 12.5,
-                              }}
-                              >
-                                From Rs: {data.num_price}
-                              </Text>
-                              <Text style={{
-                                fontSize: 12,
-                              }}
-                              >
-                                {`${data.sellers} Sellers`}
-                              </Text>
-                            </View>
-                          </TouchableOpacity>
-                          {/* <TouchableOpacity style={{
+                          <View style={{
+                            flex: 1,
+                            alignItems: 'center',
                             flexDirection: 'row',
-                            alignItems: 'flex-end',
-                            marginTop: 50,
-                            }}
+                            justifyContent: 'space-around',
+                          }}
+                          >
+                            <TouchableOpacity
+                              onPress={() => this.selectedProduct(data)}
+                              style={{
+                                flex: 1,
+                                alignItems: 'center',
+                                flexDirection: 'row',
+                                justifyContent: 'space-around',
+                              }}
                             >
-                            <Icon size={20} name="ios-heart-outline" backgroundColor={STRING.LightColor} />
-                          </TouchableOpacity> */}
-                        </View>
-                      </View>)}
+                              <Image
+                                style={{
+                                  flex: 0.3,
+                                  height: 45,
+                                  width: 45,
+                                }} resizeMode="contain" source={{
+                                  uri: data.image,
+                                }}
+                              />
+                              <View style={{ flex: 1 }}>
+                                <Text style={{
+                                  color: '#54575a',
+                                  fontSize: 13,
+                                }}
+                                >
+                                  {data.name}
+                                </Text>
+                                <Text style={{
+                                  color: '#e3ae22',
+                                  fontSize: 12.5,
+                                }}
+                                >
+                                  From Rs: {data.num_price}
+                                </Text>
+                                <Text style={{
+                                  fontSize: 12,
+                                }}
+                                >
+                                  {`${data.sellers} Sellers`}
+                                </Text>
+                              </View>
+                            </TouchableOpacity>
+                          </View>
+                        </View>);}}
                   />
                 </View>
               </ScrollView>
@@ -314,7 +294,7 @@ export class ProductPage extends Component {
         </View>
         {animating
           ? <View style={style.loder}>
-            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large" />
+            <ActivityIndicator animating={this.state.animating} color='#01579b' size="large" />
           </View>
           : null}
       </View>

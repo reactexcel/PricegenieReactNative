@@ -57,7 +57,7 @@ export default class GenieSuscribe extends Component {
       } else if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.prompt(`Don't know how to open URI: ${url}`);
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
       }
     });
   }
@@ -78,49 +78,40 @@ export default class GenieSuscribe extends Component {
     });
     getLocalStorageData('user').then((email) => {
       const checkUser = JSON.parse(email);
-      if (checkUser !== null) {
-        if (checkUser[0].islogin == true) {
-          if (checkUser[0].logintype === 'google') {
-            alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
-              if (!checkUser[0].data.email) {
-                this.setState({ isLoad: false });
-                if (Platform.OS === 'android') {
-                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-                } else if (Platform.Os === 'ios') {
-                  AlertIOS.prompt('Log In Required');
-                }
-              } else {
-                this.updateState(value.message);
+      if (checkUser !== null && checkUser[0].islogin == true) {
+        if (checkUser[0].logintype === 'google') {
+          alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
+            if (!checkUser[0].data.email) {
+              this.setState({ isLoad: false });
+              if (Platform.OS === 'android') {
+                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+              } else if (Platform.OS === 'ios') {
+                AlertIOS.alert('Log In Required');
               }
-            });
-          } else {
-            alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
-              if (!checkUser[0].profile.email) {
-                this.setState({ isLoad: false });
-                if (Platform.OS === 'android') {
-                  ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-                } else if (Platform.Os === 'ios') {
-                  AlertIOS.prompt('Log In Required');
-                }
-              } else {
-                this.updateState(value.message);
-              }
-            });
-          }
+            } else {
+              this.updateState(value.message);
+            }
+          });
         } else {
-          this.setState({ isLoad: false });
-          if (Platform.OS === 'android') {
-            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-          } else if (Platform.Os === 'ios') {
-            AlertIOS.prompt('Log In Required');
-          }
+          alerts.unsetalert(data._id.$id, checkUser[0].profile.email).then((value) => {
+            if (!checkUser[0].profile.email) {
+              this.setState({ isLoad: false });
+              if (Platform.OS === 'android') {
+                ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+              } else if (Platform.OS === 'ios') {
+                AlertIOS.alert('Log In Required');
+              }
+            } else {
+              this.updateState(value.message);
+            }
+          });
         }
       } else {
         this.setState({ isLoad: false });
         if (Platform.OS === 'android') {
           ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        } else if (Platform.Os === 'ios') {
-          AlertIOS.prompt('Log In Required');
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
         }
       }
     });
@@ -129,18 +120,26 @@ export default class GenieSuscribe extends Component {
     const button = (Platform.OS === 'ios') ? (
       <TabBarIOS>
         <Icon.TabBarItem
-          logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} titleColor="white" overflowIconName="md-more" action={[]} elevation={4}
+          logo={require('../../img/genie-logo-g.png')}
+          onIconClicked={this._previouspage}
+          navIconName="ios-arrow-back"
+          title=""
+          style={style.toolbar}
+          titleColor="white"
+          overflowIconName="md-more"
+          action={[]}
+          elevation={4}
         />
       </TabBarIOS>
     ) : (<Icon.ToolbarAndroid logo={require('../../img/genie-logo-g.png')} onIconClicked={this._previouspage} navIconName="ios-arrow-back" title="" style={style.toolbar} iconSize={35} titleColor="white" overflowIconName="md-more" action={[]} elevation={4} />);
-
     const { dataPoints } = this.state;
     const suscribe_product = _.map(dataPoints, (data, key) => (
       <View
-        key={key} style={{
+        key={key}
+        style={{
           flex: 1,
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
       >
         <View style={{ marginBottom: 5, marginTop: 5 }}>
@@ -148,12 +147,10 @@ export default class GenieSuscribe extends Component {
             flex: 1,
             flexDirection: 'row',
             marginTop: 10,
-            // borderBottomWidth: 1,
-            borderBottomColor: STRING.GreyColor,
+            borderBottomColor: '#e3e0e0',
           }}
           >
             <Text style={{
-              // textDecorationLine: 'underline',
               marginLeft: 5,
               fontSize: 13,
               fontWeight: 'bold',
@@ -170,14 +167,12 @@ export default class GenieSuscribe extends Component {
             <View style={{ width: '45%', flexDirection: 'row' }}>
               <Text
                 style={{
-                    // backgroundColor: 'blue',
                   marginTop: 10,
                   marginLeft: 5,
                   height: '55%',
                   width: '90%',
                   fontSize: 22,
                   fontWeight: 'bold',
-                    // color: 'white',
                 }}
               >{data.website}</Text>
             </View>
@@ -188,7 +183,9 @@ export default class GenieSuscribe extends Component {
                   borderColor: 'red',
                   height: '85%',
                   width: 75,
-                }} resizeMode="contain" source={{
+                }}
+                resizeMode="contain"
+                source={{
                   uri: data.img,
                 }}
               />
@@ -214,13 +211,16 @@ export default class GenieSuscribe extends Component {
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
-                  }} style={{
+                    backgroundColor: '#F44336',
+                  }}
+                  style={{
                     fontSize: 11,
                     color: 'white',
-                  }} styleDisabled={{
+                  }}
+                  styleDisabled={{
                     color: 'blue',
-                  }} onPress={() => {
+                  }}
+                  onPress={() => {
                     this.pressButton(data.href);
                   }}
                 >
@@ -230,23 +230,22 @@ export default class GenieSuscribe extends Component {
             </View>
           </View>
         </View>
-
         <View style={{
           flex: 1,
           flexDirection: 'row',
           marginTop: 3,
           borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderTopColor: '#e3e0e0',
         }}
         >
-          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }}>
+          <View style={{ width: '50%', marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: '#e3e0e0' }}>
             <View>
               <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
                 <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} />
+          <View style={{ width: '15%', marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e3e0e0' }} />
           <View style={{ flex: 1, marginLeft: 2, marginTop: 2, marginBottom: 2, justifyContent: 'center' }} >
             <View style={{ flex: 1, backgroundColor: '#E08283' }}>
               <TouchableOpacity onPress={() => { this.unsetAlert(data); }} >
@@ -276,7 +275,10 @@ export default class GenieSuscribe extends Component {
           <ActivityIndicator
             style={{
               height: height - 90,
-            }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+            }}
+            animating={this.state.loading}
+            color="#01579b"
+            size={32}
           /> :
           <ScrollView >
             <View
@@ -288,10 +290,9 @@ export default class GenieSuscribe extends Component {
                 alignItems: 'center',
                 marginRight: 9,
                 marginTop: 9,
-              }} elevation={4}
+              }}
+              elevation={4}
             >
-
-
               <View style={{
                 flex: 1,
                 flexDirection: 'column',
