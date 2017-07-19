@@ -24,7 +24,6 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		16E11E567D724079B5CCCD63 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E188527A1A0C491B9E15A332 /* AddressBook.framework */; };
-		1AB8B4FE59D94F4EBB2D7328 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5688877779D443A99E9C064B /* libRNGoogleSignin.a */; };
 		1D4D69FBA1AC49919063BEAC /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D95F42497DD43949BECC1F1 /* libRNSVG.a */; };
 		2007FA3274B74A08B5E9A447 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C51B25A64BFB470C97DE2A89 /* SimpleLineIcons.ttf */; };
 		25F18F08B45649C8AEA2E65C /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C65EA2A37AB4284880D562A /* Ionicons.ttf */; };
@@ -44,6 +43,12 @@
 		42104E5292094F70B396A3C9 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FA904E04AC94B27AF4F1A9D /* libRNFIRMessaging.a */; };
 		4225AEC790EE4FB4B7946654 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7879502CB8D4438581702B3D /* Zocial.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6037B0291F18F53B0058E76F /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C430651F16443700F13738 /* libRCTFBLogin.a */; };
+		606BB8391F19E3E20095DEE6 /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE3CE1EF90C4900E58DDA /* libRNGoogleSignin.a */; };
+		606BB83A1F19E4260095DEE6 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE3911EF8DB1C00E58DDA /* libRNDeviceInfo.a */; };
+		606BB83B1F19E4300095DEE6 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE39A1EF8DB1C00E58DDA /* libRNSVG.a */; };
+		606BB83C1F19E43D0095DEE6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE39D1EF8DB1C00E58DDA /* libRNVectorIcons.a */; };
+		606BB83D1F19E4470095DEE6 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE3941EF8DB1C00E58DDA /* libRNFIRMessaging.a */; };
 		60BAF1B81EFA2C7A0029173B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60BAF1B71EFA2C7A0029173B /* GoogleService-Info.plist */; };
 		60CFE3A01EF8F9F800E58DDA /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE39F1EF8F9F800E58DDA /* FirebaseNanoPB.framework */; };
 		60CFE3A21EF8FA0200E58DDA /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CFE3A11EF8FA0200E58DDA /* GoogleToolboxForMac.framework */; };
@@ -354,7 +359,6 @@
 		2EE97982EB094211B68AA7D4 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		3C65EA2A37AB4284880D562A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		40CA16100A104973A4979090 /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		5688877779D443A99E9C064B /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = "<group>"; };
 		56E5B5A4BF084D0586B662E3 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5F744EB3988F4C018245C1AE /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -413,45 +417,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60F2DC361EFA3B9B007AEC28 /* libSplashScreen.a in Frameworks */,
-				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				60CFE3B21EF904CE00E58DDA /* FBSDKCoreKit.framework in Frameworks */,
 				60CFE3AE1EF8FA2D00E58DDA /* Protobuf.framework in Frameworks */,
-				60CFE3A81EF8FA1300E58DDA /* FirebaseCoreDiagnostics.framework in Frameworks */,
-				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				60CFE3A21EF8FA0200E58DDA /* GoogleToolboxForMac.framework in Frameworks */,
-				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
+				60CFE3A81EF8FA1300E58DDA /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				60CFE3D51EF9138100E58DDA /* GoogleSignIn.framework in Frameworks */,
 				60CFE3A01EF8F9F800E58DDA /* FirebaseNanoPB.framework in Frameworks */,
-				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				60CFE3A61EF8FA0D00E58DDA /* FirebaseCore.framework in Frameworks */,
 				60CFE3B61EF904F200E58DDA /* FBSDKMessengerShareKit.framework in Frameworks */,
-				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
-				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				60CFE3A41EF8FA0800E58DDA /* FirebaseAnalytics.framework in Frameworks */,
-				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				60CFE3D91EF9139000E58DDA /* GoogleAuthUtilities.framework in Frameworks */,
 				60CFE3D71EF9138900E58DDA /* GoogleNetworkingUtilities.framework in Frameworks */,
-				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				60CFE3AA1EF8FA1800E58DDA /* FirebaseInstanceID.framework in Frameworks */,
 				60CFE3D31EF9137300E58DDA /* GoogleSymbolUtilities.framework in Frameworks */,
 				60CFE3B01EF904AF00E58DDA /* Bolts.framework in Frameworks */,
+				16E11E567D724079B5CCCD63 /* AddressBook.framework in Frameworks */,
+				EA3253B9060C40D1B45FDB85 /* SafariServices.framework in Frameworks */,
+				F879C593704F4023A3730FE0 /* SystemConfiguration.framework in Frameworks */,
+				60CFE3DB1EF9139900E58DDA /* GoogleAppUtilities.framework in Frameworks */,
+				60CFE3AC1EF8FA2600E58DDA /* FirebaseMessaging.framework in Frameworks */,
+				60CFE3D11EF9136300E58DDA /* GoogleUtilities.framework in Frameworks */,
+				60CFE3B41EF904E300E58DDA /* FBSDKLoginKit.framework in Frameworks */,
+				60F2DC361EFA3B9B007AEC28 /* libSplashScreen.a in Frameworks */,
+				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
+				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
+				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				6037B0291F18F53B0058E76F /* libRCTFBLogin.a in Frameworks */,
+				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
+				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
+				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				1AB8B4FE59D94F4EBB2D7328 /* libRNGoogleSignin.a in Frameworks */,
+				606BB8391F19E3E20095DEE6 /* libRNGoogleSignin.a in Frameworks */,
+				606BB83B1F19E4300095DEE6 /* libRNSVG.a in Frameworks */,
+				606BB83A1F19E4260095DEE6 /* libRNDeviceInfo.a in Frameworks */,
+				606BB83D1F19E4470095DEE6 /* libRNFIRMessaging.a in Frameworks */,
+				606BB83C1F19E43D0095DEE6 /* libRNVectorIcons.a in Frameworks */,
 				EEEBA7C471FF43FEA56818DF /* libz.tbd in Frameworks */,
-				EA3253B9060C40D1B45FDB85 /* SafariServices.framework in Frameworks */,
-				F879C593704F4023A3730FE0 /* SystemConfiguration.framework in Frameworks */,
-				16E11E567D724079B5CCCD63 /* AddressBook.framework in Frameworks */,
-				60CFE3DB1EF9139900E58DDA /* GoogleAppUtilities.framework in Frameworks */,
-				60CFE3AC1EF8FA2600E58DDA /* FirebaseMessaging.framework in Frameworks */,
 				B1ACBA5A67BC442BA7096010 /* libRCTFBLogin.a in Frameworks */,
 				42104E5292094F70B396A3C9 /* libRNFIRMessaging.a in Frameworks */,
 				CCDB7F185FFF4F028A7C2F69 /* libRNVectorIcons.a in Frameworks */,
-				60CFE3D11EF9136300E58DDA /* GoogleUtilities.framework in Frameworks */,
 				1D4D69FBA1AC49919063BEAC /* libRNSVG.a in Frameworks */,
-				60CFE3B41EF904E300E58DDA /* FBSDKLoginKit.framework in Frameworks */,
 				9B10CC5AB2B04BA3887EA66C /* libRNDeviceInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
