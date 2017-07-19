@@ -28,6 +28,26 @@
 				<string>fb467986553238213</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.googleusercontent.apps.146739917342-khsmrolbd7pjj14gha81riidqs0nl6ti</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.146739917342-khsmrolbd7pjj14gha81riidqs0nl6ti</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.excellence.pricegenie</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.excellence.pricegenie</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

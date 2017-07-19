@@ -9,7 +9,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_previouspage"] }]*/
 import React, { Component } from 'react';
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
-import { View, Text, Image, Button, Dimensions, ToastAndroid, TouchableNativeFeedback, Platform, AlertIOS } from 'react-native';
+import { View, Text, Image, Button, Dimensions, ToastAndroid, TouchableOpacity, Platform, AlertIOS } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import Icons from 'react-native-vector-icons/FontAwesome';
@@ -102,30 +102,30 @@ export class LogoutPage extends Component {
         name = this.state.user[0].profile.name;
       }
       button = this.state.user[0].logintype === 'google' ? (
-        <TouchableNativeFeedback onPress={this.cust_logout}>
+        <TouchableOpacity onPress={this.cust_logout}>
           <View style={{ flexDirection: 'row', flex: 1 }}>
             <Icons name="sign-out" size={19} style={{ marginRight: 5, marginTop: 3 }} />
             <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold' }}>Logout</Text>
           </View>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       ) : (
-        <TouchableNativeFeedback onPress={this.logoutWithFacebook}>
+        <TouchableOpacity onPress={this.logoutWithFacebook}>
           <View style={{ flexDirection: 'row', flex: 1 }}>
             <Icons name="sign-out" size={19} style={{ marginRight: 5, marginTop: 3 }} />
             <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold', textAlign: 'center' }}>Logout</Text>
           </View>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
       );
     }
     const alertPage =
-      (<TouchableNativeFeedback
+      (<TouchableOpacity
         onPress={this.navigateToSuscribe}
       >
         <View style={{ flexDirection: 'row', flex: 1 }}>
           <Icons name="bell-o" size={19} style={{ marginRight: 5, marginTop: 3 }} />
           <Text style={{ marginLeft: 5, color: 'grey', fontSize: 17, fontWeight: 'bold', textAlign: 'center' }}>My Genie Alerts</Text>
         </View>
-      </TouchableNativeFeedback>);
+      </TouchableOpacity>);
     return (
       <View>
         <View style={{

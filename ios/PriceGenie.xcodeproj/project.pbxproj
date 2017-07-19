@@ -1441,6 +1441,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/GoogleSdk/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1482,6 +1483,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/GoogleSdk/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
