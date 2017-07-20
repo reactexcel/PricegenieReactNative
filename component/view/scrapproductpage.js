@@ -3,7 +3,6 @@ import style from '../../style/basicStyle';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as _ from 'lodash';
 import Button from 'react-native-button';
-// import * as action from '../services/viewProduct';
 import { PieChartBasic } from './graph';
 import { ProductList } from './showproduct';
 import * as get from '../../services/pricehistroy';
@@ -50,7 +49,7 @@ export class ScrapProductView extends Component {
       } else if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.prompt(`Don't know how to open URI: ${url}`);
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
       }
     });
   }
@@ -98,7 +97,7 @@ export class ScrapProductView extends Component {
                paddingTop: 5,
                paddingLeft: 5,
                fontWeight: 'bold',
-               color: STRING.LightBlackColor,
+               color: '#54575a',
              }}
              >
                {data.name}
@@ -148,11 +147,11 @@ export class ScrapProductView extends Component {
                  flexDirection: 'row',
                  justifyContent: 'space-between',
                  borderBottomWidth: 1,
-                 borderBottomColor: STRING.GreyColor,
+                 borderBottomColor: '#e3e0e0',
                }}
                >
                  <Text style={{
-                   color: STRING.LightBlackColor,
+                   color: '#54575a',
                    fontSize: 16,
                    fontWeight: 'bold',
                    marginTop: 3.5,
@@ -168,7 +167,7 @@ export class ScrapProductView extends Component {
                    <Icon.Button
                      name="ios-stats" style={{
                        height: 30,
-                     }} backgroundColor="white" color={STRING.GreyColor}
+                     }} backgroundColor="white" color={'#e3e0e0'}
                    />
                  </View>
                </View>
@@ -191,7 +190,7 @@ export class ScrapProductView extends Component {
                    marginRight: 5,
                    marginLeft: 5,
                    borderRadius: 3,
-                   backgroundColor: STRING.RedColor,
+                   backgroundColor: '#F44336',
                  }} style={{
                    marginTop: 8,
                    fontSize: 11,
@@ -212,7 +211,7 @@ export class ScrapProductView extends Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: STRING.GreyColor,
+        backgroundColor: '#e3e0e0',
         flexDirection: 'column',
       }}
       >
@@ -221,7 +220,7 @@ export class ScrapProductView extends Component {
             ? <ActivityIndicator
               style={{
                 height: height - 90,
-              }} animating={this.state.loading} color={STRING.BlueColor} size={32}
+              }} animating={this.state.loading} color='#01579b' size={32}
             />
             :
             <View>

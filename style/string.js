@@ -1,4 +1,4 @@
-STRING = {
+const STRING = {
   GreyColor: '#e3e0e0',
   BlueColor: '#01579b',
   LightBlackColor: '#54575a',
@@ -6,3 +6,4 @@ STRING = {
   RedColor: '#F44336',
   YelloColor: '#e3ae22',
 };
+export default STRING;

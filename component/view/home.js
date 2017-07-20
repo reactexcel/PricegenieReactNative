@@ -23,11 +23,11 @@ import {
 } from 'react-native';
 import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
 import style from '../../style/basicStyle';
-// const style = require('../style/basicStyle');
 import json_data from '../../data/category';
 import * as action from '../../services/google';
 import * as actions from '../../services/facebook';
 import firebaseClient from '../../services/samplenotification';
+;
 
 const styles = StyleSheet.create({});
 
@@ -71,7 +71,7 @@ export class Home extends Component {
       <View style={{
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: STRING.GreyColor,
+        backgroundColor: '#e3e0e0',
       }}
       >
         <ScrollView>
@@ -150,7 +150,7 @@ export class Home extends Component {
                       backgroundColor: 'white',
                       justifyContent: 'space-around',
                       borderBottomWidth: 2,
-                      borderBottomColor: STRING.GreyColor,
+                      borderBottomColor: '#e3e0e0',
                     }}
                   >
                     <View style={{
@@ -179,7 +179,7 @@ export class Home extends Component {
                       <Icon
                         name="ios-arrow-forward-outline"
                         size={25}
-                        color={STRING.GreyColor}
+                        color={'#e3e0e0'}
                         style={{
                           marginTop: 3,
                           marginRight: 10,

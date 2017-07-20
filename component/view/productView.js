@@ -25,6 +25,7 @@ import {
 } from 'react-native';
 import * as facebook from '../../services/facebook';
 import * as actions from '../../services/google';
+;
 
 
 export class ProductView extends Component {
@@ -115,7 +116,7 @@ export class ProductView extends Component {
       } else if (Platform.OS === 'android') {
         ToastAndroid.showWithGravity(`Don't know how to open URI: ${url}`, ToastAndroid.SHORT, ToastAndroid.BOTTOM);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.prompt(`Don't know how to open URI: ${url}`);
+        AlertIOS.alert(`Don't know how to open URI: ${url}`);
       }
     });
   }
@@ -126,16 +127,15 @@ export class ProductView extends Component {
     });
     getLocalStorageData('user').then((email) => {
       const checkUser = JSON.parse(email);
-      if (checkUser !== null) {
-        if (checkUser[0].islogin == true) {
+      if (checkUser !== null && checkUser[0].islogin == true) {
           if (checkUser[0].logintype === 'google') {
             alert.pricealert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
                 if (Platform.OS === 'android') {
                   ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-                } else if (Platform.Os === 'ios') {
-                  AlertIOS.prompt('Log In Required');
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
                 }
               } else {
                 this.updateState(value.message);
@@ -147,28 +147,20 @@ export class ProductView extends Component {
                 this.setState({ isLoad: false });
                 if (Platform.OS === 'android') {
                   ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-                } else if (Platform.Os === 'ios') {
-                  AlertIOS.prompt('Log In Required');
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
                 }
               } else {
                 this.updateState(value.message);
               }
             });
           }
-        } else {
-          this.setState({ isLoad: false });
-          if (Platform.OS === 'android') {
-            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-          } else if (Platform.Os === 'ios') {
-            AlertIOS.prompt('Log In Required');
-          }
-        }
       } else {
         this.setState({ isLoad: false });
         if (Platform.OS === 'android') {
           ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        } else if (Platform.Os === 'ios') {
-          AlertIOS.prompt('Log In Required');
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
         }
       }
     });
@@ -180,16 +172,15 @@ export class ProductView extends Component {
     });
     getLocalStorageData('user').then((email) => {
       const checkUser = JSON.parse(email);
-      if (checkUser !== null) {
-        if (checkUser[0].islogin == true) {
+      if (checkUser !== null && checkUser[0].islogin == true) {
           if (checkUser[0].logintype === 'google') {
             alerts.unsetalert(data._id.$id, checkUser[0].data.email).then((value) => {
               if (!checkUser[0].data.email) {
                 this.setState({ isLoad: false });
                 if (Platform.OS === 'android') {
                   ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-                } else if (Platform.Os === 'ios') {
-                  AlertIOS.prompt('Log In Required');
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
                 }
               } else {
                 this.updateState(value.message);
@@ -201,28 +192,20 @@ export class ProductView extends Component {
                 this.setState({ isLoad: false });
                 if (Platform.OS === 'android') {
                   ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-                } else if (Platform.Os === 'ios') {
-                  AlertIOS.prompt('Log In Required');
+                } else if (Platform.OS === 'ios') {
+                  AlertIOS.alert('Log In Required');
                 }
               } else {
                 this.updateState(value.message);
               }
             });
           }
-        } else {
-          this.setState({ isLoad: false });
-          if (Platform.OS === 'android') {
-            ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-          } else if (Platform.Os === 'ios') {
-            AlertIOS.prompt('Log In Required');
-          }
-        }
       } else {
         this.setState({ isLoad: false });
         if (Platform.OS === 'android') {
           ToastAndroid.showWithGravity('Log In Required', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-        } else if (Platform.Os === 'ios') {
-          AlertIOS.prompt('Log In Required');
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Log In Required');
         }
       }
     });
@@ -249,7 +232,7 @@ export class ProductView extends Component {
       if (Platform.OS === 'android') {
         ToastAndroid.show(value, ToastAndroid.SHORT);
       } else if (Platform.OS === 'ios') {
-        AlertIOS.prompt(value);
+        AlertIOS.alert(value);
       }
     });
     getLocalStorageData('user').then((value) => {
@@ -295,7 +278,7 @@ export class ProductView extends Component {
         {this.state.isLoad === true ?
           (this.state.loadId === alertdata._id.$id ?
             <ActivityIndicator
-              animating={this.state.isLoad} color={'white'} size={15}
+              animating={this.state.isLoad} color={'white'} size="small"
             />
           : <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
             <Text style={{
@@ -308,16 +291,16 @@ export class ProductView extends Component {
             >Remove Price Alert</Text>
           </TouchableOpacity>)
         :
-          <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
-            <Text style={{
+        <TouchableOpacity onPress={() => { this.unsetAlert(alertdata); }}>
+          <Text style={{
               color: 'white',
               marginLeft: 1,
               textAlign: 'center',
               fontSize: 11,
               fontWeight: 'bold',
-            }}
-            >Remove Price Alert</Text>
-          </TouchableOpacity>
+          }}
+          >Remove Price Alert</Text>
+        </TouchableOpacity>
         }
       </View>
    :
@@ -325,7 +308,7 @@ export class ProductView extends Component {
         {this.state.isLoad === true ?
           (this.state.loadId === alertdata._id.$id ?
             <ActivityIndicator
-              animating={this.state.isLoad} color={'white'} size={15}
+              animating={this.state.isLoad} color={'white'} size="small"
             />
           : <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
             <Text style={{
@@ -338,16 +321,16 @@ export class ProductView extends Component {
             >Set Price Alert</Text>
           </TouchableOpacity>)
         :
-          <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
-            <Text style={{
+        <TouchableOpacity onPress={() => { this.setAlert(alertdata); }}>
+          <Text style={{
               color: 'white',
               marginLeft: 1,
               textAlign: 'center',
               fontSize: 11,
               fontWeight: 'bold',
-            }}
-            >Set Price Alert</Text>
-          </TouchableOpacity>
+          }}
+          >Set Price Alert</Text>
+        </TouchableOpacity>
         }
       </View>)
       ;
@@ -394,7 +377,7 @@ export class ProductView extends Component {
         key={key} style={{
           marginTop: 5,
           borderRadius: 10,
-          borderColor: STRING.GreyColor,
+          borderColor: '#e3e0e0',
         }}
       >
         <View style={{ marginBottom: 5, marginTop: 5 }}>
@@ -402,7 +385,7 @@ export class ProductView extends Component {
             flex: 1,
             flexDirection: 'row',
             borderBottomWidth:1,
-            borderBottomColor:STRING.GreyColor,
+            borderBottomColor:'#e3e0e0',
             }}
             >
             <Text style={{
@@ -463,7 +446,7 @@ export class ProductView extends Component {
                     padding: 4.5,
                     height: 25,
                     borderRadius: 3,
-                    backgroundColor: STRING.RedColor,
+                    backgroundColor: '#F44336',
                   }} style={{
                     fontSize: 11,
                     color: 'white',
@@ -485,19 +468,19 @@ export class ProductView extends Component {
           marginTop: 3,
           marginBottom: 3,
           borderTopWidth: 1,
-          borderTopColor: STRING.GreyColor,
+          borderTopColor: '#e3e0e0',
           borderBottomWidth: 1,
-          borderBottomColor: STRING.GreyColor,
+          borderBottomColor: '#e3e0e0',
         }}
         >
-          <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+          <View style={{ width: 125, marginTop: 2, marginBottom: 2, borderRightWidth: 1, borderRightColor: '#e3e0e0' }} >
             <View>
               <TouchableOpacity onPress={() => { this.loadScrapProductPage(data._id.$id); }}>
                 <Text style={{ alignSelf: 'center', fontSize: 12, height: 16 }}>See More</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: STRING.GreyColor }} >
+          <View style={{ width: 80, marginTop: 2, marginBottom: 2, justifyContent: 'center', borderRightWidth: 1, borderRightColor: '#e3e0e0' }} >
             <View>
               <TouchableOpacity onPress={() => {
                 this.callVaiant(data.varient_data.data, data._id.$id);
@@ -509,7 +492,7 @@ export class ProductView extends Component {
                     fontSize: 12,
                     height: 16,
                   }}
-                  >
+                    >
                     {`${data.varient_data.data.length} Variant`}
                   </Text>
                   : <Text style={{
@@ -517,7 +500,7 @@ export class ProductView extends Component {
                     fontSize: 12,
                     height: 16,
                   }}
-                  />}
+                    />}
               </TouchableOpacity>
             </View>
           </View>
@@ -527,23 +510,11 @@ export class ProductView extends Component {
               this.state.user[0].islogin ?
                 this.checkAlert(data, this.state.user)
               :
-                <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
-                  {this.state.isLoad === true ?
-                  (this.state.loadId === data._id.$id ?
-                    <ActivityIndicator
-                      animating={this.state.isLoad} color={'white'} size={15}
-                    />
-                  : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                    <Text style={{
-                      color: 'white',
-                      marginLeft: 1,
-                      textAlign: 'center',
-                      fontSize: 11,
-                      fontWeight: 'bold',
-                    }}
-                    >Set Price Alert</Text>
-                  </TouchableOpacity>)
-                :
+              <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+                {this.state.isLoad === true && this.state.loadId === data._id.$id ?
+                  <ActivityIndicator
+                    animating={this.state.isLoad} color={'white'} size="small"
+                  />:
                   <TouchableOpacity onPress={() => { this.setAlert(data); }}>
                     <Text style={{
                       color: 'white',
@@ -555,38 +526,27 @@ export class ProductView extends Component {
                     >Set Price Alert</Text>
                   </TouchableOpacity>
                 }
-                </View>
+              </View>
             )
             :
-                <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
-                  {this.state.isLoad === true ?
-                (this.state.loadId === data._id.$id ?
-                  <ActivityIndicator
-                    animating={this.state.isLoad} color={'white'} size={15}
-                  />
-                : <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                  <Text style={{
-                    color: 'white',
-                    marginLeft: 1,
-                    textAlign: 'center',
-                    fontSize: 11,
-                    fontWeight: 'bold',
-                  }}
-                  >Set Price Alert</Text>
-                </TouchableOpacity>)
+            <View style={{ flex: 1, backgroundColor: '#4DAF7C' }}>
+              {this.state.isLoad === true && this.state.loadId === data._id.$id ?
+                <ActivityIndicator
+                  animating={this.state.isLoad} color={'white'} size="small"
+                />
               :
-                <TouchableOpacity onPress={() => { this.setAlert(data); }}>
-                  <Text style={{
+              <TouchableOpacity onPress={() => { this.setAlert(data); }}>
+                <Text style={{
                     color: 'white',
                     marginLeft: 1,
                     textAlign: 'center',
                     fontSize: 11,
                     fontWeight: 'bold',
-                  }}
-                  >Set Price Alert</Text>
-                </TouchableOpacity>
+                }}
+                >Set Price Alert</Text>
+              </TouchableOpacity>
               }
-                </View>
+            </View>
             }
           </View>
         </View>
@@ -596,7 +556,7 @@ export class ProductView extends Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: STRING.GreyColor,
+        backgroundColor: '#e3e0e0',
         flexDirection: 'column',
       }}
       >
@@ -605,12 +565,12 @@ export class ProductView extends Component {
             ? <ActivityIndicator
               style={{
                 height: height - 90,
-              }} animating={this.state.loading} color={STRING.BlueColor} size={32}
-            />
+              }} animating={this.state.loading} color='#01579b' size="small"
+              />
             : <View style={{
               flex: 1,
             }}
-            >
+              >
               <View
                 style={{
                   flex: 1,
@@ -621,7 +581,7 @@ export class ProductView extends Component {
                   paddingTop: 5,
                   paddingLeft: 5,
                   fontWeight: 'bold',
-                  color: STRING.LightBlackColor,
+                  color: '#54575a',
                 }}
                 >
                   {spec_data.name_text}
@@ -652,7 +612,7 @@ export class ProductView extends Component {
                     <Text style={{
                       fontSize: 15,
                       fontWeight: 'bold',
-                      color: STRING.LightBlackColor,
+                      color: '#54575a',
                     }}
                     >
                       Key Features
@@ -686,7 +646,7 @@ export class ProductView extends Component {
                 >
                   <View >
                     <Text style={{
-                      color: STRING.LightBlackColor,
+                      color: '#54575a',
                       fontSize: 16,
                       fontWeight: 'bold',
                     }}
@@ -716,11 +676,11 @@ export class ProductView extends Component {
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 borderBottomWidth: 1,
-                borderBottomColor: STRING.GreyColor,
+                borderBottomColor: '#e3e0e0',
                   }}
                   >
                 <Text style={{
-                color: STRING.LightBlackColor,
+                color: '#54575a',
                 fontSize: 16,
                 fontWeight: 'bold',
                 marginTop: 3.5,
@@ -736,7 +696,7 @@ export class ProductView extends Component {
                 <Icon.Button
                 name="ios-stats" style={{
                 height: 30,
-                }} backgroundColor="white" color={STRING.GreyColor}
+                }} backgroundColor="white" color={'#e3e0e0'}
                 />
                 </View>
                   </View>
@@ -757,7 +717,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                >
+                  >
                   <View
                     style={{
                       flex: 1,
@@ -787,7 +747,7 @@ export class ProductView extends Component {
                   marginLeft: 9,
                   marginRight: 9,
                 }}
-                >
+                  >
                   <View
                     style={{
                       flex: 1,
@@ -810,7 +770,7 @@ export class ProductView extends Component {
                     <ProductList data={this.state.relatedProduct} selectedProduct={this.selectedProduct} />
                   </View>
                 </View>
-              : null}
+                : null}
             </View>}
         </ScrollView>
       </View>

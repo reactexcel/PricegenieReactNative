@@ -21,7 +21,6 @@ import * as actions from '../../services/category';
 import * as action from '../../services/google';
 import * as facebook from '../../services/facebook';
 
-
 export class Subcategory extends Component {
   constructor(props) {
     super(props);
@@ -45,11 +44,7 @@ export class Subcategory extends Component {
       }
     });
   }
-  componentDidMount() {
-    getLocalStorageData('user').then((value) => {
-      this.setState({ user: JSON.parse(value) });
-    });
-  }
+
 
   openDrawer() {
     this.props.navigation.navigate('DrawerOpen');
@@ -105,7 +100,7 @@ export class Subcategory extends Component {
                 {user_data.cat_name}
               </Text>
               <Icon
-                name="ios-arrow-forward-outline" size={25} color={STRING.GreyColor} style={{
+                name="ios-arrow-forward-outline" size={25} color={'#e3e0e0'} style={{
                   margin: 10,
                 }}
               />
@@ -139,7 +134,7 @@ export class Subcategory extends Component {
         </View>
         {animating
           ? <View style={style.loder}>
-            <ActivityIndicator animating={this.state.animating} color={STRING.BlueColor} size="large" />
+            <ActivityIndicator animating={this.state.animating} color='#01579b' size="large" />
           </View>
           : null}
       </View>

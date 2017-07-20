@@ -107,7 +107,7 @@ export class PieChartBasic extends Component {
         {data
           ?
             <StockLine data={data} options={options} xKey="xDataPoint" yKey="yDataPoint" />
-        : null}
+          : null}
       </View>
     );
   }

@@ -6,6 +6,7 @@ export function ajaxFire(params) {
     axios.get(url).then((data) => {
       resolve(data);
     }, (error) => {
+      console.log(error);
       reject(error);
     });
   });
