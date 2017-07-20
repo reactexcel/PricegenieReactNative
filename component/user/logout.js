@@ -38,20 +38,22 @@ export class LogoutPage extends Component {
     });
   }
   cust_logout() {
-    action.googleSignOut().then(() => {
-      const data = '';
-      const logintype = '';
-      const islogin = false;
-      const userdata = [{ data, logintype, islogin }];
-      setLocalStorageData('user', JSON.stringify(userdata));
-      if (Platform.OS === 'android') {
-        ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
-      } else if (Platform.OS === 'ios') {
-        AlertIOS.alert('Sign Out Complete');
-      }
-      this.props.handleState();
-      this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
-    }, error => error);
+    action.googleSignOut().then((out) => {
+      if(out){
+        const data = '';
+        const logintype = '';
+        const islogin = false;
+        const userdata = [{ data, logintype, islogin }];
+        setLocalStorageData('user', JSON.stringify(userdata));
+        if (Platform.OS === 'android') {
+          ToastAndroid.showWithGravity('Sign Out Complete', ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+        } else if (Platform.OS === 'ios') {
+          AlertIOS.alert('Sign Out Complete');
+        }
+        this.props.handleState();
+        this.props.navigation.navigate('DrawerClose', { islogin: false }, 'logout');
+      }, error => error
+    });
   }
   logoutWithFacebook() {
     actions.facebooksignout().then(() => {
